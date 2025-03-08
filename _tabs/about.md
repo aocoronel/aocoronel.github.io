@@ -6,7 +6,7 @@ order: 4
 
 ## Quem sou eu?
 
-Augusto Coronel é habilidoso e sagaz Auxiliar Veterinário dotado pela sua simpatia para assegurar o bem-estar dos animais. Com quase dois anos de experiência através de estágios na área, Augusto mistura seus conhecimentos técnicos com sua simpatia e alta adaptabilidade aos desafios, fornecendo o suporte necessitado por seus colegas de trabalho.
+Augusto Coronel é um habilidoso Auxiliar Veterinário dotado pela sua simpatia para assegurar o bem-estar dos animais. Com quase dois anos de experiência através de estágios na área, Augusto mistura seus conhecimentos técnicos com sua simpatia e alta adaptabilidade aos desafios, fornecendo o suporte necessitado por seus colegas de trabalho.
 
 A jornada de Augusto começou através de trabalhos voluntários focados no manejo de animais e bem-estar animal, onde desenvolveu suas habilidades de identificar animais doentes, debilitados e estressados, e o seu valor na prática clínica. Sua rápida adaptação e sagacidade por estabelecer o bem-estar animal rapidamente permitiu que ele se destacasse, e iniciar seu primeiro estágio, onde consolidou o fundamento das suas habilidades práticas.
 
