@@ -1,0 +1,168 @@
+#!/usr/bin/bash
+
+website_dir=_website
+source_dir=_posts
+style_dir=_style
+pages=_pages
+
+if [ $# -eq 0 ]; then
+  md_files=$(find $source_dir -name "*.md" | sort)
+else
+  md_files="$@"
+fi
+
+[ ! -d "$website_dir" ] && mkdir $website_dir
+
+relpath() {
+  python3 -c "import os.path; print(os.path.relpath('$1','$2'))"
+}
+
+build-pages() {
+  local markdown_file=$1
+  local markdown_filename imagepath html_filename filepath html_file dir_depth word_count reading_time updated_post template stylesheet_path lazy_load
+  markdown_filename=$(basename "$markdown_file" .md)
+  imagepath=$markdown_filename
+
+  [ -f "$website_dir/media/$imagepath.avif" ] || unset imagepath
+
+  html_filename="$markdown_filename.html"
+  filepath=$(dirname "${markdown_file#*/}" | sed 's/_posts\///')
+
+  mkdir -p "$website_dir/$filepath"
+
+  html_file="$website_dir/$filepath/$html_filename"
+
+  dir_depth=$(relpath '.' "$filepath")
+
+  word_count=$(wc -w "$markdown_file" | awk '{print $1}')
+  reading_time="$((word_count / 200)) min read"
+
+  updated_post=$(date -d @"$(stat -c %Y "$markdown_file")" +"%b %d, %Y")
+
+  if [[ "$markdown_file" =~ index.md ]]; then
+    stylesheet_path=$dir_depth/index.css
+    template="./_templates/template-index.html"
+    lazy_load=true
+  elif [ "$markdown_file" = "$pages/about.md" ]; then
+    stylesheet_path=$dir_depth/style.css
+    template="./_templates/template-about.html"
+  elif [ "$markdown_file" = "$pages/projects.md" ]; then
+    stylesheet_path=$dir_depth/style.css
+    template="./_templates/template-projects.html"
+  else
+    stylesheet_path=$dir_depth/style.css
+    template="./_templates/template-posts.html"
+    findNext "$markdown_file"
+  fi
+
+  pandoc "$markdown_file" \
+    --mathml \
+    --from=markdown \
+    --to=html \
+    --template "$template" \
+    --columns 10000 \
+    --number-sections \
+    --css "$stylesheet_path" \
+    --toc --toc-depth=5 \
+    --metadata autor="Augusto Coronel" \
+    --variable=current_date:"$(date +%Y-%m-%d_%H-%M-%S)" \
+    --variable=document_path:"$filepath/$html_filename" \
+    --variable=imagepath:"$imagepath" \
+    --variable=reading_time:"$reading_time" \
+    --variable=rel_path:"$dir_depth/" \
+    --variable=updated_post:"$updated_post" \
+    --variable=prev_post:"$prev_file" \
+    --variable=next_post:"$next_file" \
+    --variable=prev_title:"$prev_title" \
+    --variable=next_title:"$next_title" \
+    --standalone \
+    --citeproc \
+    --output="$html_file"
+
+  sed -i "/  <span id=\"cb/s/^  //g" "$html_file"
+
+  echo "Converted $markdown_file -> $html_file"
+}
+
+getOptimalParallels() {
+  local cpu_num
+  if ls /dev/cpu >/dev/null; then
+    cpu_num=$(ls /dev/cpu | wc -l)
+    echo "$((cpu_num / 2))"
+  else
+    return 1
+  fi
+}
+
+main() {
+  addCss
+
+  parallels=$(getOptimalParallels)
+  [ -z "$parallels" ] && parallels=1
+
+  for markdown_file in $md_files; do
+    jobs_running=$(jobs -p | wc -l)
+
+    while [ "$jobs_running" -ge "$parallels" ]; do
+      wait -n
+      jobs_running=$(jobs -p | wc -l)
+    done
+    build-pages "$markdown_file" &
+  done
+
+  wait
+
+  [ -n "$lazy_load" ] && sed -i 's/<img src/<img loading="lazy" src/g' $website_dir/index.html
+  echo "Conversion done."
+}
+
+findNext() {
+  input_date=$(echo "$1" | cut -d'-' -f1-3)
+  sub_dir=$(basename "$(dirname "$input_date")")
+
+  files=$(find "$source_dir/$sub_dir" -maxdepth 1 -type f -name "????-??-??-*" | sort)
+
+  index=$(echo "$files" | grep -n "$input_date" | cut -d: -f1)
+
+  if [ -z "$index" ]; then
+    echo "Error: File not found or incorrect format."
+    exit 1
+  fi
+
+  prev_index=$((index - 1))
+  next_index=$((index + 1))
+
+  if [ $prev_index -lt 1 ]; then
+    prev_file=""
+    prev_title="None"
+  else
+    prev_filepath=$(echo "$files" | head -n "$prev_index" | tail -n 1)
+    prev_file=$sub_dir/$(basename "$prev_filepath" .md)
+    prev_title=$(getTitle "$prev_filepath")
+  fi
+
+  if [ $next_index -gt "$(echo "$files" | wc -l)" ]; then
+    next_file=""
+    next_title="None"
+  else
+    next_filepath=$(echo "$files" | head -n "$next_index" | tail -n 1)
+    next_file=$sub_dir/$(basename "$next_filepath" .md)
+    next_title=$(getTitle "$next_filepath")
+  fi
+}
+
+getTitle() {
+  file="$1"
+  head -n 20 "$file" | grep "title:" | awk -F "title: " '{print $2}'
+}
+
+addCss() {
+  cp $style_dir/style.css $website_dir/
+  cp $style_dir/index.css $website_dir/
+  cp $style_dir/script.js $website_dir/
+  # cp source/favicon.png $website_dir/
+  cp -r $source_dir/media $website_dir/
+  # find $website_dir/ -type f -name '.*' ! -name ".htaccess" -delete
+}
+
+main
