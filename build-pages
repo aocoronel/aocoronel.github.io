@@ -86,7 +86,7 @@ build-pages() {
 
 getOptimalParallels() {
   local cpu_num
-  if ls /dev/cpu >/dev/null; then
+  if ls /dev/cpu &>/dev/null; then
     cpu_num=$(ls /dev/cpu | wc -l)
     echo "$((cpu_num / 2))"
   else
