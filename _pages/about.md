@@ -19,7 +19,7 @@ This website is born from the will to make things, you will probably find a bit 
 
 Note that any of my post aren't an ultimate source of truth. I'll try to bring other sources to reinforce my point of view, when possible. For subjetive posts, I'll make it clear that it is subjective, thus do not take it too serious.
 
-This blog design is made by me, while all the content is converted from simple markdown text to HTML using pandoc. If you are curious to know how I made this, check on this repository [README](https://github.com/aocoronel/aocoronel.github.io/README.md) file.
+This blog design is made by me, while all the content is converted from simple markdown text to HTML using pandoc. If you are curious to know how I made this, check on this repository [README](https://github.com/aocoronel/aocoronel.github.io) file.
 
 But it wasn't always like that. I've already used tools that makes the deploy process of a blog simple, but I'm always unhappy with presets. I wanted to make a blog truly mine, with my style, features and colors.
 
