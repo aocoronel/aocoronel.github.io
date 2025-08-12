@@ -112,7 +112,12 @@ main() {
 
   wait
 
-  [ -n "$lazy_load" ] && sed -i 's/<img src/<img loading="lazy" src/g' $website_dir/index.html
+  [ -n "$lazy_load" ] && {
+    find "$website_dir" -type f -iname "index.md" | while IFS= read -r index_file; do
+      sed -i 's/<img src/<img loading="lazy" src/g' "$index_file"
+    done
+  }
+
   echo "Conversion done."
 }
 
