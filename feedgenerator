@@ -1,8 +1,11 @@
+#!/usr/bin/env python3
+
 from bs4 import BeautifulSoup
 from feedgen.feed import FeedGenerator
 import datetime
 import os
 import pytz
+import re
 
 html_file_path = '_website/index.html'
 with open(html_file_path, 'r', encoding='utf-8') as file:
@@ -25,11 +28,16 @@ for item in soup.select('h2[data-number]'):
     link = 'https://aocoronel.github.io/' + title_tag['href']
 
     date_tag = item.find_next('p')
-    date_str = date_tag.get_text().replace('Posted on ', '').strip()
-    naive_datetime = datetime.datetime.strptime(date_str, '%b %d, %Y')
 
-    timezone = pytz.timezone('UTC')
-    pub_date = timezone.localize(naive_datetime)
+    date_match = re.search(r'Posted on ([A-Za-z]+\s+\d{1,2},\s+\d{4})', date_tag.get_text())
+    if date_match:
+        date_str = date_match.group(1)
+        naive_datetime = datetime.datetime.strptime(date_str, '%b %d, %Y')
+        timezone = pytz.timezone('UTC')
+        pub_date = timezone.localize(naive_datetime)
+    else:
+        print(f"Date not found in: {date_tag.get_text()}")
+        continue
 
     description_tag = item.find_next('blockquote')
     description = description_tag.get_text().strip()

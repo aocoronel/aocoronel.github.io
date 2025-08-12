@@ -162,6 +162,7 @@ addCss() {
   sed -E "s/\/.*//" $style_dir/projects.css | sed '/^$/d' | tr -d '\n' >$website_dir/projects.css
   sed -E "s/\/.*//" $style_dir/index.css | sed '/^$/d' | tr -d '\n' >$website_dir/index.css
   cp $style_dir/script.js $website_dir/
+  cp $pages/feed.xml $website_dir/
   cp $pages/robots.txt $website_dir/
   cp $pages/.htaccess $website_dir/
   cp $pages/projects.html $website_dir/
