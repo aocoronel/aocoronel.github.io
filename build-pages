@@ -1,17 +1,38 @@
-#!/usr/bin/bash
+#!/usr/bin/env bash
 
-website_dir=_website
-source_dir=_posts
-style_dir=_style
-pages=_pages
+WEBSITE_DIR=_website
+SOURCE_DIR=_posts
+STYLE_DIR=_style
+PAGES_DIR=_pages
 
-if [ $# -eq 0 ]; then
-  md_files=$(find $source_dir -name "*.md" | sort)
-else
-  md_files="$@"
-fi
+main() {
+  [ ! -d "$WEBSITE_DIR" ] && mkdir $WEBSITE_DIR
 
-[ ! -d "$website_dir" ] && mkdir $website_dir
+  addCss
+
+  parallels=$(getOptimalParallels)
+  [ -z "$parallels" ] && parallels=1
+
+  for markdown_file in $MD_FILES; do
+    jobs_running=$(jobs -p | wc -l)
+
+    while [ "$jobs_running" -ge "$parallels" ]; do
+      wait -n
+      jobs_running=$(jobs -p | wc -l)
+    done
+    build-pages "$markdown_file" &
+  done
+
+  wait
+
+  [ -n "$lazy_load" ] && {
+    find "$WEBSITE_DIR" -type f -iname "index.md" | while IFS= read -r index_file; do
+      sed -i 's/<img src/<img loading="lazy" src/g' "$index_file"
+    done
+  }
+
+  echo "Conversion done."
+}
 
 relpath() {
   python3 -c "import os.path; print(os.path.relpath('$1','$2'))"
@@ -23,14 +44,14 @@ build-pages() {
   markdown_filename=$(basename "$markdown_file" .md)
   imagepath=$markdown_filename
 
-  [ -f "$website_dir/media/$imagepath.avif" ] || unset imagepath
+  [ -f "$WEBSITE_DIR/media/$imagepath.avif" ] || unset imagepath
 
   html_filename="$markdown_filename.html"
   filepath=$(dirname "${markdown_file#*/}" | sed 's/_posts\///')
 
-  mkdir -p "$website_dir/$filepath"
+  mkdir -p "$WEBSITE_DIR/$filepath"
 
-  html_file="$website_dir/$filepath/$html_filename"
+  html_file="$WEBSITE_DIR/$filepath/$html_filename"
 
   dir_depth=$(relpath '.' "$filepath")
 
@@ -43,12 +64,9 @@ build-pages() {
     stylesheet_path=$dir_depth/index.css
     template="./_templates/template-index.html"
     lazy_load=true
-  elif [ "$markdown_file" = "$pages/about.md" ]; then
+  elif [ "$markdown_file" = "$PAGES_DIR/about.md" ]; then
     stylesheet_path=$dir_depth/style.css
     template="./_templates/template-about.html"
-  elif [ "$markdown_file" = "$pages/projects.md" ]; then
-    stylesheet_path=$dir_depth/style.css
-    template="./_templates/template-projects.html"
   else
     stylesheet_path=$dir_depth/style.css
     template="./_templates/template-posts.html"
@@ -94,38 +112,11 @@ getOptimalParallels() {
   fi
 }
 
-main() {
-  addCss
-
-  parallels=$(getOptimalParallels)
-  [ -z "$parallels" ] && parallels=1
-
-  for markdown_file in $md_files; do
-    jobs_running=$(jobs -p | wc -l)
-
-    while [ "$jobs_running" -ge "$parallels" ]; do
-      wait -n
-      jobs_running=$(jobs -p | wc -l)
-    done
-    build-pages "$markdown_file" &
-  done
-
-  wait
-
-  [ -n "$lazy_load" ] && {
-    find "$website_dir" -type f -iname "index.md" | while IFS= read -r index_file; do
-      sed -i 's/<img src/<img loading="lazy" src/g' "$index_file"
-    done
-  }
-
-  echo "Conversion done."
-}
-
 findNext() {
   input_date=$(echo "$1" | cut -d'-' -f1-3)
   sub_dir=$(basename "$(dirname "$input_date")")
 
-  files=$(find "$source_dir/$sub_dir" -maxdepth 1 -type f -name "????-??-??-*" | sort)
+  files=$(find "$SOURCE_DIR/$sub_dir" -maxdepth 1 -type f -name "????-??-??-*" | sort)
 
   index=$(echo "$files" | grep -n "$input_date" | cut -d: -f1)
 
@@ -157,21 +148,28 @@ findNext() {
 }
 
 getTitle() {
-  file="$1"
+  local file=$1
   head -n 20 "$file" | grep "title:" | awk -F "title: " '{print $2}'
 }
 
 addCss() {
   # Minify CSS files
-  sed -E "s/\/.*//" $style_dir/style.css | sed '/^$/d' | tr -d '\n' >$website_dir/style.css
-  sed -E "s/\/.*//" $style_dir/projects.css | sed '/^$/d' | tr -d '\n' >$website_dir/projects.css
-  sed -E "s/\/.*//" $style_dir/index.css | sed '/^$/d' | tr -d '\n' >$website_dir/index.css
-  cp $style_dir/script.js $website_dir/
-  cp $pages/feed.xml $website_dir/
-  cp $pages/robots.txt $website_dir/
-  cp $pages/.htaccess $website_dir/
-  cp $pages/projects.html $website_dir/
-  cp -r $source_dir/media $website_dir/
+  sed -E "s/\/.*//" $STYLE_DIR/style.css | sed '/^$/d' | tr -d '\n' >$WEBSITE_DIR/style.css
+  sed -E "s/\/.*//" $STYLE_DIR/projects.css | sed '/^$/d' | tr -d '\n' >$WEBSITE_DIR/projects.css
+  sed -E "s/\/.*//" $STYLE_DIR/index.css | sed '/^$/d' | tr -d '\n' >$WEBSITE_DIR/index.css
+
+  cp $STYLE_DIR/script.js $WEBSITE_DIR/
+  cp $PAGES_DIR/feed.xml $WEBSITE_DIR/
+  cp $PAGES_DIR/robots.txt $WEBSITE_DIR/
+  cp $PAGES_DIR/.htaccess $WEBSITE_DIR/
+  cp $PAGES_DIR/projects.html $WEBSITE_DIR/
+  cp -r $SOURCE_DIR/media $WEBSITE_DIR/
 }
+
+if [ $# -eq 0 ]; then
+  MD_FILES=$(find $SOURCE_DIR -name "*.md" | sort)
+else
+  MD_FILES="$@"
+fi
 
 main
