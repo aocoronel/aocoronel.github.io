@@ -26,7 +26,7 @@ createHeader() {
   local category=$1
   # shellcheck disable=SC2129
   echo "---" >>"$index_path"
-  echo "title: Index" >>"$index_path"
+  echo "title: $category" >>"$index_path"
   echo "category: $category" >>"$index_path"
   echo "---" >>"$index_path"
 }
