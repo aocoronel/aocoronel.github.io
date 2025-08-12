@@ -164,7 +164,8 @@ h1,
 h2,
 h3,
 h4,
-h5 {
+h5,
+h6 {
   border-bottom: 1px dotted rgb(151, 151, 151);
   clear: both;
   float: none;
@@ -199,6 +200,12 @@ h5 {
   font-size: 110%;
   font-style: italic;
   color: var(--headercolor-5);
+}
+
+h6 {
+  font-size: 110%;
+  font-style: italic;
+  color: var(--headercolor-6);
 }
 
 span.header-section-number {
