@@ -157,12 +157,15 @@ getTitle() {
 }
 
 addCss() {
-  cp $style_dir/style.css $website_dir/
-  cp $style_dir/index.css $website_dir/
+  # Minify CSS files
+  sed -E "s/\/.*//" $style_dir/style.css | sed '/^$/d' | tr -d '\n' >$website_dir/style.css
+  sed -E "s/\/.*//" $style_dir/projects.css | sed '/^$/d' | tr -d '\n' >$website_dir/projects.css
+  sed -E "s/\/.*//" $style_dir/index.css | sed '/^$/d' | tr -d '\n' >$website_dir/index.css
   cp $style_dir/script.js $website_dir/
-  # cp source/favicon.png $website_dir/
+  cp $pages/robots.txt $website_dir/
+  cp $pages/.htaccess $website_dir/
+  cp $pages/projects.html $website_dir/
   cp -r $source_dir/media $website_dir/
-  # find $website_dir/ -type f -name '.*' ! -name ".htaccess" -delete
 }
 
 main

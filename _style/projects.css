@@ -1,0 +1,32 @@
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+.project-card {
+  background: #070707;
+  padding: 1rem;
+  border-radius: 8px;
+}
+.project-card img {
+  width: 100%;
+  border-radius: 6px;
+}
+.project-card h1,
+.project-card h2 {
+  margin: 0.5rem 0;
+  color: var(--accent);
+  border-bottom: 1px solid var(--border-accent);
+}
+
+img.projects {
+  max-width: 300px;
+  width: 100%;
+  float: right;
+}
+
+span.projects {
+  float: left;
+  max-width: 80vh;
+  width: auto;
+}
