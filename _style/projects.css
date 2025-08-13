@@ -5,12 +5,13 @@
 }
 
 .project-card {
+  align-items: center;
   background: var(--code-background);
-  padding: 1rem;
   border-radius: 8px;
   display: flex;
-  align-items: center;
   gap: 1rem;
+  max-width: -moz-available;
+  padding: 1rem;
   width: 100%;
 }
 
@@ -20,9 +21,9 @@
 }
 
 .project-text h2 {
-  margin-top: 0px;
   border-bottom: 1px solid var(--border-accent);
   color: var(--accent);
+  margin-top: 0px;
 }
 
 .project-card img {
