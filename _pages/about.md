@@ -52,9 +52,3 @@ Some elements from this blog were made with assistance of AI, like JavaScript fo
 I cannot tell I did not use AI, and I cannot say I don't use.
 
 Having that said, the contents from my posts are never going to be AI generated, this includes all text and images (except for the logo).
-
-## A phrase
-
-Once I thought an interesting phrase. So I'm going to save it here.
-
-> We often get locked inside a world we live, and often forget about the world we want to live.
