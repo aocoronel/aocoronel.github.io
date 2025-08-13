@@ -32,6 +32,6 @@ These metadata are extracted on conversion, so they can be inserted in specific 
 
 ## Improvements
 
-- A unique look to the projects page.
+- [x] A unique look to the projects page.
 - Lazy load content on index pages.
 - Skip already compiled pages with no changes, by using `make` instead of `just`.
