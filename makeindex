@@ -65,6 +65,17 @@ createHeader() {
   echo "---" >>"$index_path"
   echo "title: Augusto Coronel" >>"$index_path"
   echo "category: $CATEGORY" >>"$index_path"
+  case "$SUB_DIR" in
+  tech)
+    echo "description: Read about Linux, Programming and Commandline" >>"$index_path"
+    ;;
+  vet)
+    echo "description: Under construction" >>"$index_path"
+    ;;
+  *)
+    echo "description: Augusto Coronel: Welcome to my blog!"
+    ;;
+  esac
   echo "---" >>"$index_path"
 }
 
