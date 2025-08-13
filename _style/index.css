@@ -531,12 +531,10 @@ span.clear {
 }
 
 blockquote {
-  border-left: 3px solid var(--grey);
-  margin-left: 5px;
+  margin-left: 0px;
 }
 
 blockquote p {
-  color: var(--headercolor-2);
   display: inline-block;
   margin-bottom: 0px;
   margin-top: 0px;
