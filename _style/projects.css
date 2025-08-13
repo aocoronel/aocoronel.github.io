@@ -10,9 +10,9 @@
   border-radius: 8px;
   display: flex;
   gap: 1rem;
-  max-width: -moz-available;
+  max-width: 100%;
   padding: 1rem;
-  width: 100%;
+  width: auto;
 }
 
 .project-text {
