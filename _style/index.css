@@ -100,7 +100,7 @@ body {
   color: var(--grey);
   font-size: 100%;
   margin-right: 10px;
-  width: auto;
+  width: fit-content;
 }
 
 header {
