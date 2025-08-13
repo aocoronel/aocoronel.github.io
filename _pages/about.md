@@ -51,7 +51,7 @@ Some elements from this blog were made with assistance of AI, like JavaScript fo
 
 I cannot tell I did not use AI, and I cannot say I don't use.
 
-Having that said, the contents from my posts are never going to be AI generated, this includes all text and images.
+Having that said, the contents from my posts are never going to be AI generated, this includes all text and images (except for the logo).
 
 ## A phrase
 
