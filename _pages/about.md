@@ -29,11 +29,11 @@ If you didn't know, the colors used in this blog are inspired by my own theme pa
 
 I believe that the most simple things, the simplest projects and the tiny tools are the most efficient. It’s strange how the technology evolved to a bloated ecosystem whenever you look. That’s why I embrace the command line! Despise its simplicity of handling only text, it holds an immense power and infinite extensibility.
 
-The minimalism is something I find out to be the way. It just feels right anywhere you apply it. But, of course, there is no right way of doing anything.
+The minimalism is something I find out to be the way. It just feels right anywhere you apply it, but nothing too extreme. But, of course, there is no right way of doing anything.
 
-I praise many extensible tools, because they are not conplete. By that, I mean there is no museum to walk through. You build your own museum by extending them to fit your needs. In other words, it's an incentive to creation. If it was all about consuming, you wouldn't be reading this right now. I would be surely be too busy reading someone's else content instead.
+I praise many extensible tools, because they are not complete. By that, I mean there is no museum to walk through. You build your own museum by extending them to fit your needs. In other words, it's an incentive to creation. If it was all about consuming, you wouldn't be reading this right now. I would be surely be too busy reading someone's else content instead.
 
-I'm not shackled by social media, doom scrolling or by algorithm suggestions. I simply consume what I intend to. I'm free from the very known villain called smartphone. It's my tool, and not the opposite.
+I'm not shackled by social media, doom scrolling or by algorithm suggestions, but not immune. I simply consume what I intend to. I'm free from the very known villain called smartphone. It's my tool, and not the opposite.
 
 I believe knowledge should be accessible for all. That's why this blog will never serve contents behind a paywall.
 
