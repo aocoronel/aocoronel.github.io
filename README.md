@@ -35,3 +35,10 @@ These metadata are extracted on conversion, so they can be inserted in specific 
 - [x] A unique look to the projects page.
 - Lazy load content on index pages.
 - Skip already compiled pages with no changes, by using `make` instead of `just`.
+
+## License
+
+This work is licensed under a
+[Creative Commons Attribution 4.0 International License][cc-by].
+
+[cc-by]: http://creativecommons.org/licenses/by/4.0/
