@@ -65,10 +65,10 @@ build-pages() {
     template="./_templates/template-index.html"
     lazy_load=true
   elif [ "$markdown_file" = "$PAGES_DIR/about.md" ]; then
-    stylesheet_path=$dir_depth/style.css
+    stylesheet_path=$dir_depth/about.css
     template="./_templates/template-about.html"
   else
-    stylesheet_path=$dir_depth/style.css
+    stylesheet_path=$dir_depth/posts.css
     template="./_templates/template-posts.html"
     findNext "$markdown_file"
   fi
@@ -83,7 +83,6 @@ build-pages() {
     --css "$stylesheet_path" \
     --toc --toc-depth=5 \
     --metadata autor="Augusto Coronel" \
-    --variable=current_date:"$(date +%Y-%m-%d_%H-%M-%S)" \
     --variable=document_path:"$filepath/$html_filename" \
     --variable=imagepath:"$imagepath" \
     --variable=reading_time:"$reading_time" \
@@ -93,8 +92,6 @@ build-pages() {
     --variable=next_post:"$next_file" \
     --variable=prev_title:"$prev_title" \
     --variable=next_title:"$next_title" \
-    --standalone \
-    --citeproc \
     --output="$html_file"
 
   sed -i "/  <span id=\"cb/s/^  //g" "$html_file"
@@ -154,9 +151,10 @@ getTitle() {
 
 addCss() {
   # Minify CSS files
-  sed -E "s/\/.*//" $STYLE_DIR/style.css | sed '/^$/d' | tr -d '\n' >$WEBSITE_DIR/style.css
-  sed -E "s/\/.*//" $STYLE_DIR/projects.css | sed '/^$/d' | tr -d '\n' >$WEBSITE_DIR/projects.css
-  sed -E "s/\/.*//" $STYLE_DIR/index.css | sed '/^$/d' | tr -d '\n' >$WEBSITE_DIR/index.css
+  cssfiles=("style" "projects" "index" "variables" "further-read" "default" "code" "sidebar" "toc" "posts" "about")
+  for cssfile in "${cssfiles[@]}"; do
+    sed -E "s/\/.*//" $STYLE_DIR/"$cssfile".css | sed '/^$/d' | tr -d '\n' >$WEBSITE_DIR/"$cssfile".css
+  done
 
   cp $STYLE_DIR/script.js $WEBSITE_DIR/
   cp $PAGES_DIR/feed.xml $WEBSITE_DIR/

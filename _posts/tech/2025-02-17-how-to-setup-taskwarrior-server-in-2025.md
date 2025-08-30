@@ -209,7 +209,6 @@ task config taskd.credentials -- Public/Username/cf31f287-ee9e-43a8-843e-e8bbd5d
 You must send all your tasks to the server running:
 
 > This is something you should only do once on only one device.
-> {: .prompt-warning }
 
 ```bash
 task sync init
@@ -313,7 +312,6 @@ WantedBy=multi-user.target
 You must send all your tasks to the server running:
 
 > This is something you should only do once on only one device.
-> {: .prompt-warning }
 
 ```bash
 task sync init

@@ -1,0 +1,251 @@
+html {
+  -webkit-text-size-adjust: 100%;
+  height: 100%;
+  padding-top: -20px;
+  width: 100%;
+}
+body {
+  background-color: var(--body_background_color);
+  color: white;
+  font-family: sans-serif;
+  font-size: 100%;
+  height: 100%;
+  line-height: 140%;
+  margin: auto;
+  min-width: 320px;
+}
+.content {
+  background-color: var(--content_background_color);
+  color: var(--grey);
+  margin: auto;
+  min-height: calc(100% - 151.2px - 71px - 60px);
+  padding-bottom: 60px;
+  padding-top: 80px;
+  padding: 20px;
+}
+.content-upper {
+  padding-top: 50px;
+}
+.content-title-n-toc {
+  display: block;
+}
+.content-title {
+  color: var(--accent);
+  font-size: 175%;
+  font-weight: bolder;
+  margin-bottom: 20px;
+}
+.content-desc {
+  color: var(--grey);
+  font-size: 100%;
+}
+header {
+  background-color: var(--header_background_color);
+  position: fixed;
+  width: 100%;
+  z-index: 1;
+}
+.header_content {
+  margin-bottom: -1px;
+  margin: auto;
+  max-width: 890px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+.license {
+  color: var(--grey2);
+  font-size: 82%;
+}
+footer {
+  background-color: var(--header_background_color);
+  border-top: 1px solid var(--grey2);
+  height: 65px;
+  width: 100%;
+}
+.footer_content span {
+  color: white;
+  font-size: 14px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  float: center;
+  text-align: center;
+}
+.footer_content a {
+  color: var(--accent);
+  text-decoration: none;
+}
+.footer_content p {
+  font-size: 90%;
+  text-decoration: none;
+  color: var(--grey2);
+}
+.footer_content {
+  margin: auto;
+  max-width: 890px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 20px;
+  font-size: 70%;
+  justify-content: space-between;
+}
+h1 a,
+h2 a,
+h3 a,
+h4 a,
+h5 a {
+  color: var(--link);
+  text-decoration: none;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  border-bottom: 1px dotted rgb(151, 151, 151);
+  clear: both;
+  float: none;
+  font-weight: bolder;
+}
+h1 {
+  font-size: 130%;
+  margin-top: 75px;
+  color: var(--headercolor-1);
+}
+h2 {
+  font-size: 110%;
+  margin-top: 50px;
+  color: var(--headercolor-2);
+}
+h3 {
+  font-size: 110%;
+  margin-top: 20px;
+  color: var(--headercolor-3);
+}
+h4 {
+  font-size: 110%;
+  font-style: italic;
+  color: var(--headercolor-4);
+}
+h5 {
+  font-size: 110%;
+  font-style: italic;
+  color: var(--headercolor-5);
+}
+h6 {
+  font-size: 110%;
+  font-style: italic;
+  color: var(--headercolor-6);
+}
+.title {
+  border: none;
+  color: var(--link);
+  float: left;
+  font-size: 26px;
+  font-size: min(12vw - 16px, 26px);
+  font-weight: lighter;
+  margin: 0;
+  padding-top: 0.4em;
+  text-align: left;
+  text-decoration: none;
+}
+hr {
+  margin-bottom: 30px;
+  margin-top: 30px;
+}
+.content > ol > li::marker,
+.content > ul > li::marker {
+  color: var(--link);
+}
+.content > ol > li,
+.content > ul > li {
+  padding-left: 0px;
+}
+p {
+  clear: left;
+  line-height: 165%;
+}
+p:before {
+  content: "";
+  display: block;
+  overflow: hidden;
+  width: 10em;
+}
+p.title {
+  font-size: 90%;
+  margin-bottom: 20px;
+  margin-top: 0px;
+  width: 50%;
+}
+span.metadata {
+  font-size: 80%;
+  margin-bottom: -6px;
+  margin-top: -6px;
+  margin-right: 15px;
+}
+div.content > ol > li {
+  padding-bottom: 6px;
+}
+div.content > ul > li {
+  padding-bottom: 6px;
+}
+dd p {
+  margin-top: 0;
+}
+span.header-section-number {
+  display: none;
+  visibility: hidden;
+}
+img.titleicon {
+  float: right;
+  height: 60px;
+  height: min(12vw, 60px);
+}
+figure {
+  overflow: hidden;
+}
+.figureMargin {
+  margin-bottom: 40px;
+  margin-top: 35px;
+}
+div.content > figure {
+  margin-bottom: 40px;
+  margin-top: 35px;
+}
+figcaption {
+  margin-top: 8px;
+  text-align: center;
+}
+strong {
+  color: white;
+}
+math {
+  color: white;
+}
+mark {
+  background-color: rgba(241, 250, 140, 0.30196078431372547);
+  color: var(--grey);
+}
+a {
+  color: var(--green);
+}
+.navbar {
+  height: 41px;
+  margin-bottom: 5px;
+  margin-left: 0px;
+  margin-top: 10px;
+}
+.nav_item {
+  background-color: var(--header_background_color);
+  float: right;
+  height: 30px;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 10px;
+  text-align: center;
+}
+.nav_item a {
+  color: var(--link);
+  text-decoration: none;
+}

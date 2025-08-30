@@ -3,7 +3,6 @@
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 1.5rem;
 }
-
 .project-card {
   align-items: center;
   background: var(--code-background);
@@ -14,18 +13,15 @@
   padding: 1rem;
   width: auto;
 }
-
 .project-text {
   flex: 1;
   min-width: 0;
 }
-
 .project-text h2 {
   border-bottom: 1px solid var(--border-accent);
   color: var(--accent);
   margin-top: 0px;
 }
-
 .project-card img {
   border-radius: 10%;
   max-width: 350px;
@@ -33,12 +29,10 @@
   height: auto;
   margin-left: auto;
 }
-
 .project-card > span:first-child {
   flex: 1;
   min-width: 0;
 }
-
 @media (max-width: 768px) {
   .project-card {
     flex-direction: column;
