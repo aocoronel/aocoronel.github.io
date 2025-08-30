@@ -1,0 +1,252 @@
+<!doctype html>
+<html
+  xmlns="http://www.w3.org/1999/xhtml"
+  lang=""
+  xml:lang=""
+  >
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=yes"
+    />
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="../media/favicons/favicon-16x16.png"
+    />
+         <meta property="og:title" content="NixOS - Usage Review" />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:url"
+      content="https://aocoronel.github.io/tech/2025-08-02-nixos-review.html"
+    />
+    <meta
+      property="og:image"
+      content="https://raw.githubusercontent.com/aocoronel/aocoronel.github.io/refs/heads/main/_posts/media/2025-08-02-nixos-review.avif"
+    />
+    <meta property="og:site_name" content="Augusto Coronel" />
+    <meta property="og:description" content="Here are my thoughts on the amazing NixOS distro, which takes system configuration to another level, plus it’s main principles of reproducibility and reliability." />
+    <meta name="twitter:title" content="Augusto Coronel" />
+    <meta name="twitter:description" content="Here are my thoughts on the amazing NixOS distro, which takes system configuration to another level, plus it’s main principles of reproducibility and reliability." />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:image"
+      content="https://raw.githubusercontent.com/aocoronel/aocoronel.github.io/refs/heads/main/_posts/2025-08-02-nixos-review.avif"
+    />
+    <title>NixOS - Usage Review</title>
+        <link rel="stylesheet" href="../posts.css" />
+      
+  </head>
+  <body>
+    
+    <header>
+      <div class="header_content">
+        <div class="navbar">
+          <a class="title" href="../index.html">Coronel</a>
+          <div class="nav_item ">
+            <a href="../projects.html">Projects</a>
+          </div>
+          <div class="nav_item ">
+            <a href="../about.html">About</a>
+          </div>
+          <div class="nav_item ">
+            <a href="../index.html">Home</a>
+          </div>
+          <button class="toggle-btn" onclick="toggleSidebar()">☰</button>
+        </div>
+        <span class="clear"></span>
+      </div>
+    </header>
+    <div id="sidebar" class="sidebar">
+      <div id="sidebar-content"></div>
+    </div>
+    <div id="mainpage-content" class="sidebar-content">
+            <div class="table_of_contents">
+        <div class="table_of_contents_header">Contents:</div>
+        <ul>
+        <li><a href="#nixos-usage-review" id="toc-nixos-usage-review"><span class="toc-section-number">1</span> NixOS: Usage review</a>
+        <ul>
+        <li><a href="#tldr" id="toc-tldr"><span class="toc-section-number">1.1</span> TLDR</a></li>
+        <li><a href="#my-thoughts-on-nixos" id="toc-my-thoughts-on-nixos"><span class="toc-section-number">1.2</span> My thoughts on NixOS</a></li>
+        <li><a href="#my-thoughts-on-home-manager" id="toc-my-thoughts-on-home-manager"><span class="toc-section-number">1.3</span> My thoughts on Home Manager</a></li>
+        <li><a href="#my-thoughts-on-the-nix-package-manager" id="toc-my-thoughts-on-the-nix-package-manager"><span class="toc-section-number">1.4</span> My thoughts on the Nix Package Manager</a></li>
+        <li><a href="#conclusion" id="toc-conclusion"><span class="toc-section-number">1.5</span> Conclusion</a></li>
+        </ul></li>
+        </ul>
+      </div>
+          </div>
+    <div class="content">
+      <br />
+      
+      <div class="content-upper">
+        <div class="content-title-n-toc">
+          <p class="content-title">NixOS - Usage Review</p>
+          <p class="content-desc">Here are my thoughts on the amazing NixOS distro, which takes system configuration to another level, plus it’s main principles of reproducibility and reliability.</p>
+          <span style="float: left" class="metadata">By Augusto Coronel</span>
+          <span style="float: right" class="metadata">6 min read</span>
+          <br />
+                    <span>
+            <a href="../index.html"
+              ><img
+                class="postImg"
+                type="image/avif"
+                src="../media/2025-08-02-nixos-review.avif"
+            /></a>
+          </span>
+                     <span>
+            <div class="table_of_contents">
+              <div class="table_of_contents_header">Contents:</div>
+              <ul>
+              <li><a href="#nixos-usage-review" id="toc-nixos-usage-review"><span class="toc-section-number">1</span> NixOS: Usage review</a>
+              <ul>
+              <li><a href="#tldr" id="toc-tldr"><span class="toc-section-number">1.1</span> TLDR</a></li>
+              <li><a href="#my-thoughts-on-nixos" id="toc-my-thoughts-on-nixos"><span class="toc-section-number">1.2</span> My thoughts on NixOS</a></li>
+              <li><a href="#my-thoughts-on-home-manager" id="toc-my-thoughts-on-home-manager"><span class="toc-section-number">1.3</span> My thoughts on Home Manager</a></li>
+              <li><a href="#my-thoughts-on-the-nix-package-manager" id="toc-my-thoughts-on-the-nix-package-manager"><span class="toc-section-number">1.4</span> My thoughts on the Nix Package Manager</a></li>
+              <li><a href="#conclusion" id="toc-conclusion"><span class="toc-section-number">1.5</span> Conclusion</a></li>
+              </ul></li>
+              </ul>
+            </div>
+          </span>
+          <br />
+                  </div>
+      </div>
+      <br />
+      <div>
+        <span style="float: left" class="metadata">Posted <b>Aug 1, 2025</b></span>
+        <span style="float: right" class="metadata"
+          >Updated <b>Aug 13, 2025</b></span
+        >
+      </div>
+       <h1 data-number="1" id="nixos-usage-review"><span class="header-section-number">1</span> NixOS: Usage review</h1>
+<p>I have been using NixOS for some time now as a daily driver, so I’m here to tell my experience with it.</p>
+<p>I expect this post to allow you to know the benefits of NixOS, its main issues and who would benefit the most from this distro.</p>
+<p>From my whole experience of distro hoping, I’ve learned that each Linux distro has a purpose. There is not perfect distro for everything, but there are highly specific ones that will excel in a field. So NixOS has its own.</p>
+<h2 data-number="1.1" id="tldr"><span class="header-section-number">1.1</span> TLDR</h2>
+<p>This is only related to NixOS. Since any Linux distro can install the nix package manager and Home Manager.</p>
+<p>Pros:</p>
+<ol type="1">
+<li>NixOS is perfect for who want to rice their desktop system and make it effortless to enable or disable parts of the config. It also allows you to have different profiles for different machines using the same config.</li>
+<li>It’s also powerful for servers, so updating the config will synchronize the changes among all your servers.</li>
+<li>Deploying a pre-configured system in multiple devices/servers. Even over SSH.</li>
+<li>Declaring your system will allow you to never forget how to setup a program or a service, since it’s all a file.</li>
+<li>It’s a immutable system. Running <code>nixos-rebuild</code> will regenerate all files that were changed to their original files from your config.</li>
+<li>Breaking your system is possible, but the solution is: Rollback to a previous generation of your system.</li>
+<li>You can go stable or bleeding edge.</li>
+<li>Creativity is the limit.</li>
+</ol>
+<p>Cons:</p>
+<ol type="1">
+<li>You will have to learn the Nix programming language basics. I’m not a expert in that language, but I made very far!</li>
+<li>Rebuilding your system gets slower when your config gets large. It will have to evaluate your whole config and create a new generation from your system, even if you just added <code>git</code> to your environment packages.</li>
+<li>Finding resources to guide you to setup X program or Y service may be hard for the lack of documentation.</li>
+<li>Diagnose errors in your config can be very cumbersome, sometimes. It makes you almost give up.</li>
+<li>It does not follow the FHS, so some things will not work out of the box, because they rely on that. You will have to adapt your scripts to run in NixOS by using <code>env</code>.</li>
+<li>You can declare a lot of settings, but not everything. A good example is the lack of declarative partitioning, which is addressed by <code>disko</code>.</li>
+<li>Expect to have a large disk usage.</li>
+<li>NixOS is a time investment. This is a fact.</li>
+</ol>
+<h2 data-number="1.2" id="my-thoughts-on-nixos"><span class="header-section-number">1.2</span> My thoughts on NixOS</h2>
+<p>I initially used NixOS, because I had the idea of “The Lifetime Distro”. By that I mean: I no longer will have to know all the steps to setup my system the way it is, therefore no chance to forget about setting up a program or service. So, all my changes to the config would never degrade overtime, for example: I reinstalled my distro and I forgot to enable my firewall with that particular config. This is a real problem when you use several tools. No way I can remember the whole setup process after a year. For four months of using NixOS I definitively can tell its a amazing distro. But I didn’t knew I was about to change my thoughts on it. As I already mentioned, each distro has its perks for each field. And my goals changed to be more inclined to Arch Linux, because NixOS was becoming too overkill to me. The reason? Well:</p>
+<p>Some of the issues I pointed in the TLDR section is the full config evaluation to just install <code>git</code>. NixOS does a great job, but in my view it is not efficient. It will be surely faster, than a full system upgrade, but it’s still slower than using another package manager. Someone could point out to use the <code>nix-env</code> command, but I use NixOS the nix way.</p>
+<p>If you ever got curious how long I took to make my NixOS config good enough to use it as daily driver, well it took me a whole week to replicate my previous setup from my Arch Linux install. You can look my config in here: <a href="https://github.com/aocoronel/nix">aocoronel/nix</a>. I definitively took my way up until here to turn back to NixOS… at least it helped me build a modular and well structured repository. It does not have a guideline file to explain how I organize the files, but you can guess it by reading it. At least I think so.</p>
+<h2 data-number="1.3" id="my-thoughts-on-home-manager"><span class="header-section-number">1.3</span> My thoughts on Home Manager</h2>
+<p>Well, I used Home Manager just because I wanted to try it. It makes part of my config, but there is no truly reason to that to be there. Home Manager is a user based nix-like configuration without relying on root privileges. It allows you to install and configure programs and manage your <code>$HOME</code> directory from a single or modular config. I get the point of Home Manager, but it is a struggle to setup, just like NixOS. I use <code>stow</code> to manage my dotfiles, btw. Doing so I have an agnostic config without relying on Home Manager. For the user programs, just adding them to my NixOS config would be enough, and then Home Manager is useless to me.</p>
+<h2 data-number="1.4" id="my-thoughts-on-the-nix-package-manager"><span class="header-section-number">1.4</span> My thoughts on the Nix Package Manager</h2>
+<p>This is surely one of the coolest package managers I ever used. I can try any software without really installing it in my system, create development shells to end the dependency hell, and it also allows developers to ship flakes so the users that have the nix package manager can install their programs without headaches of thinking about dependencies. Everything just works. NixOS empowers the nix package manager experience by allowing you to configure what programs are installed, something that you can only have in other distros, if you have Home Manager. Not even the software themselves suffer from dependency hell, when a X program need Y dependency at this version and W program needs Y at that other version. This package manager may not be beneficial for everyone, but it’s a must for every developer that program using languages like Python and C, since imports are got from installing programs in the system. So create a <code>shell.nix</code> with all dependencies will allow your Python code to run and your C code to compile.</p>
+<h2 data-number="1.5" id="conclusion"><span class="header-section-number">1.5</span> Conclusion</h2>
+<p>NixOS is not a bad distro, it’s pretty good, actually, but it can be overwhelming if you are not ready to put your time into it, since there is a lot to do, to make it a daily driver, at least for a desktop experience.</p>
+<p>If the idea of reproducibility, declarative and reliability resonates with you and you want to try NixOS, you can check on someone’s else configuration to get started with, it helps a lot.</p>
+<p>I greatly recommend you to give a look at Emmet’s (LibrePhoenix) configuration at <a href="https://gitlab.com/librephoenix/nixos-config">librephoenix/nixos-config</a>. I totally took a lot of inspiration from him in my NixOS journey. Really appreciate!</p>
+      <p class="license">
+        This post is licensed under
+        <a
+          class="license"
+          style="text-decoration: none; color: #d0d0d0"
+          href="https://creativecommons.org/licenses/by/4.0/"
+          >CC BY 4.0</a
+        >
+        by the author.
+      </p>
+      <div style="display: flex; justify-content: center">
+        <div class="further-read">
+                    <a href="../tech/2025-04-15-how-to-install-spelling-in-neovim.html">
+            <p class="further-read-p">Older</p>
+                        <p>How to Install Spelling in Neovim</p>
+                      </a>
+                  </div>
+        <div class="further-read">
+                    <a>
+            <p class="further-read-p">Newer</p>
+            <p>None</p>
+          </a>
+                  </div>
+      </div>
+    </div>
+    <footer>
+      <div class="footer_content">
+        <a
+          href="https://github.com/aocoronel"
+          class="glass-btn !px-3"
+          target="_blank"
+          ><svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="22"
+            height="22"
+            fill="currentColor"
+            viewBox="0 0 256 256"
+          >
+            <path
+              d="M208,104v8a48,48,0,0,1-48,48H136a32,32,0,0,1,32,32v40H104V192a32,32,0,0,1,32-32H112a48,48,0,0,1-48-48v-8a49.28,49.28,0,0,1,8.51-27.3A51.92,51.92,0,0,1,76,32a52,52,0,0,1,43.83,24h32.34A52,52,0,0,1,196,32a51.92,51.92,0,0,1,3.49,44.7A49.28,49.28,0,0,1,208,104Z"
+              opacity="0.2"
+            ></path>
+            <path
+              d="M208.3,75.68A59.74,59.74,0,0,0,202.93,28,8,8,0,0,0,196,24a59.75,59.75,0,0,0-48,24H124A59.75,59.75,0,0,0,76,24a8,8,0,0,0-6.93,4,59.78,59.78,0,0,0-5.38,47.68A58.14,58.14,0,0,0,56,104v8a56.06,56.06,0,0,0,48.44,55.47A39.8,39.8,0,0,0,96,192v8H72a24,24,0,0,1-24-24A40,40,0,0,0,8,136a8,8,0,0,0,0,16,24,24,0,0,1,24,24,40,40,0,0,0,40,40H96v16a8,8,0,0,0,16,0V192a24,24,0,0,1,48,0v40a8,8,0,0,0,16,0V192a39.8,39.8,0,0,0-8.44-24.53A56.06,56.06,0,0,0,216,112v-8A58,58,0,0,0,208.3,75.68ZM200,112a40,40,0,0,1-40,40H112a40,40,0,0,1-40-40v-8a41.74,41.74,0,0,1,6.9-22.48A8,8,0,0,0,80,73.83a43.81,43.81,0,0,1,.79-33.58,43.88,43.88,0,0,1,32.32,20.06A8,8,0,0,0,119.82,64h32.35a8,8,0,0,0,6.74-3.69,43.87,43.87,0,0,1,32.32-20.06A43.81,43.81,0,0,1,192,73.83a8.09,8.09,0,0,0,1,7.65A41.76,41.76,0,0,1,200,104Z"
+            ></path></svg
+        ></a>
+        <a href="https://aocoronel.github.io/feed.xml" target="_blank">
+          <svg
+            width="22"
+            height="22"
+            viewBox="0 0 24 24"
+            id="Layer_1"
+            data-name="Layer 1"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <defs>
+              <style>
+                .cls-1 {
+                  fill: none;
+                  stroke: #7c5cff;
+                  stroke-miterlimit: 10;
+                  stroke-width: 1.91px;
+                }
+              </style>
+            </defs>
+            <path class="cls-1" d="M6.27,11.05A6.68,6.68,0,0,1,13,17.73" />
+            <path class="cls-1" d="M6.27,6.27A11.46,11.46,0,0,1,17.73,17.73" />
+            <circle class="cls-1" cx="7.23" cy="16.77" r="0.95" />
+            <rect class="cls-1" x="1.5" y="1.5" width="21" height="21" />
+          </svg>
+        </a>
+        <span style="padding-right: 15px; text-wrap: auto">
+          <p>
+            © 2025
+            <a style="color: #d0d0d0" href="https://github.com/aocoronel/"
+              >Augusto Coronel.</a
+            >
+            <a
+              style="color: #979797"
+              href="https://github.com/aocoronel/"
+              href="https://creativecommons.org/licenses/by/4.0/"
+              >All rights reserved.</a
+            >
+          </p>
+        </span>
+      </div>
+    </footer>
+    
+  </body>
+  <script src="../script.js"></script>
+</html>

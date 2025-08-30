@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0">
+  <channel>
+    <title>Augusto Coronel</title>
+    <link>https://aocoronel.github.io</link>
+    <description>Hello!</description>
+    <docs>http://www.rssboard.org/rss-specification</docs>
+    <generator>python-feedgen</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 12 Aug 2025 20:10:57 +0000</lastBuildDate>
+    <item>
+      <title>The Only All-in-One Tool You Will Ever Need</title>
+      <link>https://aocoronel.github.io/tech/2025-01-18-the-only-all-in-one-tool-you-will-ever-need.html</link>
+      <description>There are many A-I-O available out there, but what if you could use only one ultimate A-I-O tool?</description>
+      <pubDate>Sat, 18 Jan 2025 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Three Years of Using Obsidian - Everything into a Vault Template</title>
+      <link>https://aocoronel.github.io/tech/2025-01-22-three-years-obsidian-how-it-looks-like.html</link>
+      <description>Possibilities are infinite, but many are out of scope. Great Obsidian experience will be much simpler to achieve with these tips!</description>
+      <pubDate>Wed, 22 Jan 2025 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>How To Setup Taskwarrior Server In 2025</title>
+      <link>https://aocoronel.github.io/tech/2025-02-17-how-to-setup-taskwarrior-server-in-2025.html</link>
+      <description>Learn how to sync your tasks the right way!</description>
+      <pubDate>Sun, 16 Feb 2025 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Regain Control Over What You Watch in YouTube</title>
+      <link>https://aocoronel.github.io/tech/2025-02-26-regain-control-over-what-you-watch-in-youtube.html</link>
+      <description>Make yourself a step from being lured by useless recommendations in YouTube with Invidious</description>
+      <pubDate>Wed, 26 Feb 2025 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>How to Install Spelling in Neovim</title>
+      <link>https://aocoronel.github.io/tech/2025-04-15-how-to-install-spelling-in-neovim.html</link>
+      <description>Neovim does not have support for spelling other than English by default. Here are how you can get the required files to enable spelling in Neovim.</description>
+      <pubDate>Mon, 14 Apr 2025 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Placeholder</title>
+      <link>https://aocoronel.github.io/vet/2025-08-01-placeholder.html</link>
+      <description>There is nothing special here.</description>
+      <pubDate>Fri, 01 Aug 2025 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>NixOS - Usage Review</title>
+      <link>https://aocoronel.github.io/tech/2025-08-02-nixos-review.html</link>
+      <description>Here are my thoughts on the amazing NixOS distro, which takes system configuration to another level, plus it’s main principles of reproducibility and reliability.</description>
+      <pubDate>Fri, 01 Aug 2025 00:00:00 +0000</pubDate>
+    </item>
+  </channel>
+</rss>

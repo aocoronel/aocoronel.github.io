@@ -1,0 +1,1 @@
+.further-read {  color: var(--grey2);  font-size: 80%;  padding: 10px;  margin-top: 30px;  border: 1px solid var(--grey2);  width: 50%;  transition-duration: 0.3s;}.further-read a {  color: var(--grey2);  text-decoration: none;  text-align: center;}.further-read-p {  font-size: 110%;}.further-read:hover {  background-color: var(--sidebar-background);}

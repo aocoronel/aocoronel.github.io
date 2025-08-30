@@ -1,0 +1,451 @@
+<!doctype html>
+<html
+  xmlns="http://www.w3.org/1999/xhtml"
+  lang=""
+  xml:lang=""
+  >
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=yes"
+    />
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="../media/favicons/favicon-16x16.png"
+    />
+         <meta property="og:title" content="How To Setup Taskwarrior Server In 2025" />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:url"
+      content="https://aocoronel.github.io/tech/2025-02-17-how-to-setup-taskwarrior-server-in-2025.html"
+    />
+    <meta
+      property="og:image"
+      content="https://raw.githubusercontent.com/aocoronel/aocoronel.github.io/refs/heads/main/_posts/media/2025-02-17-how-to-setup-taskwarrior-server-in-2025.avif"
+    />
+    <meta property="og:site_name" content="Augusto Coronel" />
+    <meta property="og:description" content="Learn how to sync your tasks the right way!" />
+    <meta name="twitter:title" content="Augusto Coronel" />
+    <meta name="twitter:description" content="Learn how to sync your tasks the right way!" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:image"
+      content="https://raw.githubusercontent.com/aocoronel/aocoronel.github.io/refs/heads/main/_posts/2025-02-17-how-to-setup-taskwarrior-server-in-2025.avif"
+    />
+    <title>How To Setup Taskwarrior Server In 2025</title>
+        <link rel="stylesheet" href="../posts.css" />
+      
+  </head>
+  <body>
+    
+    <header>
+      <div class="header_content">
+        <div class="navbar">
+          <a class="title" href="../index.html">Coronel</a>
+          <div class="nav_item ">
+            <a href="../projects.html">Projects</a>
+          </div>
+          <div class="nav_item ">
+            <a href="../about.html">About</a>
+          </div>
+          <div class="nav_item ">
+            <a href="../index.html">Home</a>
+          </div>
+          <button class="toggle-btn" onclick="toggleSidebar()">☰</button>
+        </div>
+        <span class="clear"></span>
+      </div>
+    </header>
+    <div id="sidebar" class="sidebar">
+      <div id="sidebar-content"></div>
+    </div>
+    <div id="mainpage-content" class="sidebar-content">
+            <div class="table_of_contents">
+        <div class="table_of_contents_header">Contents:</div>
+        <ul>
+        <li><a href="#how-to-setup-taskwarrior-server-in-2025" id="toc-how-to-setup-taskwarrior-server-in-2025"><span class="toc-section-number">1</span> How To Setup Taskwarrior Server In 2025</a>
+        <ul>
+        <li><a href="#introduction" id="toc-introduction"><span class="toc-section-number">1.1</span> Introduction</a></li>
+        <li><a href="#taskwarrior-v2" id="toc-taskwarrior-v2"><span class="toc-section-number">1.2</span> Taskwarrior V2</a>
+        <ul>
+        <li><a href="#dependencies" id="toc-dependencies"><span class="toc-section-number">1.2.1</span> Dependencies</a></li>
+        <li><a href="#setup" id="toc-setup"><span class="toc-section-number">1.2.2</span> Setup</a>
+        <ul>
+        <li><a href="#installation" id="toc-installation"><span class="toc-section-number">1.2.2.1</span> Installation</a></li>
+        <li><a href="#config" id="toc-config"><span class="toc-section-number">1.2.2.2</span> Config</a></li>
+        </ul></li>
+        <li><a href="#usage" id="toc-usage"><span class="toc-section-number">1.2.3</span> Usage</a></li>
+        </ul></li>
+        <li><a href="#taskwarrior-v3" id="toc-taskwarrior-v3"><span class="toc-section-number">1.3</span> Taskwarrior V3</a>
+        <ul>
+        <li><a href="#dependencies-1" id="toc-dependencies-1"><span class="toc-section-number">1.3.1</span> Dependencies</a></li>
+        <li><a href="#setup-1" id="toc-setup-1"><span class="toc-section-number">1.3.2</span> Setup</a>
+        <ul>
+        <li><a href="#installation-1" id="toc-installation-1"><span class="toc-section-number">1.3.2.1</span> Installation</a></li>
+        </ul></li>
+        <li><a href="#usage-1" id="toc-usage-1"><span class="toc-section-number">1.3.3</span> Usage</a></li>
+        </ul></li>
+        <li><a href="#finals" id="toc-finals"><span class="toc-section-number">1.4</span> Finals</a></li>
+        </ul></li>
+        </ul>
+      </div>
+          </div>
+    <div class="content">
+      <br />
+      
+      <div class="content-upper">
+        <div class="content-title-n-toc">
+          <p class="content-title">How To Setup Taskwarrior Server In 2025</p>
+          <p class="content-desc">Learn how to sync your tasks the right way!</p>
+          <span style="float: left" class="metadata">By Augusto Coronel</span>
+          <span style="float: right" class="metadata">9 min read</span>
+          <br />
+                    <span>
+            <a href="../index.html"
+              ><img
+                class="postImg"
+                type="image/avif"
+                src="../media/2025-02-17-how-to-setup-taskwarrior-server-in-2025.avif"
+            /></a>
+          </span>
+                     <span>
+            <div class="table_of_contents">
+              <div class="table_of_contents_header">Contents:</div>
+              <ul>
+              <li><a href="#how-to-setup-taskwarrior-server-in-2025" id="toc-how-to-setup-taskwarrior-server-in-2025"><span class="toc-section-number">1</span> How To Setup Taskwarrior Server In 2025</a>
+              <ul>
+              <li><a href="#introduction" id="toc-introduction"><span class="toc-section-number">1.1</span> Introduction</a></li>
+              <li><a href="#taskwarrior-v2" id="toc-taskwarrior-v2"><span class="toc-section-number">1.2</span> Taskwarrior V2</a>
+              <ul>
+              <li><a href="#dependencies" id="toc-dependencies"><span class="toc-section-number">1.2.1</span> Dependencies</a></li>
+              <li><a href="#setup" id="toc-setup"><span class="toc-section-number">1.2.2</span> Setup</a>
+              <ul>
+              <li><a href="#installation" id="toc-installation"><span class="toc-section-number">1.2.2.1</span> Installation</a></li>
+              <li><a href="#config" id="toc-config"><span class="toc-section-number">1.2.2.2</span> Config</a></li>
+              </ul></li>
+              <li><a href="#usage" id="toc-usage"><span class="toc-section-number">1.2.3</span> Usage</a></li>
+              </ul></li>
+              <li><a href="#taskwarrior-v3" id="toc-taskwarrior-v3"><span class="toc-section-number">1.3</span> Taskwarrior V3</a>
+              <ul>
+              <li><a href="#dependencies-1" id="toc-dependencies-1"><span class="toc-section-number">1.3.1</span> Dependencies</a></li>
+              <li><a href="#setup-1" id="toc-setup-1"><span class="toc-section-number">1.3.2</span> Setup</a>
+              <ul>
+              <li><a href="#installation-1" id="toc-installation-1"><span class="toc-section-number">1.3.2.1</span> Installation</a></li>
+              </ul></li>
+              <li><a href="#usage-1" id="toc-usage-1"><span class="toc-section-number">1.3.3</span> Usage</a></li>
+              </ul></li>
+              <li><a href="#finals" id="toc-finals"><span class="toc-section-number">1.4</span> Finals</a></li>
+              </ul></li>
+              </ul>
+            </div>
+          </span>
+          <br />
+                  </div>
+      </div>
+      <br />
+      <div>
+        <span style="float: left" class="metadata">Posted <b>Feb 16, 2025</b></span>
+        <span style="float: right" class="metadata"
+          >Updated <b>Aug 17, 2025</b></span
+        >
+      </div>
+       <h1 data-number="1" id="how-to-setup-taskwarrior-server-in-2025"><span class="header-section-number">1</span> How To Setup Taskwarrior Server In 2025</h1>
+<h2 data-number="1.1" id="introduction"><span class="header-section-number">1.1</span> Introduction</h2>
+<p>This is a guide on how to setup a Taskwarrior server for the 2.x.x and 3.x.x versions.</p>
+<p>The main differences between the 2.x.x era and the new current 3.x.x versions of taskwarrior is mainly the format where these two are presented and their syncing methods.</p>
+<ul>
+<li>Taskwarrior V2
+<ul>
+<li>Uses <strong>JSON</strong> as its data files, split in four main files: pending.data, completed.data, backlog.data and undo.data</li>
+<li>Uses <code>taskd</code> for syncing files across devices</li>
+</ul></li>
+<li>Taskwarrior V3
+<ul>
+<li>Uses <strong>SQLite</strong> as its data file called: taskchampion-sqlite.db</li>
+<li>Uses cloud services (e.g. Google Cloud and AWS S3) or taskchampion for syncing</li>
+</ul></li>
+</ul>
+<p>In short, the 3.x.x series have a completed revamp on how syncing works and the way data is stored to improve performance at the very, very long term. I’ll be skipping the JSON and SQLite details, but it’s useful to know that SQLite is highly more efficient in dealing with high amounts of data (that happens in the long term).</p>
+<p>Since the major taskwarrior upgrade, I found out that many projects associated to taskwarrior are no longer maintained and were created for the 2.x.x versions of it. For new users, taskwarrior 3.x.x is the best good to go, but for the users that were already using 2.x.x versions may have created a workflow around some tools like <a href="https://github.com/CCExtractor/taskwarrior-flutter">taskwarrior-flutter</a> and <a href="https://app.wingtask.com/">WingTask</a> that allowed taskwarrior to expanded to mobile devices seamlessly without sacrificing any bit of security.</p>
+<p>If you never wondered about augmenting your taskwarrior setup, you may want to give at look at <a href="https://taskwarrior.org/tools/">Taskwarrior Tools</a>. It’s a very big lists of all available taskwarrior related projects that can do all kinds of stuff.</p>
+<p>For this guide, I will be focusing in two amazing tools for running a server:</p>
+<ul>
+<li><a href="https://github.com/GothenburgBitFactory/taskserver">taskserver</a> for the 2.x.x series</li>
+<li><a href="https://github.com/GothenburgBitFactory/taskchampion-sync-server">taskchampion</a> for the 3.x.x series.</li>
+</ul>
+<blockquote>
+<p>I’ll not be talking about how to setup Google Cloud or AWS S3 for Takswarrior V3 in this post</p>
+</blockquote>
+<h2 data-number="1.2" id="taskwarrior-v2"><span class="header-section-number">1.2</span> Taskwarrior V2</h2>
+<p>This will be a bare, simple, straight-forward, poor and dry redo of the already existing guide on how to setup a taskserver: Available at: <a href="https://gothenburgbitfactory.org/taskserver-setup/">taskserver-setup</a>.</p>
+<p>If you get questions on the setup, I do recommend you check the official guide, since it does give better explanations.</p>
+<blockquote>
+<p>Taskserver is only compatible with Taskwarrior 2.x, and is no longer actively developed.</p>
+</blockquote>
+<h3 data-number="1.2.1" id="dependencies"><span class="header-section-number">1.2.1</span> Dependencies</h3>
+<pre><code>GnuTLS (ideally version 3.2 or newer)
+libuuid
+cmake 2.8 or newer
+make
+gcc 4.7 or clang 3.0 or newer</code></pre>
+<h3 data-number="1.2.2" id="setup"><span class="header-section-number">1.2.2</span> Setup</h3>
+<h4 data-number="1.2.2.1" id="installation"><span class="header-section-number">1.2.2.1</span> Installation</h4>
+<p>Download the official Github repository</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone <span class="at">--recurse-submodules</span><span class="op">=</span>yes <span class="dt">\</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>      https://github.com/GothenburgBitFactory/taskserver.git <span class="dt">\</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>      taskserver.git</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> taskserver.git</span></code></pre></div>
+<p>Change branch to <code>master</code> to get stable version</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout master</span></code></pre></div>
+<p>Init submodules</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> submodule init</span></code></pre></div>
+<p>Build your taskserver</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cmake</span> <span class="at">-DCMAKE_BUILD_TYPE</span><span class="op">=</span>release .</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">make</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> make install</span></code></pre></div>
+<p>Verify your installation</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">taskd</span> <span class="at">-v</span></span></code></pre></div>
+<h4 data-number="1.2.2.2" id="config"><span class="header-section-number">1.2.2.2</span> Config</h4>
+<p>Taskserver data relies on an environment variable: $TASKDDATA (Has two ’D’s). To set this up, add the following line to your <code>.shellrc</code> or <code>.env</code> and source it.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">TASKDDATA</span><span class="op">=</span>/var/taskd</span></code></pre></div>
+<p>In the Github repository you just cloned, there will be a directory called <code>pki</code>. Move it to $TASKDDATA.</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mv</span> pki <span class="va">$TASKDDATA</span></span></code></pre></div>
+<p>The following command will do at lot. It will move your location to $TASKDDATA/pki and setup the certificates by running one of many scripts, and copy them to the $TASKDDATA directory.</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> <span class="va">$TASKDDATA</span>/pki</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="ex">./generate</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> client.cert.pem <span class="va">$TASKDDATA</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> client.key.pem <span class="va">$TASKDDATA</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> server.cert.pem <span class="va">$TASKDDATA</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> server.key.pem <span class="va">$TASKDDATA</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> server.crl.pem <span class="va">$TASKDDATA</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> ca.cert.pem <span class="va">$TASKDDATA</span></span></code></pre></div>
+<p>Now you will have to tell taskserver to read these certificates, by running:</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">taskd</span> config <span class="at">--force</span> client.cert <span class="va">$TASKDDATA</span>/client.cert.pem</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="ex">taskd</span> config <span class="at">--force</span> client.key <span class="va">$TASKDDATA</span>/client.key.pem</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="ex">taskd</span> config <span class="at">--force</span> server.cert <span class="va">$TASKDDATA</span>/server.cert.pem</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="ex">taskd</span> config <span class="at">--force</span> server.key <span class="va">$TASKDDATA</span>/server.key.pem</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="ex">taskd</span> config <span class="at">--force</span> server.crl <span class="va">$TASKDDATA</span>/server.crl.pem</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="ex">taskd</span> config <span class="at">--force</span> ca.cert <span class="va">$TASKDDATA</span>/ca.cert.pem</span></code></pre></div>
+<p>Next step is to setup some other configurations: Set a log and pid file, and set the address to listen to:</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> <span class="va">$TASKDDATA</span>/..</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="ex">taskd</span> config <span class="at">--force</span> log <span class="va">$PWD</span>/taskd.log</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="ex">taskd</span> config <span class="at">--force</span> pid.file <span class="va">$PWD</span>/taskd.pid</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="ex">taskd</span> config <span class="at">--force</span> server address:53589</span></code></pre></div>
+<p>Launching the server is already possible using the <code>taskdctl start</code> command, but the configuration is not done yet. To let systemd start this automatically for you, you may set a service. <strong>This step is optional</strong>:</p>
+<pre class="systemd"><code>[Unit]
+Description=Secure server providing multi-user, multi-client access to Taskwarrior data
+Requires=network.target
+After=network.target
+Documentation=http://taskwarrior.org/docs/#taskd
+
+[Service]
+ExecStart=/usr/local/bin/taskd server --data $TASKDDATA
+Type=simple
+User=$TASKDUSER
+Group=$TASKDGROUP
+WorkingDirectory=$TASKDDATA
+PrivateTmp=true
+InaccessibleDirectories=/home /root /boot /opt /mnt /media
+ReadOnlyDirectories=/etc /usr
+
+[Install]
+WantedBy=multi-user.target</code></pre>
+<p>After creating this file (e.g. taskd.service), you may start it as follows:</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> taskd.service /etc/systemd/system</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="ex">systemctl</span> daemon-reload</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="ex">systemctl</span> start taskd.service</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="ex">systemctl</span> status taskd.service</span></code></pre></div>
+<p>If you do not get any error, you may now enable the service running <code>systemctl enable taskd.service</code>.</p>
+<p>Now, the final part of the configuration comes. We will need to configure an organization and user and set their certificates as well. The following lines can be adjusted to your preferences.</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="ex">taskd</span> add org <span class="st">&#39;Public&#39;</span> <span class="co"># Creates the Public organization</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="ex">taskd</span> add user <span class="st">&#39;Public&#39;</span> <span class="st">&#39;Username&#39;</span> <span class="co"># Creates an user to an organization</span></span></code></pre></div>
+<p>Now to setup the user certificates you will have to go back to <code>pki</code> directory and run the <code>generate.client</code> script.</p>
+<blockquote>
+<p>The <code>generate.client</code> requires some of the certificates you generated on the server setup to work. In case you moved it from there, make a copy to the <code>pki</code> directory</p>
+</blockquote>
+<div class="sourceCode" id="cb15"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ~/<span class="va">$TASKDDATA</span>$/pki</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="ex">./generate.client</span> Username</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> username.cert.pem ~/.task</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> username.key.pem ~/.task</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> ca.cert.pem ~/.task</span></code></pre></div>
+<p>And finally, we have to tell taskwarrior to read these files and know where the server is located at.</p>
+<ul>
+<li>You may switch <code>host.domain</code> to <code>address</code>, where it can be a public or local IP Address
+<ul>
+<li>If you want to run the server locally, and not inside a VM or Cloud Services, you may set a static IP Address so you configuration won’t break</li>
+</ul></li>
+<li>Change the credentials to the one <code>generate.client</code> created for you. If you forgot, it’s the user directory at $TASKDDATA/org/user/</li>
+</ul>
+<div class="sourceCode" id="cb16"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="ex">task</span> config taskd.certificate <span class="at">--</span> ~/.task/first_last.cert.pem</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="ex">task</span> config taskd.key <span class="at">--</span> ~/.task/first_last.key.pem</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="ex">task</span> config taskd.ca <span class="at">--</span> ~/.task/ca.cert.pem</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="ex">task</span> config taskd.server <span class="at">--</span> host.domain:53589</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="ex">task</span> config taskd.credentials <span class="at">--</span> Public/Username/cf31f287-ee9e-43a8-843e-e8bbd5de4294</span></code></pre></div>
+<h3 data-number="1.2.3" id="usage"><span class="header-section-number">1.2.3</span> Usage</h3>
+<p>You must send all your tasks to the server running:</p>
+<blockquote>
+<p>This is something you should only do once on only one device.</p>
+</blockquote>
+<div class="sourceCode" id="cb17"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="ex">task</span> sync init</span></code></pre></div>
+<p>The command you will be most using is <code>task sync</code> for everytime you want to sync your tasks with the server. Optionally, to spare the necessity to run this every single time, you may add a <code>crontab</code> to run this command every 10 minutes, exemplified as follows:</p>
+<pre class="cron"><code>*/10 * * * * /usr/bin/task sync &gt;/dev/null 2&gt;&amp;1</code></pre>
+<p>That’s it for Taskwarrior V2, enjoy you syncing across devices! Just remember to export the same configuration lines from your <code>.taskrc</code> to other devices so they will listen to the same place.</p>
+<h2 data-number="1.3" id="taskwarrior-v3"><span class="header-section-number">1.3</span> Taskwarrior V3</h2>
+<p>If you read the Taskwarrior V2 setup, fear not, the V3 series is much easier to setup. The official step-by-step is available at <a href="https://github.com/GothenburgBitFactory/taskchampion-sync-server?tab=readme-ov-file#building">taskchampion-sync-server</a></p>
+<h3 data-number="1.3.1" id="dependencies-1"><span class="header-section-number">1.3.1</span> Dependencies</h3>
+<div class="sourceCode" id="cb19"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="ex">rustup</span> or cargo</span></code></pre></div>
+<h3 data-number="1.3.2" id="setup-1"><span class="header-section-number">1.3.2</span> Setup</h3>
+<h4 data-number="1.3.2.1" id="installation-1"><span class="header-section-number">1.3.2.1</span> Installation</h4>
+<p>Install <code>rustup</code> and set branch to stable</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> pacman <span class="at">-S</span> rustup <span class="co"># For Arch Linux Distros</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="ex">rustup</span> default stable</span></code></pre></div>
+<p>Clone the official Github repository and build <code>taskchampion-sync-server</code> to the release version</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/GothenburgBitFactory/taskchampion-sync-server.git</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> taskchampion-sync-server</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="ex">cargo</span> build <span class="at">--release</span></span></code></pre></div>
+<p>The binary will be created at <code>/target/release/taskchampion-sync-server</code>, and you may move it to any directory configured in $PATH environment variable. If you do not have a $PATH setup, you may add the next line to your <code>.shellrc</code> or <code>.env</code> and source it. It will make your <code>~/local/bin/</code> to listen to binaries allowing easier execution by the command line.</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">PATH</span><span class="op">=</span><span class="st">&quot;</span><span class="va">$HOME</span><span class="st">/.local/bin/:</span><span class="va">$PATH</span><span class="st">&quot;</span></span></code></pre></div>
+<p>You can already run you server with the following command <code>taskchampion-sync-server</code>. But you may set some options to it. We will be using the <code>--listen</code>, <code>-C</code> and <code>-d</code> options.</p>
+<p>To use <code>--listen</code>, you have to specify where the server will be available at: <code>www.example.com</code>, <code>192.168.0.5:8080</code> or <code>localhost:8080</code> To use <code>-C</code> or <code>--allow-client-id</code>, you may create an UUID running the <code>uuidgen</code> command (mostly available at Linux systems). To use <code>-d</code> or <code>--data-dir</code>, you have to point the path to where taskchampion should save the files.</p>
+<blockquote>
+<p>If you already use taskwarrior, do not point <code>-d</code> to the existing directory, because it will wipe all your data!</p>
+</blockquote>
+<p>To set this up, follow the example:</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="ex">taskchampion-sync-server</span> <span class="at">--listen</span> localhost:8080 <span class="at">-C</span> 6b00cabe-4e17-405f-878b-5b61a99cf326 <span class="at">-d</span> /home/user/.taskchampion</span></code></pre></div>
+<p>Finally, you will have to tell taskwarrior where your server is, and how it should talk to it. So you must provide three configuration details to it.</p>
+<ul>
+<li><strong>Server URL:</strong> Must include the scheme, such as ‘http://’ or ‘https://’.
+<ul>
+<li>Example: <code>http://localhost:8080</code> or <code>http://192.168.1.43</code> (for a static IP address)</li>
+</ul></li>
+<li><strong>Client ID:</strong> Is the UUID you have generated previously using <code>uuidgen</code></li>
+<li><strong>Encryption Secret:</strong> This can be <strong>any secret string</strong>, and must match for all replicas sharing tasks. You may generate it using <code>pwgen</code></li>
+</ul>
+<div class="sourceCode" id="cb24"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="ex">task</span> config sync.server.url               <span class="op">&lt;</span>url<span class="op">&gt;</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="ex">task</span> config sync.server.client_id         <span class="op">&lt;</span>client_id<span class="op">&gt;</span></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="ex">task</span> config sync.encryption_secret        <span class="op">&lt;</span>encryption_secret<span class="op">&gt;</span></span></code></pre></div>
+<p>And of course, to ease up the process to run the server, you may configure a service to systemd. You may find the following example useful. You may set the environment variables or replace the lines.</p>
+<pre class="systemd"><code>[Unit]
+Description=TaskChampion is the task database Taskwarrior uses to store and sync tasks
+Requires=network.target
+After=network.target
+Documentation=https://github.com/GothenburgBitFactory/taskchampion-sync-server
+
+[Service]
+ExecStart=/usr/local/bin/taskchampion-sync-server -C $TASKCHAMPUUID -d $TASKCHAMPDATA
+Type=simple
+User=$TASKDUSER
+Group=$TASKDGROUP
+WorkingDirectory=$TASKCHAMPDATA
+PrivateTmp=true
+InaccessibleDirectories=/home /root /boot /opt /mnt /media
+ReadOnlyDirectories=/etc /usr
+
+[Install]
+WantedBy=multi-user.target</code></pre>
+<h3 data-number="1.3.3" id="usage-1"><span class="header-section-number">1.3.3</span> Usage</h3>
+<p>You must send all your tasks to the server running:</p>
+<blockquote>
+<p>This is something you should only do once on only one device.</p>
+</blockquote>
+<div class="sourceCode" id="cb26"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="ex">task</span> sync init</span></code></pre></div>
+<p>The command you will be most using is <code>task sync</code> for everytime you want to sync your tasks with the server. Optionally, to spare the necessity to run this every single time, you may add a <code>crontab</code> to run this command every 10 minutes, exemplified as follows:</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="ex">*/10</span> <span class="pp">*</span> <span class="pp">*</span> <span class="pp">*</span> <span class="pp">*</span> /usr/bin/task sync <span class="op">&gt;</span>/dev/null <span class="dv">2</span><span class="op">&gt;&amp;</span><span class="dv">1</span></span></code></pre></div>
+<p>That’s it for Taskwarrior V3, enjoy you syncing across devices! Just remember to export the same configuration lines from your <code>.taskrc</code> to other devices so they will listen to the same place.</p>
+<h2 data-number="1.4" id="finals"><span class="header-section-number">1.4</span> Finals</h2>
+<p>No matter if you use Taskwarrior V2 and V3 you can now sync your data across different devices as you wish the official way!</p>
+<p>Before I could ever knew about it, I used to use Syncthing for syncing my tasks, and they were always having merge conflicts, so I had to try something else. And running a taskwarrior server is definitively a better option.</p>
+<p>Note that both Taskwarrior V2 and V3 can export your data in JSON format, which means you can import your data from V2 to V3 or vice-versa, but know that doing it the other way is not officially praised, however it works fine.</p>
+      <p class="license">
+        This post is licensed under
+        <a
+          class="license"
+          style="text-decoration: none; color: #d0d0d0"
+          href="https://creativecommons.org/licenses/by/4.0/"
+          >CC BY 4.0</a
+        >
+        by the author.
+      </p>
+      <div style="display: flex; justify-content: center">
+        <div class="further-read">
+                    <a href="../tech/2025-01-22-three-years-obsidian-how-it-looks-like.html">
+            <p class="further-read-p">Older</p>
+                        <p>Three Years of Using Obsidian - Everything into a Vault Template</p>
+                      </a>
+                  </div>
+        <div class="further-read">
+                    <a href="../tech/2025-02-26-regain-control-over-what-you-watch-in-youtube.html">
+            <p class="further-read-p">Newer</p>
+                        <p>Regain Control Over What You Watch in YouTube</p>
+                      </a>
+                  </div>
+      </div>
+    </div>
+    <footer>
+      <div class="footer_content">
+        <a
+          href="https://github.com/aocoronel"
+          class="glass-btn !px-3"
+          target="_blank"
+          ><svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="22"
+            height="22"
+            fill="currentColor"
+            viewBox="0 0 256 256"
+          >
+            <path
+              d="M208,104v8a48,48,0,0,1-48,48H136a32,32,0,0,1,32,32v40H104V192a32,32,0,0,1,32-32H112a48,48,0,0,1-48-48v-8a49.28,49.28,0,0,1,8.51-27.3A51.92,51.92,0,0,1,76,32a52,52,0,0,1,43.83,24h32.34A52,52,0,0,1,196,32a51.92,51.92,0,0,1,3.49,44.7A49.28,49.28,0,0,1,208,104Z"
+              opacity="0.2"
+            ></path>
+            <path
+              d="M208.3,75.68A59.74,59.74,0,0,0,202.93,28,8,8,0,0,0,196,24a59.75,59.75,0,0,0-48,24H124A59.75,59.75,0,0,0,76,24a8,8,0,0,0-6.93,4,59.78,59.78,0,0,0-5.38,47.68A58.14,58.14,0,0,0,56,104v8a56.06,56.06,0,0,0,48.44,55.47A39.8,39.8,0,0,0,96,192v8H72a24,24,0,0,1-24-24A40,40,0,0,0,8,136a8,8,0,0,0,0,16,24,24,0,0,1,24,24,40,40,0,0,0,40,40H96v16a8,8,0,0,0,16,0V192a24,24,0,0,1,48,0v40a8,8,0,0,0,16,0V192a39.8,39.8,0,0,0-8.44-24.53A56.06,56.06,0,0,0,216,112v-8A58,58,0,0,0,208.3,75.68ZM200,112a40,40,0,0,1-40,40H112a40,40,0,0,1-40-40v-8a41.74,41.74,0,0,1,6.9-22.48A8,8,0,0,0,80,73.83a43.81,43.81,0,0,1,.79-33.58,43.88,43.88,0,0,1,32.32,20.06A8,8,0,0,0,119.82,64h32.35a8,8,0,0,0,6.74-3.69,43.87,43.87,0,0,1,32.32-20.06A43.81,43.81,0,0,1,192,73.83a8.09,8.09,0,0,0,1,7.65A41.76,41.76,0,0,1,200,104Z"
+            ></path></svg
+        ></a>
+        <a href="https://aocoronel.github.io/feed.xml" target="_blank">
+          <svg
+            width="22"
+            height="22"
+            viewBox="0 0 24 24"
+            id="Layer_1"
+            data-name="Layer 1"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <defs>
+              <style>
+                .cls-1 {
+                  fill: none;
+                  stroke: #7c5cff;
+                  stroke-miterlimit: 10;
+                  stroke-width: 1.91px;
+                }
+              </style>
+            </defs>
+            <path class="cls-1" d="M6.27,11.05A6.68,6.68,0,0,1,13,17.73" />
+            <path class="cls-1" d="M6.27,6.27A11.46,11.46,0,0,1,17.73,17.73" />
+            <circle class="cls-1" cx="7.23" cy="16.77" r="0.95" />
+            <rect class="cls-1" x="1.5" y="1.5" width="21" height="21" />
+          </svg>
+        </a>
+        <span style="padding-right: 15px; text-wrap: auto">
+          <p>
+            © 2025
+            <a style="color: #d0d0d0" href="https://github.com/aocoronel/"
+              >Augusto Coronel.</a
+            >
+            <a
+              style="color: #979797"
+              href="https://github.com/aocoronel/"
+              href="https://creativecommons.org/licenses/by/4.0/"
+              >All rights reserved.</a
+            >
+          </p>
+        </span>
+      </div>
+    </footer>
+    
+  </body>
+  <script src="../script.js"></script>
+</html>

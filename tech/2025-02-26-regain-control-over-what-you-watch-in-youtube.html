@@ -1,0 +1,381 @@
+<!doctype html>
+<html
+  xmlns="http://www.w3.org/1999/xhtml"
+  lang=""
+  xml:lang=""
+  >
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=yes"
+    />
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="../media/favicons/favicon-16x16.png"
+    />
+         <meta property="og:title" content="Regain Control Over What You Watch in YouTube" />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:url"
+      content="https://aocoronel.github.io/tech/2025-02-26-regain-control-over-what-you-watch-in-youtube.html"
+    />
+    <meta
+      property="og:image"
+      content="https://raw.githubusercontent.com/aocoronel/aocoronel.github.io/refs/heads/main/_posts/media/2025-02-26-regain-control-over-what-you-watch-in-youtube.avif"
+    />
+    <meta property="og:site_name" content="Augusto Coronel" />
+    <meta property="og:description" content="Make yourself a step from being lured by useless recommendations in YouTube with Invidious" />
+    <meta name="twitter:title" content="Augusto Coronel" />
+    <meta name="twitter:description" content="Make yourself a step from being lured by useless recommendations in YouTube with Invidious" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:image"
+      content="https://raw.githubusercontent.com/aocoronel/aocoronel.github.io/refs/heads/main/_posts/2025-02-26-regain-control-over-what-you-watch-in-youtube.avif"
+    />
+    <title>Regain Control Over What You Watch in YouTube</title>
+        <link rel="stylesheet" href="../posts.css" />
+      
+  </head>
+  <body>
+    
+    <header>
+      <div class="header_content">
+        <div class="navbar">
+          <a class="title" href="../index.html">Coronel</a>
+          <div class="nav_item ">
+            <a href="../projects.html">Projects</a>
+          </div>
+          <div class="nav_item ">
+            <a href="../about.html">About</a>
+          </div>
+          <div class="nav_item ">
+            <a href="../index.html">Home</a>
+          </div>
+          <button class="toggle-btn" onclick="toggleSidebar()">☰</button>
+        </div>
+        <span class="clear"></span>
+      </div>
+    </header>
+    <div id="sidebar" class="sidebar">
+      <div id="sidebar-content"></div>
+    </div>
+    <div id="mainpage-content" class="sidebar-content">
+            <div class="table_of_contents">
+        <div class="table_of_contents_header">Contents:</div>
+        <ul>
+        <li><a href="#regain-control-over-what-you-watch-in-youtube" id="toc-regain-control-over-what-you-watch-in-youtube"><span class="toc-section-number">1</span> Regain Control Over What You Watch in YouTube</a>
+        <ul>
+        <li><a href="#introduction" id="toc-introduction"><span class="toc-section-number">1.1</span> Introduction</a></li>
+        <li><a href="#setup" id="toc-setup"><span class="toc-section-number">1.2</span> Setup</a>
+        <ul>
+        <li><a href="#dependencies" id="toc-dependencies"><span class="toc-section-number">1.2.1</span> Dependencies</a></li>
+        <li><a href="#installation" id="toc-installation"><span class="toc-section-number">1.2.2</span> Installation</a></li>
+        </ul></li>
+        <li><a href="#usage" id="toc-usage"><span class="toc-section-number">1.3</span> Usage</a></li>
+        <li><a href="#conclusion" id="toc-conclusion"><span class="toc-section-number">1.4</span> Conclusion</a></li>
+        </ul></li>
+        </ul>
+      </div>
+          </div>
+    <div class="content">
+      <br />
+      
+      <div class="content-upper">
+        <div class="content-title-n-toc">
+          <p class="content-title">Regain Control Over What You Watch in YouTube</p>
+          <p class="content-desc">Make yourself a step from being lured by useless recommendations in YouTube with Invidious</p>
+          <span style="float: left" class="metadata">By Augusto Coronel</span>
+          <span style="float: right" class="metadata">8 min read</span>
+          <br />
+                    <span>
+            <a href="../index.html"
+              ><img
+                class="postImg"
+                type="image/avif"
+                src="../media/2025-02-26-regain-control-over-what-you-watch-in-youtube.avif"
+            /></a>
+          </span>
+                     <span>
+            <div class="table_of_contents">
+              <div class="table_of_contents_header">Contents:</div>
+              <ul>
+              <li><a href="#regain-control-over-what-you-watch-in-youtube" id="toc-regain-control-over-what-you-watch-in-youtube"><span class="toc-section-number">1</span> Regain Control Over What You Watch in YouTube</a>
+              <ul>
+              <li><a href="#introduction" id="toc-introduction"><span class="toc-section-number">1.1</span> Introduction</a></li>
+              <li><a href="#setup" id="toc-setup"><span class="toc-section-number">1.2</span> Setup</a>
+              <ul>
+              <li><a href="#dependencies" id="toc-dependencies"><span class="toc-section-number">1.2.1</span> Dependencies</a></li>
+              <li><a href="#installation" id="toc-installation"><span class="toc-section-number">1.2.2</span> Installation</a></li>
+              </ul></li>
+              <li><a href="#usage" id="toc-usage"><span class="toc-section-number">1.3</span> Usage</a></li>
+              <li><a href="#conclusion" id="toc-conclusion"><span class="toc-section-number">1.4</span> Conclusion</a></li>
+              </ul></li>
+              </ul>
+            </div>
+          </span>
+          <br />
+                  </div>
+      </div>
+      <br />
+      <div>
+        <span style="float: left" class="metadata">Posted <b>Feb 26, 2025</b></span>
+        <span style="float: right" class="metadata"
+          >Updated <b>Aug 13, 2025</b></span
+        >
+      </div>
+       <h1 data-number="1" id="regain-control-over-what-you-watch-in-youtube"><span class="header-section-number">1</span> Regain Control Over What You Watch in YouTube</h1>
+<h2 data-number="1.1" id="introduction"><span class="header-section-number">1.1</span> Introduction</h2>
+<p>In this post I’ll show how to self-host Invidious with Docker, and configure FreeTube to use your Invidious Instance for best performance, enjoy ad-free videos and regain control over what you watch. While self-hosting Invidious is not mandatory, it allows you to watch YouTube videos without relying on the YouTube API to improve your privacy, and it does also give you some unique perks like accounts (but I’ll not cover this).</p>
+<p>YouTube is inevitable. If you want to watch anything, is it a cook recipe guide, hear some music, learn how to do something, get entertained or anything else you may think, you may find yourself in YouTube. But there is a catch. YouTube has over <strong>TOO MUCH</strong> features, and mostly of them do not make everyone very happy, and some of them may put you in a vicious loop, seeking for cheap dopamine.</p>
+<p>I used to use YouTube like any other regular person, until I stepped to the world of the privacy concerned, and I found a YouTube Frontend called CloudTube or Cadence, and in the very homepage, that was very clean, without a single recommendation, trends or anything else, other was a link called: <a href="https://tube.cadence.moe/cant-think">…can’t think of anything?</a>. This link let me to a page with some kind of story and an audio. In few words, what those words meant was, that you may find yourself getting to YouTube with no goal, and wait for something wonderful to happen, just like finding an amazing video that may change your life, when there was no reason to you be there in the first place.</p>
+<p>Since I read that post, I’ve started to get more aware of what I was consuming online, not only for YouTube. And so I wanted to keep all the content I consume aligned to what was my purpose, what I actually wanted to learn, and what I wanted to do.</p>
+<p>Them I found an amazing application called <a href="https://freetubeapp.io/">FreeTube</a>. This was a much better way to watch YouTube videos in an interface that was highly customizable, and the options to disable some content from showing up such as Trending, Popular Videos and Shorts. And them that was my choice. I completely shredded my YouTube data and moved to FreeTube ways of dealing with history, playlist and subscriptions.</p>
+<p>By default, FreeTube uses its API to load videos and play them straight from YouTube API, and remove any kind of ads from it. From my experience, everytime youtube.js had changes, FreeTube API was directly affected, and I had a bad time until it’s fixed, until a time I decided to circumvent this issue myself.</p>
+<p>FreeTube has the option to use an Invidious Instance as its backend, which does not rely on the youtube.js to work, and strip the ads itself. But Invidious providers doesn’t offer very highly performance compared to FreeTube API. That was when I tried to self-host Invidious.</p>
+<h2 data-number="1.2" id="setup"><span class="header-section-number">1.2</span> Setup</h2>
+<h3 data-number="1.2.1" id="dependencies"><span class="header-section-number">1.2.1</span> Dependencies</h3>
+<ul>
+<li>docker and docker-compose, or podman and podman-compose</li>
+<li>git</li>
+<li>openssl (optional)</li>
+</ul>
+<blockquote>
+<p>I do use podman for containerization, and all my scripts shown in this post also use podman. You may tweak them if you want to use docker instead {: .prompt-info }</p>
+</blockquote>
+<h3 data-number="1.2.2" id="installation"><span class="header-section-number">1.2.2</span> Installation</h3>
+<p>The official documentation may be found at <a href="https://docs.invidious.io/installation/#docker-compose-method-production">Invidious/Installation</a></p>
+<p>First you will need to clone the official Invidious repository to get all the necessary files for Invidious to work.</p>
+<blockquote>
+<p>If you try to run docker-compose just after cloning the Invidious repository, you will use the development configuration, and not the production configuration {: .prompt-warning }</p>
+</blockquote>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/iv-org/invidious.git</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> invidious</span></code></pre></div>
+<p>There is only one file you must change in this repository: docker-compose.yml</p>
+<p>You should replace the docker-compose.yml in the Invidious repository with the following:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode yml"><code class="sourceCode yaml"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">version</span><span class="kw">:</span><span class="at"> </span><span class="st">&quot;3&quot;</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">services</span><span class="kw">:</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">invidious</span><span class="kw">:</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">image</span><span class="kw">:</span><span class="at"> quay.io/invidious/invidious:latest</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co">    # image: quay.io/invidious/invidious:latest-arm64 # ARM64/AArch64 devices</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">restart</span><span class="kw">:</span><span class="at"> unless-stopped</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">ports</span><span class="kw">:</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="st">&quot;127.0.0.1:3000:3000&quot;</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">environment</span><span class="kw">:</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="co">      # Please read the following file for a comprehensive list of all available</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="co">      # configuration options and their associated syntax:</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="co">      # https://github.com/iv-org/invidious/blob/master/config/config.example.yml</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="fu">      INVIDIOUS_CONFIG</span><span class="kw">: </span><span class="ch">|</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>        db:</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>          dbname: invidious</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>          user: kemal</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>          password: kemal</span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>          host: invidious-db</span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>          port: 5432</span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>        check_tables: true</span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>        signature_server: inv_sig_helper:12999</span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>        visitor_data: CHANGE_ME</span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>        po_token: CHANGE_ME</span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>        # external_port:</span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>        # domain:</span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>        # https_only: false</span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>        # statistics_enabled: false</span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>        hmac_key: &quot;CHANGE_ME!!&quot;</span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">healthcheck</span><span class="kw">:</span></span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">test</span><span class="kw">:</span><span class="at"> wget -nv --tries=1 --spider http://127.0.0.1:3000/api/v1/trending || exit 1</span></span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">interval</span><span class="kw">:</span><span class="at"> 30s</span></span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">timeout</span><span class="kw">:</span><span class="at"> 5s</span></span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">retries</span><span class="kw">:</span><span class="at"> </span><span class="dv">2</span></span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">logging</span><span class="kw">:</span></span>
+<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">options</span><span class="kw">:</span></span>
+<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a><span class="at">        </span><span class="fu">max-size</span><span class="kw">:</span><span class="at"> </span><span class="st">&quot;1G&quot;</span></span>
+<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a><span class="at">        </span><span class="fu">max-file</span><span class="kw">:</span><span class="at"> </span><span class="st">&quot;4&quot;</span></span>
+<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">depends_on</span><span class="kw">:</span></span>
+<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> invidious-db</span></span>
+<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">inv_sig_helper</span><span class="kw">:</span></span>
+<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">image</span><span class="kw">:</span><span class="at"> quay.io/invidious/inv-sig-helper:latest</span></span>
+<span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">init</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
+<span id="cb2-44"><a href="#cb2-44" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">command</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span><span class="st">&quot;--tcp&quot;</span><span class="kw">,</span><span class="at"> </span><span class="st">&quot;0.0.0.0:12999&quot;</span><span class="kw">]</span></span>
+<span id="cb2-45"><a href="#cb2-45" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">environment</span><span class="kw">:</span></span>
+<span id="cb2-46"><a href="#cb2-46" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> RUST_LOG=info</span></span>
+<span id="cb2-47"><a href="#cb2-47" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">restart</span><span class="kw">:</span><span class="at"> unless-stopped</span></span>
+<span id="cb2-48"><a href="#cb2-48" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">cap_drop</span><span class="kw">:</span></span>
+<span id="cb2-49"><a href="#cb2-49" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> ALL</span></span>
+<span id="cb2-50"><a href="#cb2-50" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">read_only</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
+<span id="cb2-51"><a href="#cb2-51" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">security_opt</span><span class="kw">:</span></span>
+<span id="cb2-52"><a href="#cb2-52" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> no-new-privileges:true</span></span>
+<span id="cb2-53"><a href="#cb2-53" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-54"><a href="#cb2-54" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">invidious-db</span><span class="kw">:</span></span>
+<span id="cb2-55"><a href="#cb2-55" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">image</span><span class="kw">:</span><span class="at"> docker.io/library/postgres:14</span></span>
+<span id="cb2-56"><a href="#cb2-56" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">restart</span><span class="kw">:</span><span class="at"> unless-stopped</span></span>
+<span id="cb2-57"><a href="#cb2-57" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">volumes</span><span class="kw">:</span></span>
+<span id="cb2-58"><a href="#cb2-58" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> postgresdata:/var/lib/postgresql/data</span></span>
+<span id="cb2-59"><a href="#cb2-59" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> ./config/sql:/config/sql</span></span>
+<span id="cb2-60"><a href="#cb2-60" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> ./docker/init-invidious-db.sh:/docker-entrypoint-initdb.d/init-invidious-db.sh</span></span>
+<span id="cb2-61"><a href="#cb2-61" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">environment</span><span class="kw">:</span></span>
+<span id="cb2-62"><a href="#cb2-62" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">POSTGRES_DB</span><span class="kw">:</span><span class="at"> invidious</span></span>
+<span id="cb2-63"><a href="#cb2-63" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">POSTGRES_USER</span><span class="kw">:</span><span class="at"> kemal</span></span>
+<span id="cb2-64"><a href="#cb2-64" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">POSTGRES_PASSWORD</span><span class="kw">:</span><span class="at"> kemal</span></span>
+<span id="cb2-65"><a href="#cb2-65" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">healthcheck</span><span class="kw">:</span></span>
+<span id="cb2-66"><a href="#cb2-66" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">test</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span><span class="st">&quot;CMD-SHELL&quot;</span><span class="kw">,</span><span class="at"> </span><span class="st">&quot;pg_isready -U $$POSTGRES_USER -d $$POSTGRES_DB&quot;</span><span class="kw">]</span></span>
+<span id="cb2-67"><a href="#cb2-67" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-68"><a href="#cb2-68" aria-hidden="true" tabindex="-1"></a><span class="fu">volumes</span><span class="kw">:</span></span>
+<span id="cb2-69"><a href="#cb2-69" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">postgresdata</span><span class="kw">:</span></span></code></pre></div>
+<p>But it’s not over yet. We need to change a few things in this configuration, such as the <em>visitor_data</em>, <em>po_token</em> and the <em>hmac_key</em>.</p>
+<p>To better explain what are the <em>visitor_data</em> and <em>po_token</em>, they allow to bypass verification checks from YouTube, however as it is an unique identifier, it may be used as a fingerprinting technique to trace you. To work around this the values may be changed from time to time. While there is no official tool to do this, you may use a shell script I’ve developed to ensure you harden your privacy, which I’ll show in Usage section.</p>
+<p>Do get these values manually you will need to run another docker:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run quay.io/invidious/youtube-trusted-session-generator</span></code></pre></div>
+<p>At the end of the executing, it will return the <em>visitor_data</em> and <em>po_token</em> you will need to add to your docker-compose.yml file.</p>
+<p>The script I’ve made automatically runs this docker, gets these values and overwrite the current ones in the docker.compose.yml file. The script is shown down below:</p>
+<blockquote>
+<p>You may change the invidious_config path to your actual invidious directory. {: .prompt-warning }</p>
+</blockquote>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/env bash</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="va">invidious_config</span><span class="op">=</span><span class="va">$HOME</span>/invidious/docker-compose.yml</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run quay.io/invidious/youtube-trusted-session-generator <span class="op">&gt;</span>token.txt</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="va">visitor_data</span><span class="op">=</span><span class="va">$(</span><span class="fu">grep</span> <span class="st">&quot;visitor_data&quot;</span> token.txt <span class="kw">|</span> <span class="fu">awk</span> <span class="at">-F</span> <span class="st">&#39;:&#39;</span> <span class="st">&#39;{print $2}&#39;</span><span class="va">)</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="va">po_token</span><span class="op">=</span><span class="va">$(</span><span class="fu">grep</span> <span class="st">&quot;po_token&quot;</span> token.txt <span class="kw">|</span> <span class="fu">awk</span> <span class="at">-F</span> <span class="st">&#39;:&#39;</span> <span class="st">&#39;{print $2}&#39;</span><span class="va">)</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="fu">sed</span> <span class="at">-i</span> <span class="st">&quot;s/^\([[:space:]]*visitor_data:\)[[:space:]]*.*/\1 </span><span class="va">$visitor_data</span><span class="st">/&quot;</span> <span class="st">&quot;</span><span class="va">$invidious_config</span><span class="st">&quot;</span> <span class="kw">&amp;&amp;</span> <span class="va">visitor_ok</span><span class="op">=</span>True</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="fu">sed</span> <span class="at">-i</span> <span class="st">&quot;s/^\([[:space:]]*po_token:\)[[:space:]]*.*/\1 </span><span class="va">$po_token</span><span class="st">/&quot;</span> <span class="st">&quot;</span><span class="va">$invidious_config</span><span class="st">&quot;</span> <span class="kw">&amp;&amp;</span> <span class="va">po_ok</span><span class="op">=</span>True</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="bu">[</span> <span class="st">&quot;</span><span class="va">$visitor_ok</span><span class="st">&quot;</span> <span class="ot">==</span> <span class="st">&quot;True&quot;</span> <span class="bu">]</span> <span class="kw">||</span> <span class="bu">[</span> <span class="st">&quot;</span><span class="va">$po_ok</span><span class="st">&quot;</span> <span class="ot">==</span> <span class="st">&quot;True&quot;</span> <span class="bu">]</span><span class="kw">;</span> <span class="cf">then</span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>  <span class="bu">echo</span> <span class="st">&quot;Tokens successfully updated!&quot;</span></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>  <span class="bu">echo</span> <span class="st">&quot;Tokens failed to be updated!&quot;</span></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a><span class="cf">fi</span></span></code></pre></div>
+<p>The last thing we need to do is to create an <em>hmac_key</em>, which it can be any value created by the user. To easily create a <em>hmac_key</em> you can run the following command</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">openssl</span> rand <span class="at">-hex</span> 20</span></code></pre></div>
+<p>Now that you installed Invidious, you will have to configure FreeTube to listen to you server. It’s as easy as to go to the Settings &gt; General &gt; Current Invidious Instance. In the box you will insert the address for the Invidious Instance. If you have not made any changes to the address in the docker-compose.yml file, it’ll be http://localhost:3000 by default.</p>
+<p>That’s it!</p>
+<h2 data-number="1.3" id="usage"><span class="header-section-number">1.3</span> Usage</h2>
+<p>Now that you got Invidious as you backend, and using FreeTube as your frontend. You can now explore all YouTube videos without any kind of ads, and in a very customizable environment.</p>
+<p>I’ve made a script (shown down below) that I always use to open my FreeTube application. It will start the container if it’s not running already, but if it does I’ll skip the boot and will launch the FreeTube application. Note that the script sleeps for 5 seconds when a container is started before it launches the FreeTube application. This is to give time to the container to be fully operational, else the application will fail to use the self-hosted Invidious instance and will fall back to the FreeTube’s API.</p>
+<p>It does also ensure your tokens are refreshed once per session. The official documentation mention some sort of “change every X hours”. But I noticed that generating tokens often may produce broken tokens that may not work as expected, that’s why I kept it once per session. The script can be found here:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/env bash</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="va">invidious_config</span><span class="op">=</span><span class="va">$HOME</span>/invidious/</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span><span class="fu"> startup()</span> <span class="kw">{</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> <span class="ex">podman</span> ps <span class="kw">|</span> <span class="fu">grep</span> <span class="at">-q</span> <span class="st">&quot;invidious&quot;</span><span class="kw">;</span> <span class="cf">then</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>    <span class="bu">echo</span> <span class="st">&quot;Invidious Instance is already running.&quot;</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>  <span class="cf">else</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>    <span class="bu">cd</span> <span class="st">&quot;</span><span class="va">$invidious_config</span><span class="st">&quot;</span> <span class="kw">||</span> <span class="kw">{</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>      <span class="ex">notify-send</span> <span class="at">-u</span> critical <span class="st">&quot;Invidious&quot;</span> <span class="st">&quot;An error occurred&quot;</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>      <span class="bu">exit</span> 1</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>    <span class="kw">}</span></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">sh</span> <span class="st">&quot;</span><span class="va">$HOME</span><span class="st">/scripts/__invidious-token-generator.sh&quot;</span></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>    <span class="ex">podman-compose</span> up <span class="at">-d</span></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>    <span class="bu">echo</span> <span class="st">&quot;Invidious Instance launched.&quot;</span></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>    <span class="fu">sleep</span> 5</span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>  <span class="cf">fi</span></span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a><span class="kw">}</span></span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span><span class="fu"> main()</span> <span class="kw">{</span></span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>  <span class="ex">startup</span></span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>  <span class="ex">freetube</span> <span class="co"># FreeTube binary</span></span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a><span class="kw">}</span></span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a><span class="ex">main</span></span></code></pre></div>
+<h2 data-number="1.4" id="conclusion"><span class="header-section-number">1.4</span> Conclusion</h2>
+<p>Why did I do all this hard work just to watch YouTube videos? That’s just because Invidious offer more stability rather than FreeTube API, but FreeTube interface is completely superior to Invidious Web Interface, which you can customize it the way you want, is it colors or what sections are visible while navigating through the videos.</p>
+<p>I’d say that this is a very cozy way, yet technical to setup FreeTube. While self-hosting Invidious is not a must, you may use the FreeTube API without any problems, but notice that it may come with some issues from time to time.</p>
+<p>FreeTube is my solution to watch the videos <strong>I want to watch</strong> rather than what is recommended to me to watch based on algorithms. This save me uncountable amounts of hours from time wasting on videos I wasn’t meant to be watching, and keeping the overall experience much more stress-free, by bypassing all ads.</p>
+<p>Not only that, but I can have all my data saved locally and exported across different services and clients at any time.</p>
+<p>For a last thing, almost off-topic. You can both save your audios or videos from FreeTube or Invidious Web Interface at high-speeds if you self-host an Invidious Instance. But if you want to download videos or audios in a more scriptable way, you may find some of my other scripts interesting, such as: <a href="https://github.com/aocoronel/dotfiles/blob/main/scripts/__download-youtube.sh">download-youtube.sh</a> and <a href="https://github.com/aocoronel/dotfiles/blob/main/scripts/download-freetube.sh">download-freetube.sh</a>. The first one allows you to download any YouTube audio or video from a URL, and even in bulk. The second one allows you to download your FreeTube’s Playlists exported to a <code>.db</code> format, but it depends on the first one to work.</p>
+      <p class="license">
+        This post is licensed under
+        <a
+          class="license"
+          style="text-decoration: none; color: #d0d0d0"
+          href="https://creativecommons.org/licenses/by/4.0/"
+          >CC BY 4.0</a
+        >
+        by the author.
+      </p>
+      <div style="display: flex; justify-content: center">
+        <div class="further-read">
+                    <a href="../tech/2025-02-17-how-to-setup-taskwarrior-server-in-2025.html">
+            <p class="further-read-p">Older</p>
+                        <p>How To Setup Taskwarrior Server In 2025</p>
+                      </a>
+                  </div>
+        <div class="further-read">
+                    <a href="../tech/2025-04-15-how-to-install-spelling-in-neovim.html">
+            <p class="further-read-p">Newer</p>
+                        <p>How to Install Spelling in Neovim</p>
+                      </a>
+                  </div>
+      </div>
+    </div>
+    <footer>
+      <div class="footer_content">
+        <a
+          href="https://github.com/aocoronel"
+          class="glass-btn !px-3"
+          target="_blank"
+          ><svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="22"
+            height="22"
+            fill="currentColor"
+            viewBox="0 0 256 256"
+          >
+            <path
+              d="M208,104v8a48,48,0,0,1-48,48H136a32,32,0,0,1,32,32v40H104V192a32,32,0,0,1,32-32H112a48,48,0,0,1-48-48v-8a49.28,49.28,0,0,1,8.51-27.3A51.92,51.92,0,0,1,76,32a52,52,0,0,1,43.83,24h32.34A52,52,0,0,1,196,32a51.92,51.92,0,0,1,3.49,44.7A49.28,49.28,0,0,1,208,104Z"
+              opacity="0.2"
+            ></path>
+            <path
+              d="M208.3,75.68A59.74,59.74,0,0,0,202.93,28,8,8,0,0,0,196,24a59.75,59.75,0,0,0-48,24H124A59.75,59.75,0,0,0,76,24a8,8,0,0,0-6.93,4,59.78,59.78,0,0,0-5.38,47.68A58.14,58.14,0,0,0,56,104v8a56.06,56.06,0,0,0,48.44,55.47A39.8,39.8,0,0,0,96,192v8H72a24,24,0,0,1-24-24A40,40,0,0,0,8,136a8,8,0,0,0,0,16,24,24,0,0,1,24,24,40,40,0,0,0,40,40H96v16a8,8,0,0,0,16,0V192a24,24,0,0,1,48,0v40a8,8,0,0,0,16,0V192a39.8,39.8,0,0,0-8.44-24.53A56.06,56.06,0,0,0,216,112v-8A58,58,0,0,0,208.3,75.68ZM200,112a40,40,0,0,1-40,40H112a40,40,0,0,1-40-40v-8a41.74,41.74,0,0,1,6.9-22.48A8,8,0,0,0,80,73.83a43.81,43.81,0,0,1,.79-33.58,43.88,43.88,0,0,1,32.32,20.06A8,8,0,0,0,119.82,64h32.35a8,8,0,0,0,6.74-3.69,43.87,43.87,0,0,1,32.32-20.06A43.81,43.81,0,0,1,192,73.83a8.09,8.09,0,0,0,1,7.65A41.76,41.76,0,0,1,200,104Z"
+            ></path></svg
+        ></a>
+        <a href="https://aocoronel.github.io/feed.xml" target="_blank">
+          <svg
+            width="22"
+            height="22"
+            viewBox="0 0 24 24"
+            id="Layer_1"
+            data-name="Layer 1"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <defs>
+              <style>
+                .cls-1 {
+                  fill: none;
+                  stroke: #7c5cff;
+                  stroke-miterlimit: 10;
+                  stroke-width: 1.91px;
+                }
+              </style>
+            </defs>
+            <path class="cls-1" d="M6.27,11.05A6.68,6.68,0,0,1,13,17.73" />
+            <path class="cls-1" d="M6.27,6.27A11.46,11.46,0,0,1,17.73,17.73" />
+            <circle class="cls-1" cx="7.23" cy="16.77" r="0.95" />
+            <rect class="cls-1" x="1.5" y="1.5" width="21" height="21" />
+          </svg>
+        </a>
+        <span style="padding-right: 15px; text-wrap: auto">
+          <p>
+            © 2025
+            <a style="color: #d0d0d0" href="https://github.com/aocoronel/"
+              >Augusto Coronel.</a
+            >
+            <a
+              style="color: #979797"
+              href="https://github.com/aocoronel/"
+              href="https://creativecommons.org/licenses/by/4.0/"
+              >All rights reserved.</a
+            >
+          </p>
+        </span>
+      </div>
+    </footer>
+    
+  </body>
+  <script src="../script.js"></script>
+</html>
