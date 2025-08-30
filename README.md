@@ -30,12 +30,6 @@ Markdown files must contain a frontmatter with these values: `title`, `date` (ex
 
 These metadata are extracted on conversion, so they can be inserted in specific sections of each post, plus an extra of when each post was updated and what are the previous and next posts to them.
 
-## Improvements
-
-- [x] A unique look to the projects page.
-- Lazy load content on index pages.
-- Skip already compiled pages with no changes, by using `make` instead of `just`.
-
 ## License
 
 This work is licensed under a
