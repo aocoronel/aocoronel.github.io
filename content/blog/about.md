@@ -19,11 +19,15 @@ This website is born from the will to make things, you will probably find a bit 
 
 Note that any of my post aren't an ultimate source of truth. I'll try to bring other sources to reinforce my point of view, when possible. For subjetive posts, I'll make it clear that it is subjective, thus do not take it too serious.
 
-This blog design is made by me, while all the content is converted from simple markdown text to HTML using pandoc. If you are curious to know how I made this, check on this repository [README](https://github.com/aocoronel/aocoronel.gitlab.io) file.
+The currently tool I use to create my blog is [Zola](https://github.com/getzola/zola) with the [Radion Theme](https://github.com/micahkepe/radion) with my own CSS changes to fit my [Elegant Vagrant Theme](https://github.com/aocoronel/elegantvagrant).
 
-But it wasn't always like that. I've already used tools that makes the deploy process of a blog simple, but I'm always unhappy with presets. I wanted to make a blog truly mine, with my style, features and colors.
+It wasn't always like this. First I used to use [Jekyll](https://jekyllrb.com/) with [Chirpy Theme](https://github.com/cotes2020/jekyll-theme-chirpy). It was good, but I wanted to make something very personal and unique to me. Once I foudn out an interesting repository that shows how to create a webpage from markdown files at [montioo/pandoc-md2html-example](https://github.com/montioo/pandoc-md2html-example). In short, it uses a tool called `pandoc` to make conversions from markdown to HTML. That's the starting point from this blog design. That blog design was totally made by me.
 
-If you didn't know, the colors used in this blog are inspired by my own theme palette called [Elegant Vagrant](https://github.com/aocoronel/elegantvagrant).
+That repository is rather raw in customization and features, so many of the implementations that you can see in my blog were made by me such as: Category selection, sidebar, the index page (like a feed for all posts), all the color choice, I've modified the post layout and I also made huge improvements to the core mechanism to generate the website itself, by adding several new variables, changes to the template itself, automatic structuring of different categories, which can be noted by an "Older" and "Newer" section at the end of each posts, similarly to Chirpy's Theme
+
+For historical purposes, you can find two prints from my original blog I baked [here](https://raw.githubusercontent.com/aocoronel/aocoronel.github.io/refs/heads/main/content/blog/assets/legacy-index.avif) and [here](https://raw.githubusercontent.com/aocoronel/aocoronel.github.io/refs/heads/main/content/blog/assets/legacy-nixos-review.avif).
+
+{{ responsive(src="assets/legacy-index.avif", alt="Picture of Rust mascot Ferris", caption="Everyone say 'Hi Ferris' in the comments")}}
 
 ## Philosophies
 
