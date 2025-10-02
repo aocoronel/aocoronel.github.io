@@ -25,9 +25,7 @@ It wasn't always like this. First I used to use [Jekyll](https://jekyllrb.com/) 
 
 That repository is rather raw in customization and features, so many of the implementations that you can see in my blog were made by me such as: Category selection, sidebar, the index page (like a feed for all posts), all the color choice, I've modified the post layout and I also made huge improvements to the core mechanism to generate the website itself, by adding several new variables, changes to the template itself, automatic structuring of different categories, which can be noted by an "Older" and "Newer" section at the end of each posts, similarly to Chirpy's Theme
 
-For historical purposes, you can find two prints from my original blog I baked [here](https://raw.githubusercontent.com/aocoronel/aocoronel.github.io/refs/heads/main/content/blog/assets/legacy-index.avif) and [here](https://raw.githubusercontent.com/aocoronel/aocoronel.github.io/refs/heads/main/content/blog/assets/legacy-nixos-review.avif).
-
-{{ responsive(src="assets/legacy-index.avif", alt="Picture of Rust mascot Ferris", caption="Everyone say 'Hi Ferris' in the comments")}}
+For historical purposes, you can find two prints from my original blog I baked [here](https://raw.githubusercontent.com/aocoronel/aocoronel.github.io/refs/heads/blog/content/blog/assets/legacy-index.avif) and [here](https://raw.githubusercontent.com/aocoronel/aocoronel.github.io/refs/heads/blog/content/blog/assets/legacy-nixos-review.avif).
 
 ## Philosophies
 
