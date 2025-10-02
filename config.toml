@@ -62,8 +62,8 @@ favicon = true
 # Giscus comment support
 comments = true
 giscus_repo = "aocoronel/aocoronel.github.io"
-giscus_repo_id = ""
-giscus_data_category_id = ""
+giscus_repo_id = "R_kgDOP0wtuw"
+giscus_data_category_id = "DIC_kwDOP0wtu84CwLO3"
 
 # Post revision history
 revision_history = true
