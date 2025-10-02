@@ -53,20 +53,20 @@ pre {
 
 a {
   cursor: pointer;
-  color: #ff2e88;
+  color: #7c5cff;
   text-decoration: none;
-  border-bottom: 1.5px solid #ff2e88;
+  border-bottom: 1.5px solid #7c5cff;
 }
 
 /* Selections colors */
 ::selection {
   color: white;
-  background: #ce0068;
+  background: #7c5cff;
 }
 
 ::-moz-selection {
   color: white;
-  background: #ce0068;
+  background: #7c5cff;
 }
 
 /* Zola-generated header anchors
@@ -76,7 +76,7 @@ a.zola-anchor {
 }
 
 a.zola-anchor:hover {
-  border-bottom: 1.5px solid #ff2e88;
+  border-bottom: 1.5px solid #7c5cff;
   background-color: transparent !important;
   color: inherit !important;
 }
@@ -87,12 +87,12 @@ a.zola-anchor:hover {
 }
 
 .light a:hover {
-  background-color: #ce0068;
+  background-color: #7c5cff;
   color: #fff
 }
 
 .dark a:hover {
-  background-color: #b7005d;
+  background-color: #7c5cff;
   color: #fff;
 }
 
@@ -334,7 +334,7 @@ a.zola-anchor:hover {
 .hack h5:before,
 .hack h6:before {
   display: inline;
-  color: #d64a48;
+  color: #7c5cff;
 }
 
 .hack h2:before {
@@ -437,7 +437,7 @@ a.zola-anchor:hover {
 }
 
 .hack blockquote {
-  border-left: 0.2em solid #ff2e88;
+  border-left: 0.2em solid #7c5cff;
   border-top-right-radius: 0.2em;
   border-bottom-right-radius: 0.2em;
   position: relative;
@@ -449,7 +449,7 @@ a.zola-anchor:hover {
   box-shadow: inset -3px -3px 5px rgba(0, 0, 0, 0.1);
 
   strong {
-    background: #ff2e88;
+    background: #7c5cff;
     color: #FFFFFF;
     padding: 0.1em 0.3em;
     border-radius: 0.2em;
@@ -459,7 +459,7 @@ a.zola-anchor:hover {
     font-style: italic;
     font-weight: bold;
     text-decoration: underline;
-    text-decoration-color: #d64a48;
+    text-decoration-color: #7c5cff;
 
     &:before,
     &:after {
@@ -477,12 +477,12 @@ a.zola-anchor:hover {
   }
 
   code {
-    background: rgba($color: #3d4253, $alpha: 1)
+    background: rgba($color: #d9d9d9, $alpha: 1)
   }
 }
 
 .light .hack code {
-  background: rgba($color: #d0cfd5, $alpha: 1);
+  background: rgba($color: #d9d9d9, $alpha: 1);
   border-radius: 4px;
   padding: 2px 6px;
 }
@@ -493,10 +493,10 @@ a.zola-anchor:hover {
 }
 
 .dark blockquote {
-  background-color: #5E667F;
+  background-color: #090909;
 
   blockquote {
-    background-color: #555c72;
+    background-color: #090909;
   }
 }
 
@@ -667,7 +667,7 @@ table thead {
 }
 
 .dark table thead {
-  background-color: #232224;
+  background-color: #090909;
 }
 
 code table {
@@ -1087,7 +1087,7 @@ select.form-control {
   width: 20px;
   margin: 0 .5rem;
   animation: a .6s infinite linear;
-  border: 2px solid #e91e63;
+  border: 2px solid #7c5cff;
   border-right-color: transparent;
   border-radius: 50%
 }

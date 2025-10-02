@@ -13,7 +13,7 @@
 }
 
 /* Input field styling */
-#search {
+.light #search {
   width: 100%;
   padding: 10px 10px 10px 40px;
   /* Left padding for the icon */
@@ -27,6 +27,22 @@
   height: 35px;
   font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace, serif
 }
+
+.dark #search {
+  width: 100%;
+  padding: 10px 10px 10px 40px;
+  /* Left padding for the icon */
+  font-size: 14px;
+  border: 1.5px solid transparent;
+  /* Remove border when not focused */
+  border-radius: 4px;
+  background-color: var(--search-bg-color, #151515);
+  color: var(--text-color, #fff);
+  outline: none;
+  height: 35px;
+  font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace, serif
+}
+
 
 .light #search {
   border: 1.5px solid rgba(0, 0, 0, 0.1);

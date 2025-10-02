@@ -7,7 +7,7 @@
   a[href*="://"]::after,
   a[rel*="external"] {
     content: " → ";
-    color: #ff9800;
+    color: #7c5cff;
     font-size: 1rem;
   }
 }
