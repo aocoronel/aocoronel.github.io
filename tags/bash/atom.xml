@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <title>Augusto Coronel - bash</title>
+    <subtitle>I’m a tech enthusiast and programming hobbist. I write about tech, programming, Linux, CLIs and more!</subtitle>
+    <link rel="self" type="application/atom+xml" href="https://aocoronel.github.io/tags/bash/atom.xml"/>
+    <link rel="alternate" type="text/html" href="https://aocoronel.github.io/"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2025-01-18T00:00:00+00:00</updated>
+    <id>https://aocoronel.github.io/tags/bash/atom.xml</id>
+    <entry xml:lang="en">
+        <title>The Only All-in-One Tool You Will Ever Need</title>
+        <published>2025-01-18T00:00:00+00:00</published>
+        <updated>2025-01-18T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://aocoronel.github.io/the-only-all-in-one-tool-you-will-ever-need/"/>
+        <id>https://aocoronel.github.io/the-only-all-in-one-tool-you-will-ever-need/</id>
+        
+        <summary type="html">&lt;p&gt;There are many A-I-O available out there, but what if you could use only one ultimate A-I-O tool?&lt;&#x2F;p&gt;</summary>
+        
+    </entry>
+</feed>

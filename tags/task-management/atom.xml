@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <title>Augusto Coronel - task-management</title>
+    <subtitle>I’m a tech enthusiast and programming hobbist. I write about tech, programming, Linux, CLIs and more!</subtitle>
+    <link rel="self" type="application/atom+xml" href="https://aocoronel.github.io/tags/task-management/atom.xml"/>
+    <link rel="alternate" type="text/html" href="https://aocoronel.github.io/"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2025-02-16T00:00:00+00:00</updated>
+    <id>https://aocoronel.github.io/tags/task-management/atom.xml</id>
+    <entry xml:lang="en">
+        <title>How To Setup Taskwarrior Server In 2025</title>
+        <published>2025-02-16T00:00:00+00:00</published>
+        <updated>2025-02-16T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://aocoronel.github.io/how-to-setup-taskwarrior-server-in-2025/"/>
+        <id>https://aocoronel.github.io/how-to-setup-taskwarrior-server-in-2025/</id>
+        
+        <summary type="html">&lt;p&gt;Learn how to sync your tasks the right way!&lt;&#x2F;p&gt;</summary>
+        
+    </entry>
+</feed>

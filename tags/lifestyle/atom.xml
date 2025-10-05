@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <title>Augusto Coronel - lifestyle</title>
+    <subtitle>I’m a tech enthusiast and programming hobbist. I write about tech, programming, Linux, CLIs and more!</subtitle>
+    <link rel="self" type="application/atom+xml" href="https://aocoronel.github.io/tags/lifestyle/atom.xml"/>
+    <link rel="alternate" type="text/html" href="https://aocoronel.github.io/"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2025-02-26T00:00:00+00:00</updated>
+    <id>https://aocoronel.github.io/tags/lifestyle/atom.xml</id>
+    <entry xml:lang="en">
+        <title>Regain Control Over What You Watch in YouTube</title>
+        <published>2025-02-26T00:00:00+00:00</published>
+        <updated>2025-02-26T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://aocoronel.github.io/regain-control-over-what-you-watch-in-youtube/"/>
+        <id>https://aocoronel.github.io/regain-control-over-what-you-watch-in-youtube/</id>
+        
+        <summary type="html">&lt;p&gt;Make yourself a step from being lured by useless recommendations in YouTube with Invidious&lt;&#x2F;p&gt;</summary>
+        
+    </entry>
+</feed>
