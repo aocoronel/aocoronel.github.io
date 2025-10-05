@@ -3,6 +3,7 @@ title = "The Only All-in-One Tool You Will Ever Need"
 description = """There are many A-I-O available out there, but what if you could use only one ultimate A-I-O tool?
 """
 date = 2025-01-18
+[taxonomies]
 categories = ["tech"]
 tags = ["cli", "bash"]
 +++

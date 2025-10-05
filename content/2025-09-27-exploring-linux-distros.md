@@ -2,7 +2,8 @@
 title = "Exploring Linux Distros"
 description = """My distro-hopping journey featuring Linux Mint, Arch Linux, Alpine Linux, NixOS, Puppy Linux, antiX, Tails, Ubuntu, Nitrux OS, openSUSE and Debian."""
 date = 2025-09-27
-category = ["tech", "linux"]
+[taxonomies]
+categories = ["tech", "linux"]
 tags = ["opinion", "timeline"]
 +++
 

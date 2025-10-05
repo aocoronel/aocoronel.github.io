@@ -2,6 +2,7 @@
 title = "How To Setup Taskwarrior Server In 2025"
 description = """Learn how to sync your tasks the right way!"""
 date = 2025-02-16
+[taxonomies]
 categories = ["tech"]
 tags = ["cli", "task-management", "how-to"]
 +++

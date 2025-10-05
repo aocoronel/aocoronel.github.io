@@ -2,6 +2,7 @@
 title = "NixOS - Usage Review" 
 description = """Here are my thoughts on the amazing NixOS distro, which takes system configuration to another level, plus it's main principles of reproducibility and reliability."""
 date = 2025-07-01
+[taxonomies]
 categories = ["tech", "linux"]
 tags = ["cli", "nix", "opinion"]
 +++

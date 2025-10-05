@@ -2,7 +2,8 @@
 title = "Exploring Programming Languages"
 description = """My journey on trying different programming languages as non-programmer featuring Bash, Python, JavaScript, HTML, CSS, C, C++, Rust, Zig, Odin, Go, Nim and Lua."""
 date = 2025-09-28
-category = ["tech", "programming"]
+[taxonomies]
+categories = ["tech", "programming"]
 tags = ["timeline", "opinion"]
 +++
 

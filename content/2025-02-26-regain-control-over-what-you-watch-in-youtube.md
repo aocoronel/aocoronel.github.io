@@ -2,6 +2,7 @@
 title = "Regain Control Over What You Watch in YouTube"
 description = """Make yourself a step from being lured by useless recommendations in YouTube with Invidious"""
 date = 2025-02-26
+[taxonomies]
 categories = ["tech"]
 tags = ["cli", "media", "self-host", "lifestyle", "how-to"]
 +++
