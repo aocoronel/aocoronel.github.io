@@ -1,7 +1,9 @@
 +++
 title = "Regain Control Over What You Watch in YouTube"
+description = """Make yourself a step from being lured by useless recommendations in YouTube with Invidious"""
 date = 2025-02-26
-category = ["tech"]
+categories = ["tech"]
+tags = ["cli", "media", "self-host", "lifestyle", "how-to"]
 +++
 
 Make yourself a step from being lured by useless recommendations in YouTube with Invidious
@@ -33,7 +35,6 @@ FreeTube has the option to use an Invidious Instance as its backend, which does 
 - openssl (optional)
 
 > I do use podman for containerization, and all my scripts shown in this post also use podman. You may tweak them if you want to use docker instead
-> {: .prompt-info }
 
 ### Installation
 
@@ -42,7 +43,6 @@ The official documentation may be found at [Invidious/Installation](https://docs
 First you will need to clone the official Invidious repository to get all the necessary files for Invidious to work.
 
 > If you try to run docker-compose just after cloning the Invidious repository, you will use the development configuration, and not the production configuration
-> {: .prompt-warning }
 
 ```bash
 git clone https://github.com/iv-org/invidious.git
@@ -140,7 +140,6 @@ At the end of the executing, it will return the _visitor_data_ and _po_token_ yo
 The script I've made automatically runs this docker, gets these values and overwrite the current ones in the docker.compose.yml file. The script is shown down below:
 
 > You may change the invidious_config path to your actual invidious directory.
-> {: .prompt-warning }
 
 ```bash
 #!/bin/env bash

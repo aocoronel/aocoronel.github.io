@@ -1,7 +1,9 @@
 +++
 title = "How To Setup Taskwarrior Server In 2025"
+description = """Learn how to sync your tasks the right way!"""
 date = 2025-02-16
-category = ["tech"]
+categories = ["tech"]
+tags = ["cli", "task-management", "how-to"]
 +++
 
 Learn how to sync your tasks the right way!
@@ -260,9 +262,9 @@ export PATH="$HOME/.local/bin/:$PATH"
 
 You can already run you server with the following command `taskchampion-sync-server`. But you may set some options to it. We will be using the `--listen`, `-C` and `-d` options.
 
-To use `--listen`, you have to specify where the server will be available at: `www.example.com`, `192.168.0.5:8080` or `localhost:8080`
-To use `-C` or `--allow-client-id`, you may create an UUID running the `uuidgen` command (mostly available at Linux systems).
-To use `-d` or `--data-dir`, you have to point the path to where taskchampion should save the files.
+- To use `--listen`, you have to specify where the server will be available at: `www.example.com`, `192.168.0.5:8080` or `localhost:8080`
+- To use `-C` or `--allow-client-id`, you may create an UUID running the `uuidgen` command (mostly available at Linux systems).
+- To use `-d` or `--data-dir`, you have to point the path to where taskchampion should save the files.
 
 > If you already use taskwarrior, do not point `-d` to the existing directory, because it will wipe all your data!
 

@@ -1,10 +1,9 @@
 +++
 title = "NixOS - Usage Review" 
+description = """Here are my thoughts on the amazing NixOS distro, which takes system configuration to another level, plus it's main principles of reproducibility and reliability."""
 date = 2025-07-01
-
-[taxonomies]
 categories = ["tech", "linux"]
-tags = ["cli", "nix"]
+tags = ["cli", "nix", "opinion"]
 +++
 
 Here are my thoughts on the amazing NixOS distro, which takes system configuration to another level, plus it's main principles of reproducibility and reliability.
@@ -45,28 +44,19 @@ Cons:
 
 ## My thoughts on NixOS
 
-I initially used NixOS, because I had the idea of "The Lifetime Distro". By that I mean: I no longer will have to know all the steps to setup my system the way it is, therefore no chance to forget about setting up a program or service. So, all my changes to the config would never degrade overtime, for example: I reinstalled my distro and I forgot to enable my firewall with that particular config.
-This is a real problem when you use several tools. No way I can remember the whole setup process after a year.
-For four months of using NixOS I definitively can tell its a amazing distro. But I didn't knew I was about to change my thoughts on it.
-As I already mentioned, each distro has its perks for each field. And my goals changed to be more inclined to Arch Linux, because NixOS was becoming too overkill to me. The reason? Well:
+I initially used NixOS, because I had the idea of "The Lifetime Distro". By that I mean: I no longer will have to know all the steps to setup my system the way it is, therefore no chance to forget about setting up a program or service. So, all my changes to the config would never degrade overtime, for example: I reinstalled my distro and I forgot to enable my firewall with that particular config. This is a real problem when you use several tools. No way I can remember the whole setup process after a year. For four months of using NixOS I definitively can tell its a amazing distro. But I didn't knew I was about to change my thoughts on it. As I already mentioned, each distro has its perks for each field. And my goals changed to be more inclined to Arch Linux, because NixOS was becoming too overkill to me. The reason? Well:
 
 Some of the issues I pointed in the TLDR section is the full config evaluation to just install `git`. NixOS does a great job, but in my view it is not efficient. It will be surely faster, than a full system upgrade, but it's still slower than using another package manager. Someone could point out to use the `nix-env` command, but I use NixOS the nix way.
 
-If you ever got curious how long I took to make my NixOS config good enough to use it as daily driver, well it took me a whole week to replicate my previous setup from my Arch Linux install. You can look my config in here: [aocoronel/nix](https://github.com/aocoronel/nix).
-I definitively took my way up until here to turn back to NixOS... at least it helped me build a modular and well structured repository. It does not have a guideline file to explain how I organize the files, but you can guess it by reading it. At least I think so.
+If you ever got curious how long I took to make my NixOS config good enough to use it as daily driver, well it took me a whole week to replicate my previous setup from my Arch Linux install. You can look my config in here: [aocoronel/nix](https://github.com/aocoronel/nix). I definitively took my way up until here to turn back to NixOS... at least it helped me build a modular and well structured repository. It does not have a guideline file to explain how I organize the files, but you can guess it by reading it. At least I think so.
 
 ## My thoughts on Home Manager
 
-Well, I used Home Manager just because I wanted to try it. It makes part of my config, but there is no truly reason to that to be there.
-Home Manager is a user based nix-like configuration without relying on root privileges. It allows you to install and configure programs and manage your `$HOME` directory from a single or modular config. I get the point of Home Manager, but it is a struggle to setup, just like NixOS. I use `stow` to manage my dotfiles, btw. Doing so I have an agnostic config without relying on Home Manager.
-For the user programs, just adding them to my NixOS config would be enough, and then Home Manager is useless to me.
+Well, I used Home Manager just because I wanted to try it. It makes part of my config, but there is no truly reason to that to be there. Home Manager is a user based nix-like configuration without relying on root privileges. It allows you to install and configure programs and manage your `$HOME` directory from a single or modular config. I get the point of Home Manager, but it is a struggle to setup, just like NixOS. I use `stow` to manage my dotfiles, btw. Doing so I have an agnostic config without relying on Home Manager. For the user programs, just adding them to my NixOS config would be enough, and then Home Manager is useless to me.
 
 ## My thoughts on the Nix Package Manager
 
-This is surely one of the coolest package managers I ever used. I can try any software without really installing it in my system, create development shells to end the dependency hell, and it also allows developers to ship flakes so the users that have the nix package manager can install their programs without headaches of thinking about dependencies. Everything just works.
-NixOS empowers the nix package manager experience by allowing you to configure what programs are installed, something that you can only have in other distros, if you have Home Manager.
-Not even the software themselves suffer from dependency hell, when a X program need Y dependency at this version and W program needs Y at that other version.
-This package manager may not be beneficial for everyone, but it's a must for every developer that program using languages like Python and C, since imports are got from installing programs in the system. So create a `shell.nix` with all dependencies will allow your Python code to run and your C code to compile.
+This is surely one of the coolest package managers I ever used. I can try any software without really installing it in my system, create development shells to end the dependency hell, and it also allows developers to ship flakes so the users that have the nix package manager can install their programs without headaches of thinking about dependencies. Everything just works. NixOS empowers the nix package manager experience by allowing you to configure what programs are installed, something that you can only have in other distros, if you have Home Manager. Not even the software themselves suffer from dependency hell, when a X program need Y dependency at this version and W program needs Y at that other version. This package manager may not be beneficial for everyone, but it's a must for every developer that program using languages like Python and C, since imports are got from installing programs in the system. So create a `shell.nix` with all dependencies will allow your Python code to run and your C code to compile.
 
 ## Conclusion
 

@@ -1,7 +1,9 @@
 +++
 title = "How to Install Spelling in Neovim"
+description = """Neovim does not have support for spelling other than English by default. Here are how you can get the required files to enable spelling in Neovim."""
 date = 2025-04-14
 category = ["tech"]
+tags = ["cli", "neovim", "how-to"]
 +++
 
 Neovim does not have support for spelling other than English by default. Here are how you can get the required files to enable spelling in Neovim.

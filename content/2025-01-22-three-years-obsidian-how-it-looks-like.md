@@ -1,7 +1,9 @@
 +++
 title = "Three Years of Using Obsidian - Everything into a Vault Template"
+description = """Possibilities are infinite, but many are out of scope. Great Obsidian experience will be much simpler to achieve with these tips!"""
 date = 2025-01-22
-category = ["tech"]
+categories = ["tech"]
+tags = ["zettelkasten"]
 +++
 
 Possibilities are infinite, but many are out of scope. Great Obsidian experience will be much simpler to achieve with these tips!
@@ -241,8 +243,7 @@ pp-john-doe.jpg
 
 ## Languages
 
-lang-german.md
-lang-python-pandoc.md
+lang-german.md lang-python-pandoc.md
 
 ## Templates
 
