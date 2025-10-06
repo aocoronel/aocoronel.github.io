@@ -41,6 +41,8 @@ radion_menu = [
     {url = "$BASE_URL/categories", name = "Categories"},
     {url = "$BASE_URL/tags", name = "Tags"},
     {url = "$BASE_URL/blog/about", name = "About"},
+    {url = "$BASE_URL/blog/programs", name = "Programs"},
+    {url = "https://aocoronel.github.io/links", name = "Links"},
 ]
 radion_title = "Augusto Coronel | CLI • Linux • Programming"
 
