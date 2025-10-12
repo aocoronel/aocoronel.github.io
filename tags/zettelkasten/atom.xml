@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <title>Augusto Coronel - zettelkasten</title>
+    <subtitle>I’m a tech enthusiast and programming hobbist. I write about tech, programming, Linux, CLIs and more!</subtitle>
+    <link rel="self" type="application/atom+xml" href="https://aocoronel.github.io/tags/zettelkasten/atom.xml"/>
+    <link rel="alternate" type="text/html" href="https://aocoronel.github.io/"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2025-01-22T00:00:00+00:00</updated>
+    <id>https://aocoronel.github.io/tags/zettelkasten/atom.xml</id>
+    <entry xml:lang="en">
+        <title>Three Years of Using Obsidian - Everything into a Vault Template</title>
+        <published>2025-01-22T00:00:00+00:00</published>
+        <updated>2025-01-22T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://aocoronel.github.io/three-years-obsidian-how-it-looks-like/"/>
+        <id>https://aocoronel.github.io/three-years-obsidian-how-it-looks-like/</id>
+        
+        <summary type="html">&lt;p&gt;Possibilities are infinite, but many are out of scope. Great Obsidian experience will be much simpler to achieve with these tips!&lt;&#x2F;p&gt;</summary>
+        
+    </entry>
+</feed>

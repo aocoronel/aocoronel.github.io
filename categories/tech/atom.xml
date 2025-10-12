@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <title>Augusto Coronel - tech</title>
+    <subtitle>I’m a tech enthusiast and programming hobbist. I write about tech, programming, Linux, CLIs and more!</subtitle>
+    <link rel="self" type="application/atom+xml" href="https://aocoronel.github.io/categories/tech/atom.xml"/>
+    <link rel="alternate" type="text/html" href="https://aocoronel.github.io/"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2025-10-28T00:00:00+00:00</updated>
+    <id>https://aocoronel.github.io/categories/tech/atom.xml</id>
+    <entry xml:lang="en">
+        <title>Why I&#x27;ve quit Obsidian</title>
+        <published>2025-10-28T00:00:00+00:00</published>
+        <updated>2025-10-28T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://aocoronel.github.io/why-i-quit-obsidian/"/>
+        <id>https://aocoronel.github.io/why-i-quit-obsidian/</id>
+        
+        <summary type="html">&lt;p&gt;If you think Obsidian can improve your productivity or allow you to learn faster, you got fooled. You don&#x27;t need anything else than your brain, a piece of paper and a pen.&lt;&#x2F;p&gt;</summary>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Neostow rewrite journey</title>
+        <published>2025-10-26T00:00:00+00:00</published>
+        <updated>2025-10-26T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://aocoronel.github.io/neostow-rewrite-journey/"/>
+        <id>https://aocoronel.github.io/neostow-rewrite-journey/</id>
+        
+        <summary type="html">&lt;p&gt;I learned some interesting things while writing neostow in four different languages. Then, end up with a dilemma about which programming language to master.&lt;&#x2F;p&gt;</summary>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>I don&#x27;t use social media, and why you should</title>
+        <published>2025-10-11T00:00:00+00:00</published>
+        <updated>2025-10-11T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://aocoronel.github.io/i-dont-use-social-media/"/>
+        <id>https://aocoronel.github.io/i-dont-use-social-media/</id>
+        
+        <summary type="html">&lt;p&gt;Sometimes I feel like getting into a social media platform, but I never get a decent reason to do so.&lt;&#x2F;p&gt;</summary>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Exploring Programming Languages</title>
+        <published>2025-09-28T00:00:00+00:00</published>
+        <updated>2025-09-28T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://aocoronel.github.io/exploring-programming-languages/"/>
+        <id>https://aocoronel.github.io/exploring-programming-languages/</id>
+        
+        <summary type="html">&lt;p&gt;My journey on trying different programming languages as non-programmer featuring Bash, Python, JavaScript, HTML, CSS, C, C++, Rust, Zig, Odin, Go, Nim and Lua.&lt;&#x2F;p&gt;</summary>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Exploring Linux Distros</title>
+        <published>2025-09-27T00:00:00+00:00</published>
+        <updated>2025-09-27T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://aocoronel.github.io/exploring-linux-distros/"/>
+        <id>https://aocoronel.github.io/exploring-linux-distros/</id>
+        
+        <summary type="html">&lt;p&gt;My distro-hopping journey featuring Linux Mint, Arch Linux, Alpine Linux, NixOS, Puppy Linux, antiX, Tails, Ubuntu, Nitrux OS, openSUSE and Debian.&lt;&#x2F;p&gt;</summary>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>NixOS - Usage Review</title>
+        <published>2025-07-01T00:00:00+00:00</published>
+        <updated>2025-07-01T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://aocoronel.github.io/nixos-review/"/>
+        <id>https://aocoronel.github.io/nixos-review/</id>
+        
+        <summary type="html">&lt;p&gt;Here are my thoughts on the amazing NixOS distro, which takes system configuration to another level, plus it&#x27;s main principles of reproducibility and reliability.&lt;&#x2F;p&gt;</summary>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>How to Install Spelling in Neovim</title>
+        <published>2025-04-14T00:00:00+00:00</published>
+        <updated>2025-04-14T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://aocoronel.github.io/how-to-install-spelling-in-neovim/"/>
+        <id>https://aocoronel.github.io/how-to-install-spelling-in-neovim/</id>
+        
+        <summary type="html">&lt;p&gt;Neovim does not have support for spelling other than English by default. Here are how you can get the required files to enable spelling in Neovim.&lt;&#x2F;p&gt;</summary>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Regain Control Over What You Watch in YouTube</title>
+        <published>2025-02-26T00:00:00+00:00</published>
+        <updated>2025-02-26T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://aocoronel.github.io/regain-control-over-what-you-watch-in-youtube/"/>
+        <id>https://aocoronel.github.io/regain-control-over-what-you-watch-in-youtube/</id>
+        
+        <summary type="html">&lt;p&gt;Make yourself a step from being lured by useless recommendations in YouTube with Invidious&lt;&#x2F;p&gt;</summary>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>How To Setup Taskwarrior Server In 2025</title>
+        <published>2025-02-16T00:00:00+00:00</published>
+        <updated>2025-02-16T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://aocoronel.github.io/how-to-setup-taskwarrior-server-in-2025/"/>
+        <id>https://aocoronel.github.io/how-to-setup-taskwarrior-server-in-2025/</id>
+        
+        <summary type="html">&lt;p&gt;Learn how to sync your tasks the right way!&lt;&#x2F;p&gt;</summary>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Three Years of Using Obsidian - Everything into a Vault Template</title>
+        <published>2025-01-22T00:00:00+00:00</published>
+        <updated>2025-01-22T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://aocoronel.github.io/three-years-obsidian-how-it-looks-like/"/>
+        <id>https://aocoronel.github.io/three-years-obsidian-how-it-looks-like/</id>
+        
+        <summary type="html">&lt;p&gt;Possibilities are infinite, but many are out of scope. Great Obsidian experience will be much simpler to achieve with these tips!&lt;&#x2F;p&gt;</summary>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>The Only All-in-One Tool You Will Ever Need</title>
+        <published>2025-01-18T00:00:00+00:00</published>
+        <updated>2025-01-18T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://aocoronel.github.io/the-only-all-in-one-tool-you-will-ever-need/"/>
+        <id>https://aocoronel.github.io/the-only-all-in-one-tool-you-will-ever-need/</id>
+        
+        <summary type="html">&lt;p&gt;There are many A-I-O available out there, but what if you could use only one ultimate A-I-O tool?&lt;&#x2F;p&gt;</summary>
+        
+    </entry>
+</feed>

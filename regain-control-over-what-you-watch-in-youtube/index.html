@@ -1,0 +1,598 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+
+    <!-- Enable responsiveness on mobile devices -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    
+      
+        <meta name="description" content="Make yourself a step from being lured by useless recommendations in YouTube with Invidious" />
+        <meta property="og:description" content="Make yourself a step from being lured by useless recommendations in YouTube with Invidious" />
+        <meta property="twitter:description" content="Make yourself a step from being lured by useless recommendations in YouTube with Invidious" />
+      
+    
+
+    <!-- Title -->
+    
+      
+    
+    <title>
+    
+    Regain Control Over What You Watch in YouTube
+    
+</title>
+
+    <!-- Additional Facebook Meta Tags -->
+    <meta property="og:site_name" content="Augusto Coronel" />
+    <meta
+      property="og:url"
+      content="https:&#x2F;&#x2F;aocoronel.github.io&#x2F;regain-control-over-what-you-watch-in-youtube&#x2F;"
+    />
+    <meta
+      property="og:type"
+      content="article"
+    />
+    <meta property="og:title" content="Regain Control Over What You Watch in YouTube" />
+
+    <!-- Additional Twitter Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      property="twitter:url"
+      content="https:&#x2F;&#x2F;aocoronel.github.io&#x2F;regain-control-over-what-you-watch-in-youtube&#x2F;"
+    />
+    <meta name="twitter:title" content="Regain Control Over What You Watch in YouTube" />
+
+    <!-- Cover images -->
+    
+    
+
+    <meta
+      property="og:image"
+      content="https:&#x2F;&#x2F;aocoronel.github.io&#x2F;&#x2F;icons&#x2F;favicon&#x2F;web-app-manifest-512x512.png"
+    />
+
+    <meta
+      name="twitter:image"
+      content="https:&#x2F;&#x2F;aocoronel.github.io&#x2F;&#x2F;icons&#x2F;favicon&#x2F;web-app-manifest-512x512.png"
+    />
+
+
+
+    <!-- Favicons -->
+    
+    <link
+      rel="icon"
+      type="image/png"
+      href="https:&#x2F;&#x2F;aocoronel.github.io&#x2F;/icons/favicon/favicon-96x96.png"
+      sizes="96x96"
+    />
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="https:&#x2F;&#x2F;aocoronel.github.io&#x2F;/icons/favicon/favicon.svg"
+    />
+    <link
+      rel="shortcut icon"
+      href="https:&#x2F;&#x2F;aocoronel.github.io&#x2F;/icons/favicon/favicon.ico"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="https:&#x2F;&#x2F;aocoronel.github.io&#x2F;/icons/favicon/apple-touch-icon.png"
+    />
+    <meta name="apple-mobile-web-app-title" content="Regain Control Over What You Watch in YouTube" />
+    <link
+      rel="manifest"
+      href="https:&#x2F;&#x2F;aocoronel.github.io&#x2F;/icons/favicon/site.webmanifest"
+    />
+    
+
+    <!-- RSS Feed -->
+    
+    <link
+      rel="alternate"
+      type="application/atom+xml"
+      title="RSS"
+      href="https://aocoronel.github.io/atom.xml"
+    />
+    
+
+    <!-- Load Styles -->
+    
+      <link
+        rel="stylesheet"
+        href="https://aocoronel.github.io/site.css"
+      />
+    
+
+    <!-- Load Fonts -->
+    
+
+  
+
+
+
+
+
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+  
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@700&display=swap" rel="stylesheet">
+  
+
+
+
+<!-- Forcing Font -->
+<style>
+body {
+  font-family:
+    "JetBrains Mono", Menlo, Monaco, Lucida Console, Liberation Mono,
+    DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New,
+    monospace, serif !important;
+}
+</style>
+
+
+    <!-- Pass Theme Preference as Data Attribute -->
+    <script src="https://aocoronel.github.io/js/init-theme.js"></script>
+
+    <!-- Reference return to click position script -->
+    <script defer src="https://aocoronel.github.io/js/reference-return.js"></script>
+
+    <!-- Additional scripts -->
+    
+      
+        <script defer src="https://aocoronel.github.io/js/codeblock.js"></script>
+      
+      
+        <script src="https://aocoronel.github.io/js/toggle-theme.js"></script>
+      
+      
+<!-- MathJax script for rendering LaTeX math equations -->
+<script src="https://aocoronel.github.io/js/mathjax-config.js"></script>
+<script
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"
+  async
+></script>
+
+
+      
+<script type="text/javascript" src="https://aocoronel.github.io/elasticlunr.min.js"></script>
+<script type="text/javascript" src="https://aocoronel.github.io/js/search.js"></script>
+
+    
+  </head>
+
+  <!-- Body element (contents of the page) -->
+  <body class="hack main container">
+    
+  
+    
+    
+      
+  
+  <section class="nav-header">
+    <nav
+      itemscope
+      itemtype="http://schema.org/SiteNavigationElement"
+      class="navbar"
+    >
+      <section class="nav-links">
+        
+        <a
+          itemprop="url"
+          class=""
+          href="https://aocoronel.github.io//"
+        >
+          <span itemprop="name">Home</span>
+        </a>
+        
+        <a
+          itemprop="url"
+          class=""
+          href="https://aocoronel.github.io//categories"
+        >
+          <span itemprop="name">Categories</span>
+        </a>
+        
+        <a
+          itemprop="url"
+          class=""
+          href="https://aocoronel.github.io//tags"
+        >
+          <span itemprop="name">Tags</span>
+        </a>
+        
+        <a
+          itemprop="url"
+          class=""
+          href="https://aocoronel.github.io//blog/about"
+        >
+          <span itemprop="name">About</span>
+        </a>
+        
+        <a
+          itemprop="url"
+          class=""
+          href="https://aocoronel.github.io//blog/programs"
+        >
+          <span itemprop="name">Programs</span>
+        </a>
+        
+        <a
+          itemprop="url"
+          class=""
+          href="https://aocoronel.github.io/links"
+        >
+          <span itemprop="name">Links</span>
+        </a>
+        
+      </section>
+    </nav>
+    <aside class="user-actions-container">
+      
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        class="search-icon"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"
+        />
+      </svg>
+      <input type="text" id="search" placeholder="Search..." />
+      <section class="search-results" aria-live="polite">
+        <article class="search-results__items" role="list"></article>
+      </section>
+       
+      <a id="dark-mode-toggle" href="#">
+        <img
+          src="https://aocoronel.github.io/icons/sun.svg"
+          id="sun-icon"
+          style="filter: invert(1)"
+          alt="Light mode"
+        />
+        <img
+          src="https://aocoronel.github.io/icons/moon.svg"
+          id="moon-icon"
+          alt="Dark mode"
+        />
+      </a>
+       
+      <a
+        href="https://aocoronel.github.io/atom.xml"
+        class="feed-icon"
+        rel="noopener noreferrer"
+      >
+        <img
+          src="https://aocoronel.github.io/icons/rss.svg"
+          id="rss-icon"
+          alt="RSS feed"
+          class="social-icon"
+        />
+      </a>
+       
+      <a
+        href="https:&#x2F;&#x2F;github.com&#x2F;aocoronel"
+        class="feed-icon"
+        rel="noopener noreferrer"
+      >
+        <img
+          src="https://aocoronel.github.io/icons/github.svg"
+          id="github-icon"
+          alt="GitHub"
+          class="social-icon"
+        />
+      </a>
+      
+    </aside>
+  </section>
+  
+
+    
+
+
+    <main>
+      
+
+<article itemscope itemtype="http://schema.org/BlogPosting">
+    <header>
+        <h1 itemprop="headline">Regain Control Over What You Watch in YouTube</h1>
+        <data class="muted">
+    <svg class="icon i-clock" viewBox="0 0 32 32"
+         width="16" height="16" fill="none" stroke="currentcolor"
+         stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
+        <circle cx="16" cy="16" r="14"/>
+        <path d="M16 8 L16 16 20 20"/>
+    </svg>
+    <data>7 minute read</data>
+    <svg class="icon i-edit" viewBox="0 0 32 32"
+         width="16" height="16" fill="none" stroke="currentcolor"
+         stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
+        <path d="M30 7 L25 2 5 22 3 29 10 27 Z M21 6 L26 11 Z M5 22 L10 27 Z"/>
+    </svg>
+
+    Published: 2025-02-26
+</data>
+    </header>
+
+    <article itemprop="articleBody">
+        
+            <p>Make yourself a step from being lured by useless recommendations in YouTube with Invidious</p>
+
+            
+
+            <!-- Render the rest of the content after removing the summary portion -->
+            
+<span id="continue-reading"></span>
+<blockquote>
+<p>The instructions to install Invidious in this post are no longer supported by Invidious. Check on the official <a href="https://docs.invidious.io/installation/#docker">documentation</a>.</p>
+</blockquote>
+<h2 id="introduction"><a class="zola-anchor" href="#introduction" aria-label="Anchor link for: introduction">Introduction</a></h2>
+<p>In this post I'll show how to self-host Invidious with Docker, and configure FreeTube to use your Invidious Instance for best performance, enjoy ad-free videos and regain control over what you watch. While self-hosting Invidious is not mandatory, it allows you to watch YouTube videos without relying on the YouTube API to improve your privacy, and it does also give you some unique perks like accounts (but I'll not cover this).</p>
+<p>YouTube is inevitable. If you want to watch anything, is it a cook recipe guide, hear some music, learn how to do something, get entertained or anything else you may think, you may find yourself in YouTube. But there is a catch. YouTube has over <strong>TOO MUCH</strong> features, and mostly of them do not make everyone very happy, and some of them may put you in a vicious loop, seeking for cheap dopamine.</p>
+<p>I used to use YouTube like any other regular person, until I stepped to the world of the privacy concerned, and I found a YouTube Frontend called CloudTube or Cadence, and in the very homepage, that was very clean, without a single recommendation, trends or anything else, other was a link called: <a href="https://tube.cadence.moe/cant-think">...can't think of anything?</a>. This link let me to a page with some kind of story and an audio. In few words, what those words meant was, that you may find yourself getting to YouTube with no goal, and wait for something wonderful to happen, just like finding an amazing video that may change your life, when there was no reason to you be there in the first place.</p>
+<p>Since I read that post, I've started to get more aware of what I was consuming online, not only for YouTube. And so I wanted to keep all the content I consume aligned to what was my purpose, what I actually wanted to learn, and what I wanted to do.</p>
+<p>Then, I found an amazing application called <a href="https://freetubeapp.io/">FreeTube</a>. This was a much better way to watch YouTube videos in an interface that was highly customizable, and the options to disable some content from showing up such as Trending, Popular Videos and Shorts. And them that was my choice. I completely shredded my YouTube data and moved to FreeTube ways of dealing with history, playlist and subscriptions.</p>
+<p>FreeTube has the option to use an Invidious Instance as its backend, which does not rely on the youtube.js to work, and strip the ads itself. But Invidious providers doesn't offer very highly performance compared to FreeTube itself. That was when I tried to self-host Invidious.</p>
+<h2 id="setup"><a class="zola-anchor" href="#setup" aria-label="Anchor link for: setup">Setup</a></h2>
+<h3 id="dependencies"><a class="zola-anchor" href="#dependencies" aria-label="Anchor link for: dependencies">Dependencies</a></h3>
+<ul>
+<li>docker and docker-compose, or podman and podman-compose</li>
+<li>git</li>
+<li>openssl (optional)</li>
+</ul>
+<blockquote>
+<p>I do use podman for containerization, and all my scripts shown in this post also use podman. You may tweak them if you want to use docker instead</p>
+</blockquote>
+<h3 id="installation"><a class="zola-anchor" href="#installation" aria-label="Anchor link for: installation">Installation</a></h3>
+<p>The official documentation may be found at <a href="https://docs.invidious.io/installation/#docker-compose-method-production">Invidious/Installation</a></p>
+<p>First you will need to clone the official Invidious repository to get all the necessary files for Invidious to work.</p>
+<blockquote>
+<p>If you try to run docker-compose just after cloning the Invidious repository, you will use the development configuration, and not the production configuration</p>
+</blockquote>
+<pre data-lang="bash" style="background-color:#2b303b;color:#6c7079;" class="language-bash "><code class="language-bash" data-lang="bash"><span style="color:#eb6772;">git</span><span style="color:#abb2bf;"> clone https://github.com/iv-org/invidious.git
+</span><span style="color:#5ebfcc;">cd</span><span style="color:#abb2bf;"> invidious
+</span></code></pre>
+<p>There is only one file you must change in this repository: docker-compose.yml</p>
+<p>You should replace the docker-compose.yml in the Invidious repository with the following:</p>
+<pre data-lang="yml" style="background-color:#2b303b;color:#6c7079;" class="language-yml "><code class="language-yml" data-lang="yml"><span style="color:#eb6772;">version</span><span style="color:#abb2bf;">: </span><span style="color:#9acc76;">&quot;3&quot;
+</span><span style="color:#eb6772;">services</span><span style="color:#abb2bf;">:
+</span><span style="color:#abb2bf;">  </span><span style="color:#eb6772;">invidious</span><span style="color:#abb2bf;">:
+</span><span style="color:#abb2bf;">    </span><span style="color:#eb6772;">image</span><span style="color:#abb2bf;">: </span><span style="color:#9acc76;">quay.io/invidious/invidious:latest
+</span><span style="color:#abb2bf;">    </span><span style="font-style:italic;color:#5f697a;"># image: quay.io/invidious/invidious:latest-arm64 # ARM64/AArch64 devices
+</span><span style="color:#abb2bf;">    </span><span style="color:#eb6772;">restart</span><span style="color:#abb2bf;">: </span><span style="color:#9acc76;">unless-stopped
+</span><span style="color:#abb2bf;">    </span><span style="color:#eb6772;">ports</span><span style="color:#abb2bf;">:
+</span><span style="color:#abb2bf;">      - </span><span style="color:#9acc76;">&quot;127.0.0.1:3000:3000&quot;
+</span><span style="color:#abb2bf;">    </span><span style="color:#eb6772;">environment</span><span style="color:#abb2bf;">:
+</span><span style="color:#abb2bf;">      </span><span style="font-style:italic;color:#5f697a;"># Please read the following file for a comprehensive list of all available
+</span><span style="color:#abb2bf;">      </span><span style="font-style:italic;color:#5f697a;"># configuration options and their associated syntax:
+</span><span style="color:#abb2bf;">      </span><span style="font-style:italic;color:#5f697a;"># https://github.com/iv-org/invidious/blob/master/config/config.example.yml
+</span><span style="color:#abb2bf;">      </span><span style="color:#eb6772;">INVIDIOUS_CONFIG</span><span style="color:#abb2bf;">: </span><span style="color:#cd74e8;">|
+</span><span style="color:#9acc76;">        db:
+</span><span style="color:#9acc76;">          dbname: invidious
+</span><span style="color:#9acc76;">          user: kemal
+</span><span style="color:#9acc76;">          password: kemal
+</span><span style="color:#9acc76;">          host: invidious-db
+</span><span style="color:#9acc76;">          port: 5432
+</span><span style="color:#9acc76;">        check_tables: true
+</span><span style="color:#9acc76;">        signature_server: inv_sig_helper:12999
+</span><span style="color:#9acc76;">        visitor_data: CHANGE_ME
+</span><span style="color:#9acc76;">        po_token: CHANGE_ME
+</span><span style="color:#9acc76;">        # external_port:
+</span><span style="color:#9acc76;">        # domain:
+</span><span style="color:#9acc76;">        # https_only: false
+</span><span style="color:#9acc76;">        # statistics_enabled: false
+</span><span style="color:#9acc76;">        hmac_key: &quot;CHANGE_ME!!&quot;
+</span><span style="color:#abb2bf;">    </span><span style="color:#eb6772;">healthcheck</span><span style="color:#abb2bf;">:
+</span><span style="color:#abb2bf;">      </span><span style="color:#eb6772;">test</span><span style="color:#abb2bf;">: </span><span style="color:#9acc76;">wget -nv --tries=1 --spider http://127.0.0.1:3000/api/v1/trending || exit 1
+</span><span style="color:#abb2bf;">      </span><span style="color:#eb6772;">interval</span><span style="color:#abb2bf;">: </span><span style="color:#9acc76;">30s
+</span><span style="color:#abb2bf;">      </span><span style="color:#eb6772;">timeout</span><span style="color:#abb2bf;">: </span><span style="color:#9acc76;">5s
+</span><span style="color:#abb2bf;">      </span><span style="color:#eb6772;">retries</span><span style="color:#abb2bf;">: </span><span style="color:#db9d63;">2
+</span><span style="color:#abb2bf;">    </span><span style="color:#eb6772;">logging</span><span style="color:#abb2bf;">:
+</span><span style="color:#abb2bf;">      </span><span style="color:#eb6772;">options</span><span style="color:#abb2bf;">:
+</span><span style="color:#abb2bf;">        </span><span style="color:#eb6772;">max-size</span><span style="color:#abb2bf;">: </span><span style="color:#9acc76;">&quot;1G&quot;
+</span><span style="color:#abb2bf;">        </span><span style="color:#eb6772;">max-file</span><span style="color:#abb2bf;">: </span><span style="color:#9acc76;">&quot;4&quot;
+</span><span style="color:#abb2bf;">    </span><span style="color:#eb6772;">depends_on</span><span style="color:#abb2bf;">:
+</span><span style="color:#abb2bf;">      - </span><span style="color:#9acc76;">invidious-db
+</span><span style="color:#abb2bf;">
+</span><span style="color:#abb2bf;">  </span><span style="color:#eb6772;">inv_sig_helper</span><span style="color:#abb2bf;">:
+</span><span style="color:#abb2bf;">    </span><span style="color:#eb6772;">image</span><span style="color:#abb2bf;">: </span><span style="color:#9acc76;">quay.io/invidious/inv-sig-helper:latest
+</span><span style="color:#abb2bf;">    </span><span style="color:#eb6772;">init</span><span style="color:#abb2bf;">: </span><span style="color:#db9d63;">true
+</span><span style="color:#abb2bf;">    </span><span style="color:#eb6772;">command</span><span style="color:#abb2bf;">: [</span><span style="color:#9acc76;">&quot;--tcp&quot;</span><span style="color:#abb2bf;">, </span><span style="color:#9acc76;">&quot;0.0.0.0:12999&quot;</span><span style="color:#abb2bf;">]
+</span><span style="color:#abb2bf;">    </span><span style="color:#eb6772;">environment</span><span style="color:#abb2bf;">:
+</span><span style="color:#abb2bf;">      - </span><span style="color:#9acc76;">RUST_LOG=info
+</span><span style="color:#abb2bf;">    </span><span style="color:#eb6772;">restart</span><span style="color:#abb2bf;">: </span><span style="color:#9acc76;">unless-stopped
+</span><span style="color:#abb2bf;">    </span><span style="color:#eb6772;">cap_drop</span><span style="color:#abb2bf;">:
+</span><span style="color:#abb2bf;">      - </span><span style="color:#9acc76;">ALL
+</span><span style="color:#abb2bf;">    </span><span style="color:#eb6772;">read_only</span><span style="color:#abb2bf;">: </span><span style="color:#db9d63;">true
+</span><span style="color:#abb2bf;">    </span><span style="color:#eb6772;">security_opt</span><span style="color:#abb2bf;">:
+</span><span style="color:#abb2bf;">      - </span><span style="color:#9acc76;">no-new-privileges:true
+</span><span style="color:#abb2bf;">
+</span><span style="color:#abb2bf;">  </span><span style="color:#eb6772;">invidious-db</span><span style="color:#abb2bf;">:
+</span><span style="color:#abb2bf;">    </span><span style="color:#eb6772;">image</span><span style="color:#abb2bf;">: </span><span style="color:#9acc76;">docker.io/library/postgres:14
+</span><span style="color:#abb2bf;">    </span><span style="color:#eb6772;">restart</span><span style="color:#abb2bf;">: </span><span style="color:#9acc76;">unless-stopped
+</span><span style="color:#abb2bf;">    </span><span style="color:#eb6772;">volumes</span><span style="color:#abb2bf;">:
+</span><span style="color:#abb2bf;">      - </span><span style="color:#9acc76;">postgresdata:/var/lib/postgresql/data
+</span><span style="color:#abb2bf;">      - </span><span style="color:#9acc76;">./config/sql:/config/sql
+</span><span style="color:#abb2bf;">      - </span><span style="color:#9acc76;">./docker/init-invidious-db.sh:/docker-entrypoint-initdb.d/init-invidious-db.sh
+</span><span style="color:#abb2bf;">    </span><span style="color:#eb6772;">environment</span><span style="color:#abb2bf;">:
+</span><span style="color:#abb2bf;">      </span><span style="color:#eb6772;">POSTGRES_DB</span><span style="color:#abb2bf;">: </span><span style="color:#9acc76;">invidious
+</span><span style="color:#abb2bf;">      </span><span style="color:#eb6772;">POSTGRES_USER</span><span style="color:#abb2bf;">: </span><span style="color:#9acc76;">kemal
+</span><span style="color:#abb2bf;">      </span><span style="color:#eb6772;">POSTGRES_PASSWORD</span><span style="color:#abb2bf;">: </span><span style="color:#9acc76;">kemal
+</span><span style="color:#abb2bf;">    </span><span style="color:#eb6772;">healthcheck</span><span style="color:#abb2bf;">:
+</span><span style="color:#abb2bf;">      </span><span style="color:#eb6772;">test</span><span style="color:#abb2bf;">: [</span><span style="color:#9acc76;">&quot;CMD-SHELL&quot;</span><span style="color:#abb2bf;">, </span><span style="color:#9acc76;">&quot;pg_isready -U $$POSTGRES_USER -d $$POSTGRES_DB&quot;</span><span style="color:#abb2bf;">]
+</span><span style="color:#abb2bf;">
+</span><span style="color:#eb6772;">volumes</span><span style="color:#abb2bf;">:
+</span><span style="color:#abb2bf;">  </span><span style="color:#eb6772;">postgresdata</span><span style="color:#abb2bf;">:
+</span></code></pre>
+<p>But it's not over yet. We need to change a few things in this configuration, such as the <em>visitor_data</em>, <em>po_token</em> and the <em>hmac_key</em>.</p>
+<p>To better explain what are the <em>visitor_data</em> and <em>po_token</em>, they allow to bypass verification checks from YouTube, however as it is an unique identifier, it may be used as a fingerprinting technique to trace you. To work around this the values may be changed from time to time. While there is no official tool to do this, you may use a shell script I've developed to ensure you harden your privacy, which I'll show in Usage section.</p>
+<p>Do get these values manually you will need to run another docker:</p>
+<pre data-lang="bash" style="background-color:#2b303b;color:#6c7079;" class="language-bash "><code class="language-bash" data-lang="bash"><span style="color:#eb6772;">docker</span><span style="color:#abb2bf;"> run quay.io/invidious/youtube-trusted-session-generator
+</span></code></pre>
+<p>At the end of the executing, it will return the <em>visitor_data</em> and <em>po_token</em> you will need to add to your docker-compose.yml file.</p>
+<p>The script I've made automatically runs this docker, gets these values and overwrite the current ones in the docker.compose.yml file. The script is shown down below:</p>
+<blockquote>
+<p>You may change the invidious_config path to your actual invidious directory.</p>
+</blockquote>
+<pre data-lang="bash" style="background-color:#2b303b;color:#6c7079;" class="language-bash "><code class="language-bash" data-lang="bash"><span style="font-style:italic;color:#5f697a;">#!/bin/env bash
+</span><span style="color:#abb2bf;">
+</span><span style="color:#eb6772;">invidious_config</span><span style="color:#adb7c9;">=</span><span style="color:#9acc76;">$</span><span style="color:#eb6772;">HOME</span><span style="color:#9acc76;">/invidious/docker-compose.yml
+</span><span style="color:#abb2bf;">
+</span><span style="color:#eb6772;">docker</span><span style="color:#abb2bf;"> run quay.io/invidious/youtube-trusted-session-generator </span><span style="color:#adb7c9;">&gt;</span><span style="color:#abb2bf;">token.txt
+</span><span style="color:#abb2bf;">
+</span><span style="color:#eb6772;">visitor_data</span><span style="color:#adb7c9;">=</span><span style="color:#9acc76;">$(</span><span style="color:#eb6772;">grep </span><span style="color:#9acc76;">&quot;visitor_data&quot; token.txt </span><span style="color:#adb7c9;">| </span><span style="color:#eb6772;">awk -F </span><span style="color:#9acc76;">&#39;:&#39; &#39;{print $2}&#39;)
+</span><span style="color:#eb6772;">po_token</span><span style="color:#adb7c9;">=</span><span style="color:#9acc76;">$(</span><span style="color:#eb6772;">grep </span><span style="color:#9acc76;">&quot;po_token&quot; token.txt </span><span style="color:#adb7c9;">| </span><span style="color:#eb6772;">awk -F </span><span style="color:#9acc76;">&#39;:&#39; &#39;{print $2}&#39;)
+</span><span style="color:#abb2bf;">
+</span><span style="color:#eb6772;">sed -i </span><span style="color:#9acc76;">&quot;s/^\([[:space:]]*visitor_data:\)[[:space:]]*.*/\1 $</span><span style="color:#eb6772;">visitor_data</span><span style="color:#9acc76;">/&quot; &quot;$</span><span style="color:#eb6772;">invidious_config</span><span style="color:#9acc76;">&quot; </span><span style="color:#adb7c9;">&amp;&amp; </span><span style="color:#eb6772;">visitor_ok</span><span style="color:#adb7c9;">=</span><span style="color:#9acc76;">True
+</span><span style="color:#eb6772;">sed -i </span><span style="color:#9acc76;">&quot;s/^\([[:space:]]*po_token:\)[[:space:]]*.*/\1 $</span><span style="color:#eb6772;">po_token</span><span style="color:#9acc76;">/&quot; &quot;$</span><span style="color:#eb6772;">invidious_config</span><span style="color:#9acc76;">&quot; </span><span style="color:#adb7c9;">&amp;&amp; </span><span style="color:#eb6772;">po_ok</span><span style="color:#adb7c9;">=</span><span style="color:#9acc76;">True
+</span><span style="color:#abb2bf;">
+</span><span style="color:#cd74e8;">if </span><span style="color:#5ebfcc;">[ </span><span style="color:#9acc76;">&quot;$</span><span style="color:#eb6772;">visitor_ok</span><span style="color:#9acc76;">&quot; </span><span style="color:#adb7c9;">== </span><span style="color:#9acc76;">&quot;True&quot; </span><span style="color:#5ebfcc;">] </span><span style="color:#adb7c9;">|| </span><span style="color:#5ebfcc;">[ </span><span style="color:#9acc76;">&quot;$</span><span style="color:#eb6772;">po_ok</span><span style="color:#9acc76;">&quot; </span><span style="color:#adb7c9;">== </span><span style="color:#9acc76;">&quot;True&quot; </span><span style="color:#5ebfcc;">]</span><span style="color:#adb7c9;">; </span><span style="color:#cd74e8;">then
+</span><span style="color:#abb2bf;">  </span><span style="color:#5ebfcc;">echo </span><span style="color:#9acc76;">&quot;Tokens successfully updated!&quot;
+</span><span style="color:#cd74e8;">else
+</span><span style="color:#abb2bf;">  </span><span style="color:#5ebfcc;">echo </span><span style="color:#9acc76;">&quot;Tokens failed to be updated!&quot;
+</span><span style="color:#cd74e8;">fi
+</span></code></pre>
+<p>The last thing we need to do is to create an <em>hmac_key</em>, which it can be any value created by the user. To easily create a <em>hmac_key</em> you can run the following command</p>
+<pre data-lang="bash" style="background-color:#2b303b;color:#6c7079;" class="language-bash "><code class="language-bash" data-lang="bash"><span style="color:#eb6772;">openssl</span><span style="color:#abb2bf;"> rand</span><span style="color:#eb6772;"> -hex</span><span style="color:#abb2bf;"> 20
+</span></code></pre>
+<p>Now that you installed Invidious, you will have to configure FreeTube to listen to you server. It's as easy as to go to the Settings &gt; General &gt; Current Invidious Instance. In the box you will insert the address for the Invidious Instance. If you have not made any changes to the address in the docker-compose.yml file, it'll be http://localhost:3000 by default.</p>
+<p>That's it!</p>
+<h2 id="usage"><a class="zola-anchor" href="#usage" aria-label="Anchor link for: usage">Usage</a></h2>
+<p>Now that you got Invidious as you backend, and using FreeTube as your frontend. You can now explore all YouTube videos without any kind of ads, and in a very customizable environment.</p>
+<p>I've made a script (shown down below) that I always use to open my FreeTube application. It will start the container if it's not running already, but if it does I'll skip the boot and will launch the FreeTube application. Note that the script sleeps for 5 seconds when a container is started before it launches the FreeTube application. This is to give time to the container to be fully operational, else the application will fail to use the self-hosted Invidious instance and will fall back to the FreeTube's API.</p>
+<p>It does also ensure your tokens are refreshed once per session. The official documentation mention some sort of "change every X hours". But I noticed that generating tokens often may produce broken tokens that may not work as expected, that's why I kept it once per session. The script can be found here:</p>
+<pre data-lang="bash" style="background-color:#2b303b;color:#6c7079;" class="language-bash "><code class="language-bash" data-lang="bash"><span style="font-style:italic;color:#5f697a;">#!/bin/env bash
+</span><span style="color:#abb2bf;">
+</span><span style="color:#eb6772;">invidious_config</span><span style="color:#adb7c9;">=</span><span style="color:#9acc76;">$</span><span style="color:#eb6772;">HOME</span><span style="color:#9acc76;">/invidious/
+</span><span style="color:#abb2bf;">
+</span><span style="color:#cd74e8;">function </span><span style="color:#5cb3fa;">startup</span><span style="color:#abb2bf;">() {
+</span><span style="color:#abb2bf;">  </span><span style="color:#cd74e8;">if </span><span style="color:#eb6772;">podman</span><span style="color:#abb2bf;"> ps </span><span style="color:#adb7c9;">| </span><span style="color:#eb6772;">grep -q </span><span style="color:#9acc76;">&quot;invidious&quot;</span><span style="color:#adb7c9;">; </span><span style="color:#cd74e8;">then
+</span><span style="color:#abb2bf;">    </span><span style="color:#5ebfcc;">echo </span><span style="color:#9acc76;">&quot;Invidious Instance is already running.&quot;
+</span><span style="color:#abb2bf;">  </span><span style="color:#cd74e8;">else
+</span><span style="color:#abb2bf;">    </span><span style="color:#5ebfcc;">cd </span><span style="color:#9acc76;">&quot;$</span><span style="color:#eb6772;">invidious_config</span><span style="color:#9acc76;">&quot; </span><span style="color:#adb7c9;">|| </span><span style="color:#abb2bf;">{
+</span><span style="color:#abb2bf;">      </span><span style="color:#eb6772;">notify-send -u</span><span style="color:#abb2bf;"> critical </span><span style="color:#9acc76;">&quot;Invidious&quot; &quot;An error occurred&quot;
+</span><span style="color:#abb2bf;">      </span><span style="color:#5ebfcc;">exit</span><span style="color:#abb2bf;"> 1
+</span><span style="color:#abb2bf;">    }
+</span><span style="color:#abb2bf;">    </span><span style="color:#eb6772;">sh </span><span style="color:#9acc76;">&quot;$</span><span style="color:#eb6772;">HOME</span><span style="color:#9acc76;">/scripts/__invidious-token-generator.sh&quot;
+</span><span style="color:#abb2bf;">    </span><span style="color:#eb6772;">podman-compose</span><span style="color:#abb2bf;"> up</span><span style="color:#eb6772;"> -d
+</span><span style="color:#abb2bf;">    </span><span style="color:#5ebfcc;">echo </span><span style="color:#9acc76;">&quot;Invidious Instance launched.&quot;
+</span><span style="color:#abb2bf;">    </span><span style="color:#eb6772;">sleep</span><span style="color:#abb2bf;"> 5
+</span><span style="color:#abb2bf;">  </span><span style="color:#cd74e8;">fi
+</span><span style="color:#abb2bf;">}
+</span><span style="color:#abb2bf;">
+</span><span style="color:#cd74e8;">function </span><span style="color:#5cb3fa;">main</span><span style="color:#abb2bf;">() {
+</span><span style="color:#abb2bf;">  </span><span style="color:#eb6772;">startup
+</span><span style="color:#abb2bf;">  </span><span style="color:#eb6772;">freetube </span><span style="font-style:italic;color:#5f697a;"># FreeTube binary
+</span><span style="color:#abb2bf;">}
+</span><span style="color:#abb2bf;">
+</span><span style="color:#eb6772;">main
+</span></code></pre>
+<h2 id="conclusion"><a class="zola-anchor" href="#conclusion" aria-label="Anchor link for: conclusion">Conclusion</a></h2>
+<p>Why did I do all this hard work just to watch YouTube videos? That's just because Invidious offer more stability rather than FreeTube API, but FreeTube interface is completely superior to Invidious Web Interface, which you can customize it the way you want, is it colors or what sections are visible while navigating through the videos.</p>
+<p>I'd say that this is a very cozy way, yet technical to setup FreeTube. While self-hosting Invidious is not a must, you may use the FreeTube API without any problems, but notice that it may come with some issues from time to time.</p>
+<p>FreeTube is my solution to watch the videos <strong>I want to watch</strong> rather than what is recommended to me to watch based on algorithms. This save me uncountable amounts of hours from time wasting on videos I wasn't meant to be watching, and keeping the overall experience much more stress-free, by bypassing all ads.</p>
+<p>Not only that, but I can have all my data saved locally and exported across different services and clients at any time.</p>
+<p>For a last thing, almost off-topic. You can both save your audios or videos from FreeTube or Invidious Web Interface at high-speeds if you self-host an Invidious Instance. But if you want to download videos or audios in a more scriptable way, you may find some of my other scripts interesting, such as: <a href="https://github.com/aocoronel/dotfiles/blob/main/scripts/__download-youtube.sh">download-youtube.sh</a> and <a href="https://github.com/aocoronel/dotfiles/blob/main/scripts/download-freetube.sh">download-freetube.sh</a>. The first one allows you to download any YouTube audio or video from a URL, and even in bulk. The second one allows you to download your FreeTube's Playlists exported to a <code>.db</code> format, but it depends on the first one to work.</p>
+
+
+        
+        <p>This post is licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> by the author.</p>
+
+    </article>
+
+    <!-- Comment section -->
+    
+      
+    
+
+
+    <!-- Page footer -->
+    
+    <footer>
+        <hr>
+        <p>
+            
+            
+                
+                in <a href="https://aocoronel.github.io/categories/tech/">tech</a>
+            
+            
+                and
+                tagged
+                
+                    <a href="https://aocoronel.github.io/tags/cli/">cli</a>
+                    
+                        
+                            
+                                ,
+                            
+                        
+                    
+                
+                    <a href="https://aocoronel.github.io/tags/media/">media</a>
+                    
+                        
+                            
+                                ,
+                            
+                        
+                    
+                
+                    <a href="https://aocoronel.github.io/tags/self-host/">self-host</a>
+                    
+                        
+                            
+                                ,
+                            
+                        
+                    
+                
+                    <a href="https://aocoronel.github.io/tags/lifestyle/">lifestyle</a>
+                    
+                        
+                            
+                                and
+                            
+                        
+                    
+                
+                    <a href="https://aocoronel.github.io/tags/how-to/">how-to</a>
+                    
+                        
+                    
+                
+            
+        </p>
+
+        <!-- Revision history (optional) -->
+        
+          
+        
+
+        
+        <p style="text-align: center;">© 2025 Augusto Coronel. All rights reserved.</p>
+        
+    </footer>
+
+
+</article>
+
+
+    </main>
+    
+
+  </body>
+</html>

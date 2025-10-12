@@ -1,0 +1,466 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+
+    <!-- Enable responsiveness on mobile devices -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    
+      
+        <meta name="description" content="I learned some interesting things while writing neostow in four different languages. Then, end up with a dilema about which programming language to master." />
+        <meta property="og:description" content="I learned some interesting things while writing neostow in four different languages. Then, end up with a dilema about which programming language to master." />
+        <meta property="twitter:description" content="I learned some interesting things while writing neostow in four different languages. Then, end up with a dilema about which programming language to master." />
+      
+    
+
+    <!-- Title -->
+    
+      
+    
+    <title>
+    
+    Neostow rewrite journey
+    
+</title>
+
+    <!-- Additional Facebook Meta Tags -->
+    <meta property="og:site_name" content="Augusto Coronel" />
+    <meta
+      property="og:url"
+      content="https:&#x2F;&#x2F;aocoronel.github.io&#x2F;neostow-rewrite-journey&#x2F;"
+    />
+    <meta
+      property="og:type"
+      content="article"
+    />
+    <meta property="og:title" content="Neostow rewrite journey" />
+
+    <!-- Additional Twitter Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      property="twitter:url"
+      content="https:&#x2F;&#x2F;aocoronel.github.io&#x2F;neostow-rewrite-journey&#x2F;"
+    />
+    <meta name="twitter:title" content="Neostow rewrite journey" />
+
+    <!-- Cover images -->
+    
+    
+
+    <meta
+      property="og:image"
+      content="https:&#x2F;&#x2F;aocoronel.github.io&#x2F;&#x2F;icons&#x2F;favicon&#x2F;web-app-manifest-512x512.png"
+    />
+
+    <meta
+      name="twitter:image"
+      content="https:&#x2F;&#x2F;aocoronel.github.io&#x2F;&#x2F;icons&#x2F;favicon&#x2F;web-app-manifest-512x512.png"
+    />
+
+
+
+    <!-- Favicons -->
+    
+    <link
+      rel="icon"
+      type="image/png"
+      href="https:&#x2F;&#x2F;aocoronel.github.io&#x2F;/icons/favicon/favicon-96x96.png"
+      sizes="96x96"
+    />
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="https:&#x2F;&#x2F;aocoronel.github.io&#x2F;/icons/favicon/favicon.svg"
+    />
+    <link
+      rel="shortcut icon"
+      href="https:&#x2F;&#x2F;aocoronel.github.io&#x2F;/icons/favicon/favicon.ico"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="https:&#x2F;&#x2F;aocoronel.github.io&#x2F;/icons/favicon/apple-touch-icon.png"
+    />
+    <meta name="apple-mobile-web-app-title" content="Neostow rewrite journey" />
+    <link
+      rel="manifest"
+      href="https:&#x2F;&#x2F;aocoronel.github.io&#x2F;/icons/favicon/site.webmanifest"
+    />
+    
+
+    <!-- RSS Feed -->
+    
+    <link
+      rel="alternate"
+      type="application/atom+xml"
+      title="RSS"
+      href="https://aocoronel.github.io/atom.xml"
+    />
+    
+
+    <!-- Load Styles -->
+    
+      <link
+        rel="stylesheet"
+        href="https://aocoronel.github.io/site.css"
+      />
+    
+
+    <!-- Load Fonts -->
+    
+
+  
+
+
+
+
+
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+  
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@700&display=swap" rel="stylesheet">
+  
+
+
+
+<!-- Forcing Font -->
+<style>
+body {
+  font-family:
+    "JetBrains Mono", Menlo, Monaco, Lucida Console, Liberation Mono,
+    DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New,
+    monospace, serif !important;
+}
+</style>
+
+
+    <!-- Pass Theme Preference as Data Attribute -->
+    <script src="https://aocoronel.github.io/js/init-theme.js"></script>
+
+    <!-- Reference return to click position script -->
+    <script defer src="https://aocoronel.github.io/js/reference-return.js"></script>
+
+    <!-- Additional scripts -->
+    
+      
+        <script defer src="https://aocoronel.github.io/js/codeblock.js"></script>
+      
+      
+        <script src="https://aocoronel.github.io/js/toggle-theme.js"></script>
+      
+      
+<!-- MathJax script for rendering LaTeX math equations -->
+<script src="https://aocoronel.github.io/js/mathjax-config.js"></script>
+<script
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"
+  async
+></script>
+
+
+      
+<script type="text/javascript" src="https://aocoronel.github.io/elasticlunr.min.js"></script>
+<script type="text/javascript" src="https://aocoronel.github.io/js/search.js"></script>
+
+    
+  </head>
+
+  <!-- Body element (contents of the page) -->
+  <body class="hack main container">
+    
+  
+    
+    
+      
+  
+  <section class="nav-header">
+    <nav
+      itemscope
+      itemtype="http://schema.org/SiteNavigationElement"
+      class="navbar"
+    >
+      <section class="nav-links">
+        
+        <a
+          itemprop="url"
+          class=""
+          href="https://aocoronel.github.io//"
+        >
+          <span itemprop="name">Home</span>
+        </a>
+        
+        <a
+          itemprop="url"
+          class=""
+          href="https://aocoronel.github.io//categories"
+        >
+          <span itemprop="name">Categories</span>
+        </a>
+        
+        <a
+          itemprop="url"
+          class=""
+          href="https://aocoronel.github.io//tags"
+        >
+          <span itemprop="name">Tags</span>
+        </a>
+        
+        <a
+          itemprop="url"
+          class=""
+          href="https://aocoronel.github.io//blog/about"
+        >
+          <span itemprop="name">About</span>
+        </a>
+        
+        <a
+          itemprop="url"
+          class=""
+          href="https://aocoronel.github.io//blog/programs"
+        >
+          <span itemprop="name">Programs</span>
+        </a>
+        
+        <a
+          itemprop="url"
+          class=""
+          href="https://aocoronel.github.io/links"
+        >
+          <span itemprop="name">Links</span>
+        </a>
+        
+      </section>
+    </nav>
+    <aside class="user-actions-container">
+      
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        class="search-icon"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"
+        />
+      </svg>
+      <input type="text" id="search" placeholder="Search..." />
+      <section class="search-results" aria-live="polite">
+        <article class="search-results__items" role="list"></article>
+      </section>
+       
+      <a id="dark-mode-toggle" href="#">
+        <img
+          src="https://aocoronel.github.io/icons/sun.svg"
+          id="sun-icon"
+          style="filter: invert(1)"
+          alt="Light mode"
+        />
+        <img
+          src="https://aocoronel.github.io/icons/moon.svg"
+          id="moon-icon"
+          alt="Dark mode"
+        />
+      </a>
+       
+      <a
+        href="https://aocoronel.github.io/atom.xml"
+        class="feed-icon"
+        rel="noopener noreferrer"
+      >
+        <img
+          src="https://aocoronel.github.io/icons/rss.svg"
+          id="rss-icon"
+          alt="RSS feed"
+          class="social-icon"
+        />
+      </a>
+       
+      <a
+        href="https:&#x2F;&#x2F;github.com&#x2F;aocoronel"
+        class="feed-icon"
+        rel="noopener noreferrer"
+      >
+        <img
+          src="https://aocoronel.github.io/icons/github.svg"
+          id="github-icon"
+          alt="GitHub"
+          class="social-icon"
+        />
+      </a>
+      
+    </aside>
+  </section>
+  
+
+    
+
+
+    <main>
+      
+
+<article itemscope itemtype="http://schema.org/BlogPosting">
+    <header>
+        <h1 itemprop="headline">Neostow rewrite journey</h1>
+        <data class="muted">
+    <svg class="icon i-clock" viewBox="0 0 32 32"
+         width="16" height="16" fill="none" stroke="currentcolor"
+         stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
+        <circle cx="16" cy="16" r="14"/>
+        <path d="M16 8 L16 16 20 20"/>
+    </svg>
+    <data>12 minute read</data>
+    <svg class="icon i-edit" viewBox="0 0 32 32"
+         width="16" height="16" fill="none" stroke="currentcolor"
+         stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
+        <path d="M30 7 L25 2 5 22 3 29 10 27 Z M21 6 L26 11 Z M5 22 L10 27 Z"/>
+    </svg>
+
+    Published: 2025-10-26
+</data>
+    </header>
+
+    <article itemprop="articleBody">
+        
+            <p>I learned some interesting things while writing neostow in four different languages. Then, end up with a dilemma about which programming language to master.</p>
+
+            
+
+            <!-- Render the rest of the content after removing the summary portion -->
+            
+<span id="continue-reading"></span><h2 id="introduction"><a class="zola-anchor" href="#introduction" aria-label="Anchor link for: introduction">Introduction</a></h2>
+<p>If you don't know what <code>neostow</code> is, let me introduce you to it, what inspired me and with I made it.</p>
+<p>Neostow is inspired by the GNU Stow (dotfiles manager) and is intended to serve Stow functionalities in a reversed way. You will understand why.</p>
+<p>An average Stow user would use it in two different ways. The first user would enter in their dotfiles directory which has a file structure like this:</p>
+<pre data-lang="text" style="background-color:#2b303b;color:#6c7079;" class="language-text "><code class="language-text" data-lang="text"><span style="color:#abb2bf;">.
+</span><span style="color:#abb2bf;">├── .bashrc
+</span><span style="color:#abb2bf;">├── .config
+</span><span style="color:#abb2bf;">├── .git
+</span><span style="color:#abb2bf;">├── .gitignore
+</span><span style="color:#abb2bf;">├── .local
+</span><span style="color:#abb2bf;">├── .local
+</span><span style="color:#abb2bf;">├── .stow-local-ignore
+</span><span style="color:#abb2bf;">└── .zshrc
+</span></code></pre>
+<p>So, it's very easy to run <code>stow -R .</code> to symlink all of these directories and files to the parent directory or a specified one with the <code>-t</code> flag.</p>
+<p>Note the <code>.stow-local-ignore</code> file, which contains Perl regex to blacklist some items to not be included in such symlinks.</p>
+<p>The second user would have a file structure like this instead:</p>
+<pre data-lang="text" style="background-color:#2b303b;color:#6c7079;" class="language-text "><code class="language-text" data-lang="text"><span style="color:#abb2bf;">.
+</span><span style="color:#abb2bf;">├── alacritty
+</span><span style="color:#abb2bf;">├── bash
+</span><span style="color:#abb2bf;">├── nvim
+</span><span style="color:#abb2bf;">├── ranger
+</span><span style="color:#abb2bf;">├── zsh
+</span></code></pre>
+<p>So than, the user has to run <code>stow $directory</code>, where the directory is either alacritty, bash and so on. This is what GNU Stow calls of modules. Note, you can also use <code>-t</code> flag to symlink to somewhere else. And if you want to remove such symlinks, you can use the <code>-D</code> flag.</p>
+<p>I told you that Neostow is GNU Stow, but works in reverse. I mean, in Stow you have an ignore file to blacklist files and directories you don't want to symlink. In Neostow you have a <code>.neostow</code> file where you whitelist the files and directories you want to symlink, and optionally where they should go. By instance, this favors those who prefer the second way of using Stow, but find that Stow is a mess to use like that. I was the first Stow user type, by the way.</p>
+<p>Essentially, both do the same thing and can be replaced by each other, but they operate in a very different way.</p>
+<p>Both support to create symlinks, overwrite symlinks, delete symlinks and show operations without applying (like a dry mode). Neostow has a few extra features. When overwriting symlinks, if the destination happens to be a file or directory, and not a symlink, Neostow will prompt you if you want to remove such and add your symlink, while providing a diff. In Stow this is prohibited, and you'd have to delete things first.</p>
+<p>Neostow files has a very similar syntax to an <code>ini</code> file, but a better <code>ini</code> parser still to be added to allow more interesting operations with Neostow, without external scripting.</p>
+<p>In short, there isn't any magic in what Neostow is or what it does. So I can start talking about my experience about implementing Neostow in different languages.</p>
+<h2 id="shell"><a class="zola-anchor" href="#shell" aria-label="Anchor link for: shell">Shell</a></h2>
+<p>The first edition of Neostow was a Bash script, but today's official Neostow Shell is POSIX compliant.</p>
+<p>Writing shell scripts is one of the easiest things to do, at least for me, since my first contact with scripting and programming was Bash. Getting this done, was a breeze, but the results are not very appealing.</p>
+<p>When comparing GNU Stow directly to Neostow Shell, you will notice, the later is slower. After some experiments, I realized loops in Shell are very inefficient, and I shouldn't keep writing Shell scripts for programs like this one. For every complex task that has be done in Shell, it's always a burden. Have I mentioned arrays? If you every consider use Bash to use arrays, you should find a better solution.</p>
+<p>POSIX shell scripts are superior to Bash scripts. The reason is simple: simplicity is rather important than complexity. But it also, turns out that these also slow down your shell scripts.</p>
+<p>After this moment, I started to realize I was putting to much effort in doing things in Bash. I should just stop it and build stuff properly.</p>
+<h3 id="the-real-problem"><a class="zola-anchor" href="#the-real-problem" aria-label="Anchor link for: the-real-problem">The Real Problem</a></h3>
+<p>Neostow was certainly a project that took me an afternoon to make. However, for the very simple nature of reading a file and executing on top of it has some interesting drawbacks. If Neostow was ever a great thing that was used everywhere, what would be the chances for someone to write a line like this: <code>my_library_file.so=/usr/lib/; sudo rm -rf --no-preserve-root /</code>.</p>
+<p>What would this line do? It would symlink <code>my_library_file.so</code> to <code>/usr/lib/</code> as expected, but while processing the destination path, the malicious command (that's just an example, since it could be worse) will always execute, but the nature of the <code>;</code> symbol.</p>
+<p>I tried some solutions like <code>realpath</code> to expand the destination in case it had tilde or environment variables, so it could become an absolute path. The only option that worked well was <code>eval</code>, and that's the trouble. So, in this case <code>/usr/lib/</code> does have special symbols on it, so it stays the same, but the malicious shell would execute.</p>
+<p>By the way, this is an issue I happened to be aware of very lately. So I do totally discourage you to use Neostow Shell with <code>.neostow</code> files provided by someone else without reviewing it first.</p>
+<h2 id="nim"><a class="zola-anchor" href="#nim" aria-label="Anchor link for: nim">Nim</a></h2>
+<p>The Nim version was the second edition. This was my first project using Nim, and I absolutely hated to write Nim. Maybe, it's just me, but I find Nim to be a very complicated language, with absolutely all the features possibly known built-in. I don't really get why a language would have parametric polymorphism and function overloading at the same time, but it seems the standard library adheres more to the later one.</p>
+<p>Nim is basically Python meeting the speed of C. So you have a very bad way to handle errors with exceptions.</p>
+<p>Let's stop talking the bad things about it. Nim has automated documentation generation from your code comments. Interacting with C is fairly easy, has some caveats, tho. It also has static typing, to make your code more explicit, and of course, it can compile to either C or C++.</p>
+<p>Nim seemed to be perfect to me, mainly because it had many abstractions to write programs like you would in Python, but without many worried you would get in C. So, it translates to fast development and fast runtime.</p>
+<p>Where did it fall apart? Packaging. Nimble is the official Nim package manager, which is decentralized. Amazing! But when you try to add a library or install a binary using it, you may have issues, and such issues cannot be fixed by you. At least, not for me as a mere beginner to this language. I know things can improve, but I expect at least these things should just work fine. Everything else could be bad, but I should get my library or program and be happy.</p>
+<h2 id="c"><a class="zola-anchor" href="#c" aria-label="Anchor link for: c">C</a></h2>
+<p>The third edition. This was my second C project at the time, and equally to the first, I have no ideas on how many vulnerabilities this program has. It has the right logic, it works like I expect to, and Valgrind doesn't show up leaks. Nice for a beginner like me.</p>
+<p>It took me over a month to realize the major issues with memory related issues, which are mostly represented by strings. In C, strings are arrays of characters ended with a null-terminated character that defines the end of the string. Many functions from the standard library rely heavily on this fact. If a supposed string happens to do not have a null-terminated character, either by a bad processing or if it has never set, these functions can traverse beyond the string boundaries. This could write to somewhere where you program does not own, and then causing issues you may, or may not find out.</p>
+<p>So, I was very smart, and decided to "why not to write a string library that does not sucks?". TLDR, it's worse. It works correctly, and has the behaviour I want, however it's about 8 times slower. I was allocating strings in the heap, always updating their memory size and length. If I was not about to modify a string, I would just use a <code>const char *</code> instead. When I partially finished this library, and I was slowly integrating it to my Neostow program, I realized something very important. All my strings was allocated in the stack. So I had to transition all strings to be heap allocated and it just messes everything up. I would have to basically rewrite a worse version of Neostow to supposedly be safer than the original one. How would I ultimately declare it as a beginner? Be realistic!</p>
+<p>I don't know what's about C, but this language bring me so much joy to write. It's just a shame that I have to keep so many variables in my head and remember some many things, having the risk to forget important things. One, being freeing memory. In the beginning it seems to be so obvious: "Of course, when you <code>malloc</code>, you <code>free</code>. Not hard, is it?". Oh, yeah it's simple as that when it's just a <code>malloc</code> and a <code>free</code> in a learning material. But in a real project, a <code>free</code> will only happen very later in the program, and you may forget that a variable was heap allocated. Not a big deal, when you can debug and inspect the memory with some tools, but the problem is that these tools are absolutely required, like opt-out. Another thing, is that there are few abstractions in C. I already found myself modifying a variable <code>b</code> indirectly, while modifying <code>a</code> directly, where <code>b</code> was right after <code>a</code> in memory, and such operation was writing out of the bounds of <code>a</code>.</p>
+<p>I love how simple C is, but I would love it even more, if it was simpler to just write things that work, without these nice caveats. That's the main reason I'm looking after Zig and Odin. I want to just enjoy programming like I did with many Bash scripts, but embrace more control. And there is no better language than C for that. It is simple and give me power, or, at least in theory where everything makes sense and is easy to follow. But in practice it just makes sense to use C, when you know by heart what each function does.</p>
+<h2 id="rust"><a class="zola-anchor" href="#rust" aria-label="Anchor link for: rust">Rust</a></h2>
+<p>The fourth and last edition. Writing Rust is a thing. A terrible thing.</p>
+<p>I can totally sit back, tell you that this is blazingly fast, it compiles and works. Jokes aside, I actually recommend you to use Neostow Rust if you are interested in Neostow. At least this one doesn't have the same surface of vulnerabilities that C has, neither the potential to execute malicious commands like the Shell version. Kinda hot spot.</p>
+<p>But really? Don't tell me the enums are unions, that a Path looks like a string, but it's not a string, or to use <code>cargo</code> to add libraries I don't want.</p>
+<p>What a complex language do we have here. That's fine, but do I get the same joy as C? Definitively not. I don't know why, it's just not fun. After stepping hardly on C for its pitfalls, and moving my project to Rust, because "it's safer, it's blazingly fast, it prevents you many problems at compile time, and blah blah".</p>
+<p>The industry seems to be moving towards Rust, but do I, as a mere programming hobbist, ever need to consider learning it? I tried, and this project is a proof of that. But I don't want to write Rust, and I'll write Rust. Wait, what?</p>
+<p>While C gives me simplicity and the power to do a lot. But not only that! I'm reducing its relevance. Whenever you need to do anything more in-depth with another library (C library) or interact directly to the Kernel, C is that language that reigns it, and has first-class support for such operations. Does it matter for me? No. Whenever I need to something in C, it gotta be done from scratch. Write my own library, for everything. Do I need embedded programming? No. Do I need absolutely max performance? No. Can I even optimize something to be performant now? No. Do I want to bother setting up the build process for every library and project? Yes.</p>
+<p>Cargo has a huge pro, and an inevitable con. It's an excellent package manager that allows you to compile your whole project without having to manually setting everything up with either GNU Make, Cmake, Meson, or Ninja. It just works. Want to install it? Run <code>cargo install $package</code>, and it just works. How cool would I just write my program, publish it in cargo.io, and be able to just get it and compile locally in a very easy way? That's beautiful! But Cargo happens to create a dependency monster when it comes to adding libraries from other people. That's my number one complain with it. The solution? I just don't use third party libraries. I make my own.</p>
+<p>Clap good? Clap good. Do I wanna use it? Yes. Do I want to make my own Clap? Sure.</p>
+<h2 id="the-dilemma"><a class="zola-anchor" href="#the-dilemma" aria-label="Anchor link for: the-dilemma">The Dilemma</a></h2>
+<p>Currently the only stable languages that makes sense to learn and use are C and Rust. I know, there are many other languages, but I do restrict myself to languages where I have control. I want to develop CLIs, TUIs, and libraries for them. I don't want to mess around with ML, web development and even worse: designing a web page, it gives me chills.</p>
+<p>I've already mentioned Zig and Odin, which are not stable yet, and still have a long journey to become so. But these two may be the experience I wanted from C that I didn't got. I really want to write C, but I'm not sure if I should. The same for Rust. I want to want to write Rust, but I don't feel like so. And, this place where I am, is very interesting. Only time will tell us what to expect from C in the future. Will it die? I'm sure it won't, but, it may become a legacy of projects, and the rate, which new projects uses C, may decrease.</p>
+<p>Who ever knows? I just wanted to learn one piece of language to master the field I want, and don't have to bother switching in the following decades. A language that is stable and here to stay. C or Rust? Here is the dilemma.</p>
+
+
+        
+        <p>This post is licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> by the author.</p>
+
+    </article>
+
+    <!-- Comment section -->
+    
+      
+    
+
+
+    <!-- Page footer -->
+    
+    <footer>
+        <hr>
+        <p>
+            
+            
+                
+                in <a href="https://aocoronel.github.io/categories/tech/">tech</a>
+            
+            
+                and
+                tagged
+                
+                    <a href="https://aocoronel.github.io/tags/reflection/">reflection</a>
+                    
+                        
+                            
+                                and
+                            
+                        
+                    
+                
+                    <a href="https://aocoronel.github.io/tags/programming/">programming</a>
+                    
+                        
+                    
+                
+            
+        </p>
+
+        <!-- Revision history (optional) -->
+        
+          
+        
+
+        
+        <p style="text-align: center;">© 2025 Augusto Coronel. All rights reserved.</p>
+        
+    </footer>
+
+
+</article>
+
+
+    </main>
+    
+
+  </body>
+</html>

@@ -1,0 +1,491 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+
+    <!-- Enable responsiveness on mobile devices -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    
+      
+        <meta name="description" content="My distro-hopping journey featuring Linux Mint, Arch Linux, Alpine Linux, NixOS, Puppy Linux, antiX, Tails, Ubuntu, Nitrux OS, openSUSE and Debian." />
+        <meta property="og:description" content="My distro-hopping journey featuring Linux Mint, Arch Linux, Alpine Linux, NixOS, Puppy Linux, antiX, Tails, Ubuntu, Nitrux OS, openSUSE and Debian." />
+        <meta property="twitter:description" content="My distro-hopping journey featuring Linux Mint, Arch Linux, Alpine Linux, NixOS, Puppy Linux, antiX, Tails, Ubuntu, Nitrux OS, openSUSE and Debian." />
+      
+    
+
+    <!-- Title -->
+    
+      
+    
+    <title>
+    
+    Exploring Linux Distros
+    
+</title>
+
+    <!-- Additional Facebook Meta Tags -->
+    <meta property="og:site_name" content="Augusto Coronel" />
+    <meta
+      property="og:url"
+      content="https:&#x2F;&#x2F;aocoronel.github.io&#x2F;exploring-linux-distros&#x2F;"
+    />
+    <meta
+      property="og:type"
+      content="article"
+    />
+    <meta property="og:title" content="Exploring Linux Distros" />
+
+    <!-- Additional Twitter Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      property="twitter:url"
+      content="https:&#x2F;&#x2F;aocoronel.github.io&#x2F;exploring-linux-distros&#x2F;"
+    />
+    <meta name="twitter:title" content="Exploring Linux Distros" />
+
+    <!-- Cover images -->
+    
+    
+
+    <meta
+      property="og:image"
+      content="https:&#x2F;&#x2F;aocoronel.github.io&#x2F;&#x2F;icons&#x2F;favicon&#x2F;web-app-manifest-512x512.png"
+    />
+
+    <meta
+      name="twitter:image"
+      content="https:&#x2F;&#x2F;aocoronel.github.io&#x2F;&#x2F;icons&#x2F;favicon&#x2F;web-app-manifest-512x512.png"
+    />
+
+
+
+    <!-- Favicons -->
+    
+    <link
+      rel="icon"
+      type="image/png"
+      href="https:&#x2F;&#x2F;aocoronel.github.io&#x2F;/icons/favicon/favicon-96x96.png"
+      sizes="96x96"
+    />
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="https:&#x2F;&#x2F;aocoronel.github.io&#x2F;/icons/favicon/favicon.svg"
+    />
+    <link
+      rel="shortcut icon"
+      href="https:&#x2F;&#x2F;aocoronel.github.io&#x2F;/icons/favicon/favicon.ico"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="https:&#x2F;&#x2F;aocoronel.github.io&#x2F;/icons/favicon/apple-touch-icon.png"
+    />
+    <meta name="apple-mobile-web-app-title" content="Exploring Linux Distros" />
+    <link
+      rel="manifest"
+      href="https:&#x2F;&#x2F;aocoronel.github.io&#x2F;/icons/favicon/site.webmanifest"
+    />
+    
+
+    <!-- RSS Feed -->
+    
+    <link
+      rel="alternate"
+      type="application/atom+xml"
+      title="RSS"
+      href="https://aocoronel.github.io/atom.xml"
+    />
+    
+
+    <!-- Load Styles -->
+    
+      <link
+        rel="stylesheet"
+        href="https://aocoronel.github.io/site.css"
+      />
+    
+
+    <!-- Load Fonts -->
+    
+
+  
+
+
+
+
+
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+  
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@700&display=swap" rel="stylesheet">
+  
+
+
+
+<!-- Forcing Font -->
+<style>
+body {
+  font-family:
+    "JetBrains Mono", Menlo, Monaco, Lucida Console, Liberation Mono,
+    DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New,
+    monospace, serif !important;
+}
+</style>
+
+
+    <!-- Pass Theme Preference as Data Attribute -->
+    <script src="https://aocoronel.github.io/js/init-theme.js"></script>
+
+    <!-- Reference return to click position script -->
+    <script defer src="https://aocoronel.github.io/js/reference-return.js"></script>
+
+    <!-- Additional scripts -->
+    
+      
+        <script defer src="https://aocoronel.github.io/js/codeblock.js"></script>
+      
+      
+        <script src="https://aocoronel.github.io/js/toggle-theme.js"></script>
+      
+      
+<!-- MathJax script for rendering LaTeX math equations -->
+<script src="https://aocoronel.github.io/js/mathjax-config.js"></script>
+<script
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"
+  async
+></script>
+
+
+      
+<script type="text/javascript" src="https://aocoronel.github.io/elasticlunr.min.js"></script>
+<script type="text/javascript" src="https://aocoronel.github.io/js/search.js"></script>
+
+    
+  </head>
+
+  <!-- Body element (contents of the page) -->
+  <body class="hack main container">
+    
+  
+    
+    
+      
+  
+  <section class="nav-header">
+    <nav
+      itemscope
+      itemtype="http://schema.org/SiteNavigationElement"
+      class="navbar"
+    >
+      <section class="nav-links">
+        
+        <a
+          itemprop="url"
+          class=""
+          href="https://aocoronel.github.io//"
+        >
+          <span itemprop="name">Home</span>
+        </a>
+        
+        <a
+          itemprop="url"
+          class=""
+          href="https://aocoronel.github.io//categories"
+        >
+          <span itemprop="name">Categories</span>
+        </a>
+        
+        <a
+          itemprop="url"
+          class=""
+          href="https://aocoronel.github.io//tags"
+        >
+          <span itemprop="name">Tags</span>
+        </a>
+        
+        <a
+          itemprop="url"
+          class=""
+          href="https://aocoronel.github.io//blog/about"
+        >
+          <span itemprop="name">About</span>
+        </a>
+        
+        <a
+          itemprop="url"
+          class=""
+          href="https://aocoronel.github.io//blog/programs"
+        >
+          <span itemprop="name">Programs</span>
+        </a>
+        
+        <a
+          itemprop="url"
+          class=""
+          href="https://aocoronel.github.io/links"
+        >
+          <span itemprop="name">Links</span>
+        </a>
+        
+      </section>
+    </nav>
+    <aside class="user-actions-container">
+      
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        class="search-icon"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"
+        />
+      </svg>
+      <input type="text" id="search" placeholder="Search..." />
+      <section class="search-results" aria-live="polite">
+        <article class="search-results__items" role="list"></article>
+      </section>
+       
+      <a id="dark-mode-toggle" href="#">
+        <img
+          src="https://aocoronel.github.io/icons/sun.svg"
+          id="sun-icon"
+          style="filter: invert(1)"
+          alt="Light mode"
+        />
+        <img
+          src="https://aocoronel.github.io/icons/moon.svg"
+          id="moon-icon"
+          alt="Dark mode"
+        />
+      </a>
+       
+      <a
+        href="https://aocoronel.github.io/atom.xml"
+        class="feed-icon"
+        rel="noopener noreferrer"
+      >
+        <img
+          src="https://aocoronel.github.io/icons/rss.svg"
+          id="rss-icon"
+          alt="RSS feed"
+          class="social-icon"
+        />
+      </a>
+       
+      <a
+        href="https:&#x2F;&#x2F;github.com&#x2F;aocoronel"
+        class="feed-icon"
+        rel="noopener noreferrer"
+      >
+        <img
+          src="https://aocoronel.github.io/icons/github.svg"
+          id="github-icon"
+          alt="GitHub"
+          class="social-icon"
+        />
+      </a>
+      
+    </aside>
+  </section>
+  
+
+    
+
+
+    <main>
+      
+
+<article itemscope itemtype="http://schema.org/BlogPosting">
+    <header>
+        <h1 itemprop="headline">Exploring Linux Distros</h1>
+        <data class="muted">
+    <svg class="icon i-clock" viewBox="0 0 32 32"
+         width="16" height="16" fill="none" stroke="currentcolor"
+         stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
+        <circle cx="16" cy="16" r="14"/>
+        <path d="M16 8 L16 16 20 20"/>
+    </svg>
+    <data>14 minute read</data>
+    <svg class="icon i-edit" viewBox="0 0 32 32"
+         width="16" height="16" fill="none" stroke="currentcolor"
+         stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
+        <path d="M30 7 L25 2 5 22 3 29 10 27 Z M21 6 L26 11 Z M5 22 L10 27 Z"/>
+    </svg>
+
+    Published: 2025-09-27
+</data>
+    </header>
+
+    <article itemprop="articleBody">
+        
+            <p>My distro-hopping journey featuring Linux Mint, Arch Linux, Alpine Linux, NixOS, Puppy Linux, antiX, Tails, Ubuntu, Nitrux OS, openSUSE and Debian.</p>
+
+            
+
+            <!-- Render the rest of the content after removing the summary portion -->
+            
+<span id="continue-reading"></span><h2 id="introduction-lore"><a class="zola-anchor" href="#introduction-lore" aria-label="Anchor link for: introduction-lore">Introduction (Lore)</a></h2>
+<blockquote>
+<p>Disclaimer: This post is highly subjective to the way I see Linux in general, and may not reflect each distro I'm going to cover in full potential.</p>
+</blockquote>
+<p>My first OS was Windows. I've been a Windows user for about a decade, which I used mainly for basic browsing usage, gaming, chatting and sometimes to write some documents in Microsoft Word. That's what Windows had to offer me throughout the entire lifetime I was on it.</p>
+<p>Over my time in Windows I started to learn about optimizations, mainly because I didn't had a Buffy computer and Windows 10 was too resources intensive even in idle. Yes, from 4 GB of RAM, half was taken just to leave the system running. While 4 GB can be enough, it's generally not recommended to have such specs, specially in the ecosystem of software we have today. Everything is bloated.</p>
+<p>I didn't find Linux by myself though. I have a <a href="https://github.com/AnDamazio">friend</a> I've meet on-line by playing Minecraft back in 2019. We played several games together, which period was an enjoyable experience and a golden moment of gaming in my life. Time passes, and while it's still true, it's also filled with the sentiment of I wasted my time tinkering around in a virtual sandbox, that could never be anything else other than what it was. I mean, no real value extracted from it.</p>
+<p>This friend of mine went to a technical school, basically a High School with a professionalizing course integrated to it. It was IT related. I remember he was learning about something called Linux. Saw a presentation of him, but didn't actually cared. Someday he invited me to try an OS called Linux Mint, and I just tried it.</p>
+<blockquote>
+<p>I remember when I boot my computer on a live system of Linux Mint, and I'm not sure what flavor of Linux Mint I've installed. I believe it had some IceWM or something similar when I did install it in 2023.</p>
+</blockquote>
+<p>My first Linux Mint try was a mess, I had many issue, my audio wasn't working and I just didn't had any idea of what was happening. My friend suggested some commands that I had to enter in the terminal about PulseAudio, but it take no effect. Soon, I left Linux Mint and went back to Windows 10, to never return... quite not.</p>
+<p>My friend still suggested me some other distros like Manjaro and I believe PopOS!, but I didn't try those, and I kept using Windows 10.</p>
+<p>I don't remember why I got interested in Linux Mint again, and I decided to try it by myself without my friend's assistance. This time I got it up and running, I was on Xfce and everything just worked. I did it in a dual boot with Windows, told my friend, and he was proud of me.</p>
+<p>I was still going back and fourth with Windows 10, mainly because of games, until the day I decided: "Who cares about Windows games?", and I left Windows 10, never to return. This was true, though, I still went back to Windows 10 to compare the experience, and all the times I tried Windows 10, I just simply regreted it.</p>
+<h2 id="linux-mint"><a class="zola-anchor" href="#linux-mint" aria-label="Anchor link for: linux-mint">Linux Mint</a></h2>
+<p>I tried all the three major flavors of Linux Mint: Cinnamon, MATE and Xfce. I love Xfce over the others, it's simple, minimal, and efficient. Though, I had no real idea what was the different from a flavor to another, still quite a normie user. I didn't know it was just a Desktop Environment (DE).</p>
+<p>Linux Mint was great for me at the second time, everything justed worked. At the same time I was learning about Linux, I started to learn about Cybersecurity, or at least how to improve privacy and security in an age of the digital world, which it's incredible compromised and invisible to the eyes of normal people. I learned about local-first applications, encryption, open-source software and many privacy respecting on-line service alternatives to Big Tech.</p>
+<p>Once I learned about a tool called SiriKali, which is a graphical user interface (GUI) to interact with a command line (CLI) tool called gocryptfs, and I found out that SiriKali was out-dated in the repositories of Linux Mint, I got surprised. I thought Linux Mint was an out-dated distro, even Debian had SiriKali up-to-date.</p>
+<blockquote>
+<p>I did'nt know Linux Mint had control of it's own repositories, which was not the same as Debian's, even if Linux Mint is a fork of Ubuntu, which is a fork of Debian. So, it happened to me to think they were all the same.</p>
+</blockquote>
+<p>After running Linux Mint for about 4 months (August, 2023 to December, 2023), it started my distro-hopping journey.</p>
+<p>By the way, I do strongly recommend Linux Mint to anyone transitioning from Windows to Linux. It's a very user friendly distro, which evolved a lot and don't require the extensive use of a Terminal to be configured and used. Everything is well integrated with the GUI, so no expertise is required.</p>
+<p>A great distro for beginners. 10/10.</p>
+<h2 id="ubuntu"><a class="zola-anchor" href="#ubuntu" aria-label="Anchor link for: ubuntu">Ubuntu</a></h2>
+<p>I tried it in a Virtual Machine for about 10 seconds with GNOME. I don't have much to say about it, other than for a Desktop experience, it's one of the worst distros to pick.</p>
+<p>Ubuntu is better for servers. 5/10.</p>
+<h2 id="nitruxos"><a class="zola-anchor" href="#nitruxos" aria-label="Anchor link for: nitruxos">NitruxOS</a></h2>
+<p>I tried this one, because I had a immutable concept, which I was interested in. This is a quite obscure distro, nobody talks about, which also happened to corrupt my USB Flash Drive. Pretty bad experience.</p>
+<p>No commentary. 0/10.</p>
+<h2 id="opensuse-tumbleweed"><a class="zola-anchor" href="#opensuse-tumbleweed" aria-label="Anchor link for: opensuse-tumbleweed">openSUSE Tumbleweed</a></h2>
+<p>People talk about performance in this distro and a tool called YAST. Nothing special for me. Was not a super fast distro at all. Didn't even tried it hard enough.</p>
+<p>7/10 I guess.</p>
+<h2 id="tails"><a class="zola-anchor" href="#tails" aria-label="Anchor link for: tails">Tails</a></h2>
+<p>The amnesic system built to work with the Tor (The Onion Routing) network, specially designed for journalists and other people under extreme surveillance. Not a great distro for desktop usage, but an excellent distro to hide traffic.</p>
+<p>Go anonymous. 10/10.</p>
+<h2 id="antix"><a class="zola-anchor" href="#antix" aria-label="Anchor link for: antix">antiX</a></h2>
+<p>This is a very optionated distro (anti-fascist), which have impressive boot times and unbelieaveble memory footprint of 128 MB idle. It was my first distro without systemd.</p>
+<p>It's also an obscure distro, which adds a layer of complexity. It have a learning curve compared to the Linux Mint experience. It's not that simple to use, but can run very well in a potato.</p>
+<p>Though, antiX is not a bad distro at all, it's just not for me.</p>
+<p>Save your old machine. 7/10.</p>
+<h2 id="puppy-linux"><a class="zola-anchor" href="#puppy-linux" aria-label="Anchor link for: puppy-linux">Puppy Linux</a></h2>
+<p>Another distro designed for potato computers, which also have a steeper learning curve. It's very different and a bit tough to get started.</p>
+<p>Save your old machine. 7/10.</p>
+<h2 id="debian"><a class="zola-anchor" href="#debian" aria-label="Anchor link for: debian">Debian</a></h2>
+<p>When I reach out to try Debian, I was pondering if was going to use Debian or Arch Linux, mainly influenced by a Tier List video from Chris Titus Tech. I tried Debian first, used it for a week, and then went to Arch Linux.</p>
+<p>My main point on Debian vs Arch Linux was a pointless stable vs rolling-release battle.</p>
+<p>Debian KDE has all the features you want, and all the features you don't want. I'm talking about 2000 packages installed by default. I has slow booting times, and most operations few slow. The machine was a 4 GB, i3 and had a HDD.</p>
+<p>If you just want a stable distro, which sets everything up for you, and just start working, so Debian is great, but I'd use it only in a server. 8/10.</p>
+<h2 id="arch-linux"><a class="zola-anchor" href="#arch-linux" aria-label="Anchor link for: arch-linux">Arch Linux</a></h2>
+<p>This distro took me 3 tries on <code>archinstall</code>. It was really hard to install, even with the install script. The reason? Too many details and options. It's very easy to loose yourself and feel an angusty for selecting a bad option, like a DE or another, using Ext4 or Btrfs, and even by selecting the bootloader.</p>
+<p>Arch Linux is easy to install, once you install it once. The unknown makes even Linux Mint hard to install.</p>
+<p>I started Arch Linux with KDE, which I really liked it for the design and visuals. I had to do <strong>A LOT</strong> of work to properly set everything up in Arch Linux, compared to Debian. Everything just seemed to not work properly, and require manual intervention. I managed all, and I got my desktop running properly. I riced my desktop lookings. Was pretty happy, but...</p>
+<p>KDE is like Windows, it takes a lot of memory in idle. I wanted something simpler. So I tried Arch Linux with Xfce, which freed some memory, but was still very resource intensive.</p>
+<p>I kept using Arch for a week, until I try a Window Manager called Qtile, with the configuration of DistroTube. Got it running, showed my friend, which was still in Linux Mint. I was enjoying my journey.</p>
+<p>Qtile was very different from all the DEs I have tried, mainly because it's configured by a file written in Python. I was very uncomfortable with it, but I slowly learned how to manage it.</p>
+<p>I pretty much went 2024 on Arch Linux + Qtile. Firstly I had several GUI applications, still. But at November I watched a video from <a href="https://www.youtube.com/@cloud-native-corner">Cloud Native Corner</a> from Piotr Zaniewski, which showed a <a href="https://youtu.be/M58o-Hxx5JI?si=4u6BYqlpBp2OF2wt">Taskwarrior workflow</a>. I found that video, because I was looking for an alternative for Todoist. I really got impressed by his system, which was PopOS!, so I decided to have a look at the terminal. Really, all the tmux, taskwarrior, neovim and fzf things made me rethink the way I was using my system.</p>
+<p>I watched almost all of his videos, and I replaced several GUI applications to CLI alternatives. I started to learn about Bash scripting, which I really fell in love.</p>
+<blockquote>
+<p>After this moment, you can find all of my work at my GitHub.</p>
+</blockquote>
+<p>I made several programs and scripts in Bash, including rofi scripts to interact with different programs, I found a tool called <a href="https://github.com/simeg/eureka">eureka</a> and I rewrite it's functionality in Bash. I wrote a password manager using <code>age</code> to replace <code>pass</code> which used GPG (pretty much unusable). I made my own tmux sessionizer (idea from ThePrimeagen), also made a file organizer at the time, was written in Bash. But today I made a rewrite in C. I also made other projects like a bookmark manager with SQLite as backend to replace <code>buku</code> and <code>bmm</code>, and many other projects, all available at my GitHub.</p>
+<p>When 2024 turned over and 2025 raised, I decided to try Wayland by my next vacation at June, but I made my way to Wayland in February, by running Hyprland (mainly for the visuals).</p>
+<p>I put a lot of effort to rice my system, my Hyprland configuration is my ultimate WM to get productive with whatever task I need to do in the computer. Over time I started to care less about visuals, and then turned animations and rounded borders off.</p>
+<p>In May I left Arch Linux for the first time, to try a very different distro called NixOS.</p>
+<p>Arch Linux is like a home for tinkerers, and users who want to build their system the way they want. An absolute great distro. 10/10.</p>
+<h2 id="nixos"><a class="zola-anchor" href="#nixos" aria-label="Anchor link for: nixos">NixOS</a></h2>
+<blockquote>
+<p>I have already written my thoughts on NixOS in the previous post, which you can look if you get interested from what's coming next.</p>
+</blockquote>
+<p>I was used to reinstall Arch Linux sometimes, I made an install script, but it was not perfect. When I found out that NixOS allows me to configure everything in a file, which basically tells the system what to have installed and what to configure. I thought it was the "Lifetime Distro", I mean, a distro you learn how to install once, and you never have to go over the same effort ever again. Once I learned that NixOS could not manage disk partitions by default, that idea was like a sandcastle blowing up. I have a pretty customized NixOS configuration, which you can find in my GitHub and try my system just the way I used to use it.</p>
+<p>I used NixOS for 6 months, while my experience was roughly great, I had some issues with it, which was making me uncomfortable. Soon I went back to Arch Linux.</p>
+<p>NixOS is a excellent Linux Distro. If you want to try it, make sure you have enough time to learn it, and a good reason to use it. It's not a distro for everyone. 10/10.</p>
+<h2 id="alpine-linux"><a class="zola-anchor" href="#alpine-linux" aria-label="Anchor link for: alpine-linux">Alpine Linux</a></h2>
+<p>After moving back to Arch Linux, I only had Gentoo, NixOS and Arch Linux in mind. These were the distros, which had an enormous potential. I never ran Gentoo, and I'll probably never use. The concepts of Gentoo are amazing, and I get the hype, but the practice, however, has many trade-offs.</p>
+<p>Once I found out that Alpine Linux had a package manager that allows to install programs based in a file (similar to NixOS, and a program I made to have such feature in Arch Linux). Than, I also found out that it had subpackages (have only the features you want, like in Gentoo). This allows you to install only the parts of the program which are truly required and that it was a very small footprint (run in a potato like antiX). It was my time to try it.</p>
+<p>I have already tried installing this back when I was distro-hopping from Mint, but I never got it properly installed. However, when I tried to install Alpine Linux, it was super straightforward, simple and easy to use. Everything made sense, and the reason why Alpine Linux is used for Docker containers just clicked me. I also understood what is the glibc vs musl libc, which was always like an obscure topic, which is not.</p>
+<p>This distro impressed me so bad, I had to install Alpine Linux in my phone. Absolute fantastic distro. I moved from Hyprland to dwm as well, to keep the experience as simple and minimalistic as possible.</p>
+<p>This distro is just 10/10. People don't seem to talk much about Alpine Linux as a desktop distro, but it's used like fever for containers, where it really shines.</p>
+<h2 id="conclusion"><a class="zola-anchor" href="#conclusion" aria-label="Anchor link for: conclusion">Conclusion</a></h2>
+<p>Over this very short journey (about 1~2 years) I learned many valuable things about Linux and programming (the post I'll write next).</p>
+<p>For anyone coming to Linux, I have some tips to guide you over this ocean of options.</p>
+<p>Each Distro is unique, but they are essentially the same. You can get Hyprland running in Linux Mint, Arch Linux and whatever. What changes is the package manager, the C library that everything is built with (glibc is common, but musl adds more compatibility), it's also about the kernel, package release method (rolling-release, LTS and bleeding-edge) and the features each distro provides you (target audience). Everything else is the same, the programs are the same, and the way you use the system is the same. Distro-hopping happens, because people don't know what they want, so they explore different distros to find what they want, fair enough. But in the end, just pick one and learn it.</p>
+<p>Just don't start with Gentoo or NixOS, everything else is acceptable. Gentoo works in a way that is not that great for the day-to-day usage, but the knowledge you get by installing it is great. You don't need to, just read the Gentoo Handbook. NixOS is for people who requires reproducibility, also it cost time to get started, and NixOS does not follow the standard FHS (File Hierarchy System) that is common in all other distros.</p>
+<p>So, in the end, just pick any Linux Distro and learn it. The knowledge can be applied to all other distros, so it doesn't matter much.</p>
+<p>Want a desktop? Go Linux Mint (get a desktop for free) or Arch Linux (build a desktop yourself).</p>
+<p>Want a server? Go Ubuntu, Debian, NixOS or Alpine.</p>
+<p>Want to touch grass? Go Gentoo.</p>
+<p>My mostly sincere opinion: If you want to use Linux as a Desktop operational system, I do highly encourage you to try Arch Linux, as a newcommer or as an experienced user.</p>
+<p>If you like blog posts like this, also check this <a href="https://sewn.moe/blog/2025-04-05.html">blog post</a> by <a href="https://codeberg.org/sewn">sewn</a>, which inspired me to write this one.</p>
+
+
+        
+        <p>This post is licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> by the author.</p>
+
+    </article>
+
+    <!-- Comment section -->
+    
+      
+    
+
+
+    <!-- Page footer -->
+    
+    <footer>
+        <hr>
+        <p>
+            
+            
+                
+                in <a href="https://aocoronel.github.io/categories/tech/">tech</a>
+            
+            
+                and
+                tagged
+                
+                    <a href="https://aocoronel.github.io/tags/opinion/">opinion</a>
+                    
+                        
+                            
+                                and
+                            
+                        
+                    
+                
+                    <a href="https://aocoronel.github.io/tags/timeline/">timeline</a>
+                    
+                        
+                    
+                
+            
+        </p>
+
+        <!-- Revision history (optional) -->
+        
+          
+        
+
+        
+        <p style="text-align: center;">© 2025 Augusto Coronel. All rights reserved.</p>
+        
+    </footer>
+
+
+</article>
+
+
+    </main>
+    
+
+  </body>
+</html>
