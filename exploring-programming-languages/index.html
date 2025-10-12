@@ -1,0 +1,505 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+
+    <!-- Enable responsiveness on mobile devices -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    
+      
+        <meta name="description" content="My journey on trying different programming languages as non-programmer featuring Bash, Python, JavaScript, HTML, CSS, C, C++, Rust, Zig, Odin, Go, Nim and Lua." />
+        <meta property="og:description" content="My journey on trying different programming languages as non-programmer featuring Bash, Python, JavaScript, HTML, CSS, C, C++, Rust, Zig, Odin, Go, Nim and Lua." />
+        <meta property="twitter:description" content="My journey on trying different programming languages as non-programmer featuring Bash, Python, JavaScript, HTML, CSS, C, C++, Rust, Zig, Odin, Go, Nim and Lua." />
+      
+    
+
+    <!-- Title -->
+    
+      
+    
+    <title>
+    
+    Exploring Programming Languages
+    
+</title>
+
+    <!-- Additional Facebook Meta Tags -->
+    <meta property="og:site_name" content="Augusto Coronel" />
+    <meta
+      property="og:url"
+      content="https:&#x2F;&#x2F;aocoronel.github.io&#x2F;exploring-programming-languages&#x2F;"
+    />
+    <meta
+      property="og:type"
+      content="article"
+    />
+    <meta property="og:title" content="Exploring Programming Languages" />
+
+    <!-- Additional Twitter Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      property="twitter:url"
+      content="https:&#x2F;&#x2F;aocoronel.github.io&#x2F;exploring-programming-languages&#x2F;"
+    />
+    <meta name="twitter:title" content="Exploring Programming Languages" />
+
+    <!-- Cover images -->
+    
+    
+
+    <meta
+      property="og:image"
+      content="https:&#x2F;&#x2F;aocoronel.github.io&#x2F;&#x2F;icons&#x2F;favicon&#x2F;web-app-manifest-512x512.png"
+    />
+
+    <meta
+      name="twitter:image"
+      content="https:&#x2F;&#x2F;aocoronel.github.io&#x2F;&#x2F;icons&#x2F;favicon&#x2F;web-app-manifest-512x512.png"
+    />
+
+
+
+    <!-- Favicons -->
+    
+    <link
+      rel="icon"
+      type="image/png"
+      href="https:&#x2F;&#x2F;aocoronel.github.io&#x2F;/icons/favicon/favicon-96x96.png"
+      sizes="96x96"
+    />
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="https:&#x2F;&#x2F;aocoronel.github.io&#x2F;/icons/favicon/favicon.svg"
+    />
+    <link
+      rel="shortcut icon"
+      href="https:&#x2F;&#x2F;aocoronel.github.io&#x2F;/icons/favicon/favicon.ico"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="https:&#x2F;&#x2F;aocoronel.github.io&#x2F;/icons/favicon/apple-touch-icon.png"
+    />
+    <meta name="apple-mobile-web-app-title" content="Exploring Programming Languages" />
+    <link
+      rel="manifest"
+      href="https:&#x2F;&#x2F;aocoronel.github.io&#x2F;/icons/favicon/site.webmanifest"
+    />
+    
+
+    <!-- RSS Feed -->
+    
+    <link
+      rel="alternate"
+      type="application/atom+xml"
+      title="RSS"
+      href="https://aocoronel.github.io/atom.xml"
+    />
+    
+
+    <!-- Load Styles -->
+    
+      <link
+        rel="stylesheet"
+        href="https://aocoronel.github.io/site.css"
+      />
+    
+
+    <!-- Load Fonts -->
+    
+
+  
+
+
+
+
+
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+  
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@700&display=swap" rel="stylesheet">
+  
+
+
+
+<!-- Forcing Font -->
+<style>
+body {
+  font-family:
+    "JetBrains Mono", Menlo, Monaco, Lucida Console, Liberation Mono,
+    DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New,
+    monospace, serif !important;
+}
+</style>
+
+
+    <!-- Pass Theme Preference as Data Attribute -->
+    <script src="https://aocoronel.github.io/js/init-theme.js"></script>
+
+    <!-- Reference return to click position script -->
+    <script defer src="https://aocoronel.github.io/js/reference-return.js"></script>
+
+    <!-- Additional scripts -->
+    
+      
+        <script defer src="https://aocoronel.github.io/js/codeblock.js"></script>
+      
+      
+        <script src="https://aocoronel.github.io/js/toggle-theme.js"></script>
+      
+      
+<!-- MathJax script for rendering LaTeX math equations -->
+<script src="https://aocoronel.github.io/js/mathjax-config.js"></script>
+<script
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"
+  async
+></script>
+
+
+      
+<script type="text/javascript" src="https://aocoronel.github.io/elasticlunr.min.js"></script>
+<script type="text/javascript" src="https://aocoronel.github.io/js/search.js"></script>
+
+    
+  </head>
+
+  <!-- Body element (contents of the page) -->
+  <body class="hack main container">
+    
+  
+    
+    
+      
+  
+  <section class="nav-header">
+    <nav
+      itemscope
+      itemtype="http://schema.org/SiteNavigationElement"
+      class="navbar"
+    >
+      <section class="nav-links">
+        
+        <a
+          itemprop="url"
+          class=""
+          href="https://aocoronel.github.io//"
+        >
+          <span itemprop="name">Home</span>
+        </a>
+        
+        <a
+          itemprop="url"
+          class=""
+          href="https://aocoronel.github.io//categories"
+        >
+          <span itemprop="name">Categories</span>
+        </a>
+        
+        <a
+          itemprop="url"
+          class=""
+          href="https://aocoronel.github.io//tags"
+        >
+          <span itemprop="name">Tags</span>
+        </a>
+        
+        <a
+          itemprop="url"
+          class=""
+          href="https://aocoronel.github.io//blog/about"
+        >
+          <span itemprop="name">About</span>
+        </a>
+        
+        <a
+          itemprop="url"
+          class=""
+          href="https://aocoronel.github.io//blog/programs"
+        >
+          <span itemprop="name">Programs</span>
+        </a>
+        
+        <a
+          itemprop="url"
+          class=""
+          href="https://aocoronel.github.io/links"
+        >
+          <span itemprop="name">Links</span>
+        </a>
+        
+      </section>
+    </nav>
+    <aside class="user-actions-container">
+      
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        class="search-icon"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"
+        />
+      </svg>
+      <input type="text" id="search" placeholder="Search..." />
+      <section class="search-results" aria-live="polite">
+        <article class="search-results__items" role="list"></article>
+      </section>
+       
+      <a id="dark-mode-toggle" href="#">
+        <img
+          src="https://aocoronel.github.io/icons/sun.svg"
+          id="sun-icon"
+          style="filter: invert(1)"
+          alt="Light mode"
+        />
+        <img
+          src="https://aocoronel.github.io/icons/moon.svg"
+          id="moon-icon"
+          alt="Dark mode"
+        />
+      </a>
+       
+      <a
+        href="https://aocoronel.github.io/atom.xml"
+        class="feed-icon"
+        rel="noopener noreferrer"
+      >
+        <img
+          src="https://aocoronel.github.io/icons/rss.svg"
+          id="rss-icon"
+          alt="RSS feed"
+          class="social-icon"
+        />
+      </a>
+       
+      <a
+        href="https:&#x2F;&#x2F;github.com&#x2F;aocoronel"
+        class="feed-icon"
+        rel="noopener noreferrer"
+      >
+        <img
+          src="https://aocoronel.github.io/icons/github.svg"
+          id="github-icon"
+          alt="GitHub"
+          class="social-icon"
+        />
+      </a>
+      
+    </aside>
+  </section>
+  
+
+    
+
+
+    <main>
+      
+
+<article itemscope itemtype="http://schema.org/BlogPosting">
+    <header>
+        <h1 itemprop="headline">Exploring Programming Languages</h1>
+        <data class="muted">
+    <svg class="icon i-clock" viewBox="0 0 32 32"
+         width="16" height="16" fill="none" stroke="currentcolor"
+         stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
+        <circle cx="16" cy="16" r="14"/>
+        <path d="M16 8 L16 16 20 20"/>
+    </svg>
+    <data>14 minute read</data>
+    <svg class="icon i-edit" viewBox="0 0 32 32"
+         width="16" height="16" fill="none" stroke="currentcolor"
+         stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
+        <path d="M30 7 L25 2 5 22 3 29 10 27 Z M21 6 L26 11 Z M5 22 L10 27 Z"/>
+    </svg>
+
+    Published: 2025-09-28
+</data>
+    </header>
+
+    <article itemprop="articleBody">
+        
+            <p>My journey on trying different programming languages as non-programmer featuring Bash, Python, JavaScript, HTML, CSS, C, C++, Rust, Zig, Odin, Go, Nim and Lua.</p>
+
+            
+
+            <!-- Render the rest of the content after removing the summary portion -->
+            
+<span id="continue-reading"></span><h2 id="introduction"><a class="zola-anchor" href="#introduction" aria-label="Anchor link for: introduction">Introduction</a></h2>
+<blockquote>
+<p>I'm not a programmer, so expect this post to be very optionated, and fun. I guess.</p>
+</blockquote>
+<p>My very first contact with programming was when I was trying Qtile, which is configured in Python. I still don't know Python today, besides the basic syntax and features all programming languages has.</p>
+<p>I started to like about programming after watching a video of <a href="https://www.youtube.com/@cloud-native-corner">Cloud Native Corner</a> about Taskwarrior, where his terminal workflow just drove me crazy. He made me rethink the way I was using my computer. Very soon, I started my bash scripting journey.</p>
+<h2 id="bash"><a class="zola-anchor" href="#bash" aria-label="Anchor link for: bash">Bash</a></h2>
+<p>My real experience with creating something was in Bash. I do not consider Bash a programming language, but a scripting language. It's possible to a lot with Bash, but it cannot go way too far. Certainly, my favorite language.</p>
+<p>Bash scripting is a glue language, just like Python, that allows you to run different programs that takes an argument and outputs something, similar to how a function works.</p>
+<p>Essentially you can give a shell script a name "John Doe", and it can do a lot of things with it, for example, output just "Doe" by running: <code>echo "John Doe" | awk '{print $2}'</code>.</p>
+<p>I made several scripts and actual programs in Bash, which you can find all of them in my GitHub. A brief collection:</p>
+<ul>
+<li><code>forg</code> - File Organizer written in Bash, which was rewritten in C.</li>
+<li><code>eureka</code> - A idea manager program inspired by a program of the <a href="https://github.com/simeg/eureka">same name</a>, written in Rust.</li>
+<li><code>pass</code> - A clone of passwordstore which uses <code>age</code>, instead of <code>gpg</code>.</li>
+<li><code>neostow</code> - Stow, but operations are instructed by a file.</li>
+<li><code>repox</code> - Bulk operations with git, mainly clone, fetch, pull and push.</li>
+<li><code>media-converter</code> - A simple script that figures out what you are trying to convert, with support to compression, powered by FFmpeg.</li>
+<li><code>tmux-manager</code> - A tmux sessionizer powered by <code>fzf</code>, <code>find</code>, <code>zoxide</code> and <code>tmuxp</code> to create sessions, and a preview of each session.</li>
+<li><code>rofipass</code> - A rofi script to interact with passwordstore and it's <code>otp</code> and <code>tomb</code> plugins.</li>
+<li><code>bmark</code> - A bookmark manager powered by <code>sqlite3</code> with support to bulk operations like editing a plain text file.</li>
+<li><code>build-pages</code> - A script that uses <code>pandoc</code> to produce this blog.</li>
+<li><code>mirror</code> - A way to declare what programs are installed in a Arch system, like NixOS.</li>
+<li><code>jn</code> - A journalling helper that uses <code>fzf</code> and <code>rg</code> to search notes.</li>
+<li><code>doppel</code> - Run commands in a different directory(ies).</li>
+</ul>
+<p>All of these are available in my GitHub, some are at my <code>dotfiles</code> repository.</p>
+<p>Bash can do anything, by living in the shoulders of other programming languages.</p>
+<p>Many can say, Bash is a weird language, or, even complex and difficult, but I find bash extremely easy compared to any other programming language, by the simple fact it's very stripped down in features.</p>
+<p>Besides Bash, there is POSIX compliant scripts, that have maximum compatibility with other shells, has less features, but introduce better performance.</p>
+<p>This language is at my heart, but I learned to not use Bash for some tasks, when I needed more features and control.</p>
+<p>I've always seem programming languages like collectibles to show up in a shelf like trophies, but it's so much more than that. I have many prejudices to some languages, while admiring others.</p>
+<p>Bash is the only language I have confidence to say it's great, because I've been using it for almost a year.</p>
+<h2 id="python"><a class="zola-anchor" href="#python" aria-label="Anchor link for: python">Python</a></h2>
+<p>Python is the easiest programming language, mainly because it's just a language that glue the work of other programming languages, just like Bash, but in a more integrated way.</p>
+<p>Python is used everywhere from backend to machine learning, it does abstract a lot, to make you more productive and ship faster.</p>
+<p>There are two main flaws that Python programmers always complain about: It's a interpreted language, and it has GIL. Basically, any performance-critical task must not be done in Python, it wasn't made for that.</p>
+<p>Python for me is just a programming language to express your ideas and get feedback quickly by prototyping.</p>
+<p>Besides that, it's also the language with the biggest amount of resources for you to learn. But, even if it's put as the easiest programming language, it's very easy to fall to delusion you will get a job in one month, be realistic.</p>
+<p>I don't have any sort of expertise in Python, but I use it when my ideas are so simple, they don't need to be written in a "low-level" programming language.</p>
+<p>Some projects in my GitHub written in Python:</p>
+<ul>
+<li><code>sear</code> - It's a tool to interact with Kagi Bangs, essentially a JSON file, to search directly in the search from websites, rather than a search engine like Google.</li>
+<li><code>webshare</code> - A simple http server to download and upload files.</li>
+<li><code>bmark-bulk</code> - The bmark extension to make bulk operations (in bmark repository).</li>
+</ul>
+<p>I personally do not like Python, but it's perfect to find out very fast, that your idea was not that great.</p>
+<h2 id="go"><a class="zola-anchor" href="#go" aria-label="Anchor link for: go">Go</a></h2>
+<p>Basically a balance of C and Python to produce code that scales, is easy to maintain and it's fast.</p>
+<p>Everything about Go is good to me, except for the fact it's too easy to add external dependencies to projects, no optimizations are allowed in the binary, and the binary sizes are huge (2 MB for a hello world program). Even if go projects can end up like 60 MB of binary size, it's still extremely fast and efficient.</p>
+<p>The main reason something may not be written in Go is because the GC is obligatory. You cannot take it out, thus large projects may have GC spikes. No huge server wants that.</p>
+<p>The only thing I have in Go is <code>bmark-importer</code> which allows to import and export bookmarks from HTML to SQLite, and vice-versa.</p>
+<p>The simplicity of Go just rocks, but I do not see myself writing real work in it.</p>
+<h2 id="nim"><a class="zola-anchor" href="#nim" aria-label="Anchor link for: nim">Nim</a></h2>
+<p>This one is Python on steroids, really. Python syntax and C-like speed. Promises to be excellent, but my experience with Nim was very bad.</p>
+<p>If you cannot live without LSPs and Tree-sitter, so this language will pose against you. Tree-sitter for Nim is the slowest I ever saw, taking more 1 second in Neovim, and 1 second in Helix to load. The <code>nimlanguageserver</code> just devours RAM and CPU.</p>
+<p>The result of a program in Nim is just a little bit faster than Go, but it's just C with garbage collection and Python syntax.</p>
+<p>Nim can transpile to C, C++ and JavaScript. Really, if you want to write C, C++ or JavaScript, just learn them.</p>
+<p>While Nim can look extremely appealing, there isn't a clear place where it fits better, than other known languages.</p>
+<p>My only project in Nim is <code>neostow-nim</code> a rewrite of neostow in Nim. So good it was archived.</p>
+<h2 id="odin"><a class="zola-anchor" href="#odin" aria-label="Anchor link for: odin">Odin</a></h2>
+<p>I talked about Python on steroids, this is Go on steroids. It's just feels like Go but all memory is manually managed.</p>
+<p>Odin feels like the right language for me, once it's fully released and has a better documentation for the core library. The reason why Odin is good, is due to its simplicity, while producing high performant code.</p>
+<p>Odin has a philosophy to never support package managers. I didn't underestimated that take, but once I understood the point of view from the creator, it just makes sense. Odin was my main reason to turn my back to many other programming languages like Ruby, Go, and Rust. The beauty of this language, is that it forces you to take control, not only on memory management, but the project as a whole.</p>
+<h2 id="zig"><a class="zola-anchor" href="#zig" aria-label="Anchor link for: zig">Zig</a></h2>
+<p>Zig is simpler than Rust, but not as simple as C. It poses very hard to learn with few resources, not only to mention it's not fully released yet. It's also a good replacement to C with more safety features. The main thing about Zig is explicitness, where nothing is hidden from you.</p>
+<p>Compared to Odin, I feel Zig is way too much, but there isn't many languages with drop-in replacement to C, specially how on Zig does it.</p>
+<p>This language has a huge potential. Can't wait to see the first release.</p>
+<h2 id="lua"><a class="zola-anchor" href="#lua" aria-label="Anchor link for: lua">Lua</a></h2>
+<p>Quite enjoyable to write Lua. It can be used to any tasks where you need higher abstractions while building a program with a subtle loss in performance, while not perfect though. My experience with Lua was by modifying configuration files in Neovim, which is one of the good reasons to use Lua in a project, it does immediately becomes scriptable without direct changes to the main program.</p>
+<p>Lua is not good for standalone programs, since it's a interpreted language. It's often embedded in another language + the interpreter to allow complex extensibilities.</p>
+<h2 id="javascript"><a class="zola-anchor" href="#javascript" aria-label="Anchor link for: javascript">JavaScript</a></h2>
+<p>Reigns over the web. JavaScript developers are everywhere building everything in it. Want frontend? Got it. Want backend? Got it. Want static-types? Got it (TypeScript). Want several frameworks to choose, debate and argue? Got it. Want to make games? Got it.</p>
+<p>I often see Brazilian developers choosing the JavaScript path, to learn Typescript, Node.js, many frameworks and say they are full-stack developers... shesh.</p>
+<blockquote>
+<p>This take, was based on several profiles I visited on GitHub. The chances for you to find a JS engineer is very easy, specially in Brazil.</p>
+</blockquote>
+<p>I'm extremely opinionated about JavaScript. It was made for the web, and they put in the backend. JavaScript was made dynamically typed, and they made it statically-typed.</p>
+<p>By the way, I love the UNIX philosophy, where programs should do one thing, and do it very well. But I take it to programming languages as well, and there is not reason why you would do everything in one language, ignoring all the trade-offs, just because it's the easiest path. You may get your work done, that's fine! However, what if the work had better results? Just my opinion here.</p>
+<h2 id="html-and-css"><a class="zola-anchor" href="#html-and-css" aria-label="Anchor link for: html-and-css">HTML and CSS</a></h2>
+<p>Not a programming language.</p>
+<p>If it's web, you bring both. I think if you want to produce interactive and graphical applications, the web path is the easiest way to do that. Not a surprise JavaScript developers made a way to write desktop applications using JavaScript as well...</p>
+<p>HTML and CSS are everything about what we can preview in a browser, it can be as minimal as a CSS-less page, or as bloated to the point of getting slow to render.</p>
+<h2 id="c-and-c"><a class="zola-anchor" href="#c-and-c" aria-label="Anchor link for: c-and-c">C and C++</a></h2>
+<p>The most used programming language for decades. This language is why we have other programming languages. C is the father of Bash and Python and several other languages, directly or indirectly.</p>
+<p>Everything is possible, coding in it is very bare-bones, manual memory management backed by Math, all sorts of undefined behavior (UB) are allowed, and if you need resources to learn C, just embrace manpages.</p>
+<p>From all of the languages I've mentioned so far, C is the language that brought me a real joy in programming. I made just one program so far in C, I have no ideas how many security holes, UBs and problems it has, but it was an amazing experience to write it whatsoever.</p>
+<p>C is the face of programming in a year, where many modern concepts and features were not a thing. When you reach to learn C, you get the very fundamentals of learning programming. And what you absolutely need to get a "Hello, World" in the standard output, or millions of lines to make a kernel which powers almost everything known to mankind related to digital devices. This allows me to talk about the next language: C++.</p>
+<p>C with all the modern features I told C does not have. It's fairly easy to find YouTubers pointing out that C++ is a very complicated language. That's the decision of the developer, since C++ can be written like C, with a feature or other from C++.</p>
+<p>From all the collection of C languages, the fundamentals is the same. You have full control over what you are doing, and if something goes wrong, it's your responsibility. The compiler will always take, that the developer does know what they are doing, but if you don't know... well, guess we are screwed.</p>
+<p>The C status today is up-to-debate since there are always more people saying it's an unsafe language that should be deprecated.</p>
+<p>I do not believe that. If C was that unsafe, surely 99% of all devices we use would just explode (hacked, crash...). While that happens, it's still not a good argument alone to move billions of lines of code to a "safer" language, that happens to use of unsafe features to get the very same result (performance). It is the effort of taking a bolder and putting another one in the place.</p>
+<p>Those who write C are particularly good at writing C, while newcomers are insanely prone to commit vulnerabilities, it's a phase of programming all C developers have passed by, and does still passes. That's fine! We aren't perfect after all, but we can, sure, improve.</p>
+<p>I do strictly believe that learning Rust does no replace the need for learning C. Specially, because in the end you will just enjoy Rust way more if you know why it exists in the first place.</p>
+<h2 id="rust"><a class="zola-anchor" href="#rust" aria-label="Anchor link for: rust">Rust</a></h2>
+<p>In my opinion, it's by far the hardest programming language you can learn today. If you follow along with the official Rust Programming Language Book, everything goes happily fine until you reach the Chapter that talks about Error Handling, Traits, and Lifetimes. Suddenly everything gets too complicated and I don't even know why I'm learning it anymore. I read the whole chapter about Traits, and understood no single word. Skill issue, mostly. I get it.</p>
+<p>While Rust does not have a memory management like in C, powered by Math, it's equally complicated.</p>
+<p>I have no idea why it's insanely praised among programmers (written in Rust, btw) and it's being constantly adopted as a replacement to other languages... guess I'll have to learn it by a way or another? Really?</p>
+<p>I like Rust, don't get me wrong, but I do not enjoy how Cargo works. Add a dependency is as easy as running a command in the terminal. Does it bring one dependency? Yes, but it does also have dependencies. So in the end you added one, and you got 20. The result? Your program was compiling in a blink, now it takes 2 minutes. Have I mentioned that developers may create APIs in the license they want? Then, you are working in a closed sourced project, and then, you accidentally got a GPL library in it...</p>
+<p>We got a modern language and modern issues. Not going to Rust, I guess. Maybe I'll stick with the old and very well known UBs in C already documented over decades by experts exploring the language.</p>
+<h2 id="conclusion"><a class="zola-anchor" href="#conclusion" aria-label="Anchor link for: conclusion">Conclusion</a></h2>
+<p>So I've onboarded all the languages I've tried and know a little bit about. Surely there are plenty of others. I'm developing CLIs, so I don't have to bother about languages like Haskell, Lisp, Erlang, Elixir, OCaml, and many others.</p>
+<p>Choosing a language is more about: This is the right language for the job, rather than just do it in Rust or JavaScript. It may feel very hard to pick one, and that's true. That's also another reason why I've chosen C. All the other languages offer some sort of compatibility with the C ABI, somehow, so learning C is a step to any other language.</p>
+<p>After a quite long journey, that took me some several months trying, researching, and exploring these languages, I landed on C. The only programming languages that are appealing enough to me are Zig and Odin.</p>
+<p>That's my view for these languages, from the perspective of a non-programmer human with no real job at IT and no CS degree. Hope you enjoyed it.</p>
+
+
+        
+        <p>This post is licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> by the author.</p>
+
+    </article>
+
+    <!-- Comment section -->
+    
+      
+    
+
+
+    <!-- Page footer -->
+    
+    <footer>
+        <hr>
+        <p>
+            
+            
+                
+                in <a href="https://aocoronel.github.io/categories/tech/">tech</a>
+            
+            
+                and
+                tagged
+                
+                    <a href="https://aocoronel.github.io/tags/timeline/">timeline</a>
+                    
+                        
+                            
+                                and
+                            
+                        
+                    
+                
+                    <a href="https://aocoronel.github.io/tags/opinion/">opinion</a>
+                    
+                        
+                    
+                
+            
+        </p>
+
+        <!-- Revision history (optional) -->
+        
+          
+        
+
+        
+        <p style="text-align: center;">© 2025 Augusto Coronel. All rights reserved.</p>
+        
+    </footer>
+
+
+</article>
+
+
+    </main>
+    
+
+  </body>
+</html>
