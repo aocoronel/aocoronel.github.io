@@ -1,0 +1,482 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+
+    <!-- Enable responsiveness on mobile devices -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    
+      
+        <meta name="description" content="Neovim does not have support for spelling other than English by default. Here are how you can get the required files to enable spelling in Neovim." />
+        <meta property="og:description" content="Neovim does not have support for spelling other than English by default. Here are how you can get the required files to enable spelling in Neovim." />
+        <meta property="twitter:description" content="Neovim does not have support for spelling other than English by default. Here are how you can get the required files to enable spelling in Neovim." />
+      
+    
+
+    <!-- Title -->
+    
+      
+    
+    <title>
+    
+    How to Install Spelling in Neovim
+    
+</title>
+
+    <!-- Additional Facebook Meta Tags -->
+    <meta property="og:site_name" content="Augusto Coronel" />
+    <meta
+      property="og:url"
+      content="https:&#x2F;&#x2F;aocoronel.github.io&#x2F;how-to-install-spelling-in-neovim&#x2F;"
+    />
+    <meta
+      property="og:type"
+      content="article"
+    />
+    <meta property="og:title" content="How to Install Spelling in Neovim" />
+
+    <!-- Additional Twitter Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      property="twitter:url"
+      content="https:&#x2F;&#x2F;aocoronel.github.io&#x2F;how-to-install-spelling-in-neovim&#x2F;"
+    />
+    <meta name="twitter:title" content="How to Install Spelling in Neovim" />
+
+    <!-- Cover images -->
+    
+    
+
+    <meta
+      property="og:image"
+      content="https:&#x2F;&#x2F;aocoronel.github.io&#x2F;&#x2F;icons&#x2F;favicon&#x2F;web-app-manifest-512x512.png"
+    />
+
+    <meta
+      name="twitter:image"
+      content="https:&#x2F;&#x2F;aocoronel.github.io&#x2F;&#x2F;icons&#x2F;favicon&#x2F;web-app-manifest-512x512.png"
+    />
+
+
+
+    <!-- Favicons -->
+    
+    <link
+      rel="icon"
+      type="image/png"
+      href="https:&#x2F;&#x2F;aocoronel.github.io&#x2F;/icons/favicon/favicon-96x96.png"
+      sizes="96x96"
+    />
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="https:&#x2F;&#x2F;aocoronel.github.io&#x2F;/icons/favicon/favicon.svg"
+    />
+    <link
+      rel="shortcut icon"
+      href="https:&#x2F;&#x2F;aocoronel.github.io&#x2F;/icons/favicon/favicon.ico"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="https:&#x2F;&#x2F;aocoronel.github.io&#x2F;/icons/favicon/apple-touch-icon.png"
+    />
+    <meta name="apple-mobile-web-app-title" content="How to Install Spelling in Neovim" />
+    <link
+      rel="manifest"
+      href="https:&#x2F;&#x2F;aocoronel.github.io&#x2F;/icons/favicon/site.webmanifest"
+    />
+    
+
+    <!-- RSS Feed -->
+    
+    <link
+      rel="alternate"
+      type="application/atom+xml"
+      title="RSS"
+      href="https://aocoronel.github.io/atom.xml"
+    />
+    
+
+    <!-- Load Styles -->
+    
+      <link
+        rel="stylesheet"
+        href="https://aocoronel.github.io/site.css"
+      />
+    
+
+    <!-- Load Fonts -->
+    
+
+  
+
+
+
+
+
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+  
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@700&display=swap" rel="stylesheet">
+  
+
+
+
+<!-- Forcing Font -->
+<style>
+body {
+  font-family:
+    "JetBrains Mono", Menlo, Monaco, Lucida Console, Liberation Mono,
+    DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New,
+    monospace, serif !important;
+}
+</style>
+
+
+    <!-- Pass Theme Preference as Data Attribute -->
+    <script src="https://aocoronel.github.io/js/init-theme.js"></script>
+
+    <!-- Reference return to click position script -->
+    <script defer src="https://aocoronel.github.io/js/reference-return.js"></script>
+
+    <!-- Additional scripts -->
+    
+      
+        <script defer src="https://aocoronel.github.io/js/codeblock.js"></script>
+      
+      
+        <script src="https://aocoronel.github.io/js/toggle-theme.js"></script>
+      
+      
+<!-- MathJax script for rendering LaTeX math equations -->
+<script src="https://aocoronel.github.io/js/mathjax-config.js"></script>
+<script
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"
+  async
+></script>
+
+
+      
+<script type="text/javascript" src="https://aocoronel.github.io/elasticlunr.min.js"></script>
+<script type="text/javascript" src="https://aocoronel.github.io/js/search.js"></script>
+
+    
+  </head>
+
+  <!-- Body element (contents of the page) -->
+  <body class="hack main container">
+    
+  
+    
+    
+      
+  
+  <section class="nav-header">
+    <nav
+      itemscope
+      itemtype="http://schema.org/SiteNavigationElement"
+      class="navbar"
+    >
+      <section class="nav-links">
+        
+        <a
+          itemprop="url"
+          class=""
+          href="https://aocoronel.github.io//"
+        >
+          <span itemprop="name">Home</span>
+        </a>
+        
+        <a
+          itemprop="url"
+          class=""
+          href="https://aocoronel.github.io//categories"
+        >
+          <span itemprop="name">Categories</span>
+        </a>
+        
+        <a
+          itemprop="url"
+          class=""
+          href="https://aocoronel.github.io//tags"
+        >
+          <span itemprop="name">Tags</span>
+        </a>
+        
+        <a
+          itemprop="url"
+          class=""
+          href="https://aocoronel.github.io//blog/about"
+        >
+          <span itemprop="name">About</span>
+        </a>
+        
+        <a
+          itemprop="url"
+          class=""
+          href="https://aocoronel.github.io//blog/programs"
+        >
+          <span itemprop="name">Programs</span>
+        </a>
+        
+        <a
+          itemprop="url"
+          class=""
+          href="https://aocoronel.github.io/links"
+        >
+          <span itemprop="name">Links</span>
+        </a>
+        
+      </section>
+    </nav>
+    <aside class="user-actions-container">
+      
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        class="search-icon"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"
+        />
+      </svg>
+      <input type="text" id="search" placeholder="Search..." />
+      <section class="search-results" aria-live="polite">
+        <article class="search-results__items" role="list"></article>
+      </section>
+       
+      <a id="dark-mode-toggle" href="#">
+        <img
+          src="https://aocoronel.github.io/icons/sun.svg"
+          id="sun-icon"
+          style="filter: invert(1)"
+          alt="Light mode"
+        />
+        <img
+          src="https://aocoronel.github.io/icons/moon.svg"
+          id="moon-icon"
+          alt="Dark mode"
+        />
+      </a>
+       
+      <a
+        href="https://aocoronel.github.io/atom.xml"
+        class="feed-icon"
+        rel="noopener noreferrer"
+      >
+        <img
+          src="https://aocoronel.github.io/icons/rss.svg"
+          id="rss-icon"
+          alt="RSS feed"
+          class="social-icon"
+        />
+      </a>
+       
+      <a
+        href="https:&#x2F;&#x2F;github.com&#x2F;aocoronel"
+        class="feed-icon"
+        rel="noopener noreferrer"
+      >
+        <img
+          src="https://aocoronel.github.io/icons/github.svg"
+          id="github-icon"
+          alt="GitHub"
+          class="social-icon"
+        />
+      </a>
+      
+    </aside>
+  </section>
+  
+
+    
+
+
+    <main>
+      
+
+<article itemscope itemtype="http://schema.org/BlogPosting">
+    <header>
+        <h1 itemprop="headline">How to Install Spelling in Neovim</h1>
+        <data class="muted">
+    <svg class="icon i-clock" viewBox="0 0 32 32"
+         width="16" height="16" fill="none" stroke="currentcolor"
+         stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
+        <circle cx="16" cy="16" r="14"/>
+        <path d="M16 8 L16 16 20 20"/>
+    </svg>
+    <data>2 minute read</data>
+    <svg class="icon i-edit" viewBox="0 0 32 32"
+         width="16" height="16" fill="none" stroke="currentcolor"
+         stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
+        <path d="M30 7 L25 2 5 22 3 29 10 27 Z M21 6 L26 11 Z M5 22 L10 27 Z"/>
+    </svg>
+
+    Published: 2025-04-14
+</data>
+    </header>
+
+    <article itemprop="articleBody">
+        
+            <p>Neovim does not have support for spelling other than English by default. Here are how you can get the required files to enable spelling in Neovim.</p>
+
+            
+
+            <!-- Render the rest of the content after removing the summary portion -->
+            
+<span id="continue-reading"></span>
+<p>Neovim does not have support for spelling other than English by default. Here are how you can get the required files to enable spelling in <code>neovim</code>.</p>
+<p>You can find a list of dictionaries from LibreOffice at: <a href="https://extensions.libreoffice.org/?q=Dictionary&amp;action_doExtensionSearch=Search">LibreOffice Extensions</a>.</p>
+<p>A demonstration of the process can be seen below.</p>
+<h2 id="portuguese-brazilian"><a class="zola-anchor" href="#portuguese-brazilian" aria-label="Anchor link for: portuguese-brazilian">Portuguese (Brazilian)</a></h2>
+<h3 id="get-files"><a class="zola-anchor" href="#get-files" aria-label="Anchor link for: get-files">Get Files</a></h3>
+<p>To install pt_BR spelling in <code>neovim</code> you will need to get the files. You can manually download the file at <a href="https://extensions.libreoffice.org/pt-BR/extensions/show/vero-verificador-ortografico-e-hifenizador-em-portugues_gGKns9tJ">LibreOffice - Português do Brasil Spellcheck</a> or run the following command</p>
+<pre data-lang="bash" style="background-color:#2b303b;color:#6c7079;" class="language-bash "><code class="language-bash" data-lang="bash"><span style="color:#eb6772;">wget</span><span style="color:#abb2bf;"> https://extensions.libreoffice.org/assets/downloads/z/veroptbrv320aoc.oxt
+</span></code></pre>
+<p>The license from each dictionary may vary.</p>
+<h3 id="compile"><a class="zola-anchor" href="#compile" aria-label="Anchor link for: compile">Compile</a></h3>
+<p>The <code>.oxt</code> file is an archive, which can be unpacked using <code>zip</code> like this:</p>
+<pre data-lang="bash" style="background-color:#2b303b;color:#6c7079;" class="language-bash "><code class="language-bash" data-lang="bash"><span style="color:#eb6772;">unzip</span><span style="color:#abb2bf;"> veroptbrv320aoc.oxt
+</span></code></pre>
+<p>The result will be like this:</p>
+<pre data-lang="text" style="background-color:#2b303b;color:#6c7079;" class="language-text "><code class="language-text" data-lang="text"><span style="color:#abb2bf;">├── description.xml
+</span><span style="color:#abb2bf;">├── dialog
+</span><span style="color:#abb2bf;">│   ├── OptionsDialog.xcs
+</span><span style="color:#abb2bf;">│   ├── OptionsDialog.xcu
+</span><span style="color:#abb2bf;">│   ├── pt_BR_pt_BR.default
+</span><span style="color:#abb2bf;">│   ├── pt_BR_pt_BR.properties
+</span><span style="color:#abb2bf;">│   └── pt_BR.xdl
+</span><span style="color:#abb2bf;">├── dictionaries.xcu
+</span><span style="color:#abb2bf;">├── hyph_pt_BR.dic
+</span><span style="color:#abb2bf;">├── icons
+</span><span style="color:#abb2bf;">│   └── VERO-logo.png
+</span><span style="color:#abb2bf;">├── Lightproof.components
+</span><span style="color:#abb2bf;">├── Lightproof.py
+</span><span style="color:#abb2bf;">├── Linguistic.xcu
+</span><span style="color:#abb2bf;">├── META-INF
+</span><span style="color:#abb2bf;">│   └── manifest.xml
+</span><span style="color:#abb2bf;">├── package-description.txt
+</span><span style="color:#abb2bf;">├── pt_BR.aff
+</span><span style="color:#abb2bf;">├── pt_BR.dic
+</span><span style="color:#abb2bf;">├── pythonpath
+</span><span style="color:#abb2bf;">│   ├── lightproof_handler_pt_BR.py
+</span><span style="color:#abb2bf;">│   ├── lightproof_impl_pt_BR.py
+</span><span style="color:#abb2bf;">│   ├── lightproof_opts_pt_BR.py
+</span><span style="color:#abb2bf;">│   └── lightproof_pt_BR.py
+</span><span style="color:#abb2bf;">├── README_en.txt
+</span><span style="color:#abb2bf;">├── README_hyph_pt_BR.txt
+</span><span style="color:#abb2bf;">├── README_Lightproof_pt_BR.txt
+</span><span style="color:#abb2bf;">└── README_pt_BR.txt
+</span></code></pre>
+<p>Now, open <code>neovim</code> within the directory these files are present and run the following command: <code>mkspell pt pt_BR</code>. A new <code>.spl</code> file will be generated. In this case, it will look like this: <code>pt.utf-8.spl</code>.</p>
+<h3 id="usage"><a class="zola-anchor" href="#usage" aria-label="Anchor link for: usage">Usage</a></h3>
+<p>To enable your spelling you can do it in two interesting ways. Pick one:</p>
+<ol>
+<li>Enable an Option</li>
+<li>Create an Autocmd</li>
+</ol>
+<h4 id="enable-an-option"><a class="zola-anchor" href="#enable-an-option" aria-label="Anchor link for: enable-an-option">Enable an Option</a></h4>
+<p>First, you will have to move your <code>.spl</code> file to <code>spell</code> folder within your <code>neovim</code> config, if you use LazyVim Distro, or you can set an option as well.</p>
+<p>In your configuration file, you can add the following lines:</p>
+<pre data-lang="lua" style="background-color:#2b303b;color:#6c7079;" class="language-lua "><code class="language-lua" data-lang="lua"><span style="color:#eb6772;">vim</span><span style="color:#abb2bf;">.opt.spell </span><span style="color:#adb7c9;">= </span><span style="color:#db9d63;">true
+</span><span style="color:#eb6772;">vim</span><span style="color:#abb2bf;">.opt.encoding </span><span style="color:#adb7c9;">= </span><span style="color:#9acc76;">&quot;UTF-8&quot;
+</span><span style="color:#eb6772;">vim</span><span style="color:#abb2bf;">.opt.spelllang </span><span style="color:#adb7c9;">= </span><span style="color:#9acc76;">&quot;pt,en_us&quot; </span><span style="font-style:italic;color:#5f697a;">-- Optionally enable spell for both languages
+</span><span style="color:#eb6772;">vim</span><span style="color:#abb2bf;">.opt.spellfile</span><span style="color:#adb7c9;">=</span><span style="color:#9acc76;">&quot;~/.config/neovim/spell/pt.utf-8.spl&quot; </span><span style="font-style:italic;color:#5f697a;">-- Required if not using LazyVim
+</span></code></pre>
+<h4 id="enable-an-autocmd"><a class="zola-anchor" href="#enable-an-autocmd" aria-label="Anchor link for: enable-an-autocmd">Enable an Autocmd</a></h4>
+<p>If you wish to only turn spelling on in specific files you can use an autocmd to turn spelling on in files like plain text and markdown. See an example:</p>
+<pre data-lang="lua" style="background-color:#2b303b;color:#6c7079;" class="language-lua "><code class="language-lua" data-lang="lua"><span style="color:#eb6772;">vim</span><span style="color:#abb2bf;">.api.</span><span style="color:#eb6772;">nvim_create_autocmd</span><span style="color:#abb2bf;">(</span><span style="color:#9acc76;">&quot;FileType&quot;</span><span style="color:#abb2bf;">, {
+</span><span style="color:#abb2bf;">  </span><span style="color:#9acc76;">pattern </span><span style="color:#abb2bf;">= { </span><span style="color:#9acc76;">&quot;text&quot;</span><span style="color:#abb2bf;">, </span><span style="color:#9acc76;">&quot;plaintex&quot;</span><span style="color:#abb2bf;">, </span><span style="color:#9acc76;">&quot;gitcommit&quot;</span><span style="color:#abb2bf;">, </span><span style="color:#9acc76;">&quot;markdown&quot; </span><span style="color:#abb2bf;">},
+</span><span style="color:#abb2bf;">  </span><span style="color:#5cb3fa;">callback </span><span style="color:#abb2bf;">= </span><span style="color:#cd74e8;">function</span><span style="color:#abb2bf;">()
+</span><span style="color:#abb2bf;">    </span><span style="color:#eb6772;">vim</span><span style="color:#abb2bf;">.opt_local.spelllang </span><span style="color:#adb7c9;">= </span><span style="color:#abb2bf;">{ </span><span style="color:#9acc76;">&quot;pt&quot;</span><span style="color:#abb2bf;">, </span><span style="color:#9acc76;">&quot;en_us&quot; </span><span style="color:#abb2bf;">}
+</span><span style="color:#abb2bf;">  </span><span style="color:#cd74e8;">end</span><span style="color:#abb2bf;">,
+</span><span style="color:#abb2bf;">})
+</span></code></pre>
+<p>This will enable spelling on <code>text</code>, <code>plaintext</code>, interactive git commit messages and <code>markdown</code> filetypes.</p>
+<h2 id="tips"><a class="zola-anchor" href="#tips" aria-label="Anchor link for: tips">Tips</a></h2>
+<p>You can toggle the spelling with the <code>spell!</code> command, or set it to a binding like so:</p>
+<pre data-lang="lua" style="background-color:#2b303b;color:#6c7079;" class="language-lua "><code class="language-lua" data-lang="lua"><span style="color:#eb6772;">vim</span><span style="color:#abb2bf;">.keymap.</span><span style="color:#eb6772;">set</span><span style="color:#abb2bf;">(</span><span style="color:#9acc76;">&quot;n&quot;</span><span style="color:#abb2bf;">, </span><span style="color:#9acc76;">&quot;&lt;leader&gt;ts&quot;</span><span style="color:#abb2bf;">, </span><span style="color:#9acc76;">&quot;:set spell!&lt;CR&gt;&quot;</span><span style="color:#abb2bf;">, { </span><span style="color:#9acc76;">noremap </span><span style="color:#abb2bf;">= </span><span style="color:#db9d63;">true</span><span style="color:#abb2bf;">, </span><span style="color:#9acc76;">silent </span><span style="color:#abb2bf;">= </span><span style="color:#db9d63;">true</span><span style="color:#abb2bf;">, </span><span style="color:#9acc76;">desc </span><span style="color:#abb2bf;">= </span><span style="color:#9acc76;">&quot;Toggle: [S]pell&quot; </span><span style="color:#abb2bf;">})
+</span></code></pre>
+
+
+        
+        <p>This post is licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> by the author.</p>
+
+    </article>
+
+    <!-- Comment section -->
+    
+      
+    
+
+
+    <!-- Page footer -->
+    
+    <footer>
+        <hr>
+        <p>
+            
+            
+                
+                in <a href="https://aocoronel.github.io/categories/tech/">tech</a>
+            
+            
+                and
+                tagged
+                
+                    <a href="https://aocoronel.github.io/tags/cli/">cli</a>
+                    
+                        
+                            
+                                ,
+                            
+                        
+                    
+                
+                    <a href="https://aocoronel.github.io/tags/neovim/">neovim</a>
+                    
+                        
+                            
+                                and
+                            
+                        
+                    
+                
+                    <a href="https://aocoronel.github.io/tags/how-to/">how-to</a>
+                    
+                        
+                    
+                
+            
+        </p>
+
+        <!-- Revision history (optional) -->
+        
+          
+        
+
+        
+        <p style="text-align: center;">© 2025 Augusto Coronel. All rights reserved.</p>
+        
+    </footer>
+
+
+</article>
+
+
+    </main>
+    
+
+  </body>
+</html>
