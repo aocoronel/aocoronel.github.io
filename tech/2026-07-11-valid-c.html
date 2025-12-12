@@ -1,0 +1,279 @@
+<!doctype html>
+<html
+  xmlns="http://www.w3.org/1999/xhtml"
+  lang=""
+  xml:lang=""
+  >
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=yes"
+    />
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="../media/favicons/favicon-16x16.png"
+    />
+        <meta name="author" content="Augusto Coronel" />
+         <meta property="og:title" content="Valid C" />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:url"
+      content="https://aocoronel.github.io/tech/2026-07-11-valid-c.html"
+    />
+    <meta
+      property="og:image"
+      content="https://raw.githubusercontent.com/aocoronel/aocoronel.github.io/refs/heads/main/media/favicons/banner.png"
+    />
+    <meta property="og:site_name" content="Augusto Coronel" />
+    <meta property="og:description" content="Why I like C so much, and what things don’t make me want to stay." />
+    <meta name="twitter:title" content="Augusto Coronel" />
+    <meta name="twitter:description" content="Why I like C so much, and what things don’t make me want to stay." />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:image"
+      content="https://raw.githubusercontent.com/aocoronel/aocoronel.github.io/refs/heads/main/media/favicons/banner.png"
+    />
+    <title>Valid C</title>
+        <link rel="stylesheet" href="../posts.css" />
+      
+  </head>
+  <body>
+    
+    <header>
+      <div class="header_content">
+        <div class="navbar">
+          <a class="title" href="../index.html">Coronel</a>
+          <div class="nav_item ">
+            <a href="../about.html">About</a>
+          </div>
+          <div class="nav_item ">
+            <a href="../index.html">Home</a>
+          </div>
+        </div>
+        <span class="clear"></span>
+      </div>
+    </header>
+    <div class="content">
+      <br />
+      
+      <div class="content-upper">
+        <div class="content-title-n-toc">
+          <p class="content-title">Valid C</p>
+          <p class="content-desc">Why I like C so much, and what things don’t make me want to stay.</p>
+          <span style="float: left" class="metadata"
+            >Posted <b>Jul 11, 2026 08:00</b></span
+          >
+          <span style="float: right" class="metadata">10 min read</span>
+          <br />
+                    <div class="table_of_contents">
+            <div class="table_of_contents_header">Contents:</div>
+            <ul>
+            <li><a href="#closing" id="toc-closing"><span class="toc-section-number">1</span> Closing</a></li>
+            </ul>
+          </div>
+                  </div>
+      </div>
+      <br />
+      <div></div>
+       <p>C was the first programming language I’ve learned. It took me a very long time to make the decision to learn it among so many options. I thought it was the very best choice. Today? I partially agree with it, because C is perfect to learn programming. Let me remake this sentence: Perfect to learn programming, not just how to write C code, but programming. This was the main source of knowledge that powers me today to pick any language and just go write stuff.</p>
+<p>Over time I came with many difficulties while writing code in it, so I started a library called <code>aoclibs.h</code>, a collection of libraries written from scratch, with the goal to aid me write the things I wanted to do. And most of my experience with C was developing it, and exploring the different areas of memory management, strings, slices, pattern matching and the whole macro cursed rabbit hole.</p>
+<p>I love C for the fact of it being so simple, as weird as it may sound, easy to read, and barebones, at least on surface. But C sucks for everything else. I had to find better solutions to manage memory, because there was no easy way to manage them, without verifying that each conditional branch could leak memory, or deal with errors in dozens of different ways, because people came with clever ideas to do it, or even have to deal with the most basic stupid type issues.</p>
+<p>A very interesting approach I employed in my <code>aoclibs.h</code> library, was to write C in a way that it’s fully compatible with C++ without <code>extern "C"</code>. This lets me compile a valid C program, using the C++ compiler, and get a much better type system, that C could never provide. And in fact, just by following all C++ errors in that library, I was able to find many bugs.</p>
+<p>Take the following example in C, which is also valid C++:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;stdbool.h&gt;</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;stdio.h&gt;</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> <span class="op">*</span>foo<span class="op">(</span><span class="dt">void</span><span class="op">)</span> <span class="op">{</span> <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span> <span class="op">}</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> main<span class="op">(</span><span class="dt">void</span><span class="op">)</span> <span class="op">{</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  <span class="dt">bool</span> ok <span class="op">=</span> foo<span class="op">();</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> <span class="op">(</span>ok <span class="op">==</span> <span class="dv">0</span><span class="op">)</span> <span class="op">{</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    printf<span class="op">(</span><span class="st">&quot;valid C</span><span class="sc">\n</span><span class="st">&quot;</span><span class="op">);</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p>Compiling this using the following: <code>cc -Wpedantic -Wextra -Wall -o main main.c</code>.</p>
+<p>This compiles without emitting a single warning or error, but even in this case C++ doesn’t complain either. Note how we returned an integer from a function that it’s supposed to return a pointer. And when we collect the return value of <code>foo</code>, this is code is only valid, because we put the value in a boolean, which it’s primitive is <code>_Bool</code> (by this I mean that if <code>ok</code> was <code>int</code> the compiler complains), but <code>false</code> and <code>true</code> are actual macros that expand to <code>1</code> and <code>0</code>, respectively. No way any language that came after C can do this atrocity.</p>
+<p>I can’t really explain why C let’s you do this, but this is actually something that is exploited all over the place. And that is the <code>NULL</code> macro. This macro expands to the following: <code>((void*)0)</code>, it’s just zero… things like this makes me hate this language very deeply. The <code>NULL</code> macro casts zero to a pointer just for the sake of the compiler don’t throwing a warning, but this example I’ve shown doesn’t. You are free to return <code>0</code> instead of <code>NULL</code>, they are the same.</p>
+<p>Another thing that annoys me a lot is forward declaration. In the beginning you hear everyone complain about it, but I was like: “no way this can be this bad”. It is. Once again let’s find how <code>aoclibs.h</code> is made:</p>
+<p>The following is a trimmed output of the <code>tree</code> command in the source code.</p>
+<pre class="console"><code>├── build
+├── build++
+├── include
+│   ├── base.h
+│   ├── buddy.h
+│   ├── calculus.h
+│   ├── cfg.h
+│   ├── colors.h
+│   ├── cstr.h
+│   ├── da.h
+│   ├── file.h
+│   ├── fork.h
+│   ├── fquery.h
+│   ├── hmap.h
+│   ├── io.h
+│   ├── libc.h
+│   ├── map.h
+│   ├── pp.h
+│   ├── printfc.h
+│   ├── rc.h
+│   └── stack.h
+├── libs
+│   ├── crown.h
+│   ├── debug.h
+│   ├── heap_trace.h
+│   ├── ini.h
+│   ├── spinner.h
+│   └── tunit.h
+├── merge.c
+├── src
+│   ├── buddy.c
+│   ├── calculus.c
+│   ├── cstr.c
+│   ├── file.c
+│   ├── fork.c
+│   ├── fquery.c
+│   ├── hmap.c
+│   ├── io.c
+│   ├── map.c
+│   ├── pp.c
+│   └── stack.c
+├── template.h
+└── vendor
+    ├── arena.h
+    └── rapidhash.h</code></pre>
+<p>Note how I do the classic splitting of header files and source files, but how do I came with a single header stb-style? The <code>merge.c</code> is responsible for doing that, no <code>cmake</code>, no <code>make</code> no <code>meson</code>. <code>merge.c</code> is itself compiled with <code>cc @build</code> or <code>c++ build++</code>. This will read <code>template.h</code> and replace all includes with files from <code>include</code> and <code>libs</code>, and at the very bottom append each file from <code>src</code> in it, producing a single header. You can infer some problems I have do deal with, in this approach. One of them is that <code>template.h</code> has to order all the libraries in a way that they can find all their dependencies, not only to mention they can be circular. Although, <code>aoclibs.h</code> works like a breeze, the step to make it is very painful, yet self-hosted without external dependencies, but the C compiler. The second problem is that I run my unit tests using the generated <code>aoclibs.h</code>, but this one is my fault for being lazy, and don’t make a better system for this. The problem is that I have to regenerate <code>aoclibs.h</code> and retry until the tests pass.</p>
+<blockquote>
+<p>By the way, if you are curious on how my unit tests work. They are written along the source code, either in the <code>.c</code> or <code>.h</code> files, and than transformed into a single executable by compiling them with <code>-DTUNIT</code>. All the tests run in the main process and execute all of them in a blink of an eye.</p>
+</blockquote>
+<p>Yet another pain in the neck I have is making reusable code across different types. New languages often have builtin code generation like C++ templates, just to name one, however the only two ways to make code generic in C, is by using macros or <code>void *</code>. Which one is worse? One you increase you compile times unnecessarily, and the second you lose type safety. Because I care more about compile times, I made the following:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">// hmap.h:36 (506b89e)</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="pp">#define hmap_insert</span><span class="op">(</span><span class="pp">map</span><span class="op">,</span><span class="pp"> slice</span><span class="op">,</span><span class="pp"> val</span><span class="op">)</span><span class="pp">                                     </span><span class="op">\</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="pp">    </span><span class="op">({</span><span class="pp">                                                                   </span><span class="op">\</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="pp">        </span><span class="dt">bool</span><span class="pp"> ok </span><span class="op">=</span><span class="pp"> </span><span class="kw">false</span><span class="op">;</span><span class="pp">                                                 </span><span class="op">\</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="pp">        </span><span class="kw">typeof</span><span class="op">((</span><span class="pp">map</span><span class="op">)-&gt;</span><span class="pp">entries</span><span class="op">)</span><span class="pp"> e </span><span class="op">=</span><span class="pp"> </span><span class="op">(</span><span class="kw">typeof</span><span class="op">((</span><span class="pp">map</span><span class="op">)-&gt;</span><span class="pp">entries</span><span class="op">))</span><span class="pp">_hmap_insert</span><span class="op">(</span><span class="pp"> </span><span class="op">\</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="pp">                </span><span class="op">(</span><span class="pp">_HashMap </span><span class="op">*)</span><span class="pp">map</span><span class="op">,</span><span class="pp"> </span><span class="op">(</span><span class="pp">slice</span><span class="op">),</span><span class="pp"> </span><span class="kw">sizeof</span><span class="op">(*(</span><span class="pp">map</span><span class="op">)-&gt;</span><span class="pp">entries</span><span class="op">));</span><span class="pp">      </span><span class="op">\</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="pp">        </span><span class="cf">if</span><span class="pp"> </span><span class="op">(</span><span class="pp">e</span><span class="op">)</span><span class="pp"> </span><span class="op">{</span><span class="pp">                                                         </span><span class="op">\</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="pp">            e</span><span class="op">-&gt;</span><span class="pp">value </span><span class="op">=</span><span class="pp"> </span><span class="op">(</span><span class="pp">val</span><span class="op">);</span><span class="pp">                                            </span><span class="op">\</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="pp">            ok </span><span class="op">=</span><span class="pp"> </span><span class="kw">true</span><span class="op">;</span><span class="pp">                                                   </span><span class="op">\</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="pp">        </span><span class="op">}</span><span class="pp">                                                                </span><span class="op">\</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="pp">        ok</span><span class="op">;</span><span class="pp">                                                              </span><span class="op">\</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="pp">    </span><span class="op">})</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>AOCDEF _HashEntry <span class="op">*</span>_hmap_insert<span class="op">(</span>_HashMap <span class="op">*</span>map<span class="op">,</span> <span class="dt">const</span> Slice key<span class="op">,</span> <span class="dt">const</span> <span class="dt">size_t</span> sizeof_entry<span class="op">);</span></span></code></pre></div>
+<p>Note how I run the actual code in a function, and all the operations that would require me to do more advanced error prone tricks with offsets and the size of the struct, I did them in the macro level. This is terrible code, I’m not proud for writing this. Don’t copy me. Although I wanted a much better solution than this, there is another project (in the topic of hashmap for context) available here: <a href="https://github.com/google/cwisstable">google/cwisstable</a>, and in there people achieve multiple type support by generating structs and functions, which costs you debugging information that is very valuable in a debugger, but by leveraging this cost, the API is much nicer to use.</p>
+<p>We can’t forget about naming in C. It only takes you to write a function called <code>foo</code>, and leave it visible for you to have very nice naming collisions, this way we don’t write <code>foo</code>, we write: <code>mylibname_foo</code>, if not: <code>mylibname_modulename_foo</code>. The modern languages let you do it, because they turn the name into absolute garbage in a step called mangling (taking your C ABI compatibility away in the process), so only them we can be happy and write <code>foo</code>. Personally, I don’t prefix <code>aoclibs.h</code> with <code>aoc</code>, because nobody uses it anyway, but me. But even by taking this assumption, I still have to bother a lot on how I name my functions, because as I say, I use the C++ compiler in my C source code, which can interfere with <code>stdlib++</code>.</p>
+<p>What about managing memory? C doesn’t have defer, and if you want to force it in, you can with varying levels of nice interface. For the nicest you need C23 with GCC, but every other compiler doesn’t compile the code. The simplest more portable requires <code>__attribute__(__cleanup__(fn))</code>, and I tried doing something very fancy with it, and inject it in an experimental allocator interface, all you needed to do was <code>Heap memory auto_free = heap_init(allocator, allocator_context);</code>, where <code>auto_free</code> was <code>#define auto_free __attribute__(__cleanup__(_heap_free))</code>. The result? My library would be twice as much complicated to read and write, than if I don’t do them. I’m condemned to rely on arenas. In the Linux kernel source code, there resides a file called <code>cleanup.h</code> which also uses from this attribute, but also overcomplicates everything, behind dozens of macros, unlike mine with one macro.</p>
+<p>Have I already mentioned, that one my practices in the codebase is to put <code>null</code> in all pointer that can return <code>NULL</code>, as a user-only clue, without clang’s bizarre <code>_Nonnull</code> and <code>_Nullable</code> keywords. To ensure that the pointers that don’t have <code>null</code> in it are always valid, I do put <code>$assert_nonnull(variable_name)</code> all over the place. That’s very nice, and helped me debug some things more easily, but it’s manual. There is no such reference feature, that guarantees the variable is always valid, and is not yet another footgun like C++ references.</p>
+<h2 data-number="1" id="closing"><span class="header-section-number">1</span> Closing</h2>
+<p>I’m very confident to say, that the best first programming language to learn as a beginner is C, but is one of the last languages you should actually ship stuff in. I mean, it’s fine, but too error prone. I had to learn it the hard way. But it’s absolute worth it, to put Python aside, and learn programming first.</p>
+<p>So what is the best language to ship stuff in? What about Rust? You may ask. For me Rust is the same experience of writing code like C, with some annoyances taken away, and new ones added to it. For me, the borrowing system, ownership and lifetimes are rather simple to understand and use, and that’s the main factor that brings safety to the language, however the entire set of <code>safe</code> and <code>unsafe</code> codeblocks for me, it’s just a <code>promise system</code> from the users, rather than real enforcement of safety by the compiler. It’s totally valid to take a gigantic function that is pure unsafe, and tell the function is safe, it’s just a promise. And among promises upon promises the compiler may render itself not helpful when you most need it.</p>
+<p>When I write C, and I get a nasty bug, I always think with myself: “it would be so much nicer if I’ve had written this in Rust, and the compiler tell me what’s wrong”, until it can’t, and then I’m cooked again. My true thoughts on Rust? I like Rust, don’t get me wrong (I have quite a couple or projects in Rust, because I cared about safety in them), but it’s not the style of programming I like to do, I would be much nicer if I had a data oriented Rust programming language, that is simple with fewer abstractions.</p>
+<p>Another worth mention is one my most recent projects I started: <code>odd</code>. This is an attempt to make a better GNU ed, for actual usable CLI-based text edits. I started it in Odin, so I could learn more about the language. However, it didn’t took me too long to find some horrible bugs in the code, and having no idea why, until I found out that was a classic bug I always had in C where I append the same pointer (but tricked, since the content of the pointer was always different) in the dynamic array, but it was so much more harder to debug, because I wasn’t used to Odin, so I couldn’t figure it out sooner, based on my old experiences. For me Odin is the most closest to C in usage, but addresses all my pain points in C, perhaps I was wrong to rewrite <code>odd</code> in C.</p>
+<p>Anyways, hope you enjoyed. See ya.</p>
+      <p class="license">
+        This post is licensed under
+        <a class="license" href="https://creativecommons.org/licenses/by/4.0/"
+          >CC BY 4.0</a
+        >
+        by the author.
+      </p>
+      <div style="display: flex; justify-content: center">
+        <div class="further-read">
+                    <a href="../tech/2026-06-16-tabs-vs-spaces.html">
+            <p class="further-read-p">Older</p>
+                        <p>Tabs vs Spaces</p>
+                      </a>
+                  </div>
+        <div class="further-read">
+                    <a href="../tech/2026-08-05-im-done-with-c.html">
+            <p class="further-read-p">Newer</p>
+                        <p>I'm done with C</p>
+                      </a>
+                  </div>
+      </div>
+    </div>
+    <footer>
+      <div class="footer_content">
+        <a
+          href="https://github.com/aocoronel"
+          class="glass-btn !px-3"
+          target="_blank"
+          ><svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="22"
+            height="22"
+            fill="var(--blue)"
+            viewBox="0 0 256 256"
+          >
+            <title>GitHub</title>
+            <path
+              d="M208,104v8a48,48,0,0,1-48,48H136a32,32,0,0,1,32,32v40H104V192a32,32,0,0,1,32-32H112a48,48,0,0,1-48-48v-8a49.28,49.28,0,0,1,8.51-27.3A51.92,51.92,0,0,1,76,32a52,52,0,0,1,43.83,24h32.34A52,52,0,0,1,196,32a51.92,51.92,0,0,1,3.49,44.7A49.28,49.28,0,0,1,208,104Z"
+              opacity="0.2"
+            ></path>
+            <path
+              d="M208.3,75.68A59.74,59.74,0,0,0,202.93,28,8,8,0,0,0,196,24a59.75,59.75,0,0,0-48,24H124A59.75,59.75,0,0,0,76,24a8,8,0,0,0-6.93,4,59.78,59.78,0,0,0-5.38,47.68A58.14,58.14,0,0,0,56,104v8a56.06,56.06,0,0,0,48.44,55.47A39.8,39.8,0,0,0,96,192v8H72a24,24,0,0,1-24-24A40,40,0,0,0,8,136a8,8,0,0,0,0,16,24,24,0,0,1,24,24,40,40,0,0,0,40,40H96v16a8,8,0,0,0,16,0V192a24,24,0,0,1,48,0v40a8,8,0,0,0,16,0V192a39.8,39.8,0,0,0-8.44-24.53A56.06,56.06,0,0,0,216,112v-8A58,58,0,0,0,208.3,75.68ZM200,112a40,40,0,0,1-40,40H112a40,40,0,0,1-40-40v-8a41.74,41.74,0,0,1,6.9-22.48A8,8,0,0,0,80,73.83a43.81,43.81,0,0,1,.79-33.58,43.88,43.88,0,0,1,32.32,20.06A8,8,0,0,0,119.82,64h32.35a8,8,0,0,0,6.74-3.69,43.87,43.87,0,0,1,32.32-20.06A43.81,43.81,0,0,1,192,73.83a8.09,8.09,0,0,0,1,7.65A41.76,41.76,0,0,1,200,104Z"
+            ></path></svg
+        ></a>
+        <a
+          href="https://codeberg.org/aocoronel"
+          class="glass-btn !px-3"
+          target="_blank"
+        >
+          <svg
+            fill="var(--blue)"
+            height="22"
+            role="img"
+            viewBox="0 0 24 24"
+            width="22"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <title>Codeberg</title>
+            <path
+              d="M11.955.49A12 12 0 0 0 0 12.49a12 12 0 0 0 1.832 6.373L11.838 5.928a.187.14 0 0 1 .324 0l10.006 12.935A12 12 0 0 0 24 12.49a12 12 0 0 0-12-12 12 12 0 0 0-.045 0zm.375 6.467 4.416 16.553a12 12 0 0 0 5.137-4.213z"
+            />
+          </svg>
+        </a>
+        <a href="..//feed.xml" target="_blank">
+          <svg
+            width="22"
+            height="22"
+            viewBox="0 0 24 24"
+            id="Layer_1"
+            data-name="Layer 1"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <title>RSS Feeds</title>
+            <defs>
+              <style>
+                .cls-1 {
+                  fill: none;
+                  stroke: var(--blue);
+                  stroke-miterlimit: 10;
+                  stroke-width: 1.91px;
+                }
+              </style>
+            </defs>
+            <path class="cls-1" d="M6.27,11.05A6.68,6.68,0,0,1,13,17.73" />
+            <path class="cls-1" d="M6.27,6.27A11.46,11.46,0,0,1,17.73,17.73" />
+            <circle class="cls-1" cx="7.23" cy="16.77" r="0.95" />
+            <rect class="cls-1" x="1.5" y="1.5" width="21" height="21" />
+          </svg>
+        </a>
+        <span style="padding-right: 15px; text-wrap: auto">
+          <p>
+            © 2025
+            <a href="https://github.com/aocoronel/">Augusto Coronel.</a>
+            <a href="https://creativecommons.org/licenses/by/4.0/"
+              >All rights reserved.</a
+            >
+          </p>
+        </span>
+      </div>
+    </footer>
+    
+  </body>
+</html>

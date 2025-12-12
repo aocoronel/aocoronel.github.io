@@ -1,0 +1,362 @@
+<!doctype html>
+<html
+  xmlns="http://www.w3.org/1999/xhtml"
+  lang=""
+  xml:lang=""
+  >
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=yes"
+    />
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="../media/favicons/favicon-16x16.png"
+    />
+        <meta name="author" content="Augusto Coronel" />
+         <meta property="og:title" content="Odin over Zig" />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:url"
+      content="https://aocoronel.github.io/tech/2026-03-22-odin-over-zig.html"
+    />
+    <meta
+      property="og:image"
+      content="https://raw.githubusercontent.com/aocoronel/aocoronel.github.io/refs/heads/main/media/favicons/banner.png"
+    />
+    <meta property="og:site_name" content="Augusto Coronel" />
+    <meta property="og:description" content="A brief comparasion and how I look at programming languages" />
+    <meta name="twitter:title" content="Augusto Coronel" />
+    <meta name="twitter:description" content="A brief comparasion and how I look at programming languages" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:image"
+      content="https://raw.githubusercontent.com/aocoronel/aocoronel.github.io/refs/heads/main/media/favicons/banner.png"
+    />
+    <title>Odin over Zig</title>
+        <link rel="stylesheet" href="../posts.css" />
+      
+  </head>
+  <body>
+    
+    <header>
+      <div class="header_content">
+        <div class="navbar">
+          <a class="title" href="../index.html">Coronel</a>
+          <div class="nav_item ">
+            <a href="../about.html">About</a>
+          </div>
+          <div class="nav_item ">
+            <a href="../index.html">Home</a>
+          </div>
+        </div>
+        <span class="clear"></span>
+      </div>
+    </header>
+    <div class="content">
+      <br />
+      
+      <div class="content-upper">
+        <div class="content-title-n-toc">
+          <p class="content-title">Odin over Zig</p>
+          <p class="content-desc">A brief comparasion and how I look at programming languages</p>
+          <span style="float: left" class="metadata"
+            >Posted <b>Mar 22, 2026 08:00</b></span
+          >
+          <span style="float: right" class="metadata">8 min read</span>
+          <br />
+                  </div>
+      </div>
+      <br />
+      <div></div>
+       <p>I always thought Zig was a very superior programming language, specially in the systems programming niche, as the true C Killer. I’ll talk about the many features that Zig has, and what makes it appealing, but before that, just look this beautiful code:</p>
+<pre class="odin"><code>package main
+
+import &quot;core:fmt&quot;
+import &quot;core:c&quot;
+import &quot;core:strings&quot;
+
+IniKey :: struct {
+        key: rc,
+        value: rc,
+}
+
+IniKeys :: struct {
+        len: c.size_t,
+        cap: c.size_t,
+        data: [^]IniKey,
+}
+
+IniSection :: struct {
+        keys: IniKeys,
+        name: rc,
+}
+
+IniSections :: struct {
+        len: c.size_t,
+        cap: c.size_t,
+        data: [^]IniSection,
+}
+
+rc :: struct {
+        cap:  c.size_t,
+        len:  c.size_t,
+        data: ^u8,
+}
+
+Slice :: struct {
+        len: c.size_t,
+        data: ^u8,
+}
+
+Region :: struct {
+        next: ^Region,
+        len: c.size_t,
+        cap: c.size_t,
+        data: []c.uintptr_t,
+}
+
+Arena :: struct {
+        begin: ^Region,
+        end: ^Region,
+}
+
+foreign import libc &quot;system:c&quot;
+
+foreign libc {
+        @(link_name=&quot;ini_read&quot;) read :: proc(a: ^Arena, file_path: cstring) -&gt; IniSections ---
+          printf    :: proc(format: cstring, #c_vararg args: ..any) -&gt; int ---
+        fflush    :: proc(stream: ^c.FILE) -&gt; int ---
+}
+
+foreign libc {
+    stderr: ^c.FILE
+    stdin:  ^c.FILE
+    stdout: ^c.FILE
+}
+
+main :: proc() {
+    arena: Arena
+    file: cstring = &quot;test.ini&quot;
+    sections: IniSections = read(&amp;arena, file)
+
+    slice := sections.data[:sections.len]
+
+    for i: c.size_t = 0; i &lt; sections.len; i += 1 {
+            printf(&quot;Section %s:\n&quot;, sections.data[i].name.data)
+            for j: c.size_t = 0; j &lt; sections.data[i].keys.len; j += 1 {
+                printf(&quot;  Key = %s\n  Value = %s\n&quot;, sections.data[i].keys.data[j].key.data, sections.data[i].keys.data[j].value.data)
+            }
+    }
+}</code></pre>
+<p>This code is a very simple example on how to interface with C using Odin, in this case I’m using my C INI parser library, which depends in a custom Arena implementation and other functions. Although it has a boilerplate to start working with C code, but at least it just works. I tried doing the same interface with Zig and somehow I failed miserably (due to alignment mismatches in my arena implementation).</p>
+<p>A Zig breakdown:</p>
+<p>Zig error handling is quite unique, but I may not have understood it correctly yet. Maybe the problem is just me, but this whole Error types, <code>try</code>, <code>catch</code>, <code>orelse</code> and so on, is more complicated than a simplification of error handling. You can read my thoughts on the C error handling here <a href="./2026-03-02-is-c-error-handling-bad.md">Is C error handling bad?</a>. I’m somehow on favor of Odin’s approach. And in fact, the only thing Odin does to support error handling are a few keywords like <code>or_return</code>, <code>or_break</code>, <code>or_continue</code> (which I haven’t even tried yet) and that’s pretty much it. The convention in named errors in Odin is just a enum, often called <code>Error</code>.</p>
+<p>Zig also supports methods, if that’s how their are defined… recently, I was playing with C to try to bring this syntatic sugar, but the only thing I got was <code>math().add(&amp;s, 20)</code> (find it <a href="https://codeberg.org/aocoronel/c-interfaces">here</a>. However, the Zig compiler does it better. What are the pros of this? We can type less, but because Zig can infer the types, and often Zig developers will infer types, it’s more of a nightmare than really that useful. Odin also does aid in this C neck-pain, but it’s only through namespacing the packages. Although, one’s could simply not use Zig’s methods, it doesn’t guarantee that others will do the same, and as my hypothesis of developers will always seek the hardest way to do things (Rust… cough) they will do.</p>
+<p>The build system is another pain. It simply doesn’t make any sense to exist, and in fact if you structure your Zig source code properly, you can compile an entire project without <code>build.zig</code>, so what is the point?</p>
+<p>Zig is too strict. If you include some C headers and start using <code>printf</code>, you will be slapped with tons of error messages, telling you are forgetting to check the return values of <code>printf</code>. Yes, I know <code>printf</code> can fail, but I don’t care. So then, goes you: <code>_ = c.printf("Hello, world!\n")</code>. Just to print to standard output with just Zig’s standard library, it takes a least 3 lines of initialization and requires to flush. For a good reason, but come on!</p>
+<p>Pointers and types are to rule out all normies from the language. While learning Zig through the <a href="https://codeberg.org/ziglings/exercises/">Ziglings</a>, I saved this thing. Thanks to them for this awesome cheatsheet.</p>
+<pre class="console"><code>u8            ::  one u8
+*u8           ::  pointer to one u8
+[2]u8         ::  two u8s
+[*]u8         ::  pointer to unknown number of u8s
+[*]const u8   ::  pointer to unknown number of immutable u8s
+*[2]u8        ::  pointer to an array of 2 u8s
+*const [2]u8  ::  pointer to an immutable array of 2 u8s
+[]u8          ::  slice of u8s
+[]const u8    ::  slice of immutable u8s</code></pre>
+<p>This is just to show up how complex the types can go. In C we can either <code>const char *</code> or <code>char *const</code> and it means the same, but in Zig the position of <code>const</code> changes everything.</p>
+<p>But after all of this downsides, there is something we can take from Zig:</p>
+<pre class="zig"><code>const std = @import(&quot;std&quot;);
+const Arena = std.heap.ArenaAllocator;
+
+export fn arena_create() ?*anyopaque {
+    const arena_ptr = gpa_allocator.create(Arena) catch return null;
+    arena_ptr.* = Arena.init(gpa_allocator);
+    return arena_ptr;
+}
+
+export fn arena_alloc(arena_handle: ?*anyopaque, size: usize) ?*anyopaque {
+    const arena_ptr: *Arena = @ptrCast(@alignCast(arena_handle));
+    const allocator = arena_ptr.allocator();
+
+    const buf = allocator.alloc(u8, size) catch return null;
+    return buf.ptr;
+}
+
+export fn arena_destroy(arena_handle: ?*anyopaque) void {
+    if (arena_handle) |h| {
+        const arena_ptr: *Arena = @ptrCast(@alignCast(h));
+        arena_ptr.deinit();
+        gpa_allocator.destroy(arena_ptr);
+    }
+}
+
+// zig build-obj arena.zig -fPIE -O ReleaseSmall</code></pre>
+<p>Now we can use the Zig arena allocator in C. Don’t tell this to anyone.</p>
+<p>What did I wanted to mean with all of these? Zig has A learning curve. It’s not just pick and play, and to properly write anything in it, you will need to know what the compiler does. Odin is just a better alternative, because if you know how to program, you can simply just start using it and things will work of how simple it is. I picked Odin, and from 0 knowledge I went to a multi-threaded grep clone in 5 hours, having just C as a background language.</p>
+<p>Things like this matters. I like C so much I had put myself into so many projects like <code>cstar</code> (my abandoned project). The idea was to bring a second preprocessor to the language that is small enough to be embedded in any project, but at what cost? I planned automatic header generation, comptime code generation and execution, fancier macros, a module system that would integrate with another project of mine to build the entirety of the project without a build system. I also engaged in my own sort of C standard library. But in the end I just realized, that I was just doing it because I was uncomfortable with the language in the first place. I wanted C, but not C. Languages like Zig, Rust, Odin, Go, C3, Jai and many more have so many interesting features, I wanted them in C, into this language where it’s the closest to assembly and bare minimum features. No language so far have ever brought a language in the same level of simplicity as C, but at little bit more lower level, and that could allow to, somehow, tinker with the compiler directly in any project. That’s my programming language of the dreams.</p>
+<blockquote>
+<p>Edit from 2026-04-07:</p>
+</blockquote>
+<p>Honestly, I really think C isn’t really for me. I’ve been working in a C interface implementation, and I ended up coming with this: <a href="https://codeberg.org/aocoronel/c-interfaces/src/commit/35223533c2cc7ffd64e5c517f8e3106068a702dc/main.c">permalink</a>.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">// main.c</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;assert.h&gt;</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;stdio.h&gt;</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;stdlib.h&gt;</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="pp">#define definitions</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&quot;add.h&quot;</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="pp">#define add</span><span class="op">(...)</span><span class="pp"> add</span><span class="op">(</span>using<span class="op">,</span><span class="pp"> __VA_ARGS__</span><span class="op">)</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="pp">#define err error</span><span class="op">(</span>using<span class="op">)</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="pp">#define orelse</span><span class="op">(...)</span><span class="pp"> orelse</span><span class="op">(</span>using<span class="op">,</span><span class="pp"> __VA_ARGS__</span><span class="op">)</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="pp">#define use</span><span class="op">(</span><span class="pp">x</span><span class="op">)</span><span class="pp"> </span>using<span class="pp"> </span><span class="op">=</span><span class="pp"> x</span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a><span class="pp">#define let __auto_type</span></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> main<span class="op">(</span><span class="dt">int</span> argc<span class="op">,</span> <span class="dt">char</span> <span class="op">*</span>argv<span class="op">[])</span> <span class="op">{</span></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>    <span class="dt">void</span> <span class="op">*</span>using<span class="op">;</span></span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Warning: __auto_type is a GNU extension. A portable approach would be:</span></span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>    <span class="co">//</span></span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>    <span class="co">// #define interface(name) __typeof__(const struct name##_vtable)</span></span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>    let x <span class="op">=</span> vector2<span class="op">(.</span>x <span class="op">=</span> <span class="fl">190.0</span><span class="op">,</span> <span class="op">.</span>y <span class="op">=</span> <span class="fl">0.0</span> <span class="op">);</span></span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>    let b <span class="op">=</span> vector2<span class="op">(.</span>x <span class="op">=</span> <span class="fl">20.0</span><span class="op">,</span> <span class="op">.</span>y <span class="op">=</span> <span class="fl">0.0</span> <span class="op">);</span></span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>    use<span class="op">(&amp;</span>x<span class="op">);</span> <span class="co">// expands in add()</span></span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a>    x<span class="op">.</span>add<span class="op">(</span>b<span class="op">).</span>add<span class="op">(</span>b<span class="op">);</span> <span class="co">// use interface</span></span>
+<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a>    $vector2<span class="op">.</span>add<span class="op">(</span>b<span class="op">);</span> <span class="co">// global</span></span>
+<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a><span class="pp">#define str $vector2</span></span>
+<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a>    str<span class="op">.</span>add<span class="op">(</span>b<span class="op">);</span> <span class="co">// renamed global</span></span>
+<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a>    vector2<span class="op">().</span>add<span class="op">(</span>b<span class="op">);</span> <span class="co">// init and use</span></span>
+<span id="cb4-36"><a href="#cb4-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-37"><a href="#cb4-37" aria-hidden="true" tabindex="-1"></a>    assert<span class="op">(</span>x<span class="op">.</span>x <span class="op">==</span> <span class="fl">190.0</span> <span class="op">+</span> <span class="op">(</span><span class="fl">20.0</span> <span class="op">*</span> <span class="fl">5.0</span><span class="op">));</span></span>
+<span id="cb4-38"><a href="#cb4-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-39"><a href="#cb4-39" aria-hidden="true" tabindex="-1"></a>    let z <span class="op">=</span> vector2<span class="op">(</span> <span class="op">.</span>x <span class="op">=</span> <span class="fl">0.0</span><span class="op">,</span> <span class="op">.</span>y <span class="op">=</span> <span class="fl">0.0</span><span class="op">);</span></span>
+<span id="cb4-40"><a href="#cb4-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-41"><a href="#cb4-41" aria-hidden="true" tabindex="-1"></a>    <span class="op">{</span></span>
+<span id="cb4-42"><a href="#cb4-42" aria-hidden="true" tabindex="-1"></a>        use<span class="op">(</span>NULL<span class="op">);</span></span>
+<span id="cb4-43"><a href="#cb4-43" aria-hidden="true" tabindex="-1"></a>        z <span class="op">=</span> z<span class="op">.</span>add<span class="op">(</span>b<span class="op">).</span>orelse<span class="op">(</span>b<span class="op">);</span> <span class="co">// add fails, return b</span></span>
+<span id="cb4-44"><a href="#cb4-44" aria-hidden="true" tabindex="-1"></a>        assert<span class="op">(</span>z<span class="op">.</span>x <span class="op">==</span> b<span class="op">.</span>x<span class="op">);</span></span>
+<span id="cb4-45"><a href="#cb4-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-46"><a href="#cb4-46" aria-hidden="true" tabindex="-1"></a>        <span class="co">// try</span></span>
+<span id="cb4-47"><a href="#cb4-47" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="op">(</span>z<span class="op">.</span>add<span class="op">(</span>b<span class="op">).</span>err<span class="op">)</span> <span class="cf">return</span> <span class="dv">1</span><span class="op">;</span></span>
+<span id="cb4-48"><a href="#cb4-48" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb4-49"><a href="#cb4-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-50"><a href="#cb4-50" aria-hidden="true" tabindex="-1"></a>    abort<span class="op">();</span> <span class="co">// unreachable</span></span>
+<span id="cb4-51"><a href="#cb4-51" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb4-52"><a href="#cb4-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-53"><a href="#cb4-53" aria-hidden="true" tabindex="-1"></a><span class="co">// gcc main.c -O3 -flto -S</span></span></code></pre></div>
+<p>This is way too much. Any C developer that look at this will have a heart attack. And in fact this is a valid C program that compiles with <code>gcc</code>, <code>clang</code> and <code>zig cc</code>, and the generated assembly just returns 1. The vtable can be devirtualized and everything is inlined we if we don’t make <code>x</code> volatile.</p>
+<p>Always, after a while I give a look at other programming languages, like Zig, Odin, C++, D and Rust, just to name a few. Lastly when I looked up to C++ (which has all the features I would love C to have, but unfortunately has way too much), and I made a simple program that returns 0 right away. I compiled it and ran valgrind, then I got surprised, because with just that the program allocated 73kb. Just right now I discovered a interesting flag you can pass to the C++ compiler, the <code>-nostdlib++</code>. This is enough to remove that weird 73kb allocation, and now apparently I can use C++ as C… we will see, if it’s a good idea to use it like that, or use this even insaner C implementation or just give up to Zig or Rust already.</p>
+      <p class="license">
+        This post is licensed under
+        <a class="license" href="https://creativecommons.org/licenses/by/4.0/"
+          >CC BY 4.0</a
+        >
+        by the author.
+      </p>
+      <div style="display: flex; justify-content: center">
+        <div class="further-read">
+                    <a href="../tech/2026-03-02-is-c-error-handling-bad.html">
+            <p class="further-read-p">Older</p>
+                        <p>Is C error handling bad?</p>
+                      </a>
+                  </div>
+        <div class="further-read">
+                    <a href="../tech/2026-04-24-odin-over-zig-pt2.html">
+            <p class="further-read-p">Newer</p>
+                        <p>Odin over Zig [Part 2]</p>
+                      </a>
+                  </div>
+      </div>
+    </div>
+    <footer>
+      <div class="footer_content">
+        <a
+          href="https://github.com/aocoronel"
+          class="glass-btn !px-3"
+          target="_blank"
+          ><svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="22"
+            height="22"
+            fill="var(--blue)"
+            viewBox="0 0 256 256"
+          >
+            <title>GitHub</title>
+            <path
+              d="M208,104v8a48,48,0,0,1-48,48H136a32,32,0,0,1,32,32v40H104V192a32,32,0,0,1,32-32H112a48,48,0,0,1-48-48v-8a49.28,49.28,0,0,1,8.51-27.3A51.92,51.92,0,0,1,76,32a52,52,0,0,1,43.83,24h32.34A52,52,0,0,1,196,32a51.92,51.92,0,0,1,3.49,44.7A49.28,49.28,0,0,1,208,104Z"
+              opacity="0.2"
+            ></path>
+            <path
+              d="M208.3,75.68A59.74,59.74,0,0,0,202.93,28,8,8,0,0,0,196,24a59.75,59.75,0,0,0-48,24H124A59.75,59.75,0,0,0,76,24a8,8,0,0,0-6.93,4,59.78,59.78,0,0,0-5.38,47.68A58.14,58.14,0,0,0,56,104v8a56.06,56.06,0,0,0,48.44,55.47A39.8,39.8,0,0,0,96,192v8H72a24,24,0,0,1-24-24A40,40,0,0,0,8,136a8,8,0,0,0,0,16,24,24,0,0,1,24,24,40,40,0,0,0,40,40H96v16a8,8,0,0,0,16,0V192a24,24,0,0,1,48,0v40a8,8,0,0,0,16,0V192a39.8,39.8,0,0,0-8.44-24.53A56.06,56.06,0,0,0,216,112v-8A58,58,0,0,0,208.3,75.68ZM200,112a40,40,0,0,1-40,40H112a40,40,0,0,1-40-40v-8a41.74,41.74,0,0,1,6.9-22.48A8,8,0,0,0,80,73.83a43.81,43.81,0,0,1,.79-33.58,43.88,43.88,0,0,1,32.32,20.06A8,8,0,0,0,119.82,64h32.35a8,8,0,0,0,6.74-3.69,43.87,43.87,0,0,1,32.32-20.06A43.81,43.81,0,0,1,192,73.83a8.09,8.09,0,0,0,1,7.65A41.76,41.76,0,0,1,200,104Z"
+            ></path></svg
+        ></a>
+        <a
+          href="https://codeberg.org/aocoronel"
+          class="glass-btn !px-3"
+          target="_blank"
+        >
+          <svg
+            fill="var(--blue)"
+            height="22"
+            role="img"
+            viewBox="0 0 24 24"
+            width="22"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <title>Codeberg</title>
+            <path
+              d="M11.955.49A12 12 0 0 0 0 12.49a12 12 0 0 0 1.832 6.373L11.838 5.928a.187.14 0 0 1 .324 0l10.006 12.935A12 12 0 0 0 24 12.49a12 12 0 0 0-12-12 12 12 0 0 0-.045 0zm.375 6.467 4.416 16.553a12 12 0 0 0 5.137-4.213z"
+            />
+          </svg>
+        </a>
+        <a href="..//feed.xml" target="_blank">
+          <svg
+            width="22"
+            height="22"
+            viewBox="0 0 24 24"
+            id="Layer_1"
+            data-name="Layer 1"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <title>RSS Feeds</title>
+            <defs>
+              <style>
+                .cls-1 {
+                  fill: none;
+                  stroke: var(--blue);
+                  stroke-miterlimit: 10;
+                  stroke-width: 1.91px;
+                }
+              </style>
+            </defs>
+            <path class="cls-1" d="M6.27,11.05A6.68,6.68,0,0,1,13,17.73" />
+            <path class="cls-1" d="M6.27,6.27A11.46,11.46,0,0,1,17.73,17.73" />
+            <circle class="cls-1" cx="7.23" cy="16.77" r="0.95" />
+            <rect class="cls-1" x="1.5" y="1.5" width="21" height="21" />
+          </svg>
+        </a>
+        <span style="padding-right: 15px; text-wrap: auto">
+          <p>
+            © 2025
+            <a href="https://github.com/aocoronel/">Augusto Coronel.</a>
+            <a href="https://creativecommons.org/licenses/by/4.0/"
+              >All rights reserved.</a
+            >
+          </p>
+        </span>
+      </div>
+    </footer>
+    
+  </body>
+</html>

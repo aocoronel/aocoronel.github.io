@@ -1,0 +1,234 @@
+<!doctype html>
+<html
+  xmlns="http://www.w3.org/1999/xhtml"
+  lang=""
+  xml:lang=""
+  >
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=yes"
+    />
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="./media/favicons/favicon-16x16.png"
+    />
+        <meta name="author" content="Augusto Coronel" />
+         <meta property="og:title" content="Programs I Use" />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:url"
+      content="https://aocoronel.github.io/programs.html"
+    />
+    <meta
+      property="og:image"
+      content="https://raw.githubusercontent.com/aocoronel/aocoronel.github.io/refs/heads/main/media/favicons/banner.png"
+    />
+    <meta property="og:site_name" content="Augusto Coronel" />
+    <meta property="og:description" content="A collection of all the programs I use daily" />
+    <meta name="twitter:title" content="Augusto Coronel" />
+    <meta name="twitter:description" content="A collection of all the programs I use daily" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:image"
+      content="https://raw.githubusercontent.com/aocoronel/aocoronel.github.io/refs/heads/main/media/favicons/banner.png"
+    />
+    <title>Programs I Use</title>
+        <link rel="stylesheet" href="./about.css" />
+      
+  </head>
+  <body>
+    
+    <header>
+      <div class="header_content">
+        <div class="navbar">
+          <a class="title" href="./index.html">Coronel</a>
+          <div class="nav_item ">
+            <a href="./about.html">About</a>
+          </div>
+          <div class="nav_item ">
+            <a href="./index.html">Home</a>
+          </div>
+        </div>
+        <span class="clear"></span>
+      </div>
+    </header>
+    <div class="content">
+      <br />
+      
+      <div class="content-upper">
+        <div class="content-title-n-toc">
+          <p class="content-title">Programs I Use</p>
+          <p class="content-desc">A collection of all the programs I use daily</p>
+        </div>
+      </div>
+      <br />
+       <blockquote>
+<p>Last update: 2026-08-29</p>
+</blockquote>
+<h2 data-number="1" id="philosophy"><span class="header-section-number">1</span> Philosophy</h2>
+<p>I choose software based on the following criteria:</p>
+<ul>
+<li>If a tool has remote syncing, all data should be still available locally, instead of blocked by an internet connection.</li>
+<li>I must have access to all my data, no matter what.</li>
+<li>If I decide to switch tools, they must allow me to export my data.</li>
+<li>I should be able to tinker with the tools, to shape them to fit my needs best.</li>
+<li>The usage must be clean and simple.</li>
+<li>90% of the software I choose has its source open, often free to fork and change.</li>
+<li>Most tools I use does not have an interface, which turns them scriptable in many ways.</li>
+<li>I prefer lightweight solutions.</li>
+</ul>
+<h3 data-number="1.1" id="proprietary-software"><span class="header-section-number">1.1</span> Proprietary Software</h3>
+<p>I’m okay with having one or two proprietary software, but I do not accept myself relying on them, for essential things.</p>
+<h2 data-number="2" id="programs-i-use"><span class="header-section-number">2</span> Programs I Use</h2>
+<p>For a full list of all the programs I use, you can check on <a href="https://github.com/aocoronel/pacmirror-config">aocoronel/pacmirror-config</a>. This list is always updated.</p>
+<p>The following list of packages are the ones I have a personal preference over. It doesn’t mean their are the best ever.</p>
+<ul>
+<li><strong>Display manager</strong>: None. I just run <code>startx</code></li>
+<li><strong>Display server</strong>: Xorg</li>
+<li><strong>Filesystem</strong>: xfs</li>
+<li><strong>Init system</strong>: dinit</li>
+<li><strong>Operational system</strong>: Artix Linux</li>
+<li><strong>Window manager</strong>: dwm without patches</li>
+</ul>
+<p>Arch-based specific:</p>
+<ul>
+<li><strong>AUR helper</strong>: None. I vendor PKGBUILDs from AUR, instead.</li>
+<li><strong>Declarative package management</strong>: <a href="https://github.com/aocoronel/pacmirror.c">pacmirror</a></li>
+</ul>
+<p>Theme:</p>
+<ul>
+<li><strong>Cursor</strong>: adwaita-cursors</li>
+<li><strong>Font</strong>: jetbrains-mono</li>
+<li><strong>Icons</strong>: adwaita-icon-theme</li>
+<li><strong>Pallete color</strong>: <a href="https://github.com/aocoronel/elegantvagrant">elegantvagrant</a></li>
+</ul>
+<p>Software:</p>
+<ul>
+<li><strong>Audio editor</strong>: tenacity</li>
+<li><strong>Backup</strong>: restic</li>
+<li><strong>Bookmark manager</strong>: <a href="https://github.com/aocoronel/bmark">bmark</a></li>
+<li><strong>Clipboard manager</strong>: clipmenu</li>
+<li><strong>Document converter</strong>: pandoc</li>
+<li><strong>Dotfile manager</strong>: <a href="https://github.com/aocoronel/neostow">neostow</a></li>
+<li><strong>File encryption</strong>: gnupg</li>
+<li><strong>File manager</strong>: ranger</li>
+<li><strong>File syncing</strong>: sync files using sftp, and rsync over ssh</li>
+<li><strong>Firewall</strong>: ufw</li>
+<li><strong>Graphical debugger</strong>: gf2</li>
+<li><strong>Image editor</strong>: GIMP</li>
+<li><strong>Keybinding manager (or something like that)</strong>: sxhkd</li>
+<li><strong>Media converter</strong>: ffmpeg</li>
+<li><strong>Media player</strong>: mpv</li>
+<li><strong>Notification daemon</strong>: dunst</li>
+<li><strong>Office</strong>: libreoffice</li>
+<li><strong>PDF viewer</strong>: zathura</li>
+<li><strong>Password manager</strong>: <code>pass</code> to store OTP, and <a href="https://aocoronel.github.io/tinypass/index.html">tinypass</a> as my stateless password manager</li>
+<li><strong>Screenshoter</strong>: ksnip</li>
+<li><strong>Shell</strong>: zsh</li>
+<li><strong>Terminal emulator</strong>: st without patches</li>
+<li><strong>Video editor</strong>: shotcut</li>
+<li><strong>Web browser</strong>: brave with SurfingKeys and Tampermonkey</li>
+<li><strong>Window swithcer</strong>: rofi</li>
+</ul>
+<p>Emacs:</p>
+<ul>
+<li><strong>Accounting</strong>: ledger-mode</li>
+<li><strong>Email Client</strong>: mu4e</li>
+<li><strong>File manager</strong>: dired</li>
+<li><strong>Git Interface</strong>: magit</li>
+<li><strong>Image viewer</strong>: image-dired for gallery display</li>
+<li><strong>Music player</strong>: emms</li>
+<li><strong>PDF viewer</strong>: pdf-tools</li>
+<li><strong>RSS Client</strong>: elfeed</li>
+<li><strong>Task management</strong>: org-mode</li>
+<li><strong>Text editor</strong>: emacs</li>
+</ul>
+<p>Other:</p>
+<ul>
+<li><strong>Note-taking</strong>: black pen and A4 white paper, or org-roam in Emacs</li>
+</ul>
+    </div>
+    <footer>
+      <div class="footer_content">
+        <a
+          href="https://github.com/aocoronel"
+          class="glass-btn !px-3"
+          target="_blank"
+          ><svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="22"
+            height="22"
+            fill="var(--blue)"
+            viewBox="0 0 256 256"
+          >
+            <title>GitHub</title>
+            <path
+              d="M208,104v8a48,48,0,0,1-48,48H136a32,32,0,0,1,32,32v40H104V192a32,32,0,0,1,32-32H112a48,48,0,0,1-48-48v-8a49.28,49.28,0,0,1,8.51-27.3A51.92,51.92,0,0,1,76,32a52,52,0,0,1,43.83,24h32.34A52,52,0,0,1,196,32a51.92,51.92,0,0,1,3.49,44.7A49.28,49.28,0,0,1,208,104Z"
+              opacity="0.2"
+            ></path>
+            <path
+              d="M208.3,75.68A59.74,59.74,0,0,0,202.93,28,8,8,0,0,0,196,24a59.75,59.75,0,0,0-48,24H124A59.75,59.75,0,0,0,76,24a8,8,0,0,0-6.93,4,59.78,59.78,0,0,0-5.38,47.68A58.14,58.14,0,0,0,56,104v8a56.06,56.06,0,0,0,48.44,55.47A39.8,39.8,0,0,0,96,192v8H72a24,24,0,0,1-24-24A40,40,0,0,0,8,136a8,8,0,0,0,0,16,24,24,0,0,1,24,24,40,40,0,0,0,40,40H96v16a8,8,0,0,0,16,0V192a24,24,0,0,1,48,0v40a8,8,0,0,0,16,0V192a39.8,39.8,0,0,0-8.44-24.53A56.06,56.06,0,0,0,216,112v-8A58,58,0,0,0,208.3,75.68ZM200,112a40,40,0,0,1-40,40H112a40,40,0,0,1-40-40v-8a41.74,41.74,0,0,1,6.9-22.48A8,8,0,0,0,80,73.83a43.81,43.81,0,0,1,.79-33.58,43.88,43.88,0,0,1,32.32,20.06A8,8,0,0,0,119.82,64h32.35a8,8,0,0,0,6.74-3.69,43.87,43.87,0,0,1,32.32-20.06A43.81,43.81,0,0,1,192,73.83a8.09,8.09,0,0,0,1,7.65A41.76,41.76,0,0,1,200,104Z"
+            ></path></svg
+        ></a>
+        <a
+          href="https://codeberg.org/aocoronel"
+          class="glass-btn !px-3"
+          target="_blank"
+        >
+          <svg
+            fill="var(--blue)"
+            height="22"
+            role="img"
+            viewBox="0 0 24 24"
+            width="22"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <title>Codeberg</title>
+            <path
+              d="M11.955.49A12 12 0 0 0 0 12.49a12 12 0 0 0 1.832 6.373L11.838 5.928a.187.14 0 0 1 .324 0l10.006 12.935A12 12 0 0 0 24 12.49a12 12 0 0 0-12-12 12 12 0 0 0-.045 0zm.375 6.467 4.416 16.553a12 12 0 0 0 5.137-4.213z"
+            />
+          </svg>
+        </a>
+        <a href=".//feed.xml" target="_blank">
+          <svg
+            width="22"
+            height="22"
+            viewBox="0 0 24 24"
+            id="Layer_1"
+            data-name="Layer 1"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <title>RSS Feeds</title>
+            <defs>
+              <style>
+                .cls-1 {
+                  fill: none;
+                  stroke: var(--blue);
+                  stroke-miterlimit: 10;
+                  stroke-width: 1.91px;
+                }
+              </style>
+            </defs>
+            <path class="cls-1" d="M6.27,11.05A6.68,6.68,0,0,1,13,17.73" />
+            <path class="cls-1" d="M6.27,6.27A11.46,11.46,0,0,1,17.73,17.73" />
+            <circle class="cls-1" cx="7.23" cy="16.77" r="0.95" />
+            <rect class="cls-1" x="1.5" y="1.5" width="21" height="21" />
+          </svg>
+        </a>
+        <span style="padding-right: 15px; text-wrap: auto">
+          <p>
+            © 2025
+            <a href="https://github.com/aocoronel/">Augusto Coronel.</a>
+            <a href="https://creativecommons.org/licenses/by/4.0/"
+              >All rights reserved.</a
+            >
+          </p>
+        </span>
+      </div>
+    </footer>
+    
+  </body>
+</html>

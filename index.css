@@ -1,0 +1,139 @@
+@import url("default.css");
+@import url("sidebar.css");
+@import url("light-theme.css") screen and (prefers-color-scheme: light);
+@import url("dark-theme.css") screen and (prefers-color-scheme: dark);
+.index-card {
+  border-radius: 8px;
+  display: flex;
+  align-items: flex-start;
+  width: 100%;
+}
+.index-card img {
+  height: auto;
+  max-width: 135px;
+  width: 100%;
+}
+.index-card a {
+  align-self: center;
+}
+.index-card > span:first-child {
+  flex: 1;
+  min-width: 0;
+}
+@media (max-width: 768px) {
+  .index-card {
+    flex-direction: column;
+    align-items: center;
+  }
+  .index-card a {
+    margin-left: 0;
+  }
+}
+.content {
+  max-width: 900px;
+}
+.content-upper {
+  padding-top: 50px;
+}
+.content-title-n-toc {
+  display: block;
+}
+.content-desc {
+  max-width: 100%;
+}
+h1 {
+  font-size: 1.75em;
+  margin-top: 5px;
+  color: var(--blue);
+}
+h2 {
+  margin-top: 0px;
+}
+#body-content strong {
+  color: var(--text-color);
+}
+hr {
+  margin-bottom: 30px;
+  margin-top: 0px;
+}
+.content > ol > li::marker,
+.content > ul > li::marker {
+  color: var(--link);
+}
+.content > ol > li,
+.content > ul > li {
+  padding-left: 0px;
+}
+p {
+  clear: left;
+  line-height: 165%;
+  font-size: 90%;
+}
+p.title {
+  font-size: 90%;
+  margin-bottom: 10px;
+  margin-top: 0px;
+  width: 50%;
+}
+span.metadata {
+  font-size: 80%;
+  margin-bottom: -6px;
+  margin-top: -6px;
+  margin-right: 15px;
+}
+div.content > ol > li {
+  padding-bottom: 6px;
+}
+div.content > ul > li {
+  padding-bottom: 6px;
+}
+img {
+  max-width: 500px;
+  width: 100%;
+  border-radius: 10%;
+}
+a {
+  color: var(--green);
+}
+strong,
+b {
+  color: var(--text-color);
+}
+.toggle-btn {
+  transform: translateX(1000%);
+}
+blockquote {
+  margin-left: 0px;
+}
+blockquote p {
+  display: inline-block;
+  margin-bottom: 0px;
+  margin-top: 0px;
+  padding-left: 0px;
+}
+@media screen and (max-width: 768px) {
+  .sidebar {
+    border: 0px solid var(--border-accent);
+    border-radius: 0px;
+    top: calc(30px + 3vh);
+    transition: transform 0s ease-in-out;
+    max-height: 100%;
+    width: 90%;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    right: 0;
+    transform: translateX(100%);
+  }
+  .sidebar.actived {
+    transform: translateX(0);
+  }
+  .toggle-btn {
+    right: 5%;
+    top: calc(90% + 4vh);
+    transform: translateX(0%);
+  }
+  .table_of_contents {
+    float: none;
+  }
+}

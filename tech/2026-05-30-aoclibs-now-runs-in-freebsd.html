@@ -1,0 +1,194 @@
+<!doctype html>
+<html
+  xmlns="http://www.w3.org/1999/xhtml"
+  lang=""
+  xml:lang=""
+  >
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=yes"
+    />
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="../media/favicons/favicon-16x16.png"
+    />
+        <meta name="author" content="Augusto Coronel" />
+         <meta property="og:title" content="aoclibs now runs in FreeBSD" />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:url"
+      content="https://aocoronel.github.io/tech/2026-05-30-aoclibs-now-runs-in-freebsd.html"
+    />
+    <meta
+      property="og:image"
+      content="https://raw.githubusercontent.com/aocoronel/aocoronel.github.io/refs/heads/main/media/favicons/banner.png"
+    />
+    <meta property="og:site_name" content="Augusto Coronel" />
+    <meta property="og:description" content="FreeBSD is our second home, case something horrible happens to Linux" />
+    <meta name="twitter:title" content="Augusto Coronel" />
+    <meta name="twitter:description" content="FreeBSD is our second home, case something horrible happens to Linux" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:image"
+      content="https://raw.githubusercontent.com/aocoronel/aocoronel.github.io/refs/heads/main/media/favicons/banner.png"
+    />
+    <title>aoclibs now runs in FreeBSD</title>
+        <link rel="stylesheet" href="../posts.css" />
+      
+  </head>
+  <body>
+    
+    <header>
+      <div class="header_content">
+        <div class="navbar">
+          <a class="title" href="../index.html">Coronel</a>
+          <div class="nav_item ">
+            <a href="../about.html">About</a>
+          </div>
+          <div class="nav_item ">
+            <a href="../index.html">Home</a>
+          </div>
+        </div>
+        <span class="clear"></span>
+      </div>
+    </header>
+    <div class="content">
+      <br />
+      
+      <div class="content-upper">
+        <div class="content-title-n-toc">
+          <p class="content-title">aoclibs now runs in FreeBSD</p>
+          <p class="content-desc">FreeBSD is our second home, case something horrible happens to Linux</p>
+          <span style="float: left" class="metadata"
+            >Posted <b>May 30, 2026 08:00</b></span
+          >
+          <span style="float: right" class="metadata">4 min read</span>
+          <br />
+                  </div>
+      </div>
+      <br />
+      <div></div>
+       <blockquote>
+<p>TL;DR If you clicked because of the title, only one line in aoclibs was made to run in FreeBSD. Now aoclibs supports Linux x86_64, aarch64 and FreeBSD x86_64 (currently tested)</p>
+</blockquote>
+<p>I decided to give other operational systems a try, including a second chance for Windows. I wonder if I could write code and run aoclibs in order to see how portable it is.</p>
+<p>Then I installed Windows in bare-metal again, after almost three years I moved to Linux. Since I’ve became a Linux user, I started to say Windows sucks, that didn’t change. I got <code>wsl</code> working with Arch Linux, installed Emacs and in my first C hello world I noticed how input in Windows is so slow. Apparently nothing can be done about that. Then I had the bold idea to compile the C program in the Windows style, just to see how it’s done. After one hour of hitting my head against the wall, I finally discovered that I needed Visual Studio Build Tools, and then install 3GB of C++ Desktop whatever. Did I go that route? Obviously no! Who am I to download 3GB of bloat to compile my C program?</p>
+<p>C isn’t that complicated. What it does is preprocess the file and basically provide the compiler a single file, which is the translation unit. The compiler will lex, parse, some may also generate AST, and then emit assembly. After that the compiler will call the assembler to turn assembly into binary, which can be ran by the machine. What is 3GB for this simple task? But of course, Microsoft doesn’t even name the package like “C” but “C++”, because why not, right?</p>
+<p>I went the <code>MinGW</code> route, but that’s honestly bizarre. I’m in Windows running Linux to compile using <code>mingw</code> to compile a PE to run in Windows…</p>
+<p>I also did slightly tried <code>windows.h</code>. This API is probably based in C++ code. I can’t really tell, but it’s a Microsoft thing like C# and C++ to make an entry point called <code>WinMain</code>, so you can make your GUI Windows program, just so I realized when I was resizing the window, that it doesn’t live resize like in Linux. What OS is even this?</p>
+<p>I still hold my words. Windows gives the worst user experience for installing drivers, software, customization, window management, overall performance and updating the system. Not only to mention it’s powered by most corporate proprietary garbage. In my early days I would never note these, because Windows was just the gatekeeper for my games, but now that I care about usability, I just can’t stand it. Microsoft officially declared Windows lost to Linux for desktop, by their new Linux distro called Azure Linux 4.0 for <strong>GENERAL AND DESKTOP USAGE</strong>. You shall now use <code>wine</code> to run the favorite apps that vendor locked you in.</p>
+<p>Anyways. I decided to never ever write a Windows program, neither support it in my libraries including <code>aoclibs</code>. I don’t have time, neither want to deal with it. I’m always told people need a system for them to do things, even if they are not nerds like me, and also hear developers write software for it, because the majority of users are at Windows, and it’s the system where developers can make most money from. It’s fine if you think about this side of the coin, but I just don’t care.</p>
+<p>MacOS? I don’t have, neither want to have Apple hardware to be vendor locked in it as well. Not happening.</p>
+<p>Now that I excluded the corporate operational system (I don’t have to tall about ChromeOS, right?), I have actual nice other options to try: NetBSD, OpenBSD, FreeBSD, DragonflyBSD and Haiku. And maybe some others I still don’t know about.</p>
+<p>It has been a time I wanted to try FreeBSD out. I decided to give it a try first. From all the Linux distros I ever tried, none compares to the ease of install and speed to install it. It took around 7 minutes to install in my old laptop. Installing packages was also a breeze, and after messing a little bit with the ports system, this OS is very daily driveable for me.</p>
+<p>The only oddity I found was that conky and btop were showcasing high memory usage, that was demystified by htop. But still the system takes more RAM than Linux.</p>
+<p>Have I already mentioned the installation was easy? Even to setup Wifi was a breeze, which usually gives me a little bit problems in Arch and Artix installs.</p>
+<p>I also tried to compile aoclibs from FreeBSD, and for my surprise I only took removing a line that was including alloca.h, and it worked. I committed and pushed this single change from FreeBSD, and now I’m officially supporting FreeBSD, as of tested OS.</p>
+<p>FreeBSD seems to be the most desktop friendly among the different BSDs that are not a fork of it. I’m still gonna give a try to the other ones anyway.</p>
+<p>You should also try it out.</p>
+      <p class="license">
+        This post is licensed under
+        <a class="license" href="https://creativecommons.org/licenses/by/4.0/"
+          >CC BY 4.0</a
+        >
+        by the author.
+      </p>
+      <div style="display: flex; justify-content: center">
+        <div class="further-read">
+                    <a href="../tech/2026-05-22-tildeverse.html">
+            <p class="further-read-p">Older</p>
+                        <p>Tildeverse</p>
+                      </a>
+                  </div>
+        <div class="further-read">
+                    <a href="../tech/2026-06-14-a-better-aur.html">
+            <p class="further-read-p">Newer</p>
+                        <p>A better AUR</p>
+                      </a>
+                  </div>
+      </div>
+    </div>
+    <footer>
+      <div class="footer_content">
+        <a
+          href="https://github.com/aocoronel"
+          class="glass-btn !px-3"
+          target="_blank"
+          ><svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="22"
+            height="22"
+            fill="var(--blue)"
+            viewBox="0 0 256 256"
+          >
+            <title>GitHub</title>
+            <path
+              d="M208,104v8a48,48,0,0,1-48,48H136a32,32,0,0,1,32,32v40H104V192a32,32,0,0,1,32-32H112a48,48,0,0,1-48-48v-8a49.28,49.28,0,0,1,8.51-27.3A51.92,51.92,0,0,1,76,32a52,52,0,0,1,43.83,24h32.34A52,52,0,0,1,196,32a51.92,51.92,0,0,1,3.49,44.7A49.28,49.28,0,0,1,208,104Z"
+              opacity="0.2"
+            ></path>
+            <path
+              d="M208.3,75.68A59.74,59.74,0,0,0,202.93,28,8,8,0,0,0,196,24a59.75,59.75,0,0,0-48,24H124A59.75,59.75,0,0,0,76,24a8,8,0,0,0-6.93,4,59.78,59.78,0,0,0-5.38,47.68A58.14,58.14,0,0,0,56,104v8a56.06,56.06,0,0,0,48.44,55.47A39.8,39.8,0,0,0,96,192v8H72a24,24,0,0,1-24-24A40,40,0,0,0,8,136a8,8,0,0,0,0,16,24,24,0,0,1,24,24,40,40,0,0,0,40,40H96v16a8,8,0,0,0,16,0V192a24,24,0,0,1,48,0v40a8,8,0,0,0,16,0V192a39.8,39.8,0,0,0-8.44-24.53A56.06,56.06,0,0,0,216,112v-8A58,58,0,0,0,208.3,75.68ZM200,112a40,40,0,0,1-40,40H112a40,40,0,0,1-40-40v-8a41.74,41.74,0,0,1,6.9-22.48A8,8,0,0,0,80,73.83a43.81,43.81,0,0,1,.79-33.58,43.88,43.88,0,0,1,32.32,20.06A8,8,0,0,0,119.82,64h32.35a8,8,0,0,0,6.74-3.69,43.87,43.87,0,0,1,32.32-20.06A43.81,43.81,0,0,1,192,73.83a8.09,8.09,0,0,0,1,7.65A41.76,41.76,0,0,1,200,104Z"
+            ></path></svg
+        ></a>
+        <a
+          href="https://codeberg.org/aocoronel"
+          class="glass-btn !px-3"
+          target="_blank"
+        >
+          <svg
+            fill="var(--blue)"
+            height="22"
+            role="img"
+            viewBox="0 0 24 24"
+            width="22"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <title>Codeberg</title>
+            <path
+              d="M11.955.49A12 12 0 0 0 0 12.49a12 12 0 0 0 1.832 6.373L11.838 5.928a.187.14 0 0 1 .324 0l10.006 12.935A12 12 0 0 0 24 12.49a12 12 0 0 0-12-12 12 12 0 0 0-.045 0zm.375 6.467 4.416 16.553a12 12 0 0 0 5.137-4.213z"
+            />
+          </svg>
+        </a>
+        <a href="..//feed.xml" target="_blank">
+          <svg
+            width="22"
+            height="22"
+            viewBox="0 0 24 24"
+            id="Layer_1"
+            data-name="Layer 1"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <title>RSS Feeds</title>
+            <defs>
+              <style>
+                .cls-1 {
+                  fill: none;
+                  stroke: var(--blue);
+                  stroke-miterlimit: 10;
+                  stroke-width: 1.91px;
+                }
+              </style>
+            </defs>
+            <path class="cls-1" d="M6.27,11.05A6.68,6.68,0,0,1,13,17.73" />
+            <path class="cls-1" d="M6.27,6.27A11.46,11.46,0,0,1,17.73,17.73" />
+            <circle class="cls-1" cx="7.23" cy="16.77" r="0.95" />
+            <rect class="cls-1" x="1.5" y="1.5" width="21" height="21" />
+          </svg>
+        </a>
+        <span style="padding-right: 15px; text-wrap: auto">
+          <p>
+            © 2025
+            <a href="https://github.com/aocoronel/">Augusto Coronel.</a>
+            <a href="https://creativecommons.org/licenses/by/4.0/"
+              >All rights reserved.</a
+            >
+          </p>
+        </span>
+      </div>
+    </footer>
+    
+  </body>
+</html>
