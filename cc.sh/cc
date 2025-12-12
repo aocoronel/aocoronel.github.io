@@ -1,0 +1,117 @@
+#!/usr/bin/env bash
+
+# Changelog:
+#
+# All notable changes to this project will be documented in this file.
+#
+# The format is based on Keep a Changelog, some adaptation apply: https://keepachangelog.com/en/1.1.0/
+# This project also adheres to Semantic Versioning: https://semver.org/spec/v2.0.0.html
+#
+# [0.1.0] 2026-08-09
+# 	Initial release
+
+# cc is a script that serves as a wrapper to gcc and clang
+# It uses all recommendations from https://airbus-seclab.github.io/c-compiler-security/
+
+if [ "$1" == "--HELP" ]; then
+  cat <<EOF
+cc.sh
+
+Usage: gcc/clang --CC=OPTION ...
+
+Options:
+  analyze          Enable analyzer (gcc only)
+  debug            Enable most debug flags
+  help             Display this message and exits
+  integer          Enable integer protections
+  leak             Enable leak sanitizer
+  release          Enable optimizations
+  stack            Enable stack sanitizer
+  stack-protector  Enable stack protector
+  thread           Enable thread sanitizer
+EOF
+  exit 0
+fi
+
+ARGS=()
+
+COMPILER=""
+COMPILER_FLAGS=()
+
+case "$0" in
+./gcc | gcc)
+  COMPILER=gcc
+  COMPILER_FLAGS+=(
+    -Wall -Wextra -Wpedantic -Wformat=2 -Wformat-overflow=2 -Wformat-truncation=2 -Wformat-security -Wnull-dereference -Wstack-protector -Wtrampolines -Walloca -Wvla -Warray-bounds=2 -Wimplicit-fallthrough=3 -Wtraditional-conversion -Wshift-overflow=2 -Wcast-qual -Wstringop-overflow=4 -Wconversion -Warith-conversion -Wlogical-op -Wduplicated-cond -Wduplicated-branches -Wformat-signedness -Wshadow -Wstrict-overflow=4 -Wundef -Wstrict-prototypes -Wswitch-default -Wswitch-enum -Wstack-usage=1000000 -Wcast-align=strict
+    -fstack-clash-protection -fPIE
+    -fsanitize=bounds -fsanitize-undefined-trap-on-error
+    -Wl,-z,relro -Wl,-z,now -Wl,-z,noexecstack -Wl,-z,separate-code
+  )
+  ;;
+./clang | clang)
+  COMPILER=clang
+  COMPILER_FLAGS+=(
+    -Wall -Wextra -Wpedantic
+    -Walloca -Wcast-qual -Wconversion -Wformat=2 -Wformat-security -Wnull-dereference -Wstack-protector -Wvla -Warray-bounds -Warray-bounds-pointer-arithmetic -Wassign-enum -Wbad-function-cast -Wconditional-uninitialized -Wconversion -Wfloat-equal -Wformat-type-confusion -Widiomatic-parentheses -Wimplicit-fallthrough -Wloop-analysis -Wpointer-arith -Wshift-sign-overflow -Wshorten-64-to-32 -Wswitch-enum -Wtautological-constant-in-range-compare -Wunreachable-code-aggressive -Wthread-safety -Wthread-safety-beta -Wcomma
+    -fsanitize=safe-stack -fPIE -fstack-clash-protection
+    -fsanitize=bounds -fsanitize-undefined-trap-on-error
+    -Wl,-z,relro -Wl,-z,now -Wl,-z,noexecstack -Wl,-z,separate-code
+  )
+  ;;
+*)
+  echo "Program name \"$0\" should be either \"gcc\" or \"clang\". Suggestion: make a symlink."
+  exit 1
+  ;;
+esac
+
+# Expect "--CC="
+if [[ $1 == --CC=* ]]; then
+  argv="$1"
+  values="${argv#--CC=}"
+  IFS=',' read -r -a ARGS <<<"$values"
+  shift
+fi
+
+for arg in "${ARGS[@]}"; do
+  case "$arg" in
+  debug)
+    export ASAN_OPTIONS=strict_string_checks=1:detect_stack_use_after_return=1:check_initialization_order=1:strict_init_order=1:detect_invalid_pointer_pairs=2
+    export UBSAN_OPTIONS=halt_on_error=1:abort_on_error=1:print_summary=1:print_stacktrace=1
+    export MSAN_OPTIONS=halt_on_error=1:abort_on_error=1:print_summary=1:print_stacktrace=1
+    export MALLOC_PERTURB_=$((RANDOM % 255 + 1))
+
+    case "$COMPILER" in
+    gcc)
+      COMPILER_FLAGS+=(-fsanitize=address -fsanitize=pointer-compare -fsanitize=pointer-subtract -fno-omit-frame-pointer -fsanitize=undefined -fsanitize=bounds-strict -fsanitize=float-divide-by-zero -fsanitize=float-cast-overflow)
+      ;;
+    clang)
+      COMPILER_FLAGS+=(-fsanitize=address -fno-omit-frame-pointer -fsanitize=undefined -fsanitize=float-divide-by-zero -fsanitize=float-cast-overflow -fsanitize=integer)
+      ;;
+    esac
+    ;;
+  release)
+    COMPILER_FLAGS+=(-O2 -D_FORTIFY_SOURCE=3)
+    ;;
+  integer)
+    COMPILER_FLAGS+=(-fsanitize=integer -fsanitize-minimal-runtime -fno-sanitize-recover)
+    ;;
+  analyze)
+    COMPILER_FLAGS+=(-fanalyzer)
+    ;;
+  thread)
+    COMPILER_FLAGS+=(-fsanitize=thread)
+    ;;
+  stack)
+    COMPILER_FLAGS+=(-fsanitize=safe-stack)
+    ;;
+  stack-protector)
+    COMPILER_FLAGS+=(-fstack-protector-strong)
+    ;;
+  leak)
+    COMPILER_FLAGS+=(-fsanitize=leak)
+    ;;
+  esac
+done
+
+$COMPILER "${COMPILER_FLAGS[@]}" "$@"
+exit $?

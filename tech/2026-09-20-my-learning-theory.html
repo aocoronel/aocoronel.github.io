@@ -1,0 +1,195 @@
+<!doctype html>
+<html
+  xmlns="http://www.w3.org/1999/xhtml"
+  lang=""
+  xml:lang=""
+  >
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=yes"
+    />
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="../media/favicons/favicon-16x16.png"
+    />
+        <meta name="author" content="Augusto Coronel" />
+         <meta property="og:title" content="My learning theory" />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:url"
+      content="https://aocoronel.github.io/tech/2026-09-20-my-learning-theory.html"
+    />
+    <meta
+      property="og:image"
+      content="https://raw.githubusercontent.com/aocoronel/aocoronel.github.io/refs/heads/main/media/favicons/banner.png"
+    />
+    <meta property="og:site_name" content="Augusto Coronel" />
+    <meta property="og:description" content="I always wanted to make a tool to aid on learning, but I don’t need to do it" />
+    <meta name="twitter:title" content="Augusto Coronel" />
+    <meta name="twitter:description" content="I always wanted to make a tool to aid on learning, but I don’t need to do it" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:image"
+      content="https://raw.githubusercontent.com/aocoronel/aocoronel.github.io/refs/heads/main/media/favicons/banner.png"
+    />
+    <title>My learning theory</title>
+        <link rel="stylesheet" href="../posts.css" />
+      
+  </head>
+  <body>
+    
+    <header>
+      <div class="header_content">
+        <div class="navbar">
+          <a class="title" href="../index.html">Coronel</a>
+          <div class="nav_item ">
+            <a href="../about.html">About</a>
+          </div>
+          <div class="nav_item ">
+            <a href="../index.html">Home</a>
+          </div>
+        </div>
+        <span class="clear"></span>
+      </div>
+    </header>
+    <div class="content">
+      <br />
+      
+      <div class="content-upper">
+        <div class="content-title-n-toc">
+          <p class="content-title">My learning theory</p>
+          <p class="content-desc">I always wanted to make a tool to aid on learning, but I don’t need to do it</p>
+          <span style="float: left" class="metadata"
+            >Posted <b>Sep 20, 2026 15:00</b></span
+          >
+          <span style="float: right" class="metadata">3 min read</span>
+          <br />
+                  </div>
+      </div>
+      <br />
+      <div></div>
+       <p>Name me as many things with the following color. Must always be colored with it, without artificialities. You have 10 seconds: Blue.</p>
+<p>I did it myself, and I could only name: Sea, Sky and Blueberry. But why?</p>
+<p>Another thing I thought was: How can I just look up the colors and identifiy that something is blue? Just looking at the color is something, but how do I recall myself it’s name is blue? And even recall it’s a color, among many other ones?</p>
+<p>My best thinking game is programming, so I often have more examples around it. Take another example.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> main<span class="op">(</span><span class="dt">void</span><span class="op">)</span> <span class="op">{</span> <span class="cf">return</span> <span class="dv">0</span> <span class="op">}</span></span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">// gcc foo.c</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>foo<span class="op">.</span>c<span class="op">:</span> In function <span class="ch">&#39;m</span><span class="er">ain</span><span class="ch">&#39;</span><span class="op">:</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>foo<span class="op">.</span>c<span class="op">:</span><span class="dv">1</span><span class="op">:</span><span class="dv">26</span><span class="op">:</span> error<span class="op">:</span> expected <span class="ch">&#39;;&#39;</span> before <span class="ch">&#39;}&#39;</span> token</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    <span class="dv">1</span> <span class="op">|</span> <span class="dt">int</span> main<span class="op">(</span><span class="dt">void</span><span class="op">)</span> <span class="op">{</span> <span class="cf">return</span> <span class="dv">0</span> <span class="op">}</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>      <span class="op">|</span>                          <span class="op">^~</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>      <span class="op">|</span>                          <span class="op">;</span></span></code></pre></div>
+<p>How can I look at this error, and just instantly know that this error happened at the C lexer stage? Even if I never looked up the source code itself?</p>
+<p>But if you are a C developer, how hard is it to name all the C keywords? Some keywords will come to easier, others you will forget, but you will instantly remember as soon as you see them again.</p>
+<p>Notice it. There are two main things going up here. Some sort of recall and recogniziton. And after we remember something, there is a third thing that let us understand and relate things together. Because, either recalling or recognizing something, we can elaborate more on it. But it isn’t like there is a real third thing, because to elaborate further we need to continue recalling and recognizing things as we think. Like a recursion.</p>
+<p>Some things I noticed is that we are capable of doing it without external tools. But why do people come up with tools to aid on it? Do they even have scientific embasement to write a tool that can increase the efficiency?</p>
+<p>The thing is that our brain is so powerful, that trying to write a tool that tries to mimic this organic relationship between ideas is futile and a waste of time. We don’t need it, and we never needed it. The only tool that is important is a tool that aids our fragilities. I could only name three blue things. If I needed to recall other blue things, how could I find this information very easily?</p>
+<p>The whole goal here is to point out that a better learning tool involves recalling things, rather then associating things together. It seems that to learn effectively it only requires high effort thinking: <strong>do apply your knowledge</strong>, relate things together, or make analogies. Discard anything else.</p>
+<p>As far at this point, the only tool that impressively lets you get the right, or almost right information, on time is AI. AI has many problems, but this is not the current goal in this post. The important thing, is that we have acknowledge that AI is a useful tool for this job. And is capable of skipping me of having to write a ten thousand files Obsidian vault, because if I forget something, I can recall whatever it is using AI, and all the effort of associating things together is the sole work of my brain.</p>
+<p>Another relevant thing is: Only learn what you will need, if you know it in advance. If you ever lose your time learning something you will never use, you will forget it anyway, or poorly recall it. This may sound weird, but it’s true. For developers just think about this: You are using a third-party libraries which you need to do something, and there is a huge documentation. Just skim it, find what you need, learn it and forget the rest. There is a high chance if you ever need to use this library again, you will need to consult the documentation again.</p>
+      <p class="license">
+        This post is licensed under
+        <a class="license" href="https://creativecommons.org/licenses/by/4.0/"
+          >CC BY 4.0</a
+        >
+        by the author.
+      </p>
+      <div style="display: flex; justify-content: center">
+        <div class="further-read">
+                    <a href="../tech/2026-09-02-i-like-rust.html">
+            <p class="further-read-p">Older</p>
+                        <p>I like Rust</p>
+                      </a>
+                  </div>
+        <div class="further-read">
+                    <a>
+            <p class="further-read-p">Newer</p>
+            <p>None</p>
+          </a>
+                  </div>
+      </div>
+    </div>
+    <footer>
+      <div class="footer_content">
+        <a
+          href="https://github.com/aocoronel"
+          class="glass-btn !px-3"
+          target="_blank"
+          ><svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="22"
+            height="22"
+            fill="var(--blue)"
+            viewBox="0 0 256 256"
+          >
+            <title>GitHub</title>
+            <path
+              d="M208,104v8a48,48,0,0,1-48,48H136a32,32,0,0,1,32,32v40H104V192a32,32,0,0,1,32-32H112a48,48,0,0,1-48-48v-8a49.28,49.28,0,0,1,8.51-27.3A51.92,51.92,0,0,1,76,32a52,52,0,0,1,43.83,24h32.34A52,52,0,0,1,196,32a51.92,51.92,0,0,1,3.49,44.7A49.28,49.28,0,0,1,208,104Z"
+              opacity="0.2"
+            ></path>
+            <path
+              d="M208.3,75.68A59.74,59.74,0,0,0,202.93,28,8,8,0,0,0,196,24a59.75,59.75,0,0,0-48,24H124A59.75,59.75,0,0,0,76,24a8,8,0,0,0-6.93,4,59.78,59.78,0,0,0-5.38,47.68A58.14,58.14,0,0,0,56,104v8a56.06,56.06,0,0,0,48.44,55.47A39.8,39.8,0,0,0,96,192v8H72a24,24,0,0,1-24-24A40,40,0,0,0,8,136a8,8,0,0,0,0,16,24,24,0,0,1,24,24,40,40,0,0,0,40,40H96v16a8,8,0,0,0,16,0V192a24,24,0,0,1,48,0v40a8,8,0,0,0,16,0V192a39.8,39.8,0,0,0-8.44-24.53A56.06,56.06,0,0,0,216,112v-8A58,58,0,0,0,208.3,75.68ZM200,112a40,40,0,0,1-40,40H112a40,40,0,0,1-40-40v-8a41.74,41.74,0,0,1,6.9-22.48A8,8,0,0,0,80,73.83a43.81,43.81,0,0,1,.79-33.58,43.88,43.88,0,0,1,32.32,20.06A8,8,0,0,0,119.82,64h32.35a8,8,0,0,0,6.74-3.69,43.87,43.87,0,0,1,32.32-20.06A43.81,43.81,0,0,1,192,73.83a8.09,8.09,0,0,0,1,7.65A41.76,41.76,0,0,1,200,104Z"
+            ></path></svg
+        ></a>
+        <a
+          href="https://codeberg.org/aocoronel"
+          class="glass-btn !px-3"
+          target="_blank"
+        >
+          <svg
+            fill="var(--blue)"
+            height="22"
+            role="img"
+            viewBox="0 0 24 24"
+            width="22"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <title>Codeberg</title>
+            <path
+              d="M11.955.49A12 12 0 0 0 0 12.49a12 12 0 0 0 1.832 6.373L11.838 5.928a.187.14 0 0 1 .324 0l10.006 12.935A12 12 0 0 0 24 12.49a12 12 0 0 0-12-12 12 12 0 0 0-.045 0zm.375 6.467 4.416 16.553a12 12 0 0 0 5.137-4.213z"
+            />
+          </svg>
+        </a>
+        <a href="..//feed.xml" target="_blank">
+          <svg
+            width="22"
+            height="22"
+            viewBox="0 0 24 24"
+            id="Layer_1"
+            data-name="Layer 1"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <title>RSS Feeds</title>
+            <defs>
+              <style>
+                .cls-1 {
+                  fill: none;
+                  stroke: var(--blue);
+                  stroke-miterlimit: 10;
+                  stroke-width: 1.91px;
+                }
+              </style>
+            </defs>
+            <path class="cls-1" d="M6.27,11.05A6.68,6.68,0,0,1,13,17.73" />
+            <path class="cls-1" d="M6.27,6.27A11.46,11.46,0,0,1,17.73,17.73" />
+            <circle class="cls-1" cx="7.23" cy="16.77" r="0.95" />
+            <rect class="cls-1" x="1.5" y="1.5" width="21" height="21" />
+          </svg>
+        </a>
+        <span style="padding-right: 15px; text-wrap: auto">
+          <p>
+            © 2025
+            <a href="https://github.com/aocoronel/">Augusto Coronel.</a>
+            <a href="https://creativecommons.org/licenses/by/4.0/"
+              >All rights reserved.</a
+            >
+          </p>
+        </span>
+      </div>
+    </footer>
+    
+  </body>
+</html>

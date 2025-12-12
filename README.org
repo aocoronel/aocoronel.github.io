@@ -1,0 +1,20 @@
+* aoc
+
+This repository contains my personal blog, dotfiles and other configuration.
+
+- [[https://github.com/aocoronel/aoc/tree/blog][blog]]: blog files in markdown
+- [[https://github.com/aocoronel/aoc/tree/build-pages][build-pages]]: tools to build my blog
+- [[https://github.com/aocoronel/aoc/tree/dotfiles][dotfiles]]: useful personal configuration files (no rice)
+- [[https://github.com/aocoronel/aoc/tree/nvim][nvim]]: neovim configuration files
+
+** Why a mono repo for personal stuff?
+
+Over many git hosting platforms, each developer has a ~dotfiles~ repository, if not more than one. This may sound ok, until you explore a little bit and see projects with 100MB+ storage, using CI/CD, AI and a whole bunch of other tools for the sole sake of a personal repository. In GitHub alone, searching for ~dotfiles~ returns 294k repositories. That's massive, but I'm just covering GitHub here.
+
+My point is very simple: Is git necessary for that?
+
+If we see from the point of view, where git is exceptional for collaboration and massive projects without binary storage necessities, and also for the most important factor, such being synchronization between multiple devices the most appealing feature to use git for personal things.
+
+I personally had mode than 10 git repositories for personal use. What does that even do in this ecosystem? Nothing, it's noise. Over time I deleted many tiny projects and made them all available in my blog as *CC0 licensed single file projects*. A much better place for them. And for all of my extra blog things, dotfiles and other configuration files are also available in a single certralized place, which is always going to be amended to the ~initial commit~, never making any useless commit messages, like timestamps.
+
+Do you get any good thing from doing this? I can clone my entire personal files in a single ~git clone~ command, and work with all branches at the same time by using ~git worktree~.

@@ -1,0 +1,116 @@
+#!/usr/bin/env bash
+
+# Changelog:
+#
+# All notable changes to this project will be documented in this file.
+#
+# The format is based on Keep a Changelog, some adaptation apply: https://keepachangelog.com/en/1.1.0/
+# This project also adheres to Semantic Versioning: https://semver.org/spec/v2.0.0.html
+#
+# [0.1.0] 2026-08-09
+# 	Initial release
+
+# === Variables ===
+
+# Tracks which files were already included
+# Prevents import twice
+declare -A __imported_files
+
+# Fallback to output file
+OUTFILE=a.out
+
+# Describe progress
+VERBOSE=false
+
+# === Utils ===
+
+# Resolve absolute or relative paths
+resolve_path() {
+  local base_dir target
+
+  target="$1"
+  base_dir="${2:-$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)}"
+
+  # Resolve path:
+  # - absolute paths work directly
+  # - relative paths resolved relative to the script directory
+  if [[ "$target" != /* ]]; then
+    target="$base_dir/$target"
+  fi
+
+  echo "$target"
+}
+
+# Resolves multiple imports during compiling
+_compile_one() {
+  local file="$1"
+
+  # Avoid re-including the same file more than once
+  if [[ -n "${__imported_files["$file"]}" ]]; then
+    return
+  fi
+  __imported_files["$file"]=1
+
+  if [[ ! -f "$file" ]]; then
+    echo "compile error: file '$file' not found" >&2
+    exit 1
+  fi
+
+  [ "$VERBOSE" = "true" ] && echo ">>> compiling $file"
+
+  while IFS= read -r line; do
+    # Detect `source file` or `. file`
+    if [[ "$line" =~ ^[[:space:]]*(source|\.)[[:space:]]+(.+) ]]; then
+      # Extract argument(s)
+      for imp in ${BASH_REMATCH[2]}; do
+        _compile_one "$(resolve_path "$imp" "$(realpath "$(dirname "$file")")")"
+      done
+      continue
+    fi
+
+    # Otherwise, append the line to the output
+    printf '%s\n' "$line" >>"$OUTFILE"
+
+  done <"$file"
+  echo "" >> "$OUTFILE"
+}
+
+# === Functions ===
+
+# Compiles scripts
+main() {
+  printf "" >"$OUTFILE"
+
+  _compile_one "$(resolve_path "$1")" "$OUTFILE"
+}
+
+# === Argument Parsing ===
+
+while getopts ":h-s:o:V" opt; do
+  case "$opt" in
+  h)
+    echo "Usage: bsh [ -h | -V | -o <OUTFILE> ] [FILE]"
+    exit 0
+    ;;
+  -)
+    break
+    ;;
+  o)
+    OUTFILE="$OPTARG"
+    ;;
+  V)
+    VERBOSE=true
+    ;;
+  ?)
+    echo "Error: Invalid option '-$OPTARG'" >&2
+    exit 1
+    ;;
+  esac
+done
+
+shift $((OPTIND - 1))
+
+if [ -n "$1" ]; then
+  main "$1"
+  [ "$VERBOSE" = "true" ] && echo ">>> finished compiling $OUTFILE"
+fi
