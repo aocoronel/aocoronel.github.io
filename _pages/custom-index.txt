@@ -10,6 +10,8 @@
 
 ## [Single file projects](./single-file-projects.html)
 
+### Programs
+
 <details>
   <summary>[volatile](./volatile/index.html): Wipe files using a whitelist or blacklist</summary>
   <ul>
@@ -24,5 +26,64 @@
     <li>Language: Python</li>
     <li>License: 3-clause BSD</li>
     <li>[Source code](./sear/sear.py)</li>
+  </ul>
+</details>
+<details>
+  <summary>[gha](./gha/index.html): Interact with GitHub starred repositories and manage following users</summary>
+  <ul>
+    <li>Language: Shell</li>
+    <li>License: CC0</li>
+    <li>[Source code](./gha/gha)</li>
+  </ul>
+</details>
+<details>
+  <summary>[bsp](./bsp/index.html): simple bash preprocessor</summary>
+  <ul>
+    <li>Language: Shell</li>
+    <li>License: CC0</li>
+    <li>[Source code](./bsp/bsp)</li>
+  </ul>
+</details>
+
+### Experiments
+
+<details>
+  <summary>[multicore](./multicore/index.html): Multi-core by default</summary>
+  <ul>
+    <li>Language: Rust</li>
+    <li>License: CC0</li>
+    <li>[Source code](./multicore/multicore.rs)</li>
+  </ul>
+</details>
+<details>
+  <summary>[c-interfaces](./c-interfaces/index.html): Method syntatic sugar for C functions</summary>
+  <ul>
+    <li>Language: C</li>
+    <li>License: CC0</li>
+    <li>[Source code](./c-interfaces/index.html)</li>
+  </ul>
+</details>
+<details>
+  <summary>[cc-sh](./cc-sh/index.html): simple wrapper for gcc and clang with convenient flags</summary>
+  <ul>
+    <li>Language: Shell</li>
+    <li>License: CC0</li>
+    <li>[Source code](./cc-sh/cc)</li>
+  </ul>
+</details>
+<details>
+  <summary>[embed-bash](./embed-bash/index.html): tiny example on how to embed executable in bash</summary>
+  <ul>
+    <li>Language: Shell</li>
+    <li>License: CC0</li>
+    <li>[Source code](./embed-bash/index.html)</li>
+  </ul>
+</details>
+<details>
+  <summary>[jasm](./jasm/index.html): proof of concept to integrate C and JavaScript</summary>
+  <ul>
+    <li>Language: JavaScript, C, Shell</li>
+    <li>License: CC0</li>
+    <li>[Source code](./jasm/jasm.tar.gz)</li>
   </ul>
 </details>
