@@ -1,0 +1,28 @@
+[See all posts](./archive.html)
+
+---
+
+## Notes
+
+[Programs I Use](./programs.html)
+
+---
+
+## [Single file projects](./single-file-projects.html)
+
+<details>
+  <summary>[volatile](./volatile/index.html): Wipe files using a whitelist or blacklist</summary>
+  <ul>
+    <li>Language: C</li>
+    <li>License: 3-clause BSD</li>
+    <li>[Source code](./volatile/volatile.c)</li>
+  </ul>
+</details>
+<details>
+  <summary>[sear](./sear/index.html): Interact with Kagi Bangs in the CLI</summary>
+  <ul>
+    <li>Language: Python</li>
+    <li>License: 3-clause BSD</li>
+    <li>[Source code](./sear/sear.py)</li>
+  </ul>
+</details>
