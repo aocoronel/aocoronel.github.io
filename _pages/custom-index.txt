@@ -44,6 +44,14 @@
     <li>[Source code](./bsp/bsp)</li>
   </ul>
 </details>
+<details>
+  <summary>[cc-sh](./cc-sh/index.html): simple wrapper for gcc and clang with convenient flags</summary>
+  <ul>
+    <li>Language: Shell</li>
+    <li>License: CC0</li>
+    <li>[Source code](./cc-sh/cc)</li>
+  </ul>
+</details>
 
 ### Experiments
 
@@ -61,14 +69,6 @@
     <li>Language: C</li>
     <li>License: CC0</li>
     <li>[Source code](./c-interfaces/index.html)</li>
-  </ul>
-</details>
-<details>
-  <summary>[cc-sh](./cc-sh/index.html): simple wrapper for gcc and clang with convenient flags</summary>
-  <ul>
-    <li>Language: Shell</li>
-    <li>License: CC0</li>
-    <li>[Source code](./cc-sh/cc)</li>
   </ul>
 </details>
 <details>
