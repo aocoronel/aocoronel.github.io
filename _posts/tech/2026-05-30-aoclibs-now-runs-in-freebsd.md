@@ -1,7 +1,7 @@
 ---
 title: aoclibs now runs in FreeBSD
 description: FreeBSD is our second home, case something horrible happens to Linux
-date: May 30, 2026
+date: May 30, 2026 08:00
 ---
 
 > TL;DR If you clicked because of the title, only one line in aoclibs was made to run in FreeBSD. Now aoclibs supports Linux x86_64, aarch64 and FreeBSD x86_64 (currently tested)

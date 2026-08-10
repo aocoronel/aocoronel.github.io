@@ -1,7 +1,7 @@
 ---
 title: Is C error handling bad?
 description: A take on C error handling design
-date: Mar 02, 2026
+date: Mar 02, 2026 08:00
 ---
 
 While learning C we quickly notice C is fairly limited when it comes to error handling. Because of that, there were many attempts of improving it, with pure C. A great example is `errno`, which allows you to set an error somewhere else, but with its own caveats, not replacing the fact the function must return a signal rather an error occurred.

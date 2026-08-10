@@ -1,7 +1,7 @@
 ---
 title: Odin over Zig
 description: A brief comparasion and how I look at programming languages
-date: Mar 22, 2026
+date: Mar 22, 2026 08:00
 ---
 
 I always thought Zig was a very superior programming language, specially in the systems programming niche, as the true C Killer. I'll talk about the many features that Zig has, and what makes it appealing, but before that, just look this beautiful code:

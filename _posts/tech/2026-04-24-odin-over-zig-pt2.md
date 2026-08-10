@@ -1,7 +1,7 @@
 ---
 title: Odin over Zig [Part 2]
 description: A brief comparasion and how I look at programming languages
-date: Apr 24, 2026
+date: Apr 24, 2026 08:00
 ---
 
 One month passed since I ranted a little bit about programming languages, and I got a whole bunch of new opinions as well.

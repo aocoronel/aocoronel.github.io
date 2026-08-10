@@ -1,7 +1,7 @@
 ---
 title: When you know something you can improvise
 description: The only way to make yourself free from tutorials
-date: May 9, 2026
+date: May 9, 2026 08:00
 ---
 
 It has been a year since I managed to install Arch Linux without the `archinstall` utility, not only to mention I installed NixOS, Void and Artix the same hardcore terminal only way.

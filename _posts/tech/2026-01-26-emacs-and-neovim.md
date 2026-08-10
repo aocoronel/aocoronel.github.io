@@ -1,7 +1,7 @@
 ---
 title: Emacs and Neovim
 description: Some say Neovim is better, others Emacs. I don't care, I use both.
-date: Jan 26, 2026
+date: Jan 26, 2026 08:00
 ---
 
 I entered the world of programming, by curiosity while exploring Linux. My very first code was written using Neovim, and so I've been using it forever for more than one year.

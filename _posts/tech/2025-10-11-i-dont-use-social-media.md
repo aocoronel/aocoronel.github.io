@@ -1,7 +1,7 @@
 ---
 title: I don't use social media, and why you should
 description: Sometimes I feel like getting into a social media platform, but I never get a decent reason to do so.
-date: Oct 11, 2025
+date: Oct 11, 2025 08:00
 ---
 
 Name it. Facebook, Instagram, Twitter, Discord, Mastodon, Bluesky, TikTok or else. Which ones do you have? Why do you have them? What do you do in them?

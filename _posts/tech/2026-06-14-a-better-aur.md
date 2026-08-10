@@ -1,7 +1,7 @@
 ---
 title: A better AUR
 description: Why care about aur.archlinux.org? Have your own.
-date: Jun 14, 2026
+date: Jun 14, 2026 08:00
 ---
 
 ## I found an alternative to the AUR and AUR helpers

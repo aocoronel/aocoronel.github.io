@@ -1,7 +1,7 @@
 ---
 title: A quick post on how I learn things
 description: A quick post on how I learn things
-date: Dec 24, 2025
+date: Dec 24, 2025 08:00
 ---
 
 Learning seems easy on words: "I'm studying". But study is not the same as learning.

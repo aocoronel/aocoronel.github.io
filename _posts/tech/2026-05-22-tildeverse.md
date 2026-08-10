@@ -1,7 +1,7 @@
 ---
 title: Tildeverse
 description: I was not expecting to find something like it in 2026.
-date: May 22, 2026
+date: May 22, 2026 08:00
 ---
 
 This morning I read a news post by Ars Technica, that you can also read here: [A hacker group is poisoning open source code at an unprecedented scale](https://arstechnica.com/information-technology/2026/05/a-hacker-group-is-poisoning-open-source-code-at-an-unprecedented-scale/). It talks about the latest GitHub hack.
