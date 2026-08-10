@@ -30,6 +30,7 @@ _website:
 
 index: $(PAGE_SOURCES) $(POST_HTML)
 	@python3 scripts/makeindex.py
+	@rsync -azPl --update "_pages/.htaccess" $(WEBSITE_DIR)/
 
 posts: $(POST_HTML)
 
