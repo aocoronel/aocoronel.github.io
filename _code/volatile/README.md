@@ -110,4 +110,4 @@ gcc volatile.c -o volatile
 
 ## License
 
-This repository is licensed under the 3-clause BSD license.
+This project is available as public-domain under the CC0 License.

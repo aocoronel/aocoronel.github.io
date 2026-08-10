@@ -57,4 +57,4 @@ python sear.py -l find "" -c bangs.json | fzf | awk -F "|" '{print $6}' | sed 's
 
 ## License
 
-This repository is licensed under the 3-clause BSD license.
+This project is available as public-domain under the CC0 License.
