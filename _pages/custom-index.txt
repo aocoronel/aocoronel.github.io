@@ -60,6 +60,14 @@
     <li>[Source code](./tinypass/tinypass.c)</li>
   </ul>
 </details>
+<details>
+  <summary>[joke](./joke/index.html): Jokes from Joke API</summary>
+  <ul>
+    <li>Language: Odin</li>
+    <li>License: CC0</li>
+    <li>[Source code](./joke/joke.odin)</li>
+  </ul>
+</details>
 
 ### Experiments
 
