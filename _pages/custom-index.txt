@@ -52,6 +52,14 @@
     <li>[Source code](./cc-sh/cc)</li>
   </ul>
 </details>
+<details>
+  <summary>[tinypass](./tinypass/index.html): public-domain simple stateless password manager</summary>
+  <ul>
+    <li>Language: C</li>
+    <li>License: CC0</li>
+    <li>[Source code](./tinypass/tinypass.c)</li>
+  </ul>
+</details>
 
 ### Experiments
 
