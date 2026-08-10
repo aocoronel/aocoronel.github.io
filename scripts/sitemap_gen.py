@@ -1,22 +1,32 @@
 #!/usr/bin/env python3
 from bs4 import BeautifulSoup
-import os
+from xml.etree import ElementTree as ET
+from pathlib import Path
 from datetime import datetime
-from var import index_file
-from var import link
-from var import sitemap_output_file
+from var import index_file, link, sitemap_output_file
+
+WEBSITE_DIR = Path(index_file).resolve().parent
+now = datetime.now().strftime('%Y-%m-%d')
+
+EXCLUDE = {
+    '404.html',
+    'custom-index.html',
+}
 
 with open(index_file, 'r', encoding='utf-8') as file:
-    html_content = file.read()
+    soup = BeautifulSoup(file.read(), 'html.parser')
 
-soup = BeautifulSoup(html_content, 'html.parser')
-
-static_pages = [
-    {'loc': link, 'lastmod': datetime.now().strftime('%Y-%m-%d')},
-    {'loc': link + '/programs.html', 'lastmod': datetime.now().strftime('%Y-%m-%d')},
-    {'loc': link + '/about.html', 'lastmod': datetime.now().strftime('%Y-%m-%d')},
-    {'loc': link + '/tech/', 'lastmod': datetime.now().strftime('%Y-%m-%d')},
-]
+static_pages = []
+for entry in sorted(WEBSITE_DIR.iterdir()):
+    name = entry.name
+    if name in EXCLUDE:
+        continue
+    if name == 'index.html':
+        static_pages.append({'loc': link, 'lastmod': now})
+    elif entry.is_dir():
+        static_pages.append({'loc': f'{link}/{name}/', 'lastmod': now})
+    elif name.endswith('.html'):
+        static_pages.append({'loc': f'{link}/{name}', 'lastmod': now})
 
 posts = []
 posts_section = soup.find('h1', {'id': 'posts'})
@@ -26,39 +36,30 @@ if posts_section:
         if next_node.name == 'p':
             link_tag = next_node.find('a')
             if link_tag:
+                date_text = next_node.get_text(strip=True).split('•')[0].strip()
+                try:
+                    lastmod = datetime.strptime(date_text, '%b %d, %Y').strftime('%Y-%m-%d')
+                except ValueError:
+                    lastmod = now
                 posts.append({
-                    'loc': link + '/' + link_tag['href'],
-                    'lastmod': next_node.get_text(strip=True).split('•')[0].strip()
+                    'loc': f'{link}/{link_tag["href"]}',
+                    'lastmod': lastmod,
                 })
         next_node = next_node.find_next_sibling()
 
-for post in posts:
-    try:
-        date = datetime.strptime(post['lastmod'], '%b %d, %Y')
-        post['lastmod'] = date.strftime('%Y-%m-%d')
-    except:
-        post['lastmod'] = datetime.now().strftime('%Y-%m-%d')
-
-sitemap = '''<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'''
+urlset = ET.Element('urlset', attrib={
+    'xmlns': 'http://www.sitemaps.org/schemas/sitemap/0.9'
+})
 
 for page in static_pages + posts:
-    sitemap += f'''
-    <url>
-        <loc>{page['loc']}</loc>
-        <lastmod>{page['lastmod']}</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>'''
+    url_el = ET.SubElement(urlset, 'url')
+    ET.SubElement(url_el, 'loc').text = page['loc']
+    ET.SubElement(url_el, 'lastmod').text = page['lastmod']
+    ET.SubElement(url_el, 'changefreq').text = 'monthly'
+    ET.SubElement(url_el, 'priority').text = '0.8'
 
-sitemap += '''
-</urlset>'''
+ET.indent(urlset)
 
-os.makedirs(os.path.dirname(sitemap_output_file), exist_ok=True)
-
-try:
-    with open(sitemap_output_file, 'w', encoding='utf-8') as file:
-        file.write(sitemap)
-    print("Sitemap generated successfully!")
-except Exception as e:
-    print(f"An error occurred while writing the file: {e}")
+Path(sitemap_output_file).parent.mkdir(parents=True, exist_ok=True)
+ET.ElementTree(urlset).write(sitemap_output_file, encoding='utf-8', xml_declaration=True)
+print("Sitemap generated successfully!")

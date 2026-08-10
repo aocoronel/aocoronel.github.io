@@ -71,10 +71,7 @@
         <div class="content-title-n-toc">
           <p class="content-title">$title$</p>
           <p class="content-desc">$description$</p>
-          <span style="float: left" class="metadata"
-            >Posted <b>$date$</b></span
-          >
-          <span style="float: right" class="metadata">$reading_time$</span>
+          <p class="content-desc"><a href="$source_code$">Source code</a></p>
           <br />
           $if(toc)$
           <div class="table_of_contents">
@@ -87,49 +84,6 @@
       <br />
       <div></div>
       $endif$ $body$
-      <p class="license">
-        This post is licensed under
-        <a class="license" href="https://creativecommons.org/licenses/by/4.0/"
-          >CC BY 4.0</a
-        >
-        by the author.
-      </p>
-      <div style="display: flex; justify-content: center">
-        <div class="further-read">
-          $if(prev_post)$
-          <a href="$rel_path$$prev_post$.html">
-            <p class="further-read-p">Older</p>
-            $if(prev_title)$
-            <p>$prev_title$</p>
-            $else$
-            <p>None</p>
-            $endif$
-          </a>
-          $else$
-          <a>
-            <p class="further-read-p">Older</p>
-            <p>None</p>
-          </a>
-          $endif$
-        </div>
-        <div class="further-read">
-          $if(next_post)$
-          <a href="$rel_path$$next_post$.html">
-            <p class="further-read-p">Newer</p>
-            $if(next_title)$
-            <p>$next_title$</p>
-            $else$
-            <p>None</p>
-            $endif$
-          </a>
-          $else$
-          <a>
-            <p class="further-read-p">Newer</p>
-            <p>None</p>
-          </a>
-          $endif$
-        </div>
-      </div>
     </div>
     <footer>
       <div class="footer_content">

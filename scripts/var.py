@@ -1,7 +1,7 @@
 import os
 
 username = 'Augusto Coronel'
-link = 'https://aocoronel.codeberg.page/'
+link = 'https://aocoronel.codeberg.page'
 description = "I’m a tech enthusiast and programming self-taught hobbist. I build CLIs for Linux."
 lang = 'en-us'
 
