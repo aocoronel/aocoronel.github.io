@@ -3,7 +3,7 @@ title: Programs I Use
 description: A collection of all the programs I use daily
 ---
 
-> Last update: 2026-07-18
+> Last update: 2026-08-29
 
 ## Philosophy
 
@@ -14,7 +14,7 @@ I choose software based on the following criteria:
 - If I decide to switch tools, they must allow me to export my data.
 - I should be able to tinker with the tools, to shape them to fit my needs best.
 - The usage must be clean and simple.
-- 90% of the software I choose has its source open, often free to change and fork.
+- 90% of the software I choose has its source open, often free to fork and change.
 - Most tools I use does not have an interface, which turns them scriptable in many ways.
 - I prefer lightweight solutions.
 
@@ -26,51 +26,68 @@ I'm okay with having one or two proprietary software, but I do not accept myself
 
 For a full list of all the programs I use, you can check on [aocoronel/pacmirror-config](https://github.com/aocoronel/pacmirror-config). This list is always updated.
 
-- **Display manager**: I don't use any at all. All I do is `startx`
-- **Display server**: XLibre
+The following list of packages are the ones I have a personal preference over. It doesn't mean their are the best ever.
+
+- **Display manager**: None. I just run `startx`
+- **Display server**: Xorg
 - **Filesystem**: xfs
 - **Init system**: dinit
-- **Keybinding manager (or something like that)**: sxhkd
 - **Operational system**: Artix Linux
-- **Window manager**: `dwm` without patches
+- **Window manager**: dwm without patches
 
 Arch-based specific:
 
 - **AUR helper**: None. I vendor PKGBUILDs from AUR, instead.
-- **Declarative package management**: [pacmirror](https://codeberg.org/aocoronel/pacmirror.c)
+- **Declarative package management**: [pacmirror](https://github.com/aocoronel/pacmirror.c)
 
-GUIs:
+Theme:
 
-- **Audio editor**: Tenacity
-- **Image editor**: GIMP
-- **Image viewer**: nsxiv
-- **Office**: LibreOffice
-- **PDF viewer**: Zathura
-- **Screenshoter**: Flameshot
-- **Terminal emulator**: Suckless simple terminal
-- **Text editor**: Emacs
-- **Video editor**: Shotcut
-- **Web browser**: Firefox with `arkenfox.js`, uBlock Origin, SurfingKeys and Tampermonkey
-- **Window swithcer**: Rofi
+- **Cursor**: adwaita-cursors
+- **Font**: jetbrains-mono
+- **Icons**: adwaita-icon-theme
+- **Pallete color**: [elegantvagrant](https://github.com/aocoronel/elegantvagrant)
 
-TUIs:
+Software:
 
-- **File manager**: Either `oil.nvim` or `dired` in Emacs. Whenever I need something fancier I use `ranger` or `pcmanfm`
-- **Media player**: mpv
-- **Text editor**: Neovim
-
-CLIs:
-
+- **Audio editor**: tenacity
 - **Backup**: restic
-- **Bookmark manager**: [bmark](https://codeberg.org/aocoronel/bmark)
-- **Dotfile manager**: [neostow](https://codeberg.org/aocoronel/neostow-c)
-- **File encryption**: tomb
-- **File syncing**: sync files using `sftp` and `rsync` over `ssh`
+- **Bookmark manager**: [bmark](https://github.com/aocoronel/bmark)
+- **Clipboard manager**: clipmenu
+- **Document converter**: pandoc
+- **Dotfile manager**: [neostow](https://github.com/aocoronel/neostow)
+- **File encryption**: gnupg
+- **File manager**: ranger
+- **File syncing**: sync files using sftp, and rsync over ssh
+- **Firewall**: ufw
+- **Graphical debugger**: gf2
+- **Image editor**: GIMP
+- **Keybinding manager (or something like that)**: sxhkd
 - **Media converter**: ffmpeg
-- **Password manager**: `pass` to store OTP, and [tinypass](https://codeberg.org/aocoronel/tinypass) as my stateless password manager
+- **Media player**: mpv
+- **Notification daemon**: dunst
+- **Office**: libreoffice
+- **PDF viewer**: zathura
+- **Password manager**: `pass` to store OTP, and [tinypass](https://aocoronel.github.io/tinypass/index.html) as my stateless password manager
+- **Screenshoter**: ksnip
 - **Shell**: zsh
+- **Terminal emulator**: st without patches
+- **Video editor**: shotcut
+- **Web browser**: brave with SurfingKeys and Tampermonkey
+- **Window swithcer**: rofi
+
+Emacs:
+
+- **Accounting**: ledger-mode
+- **Email Client**: mu4e
+- **File manager**: dired
+- **Git Interface**: magit
+- **Image viewer**: image-dired for gallery display
+- **Music player**: emms
+- **PDF viewer**: pdf-tools
+- **RSS Client**: elfeed
+- **Task management**: org-mode
+- **Text editor**: emacs
 
 Other:
 
-- **Note-taking**: black pen and A4 white paper
-- **Task management**: my head and occasionally spread over the filesystem as plain-text
+- **Note-taking**: black pen and A4 white paper, or org-roam in Emacs
