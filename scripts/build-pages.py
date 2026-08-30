@@ -224,23 +224,10 @@ def build_post(md_file: Path):
     run_pandoc(md_file, html_file, template, stylesheet, variables=variables)
 
 
-def add_css():
-    css_files = [
-        "style", "index", "variables", "further-read", "default",
-        "code", "sidebar", "toc", "posts", "about", "dark-theme", "light-theme",
-    ]
+def add_assets():
+    assets = [".htaccess", "404.html", "LICENSE", "robots.txt", "README.org"]
 
-    for css in css_files:
-        src = STYLE_DIR / f"{css}.css"
-        if not src.exists():
-            continue
-        content = src.read_text(encoding="utf-8")
-        content = re.sub(r'/.*?$', '', content, flags=re.MULTILINE)
-        content = re.sub(r'^\s*\n', '', content, flags=re.MULTILINE)
-        content = re.sub(r'\n+', '', content)
-        (WEBSITE_DIR / f"{css}.css").write_text(content, encoding="utf-8")
-
-    for asset in (".htaccess", "404.html", "LICENSE", "robots.txt"):
+    for asset in assets:
         src = PAGES_DIR / asset
         if src.exists():
             shutil.copy2(src, WEBSITE_DIR / asset)
@@ -257,13 +244,13 @@ group = parser.add_mutually_exclusive_group()
 group.add_argument("--basic", metavar="FILE", help="Convert a single markdown file")
 group.add_argument("--code", metavar="FILE", help="Convert a single markdown file for code")
 group.add_argument("--post", metavar="FILE", help="Convert a blog post with prev/next navigation")
-parser.add_argument("-c", "--css", action="store_true", help="Process CSS and copy assets only")
+parser.add_argument("-a", "--assets", action="store_true", help="Process assets")
 args = parser.parse_args()
 
 WEBSITE_DIR.mkdir(exist_ok=True)
 
-if args.css:
-    add_css()
+if args.assets:
+    add_assets()
     sys.exit(0)
 
 if args.basic:

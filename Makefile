@@ -23,7 +23,7 @@ STATIC_HTML  := $(WEBSITE_DIR)/index.html $(WEBSITE_DIR)/archive.html
 RSS_FEED     := $(WEBSITE_DIR)/feed.xml
 SITEMAP      := $(WEBSITE_DIR)/sitemap.xml
 
-all: posts code index css feed sitemap
+all: posts code index css feed sitemap files
 
 _website:
 	@mkdir -p $(WEBSITE_DIR)
@@ -48,6 +48,9 @@ $(WEBSITE_DIR)/%/index.html: _code/%/README.md | $(WEBSITE_DIR)
 $(WEBSITE_DIR)/%.html: _code/%.md | $(WEBSITE_DIR)
 	@python3 $(BUILD_PAGES) --code "$<"
 
+files:
+	@python3 $(BUILD_PAGES) -a
+
 css: $(CSS_OUTPUTS)
 
 $(WEBSITE_DIR)/%.css: _style/%.css | $(WEBSITE_DIR)
@@ -69,4 +72,11 @@ serve:
 clean:
 	rm -rf $(WEBSITE_DIR)/*
 
-.PHONY: all serve clean posts code index css feed sitemap
+sync:
+	@ [ "$$USER" = "aoc" ] || (echo "Read this recipe before using"; exit 1)
+	@rsync -avhz --delete \
+		/home/aoc/git/repos/build-pages/_website/ \
+        /home/aoc/git/repos/aoc/ \
+		--exclude '.git'
+
+.PHONY: all serve clean posts code index css feed sitemap sync
