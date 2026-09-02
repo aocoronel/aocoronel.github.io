@@ -1,4 +1,7 @@
-This is a personal guide to install Artix Linux
+---
+title: Installing Artix Linux
+description: This is a personal guide to install Artix Linux
+---
 
 ## Partitioning
 
