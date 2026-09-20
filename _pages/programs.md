@@ -3,7 +3,7 @@ title: Programs I Use
 description: A collection of all the programs I use daily
 ---
 
-> Last update: 2026-08-29
+> Last update: 2026-09-20
 
 ## Philosophy
 
@@ -24,21 +24,20 @@ I'm okay with having one or two proprietary software, but I do not accept myself
 
 ## Programs I Use
 
-For a full list of all the programs I use, you can check on [aocoronel/pacmirror-config](https://github.com/aocoronel/pacmirror-config). This list is always updated.
+For a full list of all the programs I use, you can check on [aocoronel/dpacker-config](https://github.com/aocoronel/dpacker-config). This list is always updated.
 
 The following list of packages are the ones I have a personal preference over. It doesn't mean their are the best ever.
 
 - **Display manager**: None. I just run `startx`
 - **Display server**: Xorg
 - **Filesystem**: xfs
-- **Init system**: dinit
-- **Operational system**: Artix Linux
-- **Window manager**: dwm without patches
+- **Init system**: runit
+- **Operational system**: Void Linux
+- **Window manager**: i3
 
-Arch-based specific:
+User packages:
 
-- **AUR helper**: None. I vendor PKGBUILDs from AUR, instead.
-- **Declarative package management**: [pacmirror](https://github.com/aocoronel/pacmirror.c)
+- **Declarative package management**: [dpacker](https://github.com/aocoronel/dpacker.h)
 
 Theme:
 
@@ -68,7 +67,7 @@ Software:
 - **Office**: libreoffice
 - **PDF viewer**: zathura
 - **Password manager**: `pass` to store OTP, and [tinypass](https://aocoronel.github.io/tinypass/index.html) as my stateless password manager
-- **Screenshoter**: ksnip
+- **Screenshoter**: flameshot
 - **Shell**: zsh
 - **Terminal emulator**: st without patches
 - **Video editor**: shotcut
@@ -90,4 +89,4 @@ Emacs:
 
 Other:
 
-- **Note-taking**: black pen and A4 white paper, or org-roam in Emacs
+- **Note-taking**: black pen and A4 white paper
