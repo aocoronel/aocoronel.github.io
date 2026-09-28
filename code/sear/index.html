@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2026-11-24 Tue 23:56 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>sear</title>
+<meta name="author" content="termux" />
+<meta name="description" content="Interact with Kagi Bangs in the CLI" />
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" type="text/css" href="/posts.css" />
+<meta name="twitter:title" content="Augusto Coronel" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image"
+      content="https://raw.githubusercontent.com/aocoronel/aocoronel.github.io/refs/heads/main/media/favicons/banner.png"/>
+<style type="text/css">
+#content { max-width: 60em; margin: auto; }
+.title  { margin-bottom: .2em; }
+.subtitle { text-align: center; font-size: medium; font-weight: bold;
+            margin-top:0; }
+.todo   { font-family: monospace; color: #eba0ac; font-weight: bolder; font-size: 110%; }
+.done   { font-family: monospace; color: #a6e3a1; font-weight: bolder; font-size: 110%; }
+.priority { font-family: monospace; color: #cba6f7; }
+.tag    { background-color: #eee; font-family: monospace;
+          padding: 2px; font-size: 80%; font-weight: normal; }
+.timestamp { color: #bebebe; }
+.timestamp-kwd { color: #5f9ea0; }
+.org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+.org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+.org-center { margin-left: auto; margin-right: auto; text-align: center; }
+.underline { text-decoration: underline; }
+#postamble p, #preamble p { font-size: 90%; margin: .2em; }
+p.verse { margin-left: 3%; }
+pre {
+  border: 1px solid #e6e6e6;
+  padding: 8pt;
+  font-family: monospace;
+  overflow: auto;
+  margin: 1.2em;
+}
+pre.src {
+  position: relative;
+  overflow: auto;
+}
+table { border-collapse:collapse; }
+caption.t-above { caption-side: top; }
+caption.t-bottom { caption-side: bottom; }
+td, th { vertical-align:top;  }
+th.org-right  { text-align: center;  }
+th.org-left   { text-align: center;   }
+th.org-center { text-align: center; }
+td.org-right  { text-align: right;  }
+td.org-left   { text-align: left;   }
+td.org-center { text-align: center; }
+dt { font-weight: bold; }
+.footpara { display: inline; }
+.footdef  { margin-bottom: 1em; }
+.figure { padding: 1em; }
+.figure p { text-align: center; }
+.equation-container {
+  display: table;
+  text-align: center;
+  width: 100%;
+}
+.equation {
+  vertical-align: middle;
+}
+.equation-label {
+  display: table-cell;
+  text-align: right;
+  vertical-align: middle;
+}
+.inlinetask {
+  padding: 10px;
+  border: 2px solid gray;
+  margin: 10px;
+  background: #ffffcc;
+}
+#org-div-home-and-up
+ { text-align: right; font-size: 70%; white-space: nowrap; }
+textarea { overflow-x: auto; }
+.linenr { font-size: smaller }
+.code-highlighted { background-color: #ffff00; }
+.org-info-js_info-navigation { border-style: none; }
+#org-info-js_console-label
+  { font-size: 10px; font-weight: bold; white-space: nowrap; }
+.org-info-js_search-highlight
+  { background-color: #ffff00; color: #000000; font-weight: bold; }
+.org-svg { }
+</style>
+</head>
+<body>
+<div id="preamble" class="status">
+<header><div class="header_content">
+        <div class="navbar">
+          <a class="ctitle" href="/">Coronel</a>
+          <div class="nav_item">
+            <a href="/about.html">About</a>
+          </div>
+          <div class="nav_item">
+            <a href="/">Home</a>
+          </div>
+        </div>
+      </div></header><br>
+</div>
+<div id="content" class="content">
+<h1 class="title">sear</h1>
+<p class="content-desc"><a href="./sear.py">Source code</a></p>
+
+<p>
+<code>sear</code> allows you to use the powerful <a href="https://github.com/kagisearch/bangs">Kagi Bangs</a> from the CLI. Check the official bang repository to know more about it.
+</p>
+
+<p>
+Essentially, it allows you configure a <code>json</code> file to predefine a search query, and quickly replace the query template and open in a browser.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash"><code>python sear pm Leishmaniosis
+<span style="color: #eba0ac;"># </span><span style="color: #eba0ac;">Output
+</span><span style="color: #eba0ac;"># </span><span style="color: #eba0ac;">https://pubmed.ncbi.nlm.nih.gov/?term=Leishmaniosis&amp;filter=simsearch2.ffrft</span>
+</code></pre>
+</div>
+<div id="outline-container-org2052716" class="outline-2">
+<h2 id="org2052716">Features</h2>
+<div class="outline-text-2" id="text-org2052716">
+<ul class="org-ul">
+<li>Open links in a browser</li>
+<li>Find bangs by any JSON key</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org75d04a7" class="outline-2">
+<h2 id="org75d04a7">Usage</h2>
+<div class="outline-text-2" id="text-org75d04a7">
+<div class="org-src-container">
+<pre class="src src-text"><code>usage:
+  sear.py [OPTION] &lt;COMMAND&gt; [ARGS]
+
+commands:
+  add              Add a bang
+  find [BANG_NAME] Find a bang with a specified name
+  inspect          Output json file
+  list             Lists all bangs
+
+positional arguments:
+  args                  Command or bang search
+
+options:
+  -h, --help            show this help message
+                        and exit
+  -c, --config CONFIG   Path to bangs JSON file
+  -b, --browser         Open URL in browser
+  -f, --findkey FINDKEY
+                        Key to search for in
+                        'find' (e.g., s, t, u)
+  -l, --inline          Find results are inline
+  -v, --version         Print version
+</code></pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org96da95c" class="outline-2">
+<h2 id="org96da95c">Scripting</h2>
+<div class="outline-text-2" id="text-org96da95c">
+<p>
+Combine this script with the power of <code>fzf</code> to interactively select a bang:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash"><code><span style="color: #cba6f7;">read</span> -rp <span style="color: #a6e3a1;">"Enter your query: "</span> QUERY
+python sear.py -l find <span style="color: #a6e3a1;">""</span> -c bangs.json | fzf | awk -F <span style="color: #a6e3a1;">"|"</span> <span style="color: #a6e3a1;">'{print $6}'</span> | sed <span style="color: #a6e3a1;">'s|{{{s}}}|$QUERY|'</span> | xargs -I {} xdg-open {}
+</code></pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org4f41865" class="outline-2">
+<h2 id="org4f41865">License</h2>
+<div class="outline-text-2" id="text-org4f41865">
+<p>
+This project is available as public-domain under the CC0 License.
+</p>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<footer>
+      <div class="footer_content">
+        <a
+          href="https://github.com/aocoronel"
+          class="glass-btn !px-3"
+          target="_blank"
+          ><svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="22"
+            height="22"
+            fill="var(--blue)"
+            viewBox="0 0 256 256"
+          >
+            <title>GitHub</title>
+            <path
+              d="M208,104v8a48,48,0,0,1-48,48H136a32,32,0,0,1,32,32v40H104V192a32,32,0,0,1,32-32H112a48,48,0,0,1-48-48v-8a49.28,49.28,0,0,1,8.51-27.3A51.92,51.92,0,0,1,76,32a52,52,0,0,1,43.83,24h32.34A52,52,0,0,1,196,32a51.92,51.92,0,0,1,3.49,44.7A49.28,49.28,0,0,1,208,104Z"
+              opacity="0.2"
+            ></path>
+            <path
+              d="M208.3,75.68A59.74,59.74,0,0,0,202.93,28,8,8,0,0,0,196,24a59.75,59.75,0,0,0-48,24H124A59.75,59.75,0,0,0,76,24a8,8,0,0,0-6.93,4,59.78,59.78,0,0,0-5.38,47.68A58.14,58.14,0,0,0,56,104v8a56.06,56.06,0,0,0,48.44,55.47A39.8,39.8,0,0,0,96,192v8H72a24,24,0,0,1-24-24A40,40,0,0,0,8,136a8,8,0,0,0,0,16,24,24,0,0,1,24,24,40,40,0,0,0,40,40H96v16a8,8,0,0,0,16,0V192a24,24,0,0,1,48,0v40a8,8,0,0,0,16,0V192a39.8,39.8,0,0,0-8.44-24.53A56.06,56.06,0,0,0,216,112v-8A58,58,0,0,0,208.3,75.68ZM200,112a40,40,0,0,1-40,40H112a40,40,0,0,1-40-40v-8a41.74,41.74,0,0,1,6.9-22.48A8,8,0,0,0,80,73.83a43.81,43.81,0,0,1,.79-33.58,43.88,43.88,0,0,1,32.32,20.06A8,8,0,0,0,119.82,64h32.35a8,8,0,0,0,6.74-3.69,43.87,43.87,0,0,1,32.32-20.06A43.81,43.81,0,0,1,192,73.83a8.09,8.09,0,0,0,1,7.65A41.76,41.76,0,0,1,200,104Z"
+            ></path></svg
+        ></a>
+        <a href="/feed.xml" target="_blank">
+          <svg
+            width="22"
+            height="22"
+            viewBox="0 0 24 24"
+            id="Layer_1"
+            data-name="Layer 1"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <title>RSS Feeds</title>
+            <defs>
+              <style>
+                .cls-1 {
+                  fill: none;
+                  stroke: var(--blue);
+                  stroke-miterlimit: 10;
+                  stroke-width: 1.91px;
+                }
+              </style>
+            </defs>
+            <path class="cls-1" d="M6.27,11.05A6.68,6.68,0,0,1,13,17.73" />
+            <path class="cls-1" d="M6.27,6.27A11.46,11.46,0,0,1,17.73,17.73" />
+            <circle class="cls-1" cx="7.23" cy="16.77" r="0.95" />
+            <rect class="cls-1" x="1.5" y="1.5" width="21" height="21" />
+          </svg>
+        </a>
+        <span style="padding-right: 15px; text-wrap: auto">
+          <p>
+            © 2025
+            <a href="https://github.com/aocoronel/">Augusto Coronel.</a>
+            <a href="https://creativecommons.org/licenses/by/4.0/"
+              >All rights reserved.</a
+            >
+          </p>
+        </span>
+      </div>
+    </footer>
+</div>
+</body>
+</html>

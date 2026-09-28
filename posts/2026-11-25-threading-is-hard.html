@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2026-11-24 Tue 23:56 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Threadding isn't hard</title>
+<meta name="author" content="Augusto Coronel" />
+<meta name="description" content="Threadding is very hard" />
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" type="text/css" href="/posts.css" />
+<meta name="twitter:title" content="Augusto Coronel" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image"
+      content="https://raw.githubusercontent.com/aocoronel/aocoronel.github.io/refs/heads/main/media/favicons/banner.png"/>
+<style type="text/css">
+#content { max-width: 60em; margin: auto; }
+.title  { margin-bottom: .2em; }
+.subtitle { text-align: center; font-size: medium; font-weight: bold;
+            margin-top:0; }
+.todo   { font-family: monospace; color: #eba0ac; font-weight: bolder; font-size: 110%; }
+.done   { font-family: monospace; color: #a6e3a1; font-weight: bolder; font-size: 110%; }
+.priority { font-family: monospace; color: #cba6f7; }
+.tag    { background-color: #eee; font-family: monospace;
+          padding: 2px; font-size: 80%; font-weight: normal; }
+.timestamp { color: #bebebe; }
+.timestamp-kwd { color: #5f9ea0; }
+.org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+.org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+.org-center { margin-left: auto; margin-right: auto; text-align: center; }
+.underline { text-decoration: underline; }
+#postamble p, #preamble p { font-size: 90%; margin: .2em; }
+p.verse { margin-left: 3%; }
+pre {
+  border: 1px solid #e6e6e6;
+  padding: 8pt;
+  font-family: monospace;
+  overflow: auto;
+  margin: 1.2em;
+}
+pre.src {
+  position: relative;
+  overflow: auto;
+}
+table { border-collapse:collapse; }
+caption.t-above { caption-side: top; }
+caption.t-bottom { caption-side: bottom; }
+td, th { vertical-align:top;  }
+th.org-right  { text-align: center;  }
+th.org-left   { text-align: center;   }
+th.org-center { text-align: center; }
+td.org-right  { text-align: right;  }
+td.org-left   { text-align: left;   }
+td.org-center { text-align: center; }
+dt { font-weight: bold; }
+.footpara { display: inline; }
+.footdef  { margin-bottom: 1em; }
+.figure { padding: 1em; }
+.figure p { text-align: center; }
+.equation-container {
+  display: table;
+  text-align: center;
+  width: 100%;
+}
+.equation {
+  vertical-align: middle;
+}
+.equation-label {
+  display: table-cell;
+  text-align: right;
+  vertical-align: middle;
+}
+.inlinetask {
+  padding: 10px;
+  border: 2px solid gray;
+  margin: 10px;
+  background: #ffffcc;
+}
+#org-div-home-and-up
+ { text-align: right; font-size: 70%; white-space: nowrap; }
+textarea { overflow-x: auto; }
+.linenr { font-size: smaller }
+.code-highlighted { background-color: #ffff00; }
+.org-info-js_info-navigation { border-style: none; }
+#org-info-js_console-label
+  { font-size: 10px; font-weight: bold; white-space: nowrap; }
+.org-info-js_search-highlight
+  { background-color: #ffff00; color: #000000; font-weight: bold; }
+.org-svg { }
+</style>
+</head>
+<body>
+<div id="preamble" class="status">
+<header><div class="header_content">
+        <div class="navbar">
+          <a class="ctitle" href="/">Coronel</a>
+          <div class="nav_item">
+            <a href="/about.html">About</a>
+          </div>
+          <div class="nav_item">
+            <a href="/">Home</a>
+          </div>
+        </div>
+      </div></header><br>
+</div>
+<div id="content" class="content">
+<h1 class="title">Threadding isn't hard</h1>
+<p>
+My first introduction to threadding was my multicore experiment in Rust, where I was trying to implement the Multicore by default by Ryan Fleurry. I concluded the approach wasn't scalable, but yet again I tried to implement it again, but in Odin, and it failed as well.
+</p>
+
+<p>
+It wasn't the end. I really see something powerful behind his idea, but the approach isn't reliable, and ends up being more complicated.
+</p>
+
+<p>
+Then, I found <code>thread_pool.odin</code> in the core library of Odin, and immediatedly a new idea got me. I could join the multicore idea with a pool (a.k.a job system). I searched a bit about it, and realized that everyone implements a job system differently, and all of them are trying to reduce the time threads are waiting, or trying to acquire a task from a queue or a deque.
+</p>
+
+<p>
+So here is my idea. A pool, where each added task is executed by all threads, and dequeue isn't a thing. With this approach, we can get most of the benefits of multicore-by-default, and the critical parts that can fail and require the program to exit are done from one thread, likely. It's likely, because it could not be true, when the pool is independent, for example. The problem is that all procedures that are passed to the threads have to designed based on the concept it will be executed by all threads, and not just one, which takes single-threadded procedures reusability away, but makes user-level work-stealing very cheap, and eliminates variadic execution times, where each thread takes a task that takes different amount of times to complete. It's like conparing a shop, where all employes attend to different customers, and another where all employees attend the same customer, one by one in <span class="underline">order</span>. Whoa! We are very close to ordered synchronous execution, and the threads are not waiting yet. Each thread does only a partial work, and when they finish their work upfront of the other threads from the pool, they take the freedom to steal a task from a thread that didn't get time from the OS yet.
+</p>
+
+<p>
+I've been working on this thread pool for two weeks. I had to scratch my work a couple of times, because each time I realized a different use case that would be imcompatible with my library. There was a moment where I thought "What if I have more than one pool, and any thread of a pool can add tasks to a different one?", in a context where I was assuming all orchestration was done by the main thread. The worse, I kept figuring out use cases that can break everything.
+</p>
+
+<p>
+I don't have much experience with threadding, so my words aren't reallt valuable, but for me threadding is an unsolved computer science problem. There isn't a consensus of what is the best threadding strategy to get the best threadding efficiency. Again, everyone implements threadding libraries differently, and they are always around a certain use case, because it's not possible to provide a library that can magically figure out what you want the threads to do. Unfortunatedly, people implement these in a very private style and give a very high level API, which doesn't give you control. For me, it feels like the developers think I know less about threadding than them, and I'm more likely to get into data races, deadlocks and so on. Rhus, I'm forced to use an API in the way those developers invisioned.
+</p>
+
+<p>
+Threadding unlocks a massive set of possibilities, which people try to harness in a mere library. I don't think threadding libraries should exist, at least not to provide a high level API, but to give building blocks that anyone would have to write anyway. Each program is unique and has it's own constraints, and the developers know these constraints and should be able to build a threadding strategy specific to their use cases. This is what I believe, should be the future of threadding.
+</p>
+
+<p>
+Threadding is very hard. When I was working on my pool, and I thought I knew what I was doing, but all sorts of synchronization issues were happening, and the thread sanitizer was just screaming 100+ warnings at me. Hopefully, I managed to surpress all warnings, and prove my approach works, although I can't prove it's better than a regular pool. And if synchronization problems wasn't enough, there is the realm of alignment issues, which can mess up the cache lines and throw the whole performance gain away. And the worst: when you make a threadded program that runs on the same speed of a single threadded one.
+</p>
+
+<p>
+I would say we learn programming in a single threadded style, then we use this knowledge to make N things, and when we finally think we are ready to do threadding, our reasoning is divergent fro what we should think in a multi-threadded environment. This caused me to have many issues in my pool, because I was thinking in a single-threadded mentality, where the threads were executing things out of order. I'm finally getting the hang of it, but even at this point I don't know when threadding is worth to be used.
+</p>
+
+<p>
+My idea of ideal threadded program is the one where all threads are busy doing real work, instead of waiting. And that's what many libraries try to achieve as well. However, the ways are few, and trying to bring a solution to it, makes a new problem. Personally, if a thread is created to be waiting most of its lifetime, just use coroutines.
+</p>
+
+<p>
+Since computers nowadays likely have more than one CPU, we are all late to the party. We need to expand our threadding knowledge, and same for SIMD.
+</p>
+</div>
+<div id="postamble" class="status">
+<p class="license">
+     This post is licensed under
+     <a class="license" href="https://creativecommons.org/licenses/by/4.0/">
+     CC BY 4.0</a>
+     by the author.
+     </p><footer>
+      <div class="footer_content">
+        <a
+          href="https://github.com/aocoronel"
+          class="glass-btn !px-3"
+          target="_blank"
+          ><svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="22"
+            height="22"
+            fill="var(--blue)"
+            viewBox="0 0 256 256"
+          >
+            <title>GitHub</title>
+            <path
+              d="M208,104v8a48,48,0,0,1-48,48H136a32,32,0,0,1,32,32v40H104V192a32,32,0,0,1,32-32H112a48,48,0,0,1-48-48v-8a49.28,49.28,0,0,1,8.51-27.3A51.92,51.92,0,0,1,76,32a52,52,0,0,1,43.83,24h32.34A52,52,0,0,1,196,32a51.92,51.92,0,0,1,3.49,44.7A49.28,49.28,0,0,1,208,104Z"
+              opacity="0.2"
+            ></path>
+            <path
+              d="M208.3,75.68A59.74,59.74,0,0,0,202.93,28,8,8,0,0,0,196,24a59.75,59.75,0,0,0-48,24H124A59.75,59.75,0,0,0,76,24a8,8,0,0,0-6.93,4,59.78,59.78,0,0,0-5.38,47.68A58.14,58.14,0,0,0,56,104v8a56.06,56.06,0,0,0,48.44,55.47A39.8,39.8,0,0,0,96,192v8H72a24,24,0,0,1-24-24A40,40,0,0,0,8,136a8,8,0,0,0,0,16,24,24,0,0,1,24,24,40,40,0,0,0,40,40H96v16a8,8,0,0,0,16,0V192a24,24,0,0,1,48,0v40a8,8,0,0,0,16,0V192a39.8,39.8,0,0,0-8.44-24.53A56.06,56.06,0,0,0,216,112v-8A58,58,0,0,0,208.3,75.68ZM200,112a40,40,0,0,1-40,40H112a40,40,0,0,1-40-40v-8a41.74,41.74,0,0,1,6.9-22.48A8,8,0,0,0,80,73.83a43.81,43.81,0,0,1,.79-33.58,43.88,43.88,0,0,1,32.32,20.06A8,8,0,0,0,119.82,64h32.35a8,8,0,0,0,6.74-3.69,43.87,43.87,0,0,1,32.32-20.06A43.81,43.81,0,0,1,192,73.83a8.09,8.09,0,0,0,1,7.65A41.76,41.76,0,0,1,200,104Z"
+            ></path></svg
+        ></a>
+        <a href="/feed.xml" target="_blank">
+          <svg
+            width="22"
+            height="22"
+            viewBox="0 0 24 24"
+            id="Layer_1"
+            data-name="Layer 1"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <title>RSS Feeds</title>
+            <defs>
+              <style>
+                .cls-1 {
+                  fill: none;
+                  stroke: var(--blue);
+                  stroke-miterlimit: 10;
+                  stroke-width: 1.91px;
+                }
+              </style>
+            </defs>
+            <path class="cls-1" d="M6.27,11.05A6.68,6.68,0,0,1,13,17.73" />
+            <path class="cls-1" d="M6.27,6.27A11.46,11.46,0,0,1,17.73,17.73" />
+            <circle class="cls-1" cx="7.23" cy="16.77" r="0.95" />
+            <rect class="cls-1" x="1.5" y="1.5" width="21" height="21" />
+          </svg>
+        </a>
+        <span style="padding-right: 15px; text-wrap: auto">
+          <p>
+            © 2025
+            <a href="https://github.com/aocoronel/">Augusto Coronel.</a>
+            <a href="https://creativecommons.org/licenses/by/4.0/"
+              >All rights reserved.</a
+            >
+          </p>
+        </span>
+      </div>
+    </footer>
+</div>
+</body>
+</html>

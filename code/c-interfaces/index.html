@@ -1,0 +1,393 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2026-11-24 Tue 23:56 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>c-interfaces</title>
+<meta name="author" content="termux" />
+<meta name="description" content="Method syntatic sugar for C functions" />
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" type="text/css" href="/posts.css" />
+<meta name="twitter:title" content="Augusto Coronel" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image"
+      content="https://raw.githubusercontent.com/aocoronel/aocoronel.github.io/refs/heads/main/media/favicons/banner.png"/>
+<style type="text/css">
+#content { max-width: 60em; margin: auto; }
+.title  { margin-bottom: .2em; }
+.subtitle { text-align: center; font-size: medium; font-weight: bold;
+            margin-top:0; }
+.todo   { font-family: monospace; color: #eba0ac; font-weight: bolder; font-size: 110%; }
+.done   { font-family: monospace; color: #a6e3a1; font-weight: bolder; font-size: 110%; }
+.priority { font-family: monospace; color: #cba6f7; }
+.tag    { background-color: #eee; font-family: monospace;
+          padding: 2px; font-size: 80%; font-weight: normal; }
+.timestamp { color: #bebebe; }
+.timestamp-kwd { color: #5f9ea0; }
+.org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+.org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+.org-center { margin-left: auto; margin-right: auto; text-align: center; }
+.underline { text-decoration: underline; }
+#postamble p, #preamble p { font-size: 90%; margin: .2em; }
+p.verse { margin-left: 3%; }
+pre {
+  border: 1px solid #e6e6e6;
+  padding: 8pt;
+  font-family: monospace;
+  overflow: auto;
+  margin: 1.2em;
+}
+pre.src {
+  position: relative;
+  overflow: auto;
+}
+table { border-collapse:collapse; }
+caption.t-above { caption-side: top; }
+caption.t-bottom { caption-side: bottom; }
+td, th { vertical-align:top;  }
+th.org-right  { text-align: center;  }
+th.org-left   { text-align: center;   }
+th.org-center { text-align: center; }
+td.org-right  { text-align: right;  }
+td.org-left   { text-align: left;   }
+td.org-center { text-align: center; }
+dt { font-weight: bold; }
+.footpara { display: inline; }
+.footdef  { margin-bottom: 1em; }
+.figure { padding: 1em; }
+.figure p { text-align: center; }
+.equation-container {
+  display: table;
+  text-align: center;
+  width: 100%;
+}
+.equation {
+  vertical-align: middle;
+}
+.equation-label {
+  display: table-cell;
+  text-align: right;
+  vertical-align: middle;
+}
+.inlinetask {
+  padding: 10px;
+  border: 2px solid gray;
+  margin: 10px;
+  background: #ffffcc;
+}
+#org-div-home-and-up
+ { text-align: right; font-size: 70%; white-space: nowrap; }
+textarea { overflow-x: auto; }
+.linenr { font-size: smaller }
+.code-highlighted { background-color: #ffff00; }
+.org-info-js_info-navigation { border-style: none; }
+#org-info-js_console-label
+  { font-size: 10px; font-weight: bold; white-space: nowrap; }
+.org-info-js_search-highlight
+  { background-color: #ffff00; color: #000000; font-weight: bold; }
+.org-svg { }
+</style>
+</head>
+<body>
+<div id="preamble" class="status">
+<header><div class="header_content">
+        <div class="navbar">
+          <a class="ctitle" href="/">Coronel</a>
+          <div class="nav_item">
+            <a href="/about.html">About</a>
+          </div>
+          <div class="nav_item">
+            <a href="/">Home</a>
+          </div>
+        </div>
+      </div></header><br>
+</div>
+<div id="content" class="content">
+<h1 class="title">c-interfaces</h1>
+<div id="outline-container-orgd3f677c" class="outline-2">
+<h2 id="orgd3f677c">C Interfaces</h2>
+<div class="outline-text-2" id="text-orgd3f677c">
+<p>
+This is a proof-of-concept project that aims to bring the syntatic sugar from mechanisms like interfaces, methods and classes to C.
+</p>
+
+<p>
+Small usage example:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-c"><code><span style="color: #cba6f7;">#include</span> <span style="color: #a6e3a1;">&lt;assert.h&gt;</span>
+<span style="color: #cba6f7;">#include</span> <span style="color: #a6e3a1;">&lt;stdio.h&gt;</span>
+<span style="color: #cba6f7;">#include</span> <span style="color: #a6e3a1;">&lt;stdlib.h&gt;</span>
+
+<span style="color: #cba6f7;">#define</span> <span style="color: #c7c7c7;">definitions</span>
+
+<span style="color: #cba6f7;">#include</span> <span style="color: #a6e3a1;">&lt;stdbool.h&gt;</span>
+
+<span style="color: #cba6f7;">#define</span> <span style="color: #c7c7c7;">self</span> <span style="color: #cba6f7;">struct</span> <span style="color: #f9e2af;">vector2_vtable</span>
+<span style="color: #cba6f7;">struct</span> <span style="color: #f9e2af;">vector2_vtable</span> {
+    <span style="color: #f9e2af;">bool</span> (*<span style="color: #5ffcfc;">error</span>)(<span style="color: #f9e2af;">self</span> *);
+    <span style="color: #f9e2af;">self</span> (*<span style="color: #5ffcfc;">orelse</span>)(<span style="color: #f9e2af;">self</span> *, <span style="color: #cba6f7;">const</span> <span style="color: #c7c7c7;">self</span>);
+    <span style="color: #f9e2af;">self</span> (*<span style="color: #5ffcfc;">add</span>)(<span style="color: #f9e2af;">self</span> *, <span style="color: #cba6f7;">const</span> <span style="color: #c7c7c7;">self</span>);
+    <span style="color: #f9e2af;">float</span> <span style="color: #c7c7c7;">x</span>, <span style="color: #c7c7c7;">y</span>;
+};
+
+<span style="color: #cba6f7;">#define</span> <span style="color: #5ffcfc;">vector2</span>(...)                                           \
+    (<span style="color: #cba6f7;">const</span> <span style="color: #cba6f7;">struct</span> <span style="color: #f9e2af;">vector2_vtable</span>) {                            \
+        .add = vector2_impl_add, .error = vector2_impl_err,    \
+        .orelse = vector2_impl_add_orelse_abort, ##__VA_ARGS__ \
+    }
+
+<span style="color: #cba6f7;">#define</span> <span style="color: #5ffcfc;">_vector2</span>(...)                                                     \
+    (<span style="color: #cba6f7;">const</span> <span style="color: #cba6f7;">struct</span> <span style="color: #f9e2af;">vector2_vtable</span>) {                                       \
+        .add = vector2_impl_add, .error = vector2_impl_err, ##__VA_ARGS__ \
+    }
+
+<span style="color: #cba6f7;">#define</span> <span style="color: #c7c7c7;">def</span> <span style="color: #cba6f7;">static</span> <span style="color: #cba6f7;">inline</span>
+
+def <span style="color: #f9e2af;">self</span> <span style="color: #5ffcfc;">vector2_impl_add</span>(<span style="color: #f9e2af;">self</span> *<span style="color: #c7c7c7;">s</span>, <span style="color: #f9e2af;">self</span> <span style="color: #c7c7c7;">x</span>);
+
+def <span style="color: #f9e2af;">bool</span> <span style="color: #5ffcfc;">vector2_impl_err</span>(<span style="color: #f9e2af;">self</span> *<span style="color: #c7c7c7;">y</span>);
+def <span style="color: #f9e2af;">self</span> <span style="color: #5ffcfc;">vector2_impl_add_orelse_ok</span>(<span style="color: #f9e2af;">self</span> *<span style="color: #c7c7c7;">x</span>, <span style="color: #cba6f7;">const</span> <span style="color: #f9e2af;">self</span> <span style="color: #c7c7c7;">y</span>);
+def <span style="color: #f9e2af;">self</span> <span style="color: #5ffcfc;">vector2_impl_add_orelse_err</span>(<span style="color: #f9e2af;">self</span> *<span style="color: #c7c7c7;">x</span>, <span style="color: #cba6f7;">const</span> <span style="color: #f9e2af;">self</span> <span style="color: #c7c7c7;">y</span>);
+def <span style="color: #f9e2af;">self</span> <span style="color: #5ffcfc;">vector2_impl_add_orelse_abort</span>(<span style="color: #f9e2af;">self</span> *<span style="color: #c7c7c7;">x</span>, <span style="color: #cba6f7;">const</span> <span style="color: #f9e2af;">self</span> <span style="color: #c7c7c7;">y</span>);
+
+<span style="color: #cba6f7;">#ifdef</span> definitions
+<span style="color: #cba6f7;">const</span> <span style="color: #cba6f7;">struct</span> <span style="color: #f9e2af;">vector2_vtable</span> <span style="color: #c7c7c7;">$vector2</span> = vector2();
+
+def <span style="color: #f9e2af;">bool</span> <span style="color: #5ffcfc;">vector2_impl_err</span>(<span style="color: #f9e2af;">self</span> *<span style="color: #c7c7c7;">y</span>) {
+    <span style="color: #cba6f7;">return</span> y == <span style="color: #f9e2af;">NULL</span>;
+}
+
+def <span style="color: #f9e2af;">self</span> <span style="color: #5ffcfc;">vector2_impl_add</span>(<span style="color: #f9e2af;">self</span> *<span style="color: #c7c7c7;">s</span>, <span style="color: #cba6f7;">const</span> <span style="color: #f9e2af;">self</span> <span style="color: #c7c7c7;">x</span>) {
+    <span style="color: #cba6f7;">if</span> (!s)
+        <span style="color: #cba6f7;">return</span> _vector2(.orelse = vector2_impl_add_orelse_err);
+    <span style="color: #cba6f7;">else</span> {
+        s-&gt;x += x.x;
+        s-&gt;y += x.y;
+        <span style="color: #cba6f7;">return</span> _vector2(.orelse = vector2_impl_add_orelse_ok);
+    }
+}
+
+def <span style="color: #f9e2af;">self</span> <span style="color: #5ffcfc;">vector2_impl_add_orelse_ok</span>(<span style="color: #f9e2af;">self</span> *<span style="color: #c7c7c7;">x</span>, <span style="color: #cba6f7;">const</span> <span style="color: #f9e2af;">self</span> <span style="color: #c7c7c7;">y</span>) {
+    <span style="color: #cba6f7;">return</span> *x;
+}
+
+def <span style="color: #f9e2af;">self</span> <span style="color: #5ffcfc;">vector2_impl_add_orelse_err</span>(<span style="color: #f9e2af;">self</span> *<span style="color: #c7c7c7;">x</span>, <span style="color: #cba6f7;">const</span> <span style="color: #f9e2af;">self</span> <span style="color: #c7c7c7;">y</span>) {
+    <span style="color: #cba6f7;">return</span> y;
+}
+
+<span style="color: #cba6f7;">#include</span> <span style="color: #a6e3a1;">&lt;stdlib.h&gt;</span>
+def <span style="color: #f9e2af;">self</span> <span style="color: #5ffcfc;">vector2_impl_add_orelse_abort</span>(<span style="color: #f9e2af;">self</span> *<span style="color: #c7c7c7;">x</span>, <span style="color: #cba6f7;">const</span> <span style="color: #f9e2af;">self</span> <span style="color: #c7c7c7;">y</span>) {
+    fprintf(stderr, <span style="color: #a6e3a1;">"invalid orelse call\n"</span>);
+    abort();
+}
+<span style="color: #cba6f7;">#else</span>
+<span style="color: #cba6f7;">extern</span> <span style="color: #cba6f7;">const</span> <span style="color: #cba6f7;">struct</span> <span style="color: #f9e2af;">vector2_vtable</span> <span style="color: #c7c7c7;">$vector2</span>;
+<span style="color: #cba6f7;">#endif</span>
+
+<span style="color: #cba6f7;">#undef</span> self
+
+<span style="color: #cba6f7;">#define</span> <span style="color: #5ffcfc;">add</span>(...) add(using, __VA_ARGS__)
+<span style="color: #cba6f7;">#define</span> <span style="color: #c7c7c7;">err</span> error(using)
+<span style="color: #cba6f7;">#define</span> <span style="color: #5ffcfc;">orelse</span>(...) orelse(using, __VA_ARGS__)
+
+<span style="color: #cba6f7;">#define</span> <span style="color: #5ffcfc;">use</span>(<span style="color: #c7c7c7;">x</span>) using = x
+
+<span style="color: #cba6f7;">#define</span> <span style="color: #c7c7c7;">let</span> __auto_type
+
+<span style="color: #f9e2af;">int</span> <span style="color: #5ffcfc;">main</span>(<span style="color: #f9e2af;">int</span> <span style="color: #c7c7c7;">argc</span>, <span style="color: #f9e2af;">char</span> *<span style="color: #c7c7c7;">argv</span>[]) {
+    <span style="color: #f9e2af;">void</span> *<span style="color: #c7c7c7;">using</span>;
+
+    <span style="color: #eba0ac;">// </span><span style="color: #eba0ac;">Warning: __auto_type is a GNU extension. A portable approach would be:
+</span>    <span style="color: #eba0ac;">//</span><span style="color: #eba0ac;">
+</span>    <span style="color: #eba0ac;">// </span><span style="color: #eba0ac;">#define interface(name) __typeof__(const struct name##_vtable)
+</span>    <span style="color: #f9e2af;">let</span> <span style="color: #c7c7c7;">x</span> = vector2(.x = 190.0, .y = 0.0 );
+    <span style="color: #f9e2af;">let</span> <span style="color: #c7c7c7;">b</span> = vector2(.x = 20.0, .y = 0.0 );
+
+    use(&amp;x); <span style="color: #eba0ac;">// </span><span style="color: #eba0ac;">expands in add()
+</span>
+    x.add(b).add(b); <span style="color: #eba0ac;">// </span><span style="color: #eba0ac;">use interface
+</span>
+    $vector2.add(b); <span style="color: #eba0ac;">// </span><span style="color: #eba0ac;">global
+</span>
+<span style="color: #cba6f7;">#define</span> <span style="color: #c7c7c7;">str</span> $vector2
+    str.add(b); <span style="color: #eba0ac;">// </span><span style="color: #eba0ac;">renamed global
+</span>
+    vector2().add(b); <span style="color: #eba0ac;">// </span><span style="color: #eba0ac;">init and use
+</span>
+    assert(x.x == 190.0 + (20.0 * 5.0));
+
+    <span style="color: #f9e2af;">let</span> <span style="color: #c7c7c7;">z</span> = vector2( .x = 0.0, .y = 0.0);
+
+    {
+        use(<span style="color: #f9e2af;">NULL</span>);
+        z = z.add(b).orelse(b); <span style="color: #eba0ac;">// </span><span style="color: #eba0ac;">add fails, return b
+</span>        assert(z.x == b.x);
+
+        <span style="color: #eba0ac;">// </span><span style="color: #eba0ac;">try
+</span>        <span style="color: #cba6f7;">if</span> (z.add(b).err) <span style="color: #cba6f7;">return</span> 1;
+    }
+
+    abort(); <span style="color: #eba0ac;">// </span><span style="color: #eba0ac;">unreachable
+</span>}
+
+<span style="color: #eba0ac;">// </span><span style="color: #eba0ac;">gcc main.c -O3 -flto -S</span>
+</code></pre>
+</div>
+
+<p>
+For the sane:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-c"><code><span style="color: #eba0ac;">// </span><span style="color: #eba0ac;">how to properly use vtables without losing sanity
+</span>
+<span style="color: #cba6f7;">#include</span> <span style="color: #a6e3a1;">&lt;assert.h&gt;</span>
+<span style="color: #cba6f7;">#include</span> <span style="color: #a6e3a1;">&lt;stdio.h&gt;</span>
+<span style="color: #cba6f7;">#include</span> <span style="color: #a6e3a1;">&lt;stdlib.h&gt;</span>
+
+<span style="color: #cba6f7;">#define</span> <span style="color: #c7c7c7;">definitions</span>
+
+<span style="color: #cba6f7;">#include</span> <span style="color: #a6e3a1;">&lt;stdbool.h&gt;</span>
+
+<span style="color: #cba6f7;">typedef</span> <span style="color: #cba6f7;">struct</span> {
+    <span style="color: #f9e2af;">float</span> <span style="color: #c7c7c7;">x</span>, <span style="color: #c7c7c7;">y</span>;
+} <span style="color: #f9e2af;">Vector2</span>;
+
+<span style="color: #cba6f7;">typedef</span> <span style="color: #cba6f7;">struct</span> {
+    <span style="color: #f9e2af;">float</span> <span style="color: #c7c7c7;">x</span>, <span style="color: #c7c7c7;">y</span>, <span style="color: #c7c7c7;">w</span>;
+} <span style="color: #f9e2af;">Vector3</span>;
+
+<span style="color: #cba6f7;">static</span> <span style="color: #cba6f7;">inline</span> <span style="color: #f9e2af;">Vector2</span> <span style="color: #5ffcfc;">mylib_vector2_add</span>(<span style="color: #cba6f7;">const</span> <span style="color: #f9e2af;">Vector2</span> <span style="color: #c7c7c7;">lhs</span>, <span style="color: #f9e2af;">Vector2</span> <span style="color: #c7c7c7;">rhs</span>);
+<span style="color: #cba6f7;">static</span> <span style="color: #cba6f7;">inline</span> <span style="color: #f9e2af;">Vector3</span> <span style="color: #5ffcfc;">mylib_vector3_add</span>(<span style="color: #cba6f7;">const</span> <span style="color: #f9e2af;">Vector3</span> <span style="color: #c7c7c7;">lhs</span>, <span style="color: #f9e2af;">Vector3</span> <span style="color: #c7c7c7;">rhs</span>);
+
+<span style="color: #cba6f7;">#define</span> <span style="color: #5ffcfc;">fn</span>(<span style="color: #c7c7c7;">x</span>) __typeof__(x)
+<span style="color: #cba6f7;">struct</span> <span style="color: #f9e2af;">mylib</span> {
+    <span style="color: #cba6f7;">struct</span> {
+        <span style="color: #5ffcfc;">fn</span>(mylib_vector2_add) * add;
+    } <span style="color: #c7c7c7;">Vector2</span>;
+    <span style="color: #cba6f7;">struct</span> {
+        <span style="color: #5ffcfc;">fn</span>(mylib_vector3_add) * add;
+    } <span style="color: #c7c7c7;">Vector3</span>;
+};
+
+<span style="color: #cba6f7;">#ifdef</span> definitions
+<span style="color: #cba6f7;">const</span> <span style="color: #cba6f7;">struct</span> <span style="color: #f9e2af;">mylib</span> <span style="color: #c7c7c7;">mylib</span> = (<span style="color: #cba6f7;">const</span> <span style="color: #cba6f7;">struct</span> <span style="color: #f9e2af;">mylib</span>){ .Vector2 = { .add = mylib_vector2_add },
+                                                 .Vector3 = { .add = mylib_vector3_add } };
+<span style="color: #cba6f7;">static</span> <span style="color: #cba6f7;">inline</span> <span style="color: #f9e2af;">Vector2</span> <span style="color: #5ffcfc;">mylib_vector2_add</span>(<span style="color: #cba6f7;">const</span> <span style="color: #f9e2af;">Vector2</span> <span style="color: #c7c7c7;">lhs</span>, <span style="color: #cba6f7;">const</span> <span style="color: #f9e2af;">Vector2</span> <span style="color: #c7c7c7;">rhs</span>) {
+    <span style="color: #cba6f7;">return</span> (<span style="color: #f9e2af;">Vector2</span>){
+        .x = lhs.x + rhs.x,
+        .y = lhs.y + rhs.y,
+    };
+}
+
+<span style="color: #cba6f7;">static</span> <span style="color: #cba6f7;">inline</span> <span style="color: #f9e2af;">Vector3</span> <span style="color: #5ffcfc;">mylib_vector3_add</span>(<span style="color: #cba6f7;">const</span> <span style="color: #f9e2af;">Vector3</span> <span style="color: #c7c7c7;">lhs</span>, <span style="color: #cba6f7;">const</span> <span style="color: #f9e2af;">Vector3</span> <span style="color: #c7c7c7;">rhs</span>) {
+    <span style="color: #cba6f7;">return</span> (<span style="color: #f9e2af;">Vector3</span>){
+        .x = lhs.x + rhs.x,
+        .y = lhs.y + rhs.y,
+        .w = lhs.w + rhs.w,
+    };
+}
+<span style="color: #cba6f7;">#else</span>
+<span style="color: #cba6f7;">extern</span> <span style="color: #cba6f7;">const</span> <span style="color: #cba6f7;">struct</span> <span style="color: #f9e2af;">mylib</span> <span style="color: #c7c7c7;">mylib</span>;
+<span style="color: #cba6f7;">#endif</span>
+
+<span style="color: #cba6f7;">#define</span> <span style="color: #5ffcfc;">use</span>(<span style="color: #c7c7c7;">name</span>, <span style="color: #c7c7c7;">n</span>) <span style="color: #cba6f7;">static</span> <span style="color: #f9e2af;">__typeof__</span>(<span style="color: #c7c7c7;">name</span>) n = name
+
+<span style="color: #5ffcfc;">use</span>(mylib.Vector2, <span style="color: #f9e2af;">vec2</span>);
+
+<span style="color: #f9e2af;">int</span> <span style="color: #5ffcfc;">main</span>(<span style="color: #f9e2af;">int</span> <span style="color: #c7c7c7;">argc</span>, <span style="color: #f9e2af;">char</span> *<span style="color: #c7c7c7;">argv</span>[]) {
+    use(mylib.Vector2, v);
+
+    <span style="color: #f9e2af;">Vector2</span> <span style="color: #c7c7c7;">x</span> = { .x = 190.0, .y = 0.0 };
+    <span style="color: #f9e2af;">Vector2</span> <span style="color: #c7c7c7;">b</span> = { .x = 20.0, .y = 0.0 };
+
+    <span style="color: #f9e2af;">Vector2</span> <span style="color: #c7c7c7;">t</span> = vec2.add(x, b);
+    <span style="color: #f9e2af;">Vector2</span> <span style="color: #c7c7c7;">t2</span> = mylib.Vector2.add(t, v.add(x, b));
+
+    assert(t2.x == 2 * (190.0 + 20.0));
+
+    <span style="color: #cba6f7;">return</span> 0;
+}
+
+<span style="color: #eba0ac;">// </span><span style="color: #eba0ac;">gcc main.c -O3 -flto -S</span>
+</code></pre>
+</div>
+</div>
+<div id="outline-container-orgd586a4a" class="outline-3">
+<h3 id="orgd586a4a">License</h3>
+<div class="outline-text-3" id="text-orgd586a4a">
+<p>
+This project is available as public-domain under the CC0 License.
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<footer>
+      <div class="footer_content">
+        <a
+          href="https://github.com/aocoronel"
+          class="glass-btn !px-3"
+          target="_blank"
+          ><svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="22"
+            height="22"
+            fill="var(--blue)"
+            viewBox="0 0 256 256"
+          >
+            <title>GitHub</title>
+            <path
+              d="M208,104v8a48,48,0,0,1-48,48H136a32,32,0,0,1,32,32v40H104V192a32,32,0,0,1,32-32H112a48,48,0,0,1-48-48v-8a49.28,49.28,0,0,1,8.51-27.3A51.92,51.92,0,0,1,76,32a52,52,0,0,1,43.83,24h32.34A52,52,0,0,1,196,32a51.92,51.92,0,0,1,3.49,44.7A49.28,49.28,0,0,1,208,104Z"
+              opacity="0.2"
+            ></path>
+            <path
+              d="M208.3,75.68A59.74,59.74,0,0,0,202.93,28,8,8,0,0,0,196,24a59.75,59.75,0,0,0-48,24H124A59.75,59.75,0,0,0,76,24a8,8,0,0,0-6.93,4,59.78,59.78,0,0,0-5.38,47.68A58.14,58.14,0,0,0,56,104v8a56.06,56.06,0,0,0,48.44,55.47A39.8,39.8,0,0,0,96,192v8H72a24,24,0,0,1-24-24A40,40,0,0,0,8,136a8,8,0,0,0,0,16,24,24,0,0,1,24,24,40,40,0,0,0,40,40H96v16a8,8,0,0,0,16,0V192a24,24,0,0,1,48,0v40a8,8,0,0,0,16,0V192a39.8,39.8,0,0,0-8.44-24.53A56.06,56.06,0,0,0,216,112v-8A58,58,0,0,0,208.3,75.68ZM200,112a40,40,0,0,1-40,40H112a40,40,0,0,1-40-40v-8a41.74,41.74,0,0,1,6.9-22.48A8,8,0,0,0,80,73.83a43.81,43.81,0,0,1,.79-33.58,43.88,43.88,0,0,1,32.32,20.06A8,8,0,0,0,119.82,64h32.35a8,8,0,0,0,6.74-3.69,43.87,43.87,0,0,1,32.32-20.06A43.81,43.81,0,0,1,192,73.83a8.09,8.09,0,0,0,1,7.65A41.76,41.76,0,0,1,200,104Z"
+            ></path></svg
+        ></a>
+        <a href="/feed.xml" target="_blank">
+          <svg
+            width="22"
+            height="22"
+            viewBox="0 0 24 24"
+            id="Layer_1"
+            data-name="Layer 1"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <title>RSS Feeds</title>
+            <defs>
+              <style>
+                .cls-1 {
+                  fill: none;
+                  stroke: var(--blue);
+                  stroke-miterlimit: 10;
+                  stroke-width: 1.91px;
+                }
+              </style>
+            </defs>
+            <path class="cls-1" d="M6.27,11.05A6.68,6.68,0,0,1,13,17.73" />
+            <path class="cls-1" d="M6.27,6.27A11.46,11.46,0,0,1,17.73,17.73" />
+            <circle class="cls-1" cx="7.23" cy="16.77" r="0.95" />
+            <rect class="cls-1" x="1.5" y="1.5" width="21" height="21" />
+          </svg>
+        </a>
+        <span style="padding-right: 15px; text-wrap: auto">
+          <p>
+            © 2025
+            <a href="https://github.com/aocoronel/">Augusto Coronel.</a>
+            <a href="https://creativecommons.org/licenses/by/4.0/"
+              >All rights reserved.</a
+            >
+          </p>
+        </span>
+      </div>
+    </footer>
+</div>
+</body>
+</html>
