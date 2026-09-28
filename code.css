@@ -1,0 +1,226 @@
+pre,
+code,
+kbd,
+samp {
+  font-family: var(--monospace-font);
+  font-size: 0.96em;
+}
+pre {
+  background-color: var(--code-background);
+  box-sizing: border-box;
+  color: var(--grey);
+  min-width: 100%;
+  padding: 0.5em;
+  width: fit-content;
+}
+code {
+  background-color: var(--code-background);
+  white-space: pre-wrap;
+  color: var(--grey);
+}
+a > code {
+  color: var(--green);
+}
+code > span {
+  padding-bottom: 0px;
+}
+p > code,
+li > code {
+  background-color: var(--tag);
+  border-color: var(--text-color);
+  border-radius: 3px;
+  border-width: 1px;
+  color: var(--grey);
+  padding: 3px;
+  overflow-x: auto;
+}
+span.clear {
+  clear: left;
+  display: block;
+}
+code {
+  white-space: pre-wrap;
+}
+span.smallcaps {
+  font-variant: small-caps;
+}
+div.columns {
+  display: flex;
+  gap: min(4vw, 1.5em);
+}
+div.column {
+  flex: auto;
+  overflow-x: auto;
+}
+div.hanging-indent {
+  margin-left: 1.5em;
+  text-indent: -1.5em;
+}
+ul.task-list[class] {
+  list-style: none;
+}
+ul.task-list li input[type="checkbox"] {
+  font-size: inherit;
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode {
+  white-space: pre;
+  position: relative;
+}
+pre > code.sourceCode > span {
+  display: inline-block;
+  line-height: 1.25;
+}
+pre > code.sourceCode > span:empty {
+  height: 1.2em;
+}
+.sourceCode {
+  overflow: visible;
+}
+code.sourceCode > span {
+  color: inherit;
+  text-decoration: inherit;
+}
+div.sourceCode {
+  margin: 1em 0;
+}
+pre.sourceCode {
+  margin: 0;
+}
+@media screen {
+  div.sourceCode {
+    overflow: auto;
+  }
+}
+@media print {
+  pre > code.sourceCode {
+    white-space: pre-wrap;
+  }
+  pre > code.sourceCode > span {
+    text-indent: -5em;
+    padding-left: 5em;
+  }
+}
+pre.numberSource code {
+  counter-reset: source-line 0;
+}
+pre.numberSource code > span {
+  position: relative;
+  left: -4em;
+  counter-increment: source-line;
+}
+pre.numberSource code > span > a:first-child::before {
+  content: counter(source-line);
+  position: relative;
+  left: -1em;
+  text-align: right;
+  vertical-align: baseline;
+  border: none;
+  display: inline-block;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  padding: 0 4px;
+  width: 4em;
+  color: var(--grey2);
+}
+pre.numberSource {
+  margin-left: 3em;
+  border-left: 1px solid var(--grey2);
+  padding-left: 4px;
+}
+div.sourceCode {
+}
+@media screen {
+  pre > code.sourceCode > span > a:first-child::before {
+    text-decoration: underline;
+  }
+}
+code span.in,
+code span.an,
+code span.cv,
+code span.do {
+  color: #9b9db3;
+}
+code span.co {
+  color: #eba0ac;
+}
+code span.dv,
+code span.ex,
+code span.fl {
+  color: #ffb378;
+}
+code span.dt {
+  color: #f9e2af;
+}
+code span.cf,
+code span.at,
+code span.kw {
+  color: #cba6f7;
+}
+code span.fu,
+code span.op {
+  color: #FFFFFF;
+}
+code span.ch {
+  color: #9bddd0;
+}
+code span.sc {
+  color: #f067fc;
+}
+code span.pp {
+  color: #cba6f7;
+}
+code span.wa {
+  color: #eee0b5;
+}
+code span.ss,
+code span.st,
+code span.im,
+code span.bn {
+  color: #95ffa4;
+}
+code span.cn {
+  color: #906cff;
+}
+
+/* purposely ignored */
+code span.va, /* Variable */
+code span.vs, /* VerbatimString */
+code span.er, /* Error */
+code span.ot, /* Other */
+code span.bu, /* BuiltIn */
+code span.al /* Alert */ {
+}
+
+/*
+ * ch - Char
+ * sc - SpecialChar
+ * ss - SpecialString
+ * st - String
+ * pp - Preprocessor
+ * im - Import/Includes
+ * wa - Warning
+ * do - Documentation
+ * co - Commentcode
+ * cv - CommentVariable
+ * an - Annotation
+ * dv - DecVal
+ * fl - Float
+ * ex - Extension
+ * dt - DataType
+ * fu - Function
+ * op - Operator
+ * in - Information
+ * kw - Keyword
+ * at - Attribute
+ * cf - ControlFlow
+ * bn - BaseN
+ * bu - BuiltIn
+ * cn - Constant
+*/

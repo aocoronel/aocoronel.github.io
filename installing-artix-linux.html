@@ -1,0 +1,247 @@
+<!doctype html>
+<html
+  xmlns="http://www.w3.org/1999/xhtml"
+  lang=""
+  xml:lang=""
+  >
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=yes"
+    />
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="./media/favicons/favicon-16x16.png"
+    />
+        <meta name="author" content="Augusto Coronel" />
+         <meta property="og:title" content="Installing Artix Linux" />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:url"
+      content="https://aocoronel.github.io/installing-artix-linux.html"
+    />
+    <meta
+      property="og:image"
+      content="https://raw.githubusercontent.com/aocoronel/aocoronel.github.io/refs/heads/main/media/favicons/banner.png"
+    />
+    <meta property="og:site_name" content="Augusto Coronel" />
+    <meta property="og:description" content="This is a personal guide to install Artix Linux" />
+    <meta name="twitter:title" content="Augusto Coronel" />
+    <meta name="twitter:description" content="This is a personal guide to install Artix Linux" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:image"
+      content="https://raw.githubusercontent.com/aocoronel/aocoronel.github.io/refs/heads/main/media/favicons/banner.png"
+    />
+    <title>Installing Artix Linux</title>
+        <link rel="stylesheet" href="./about.css" />
+      
+  </head>
+  <body>
+    
+    <header>
+      <div class="header_content">
+        <div class="navbar">
+          <a class="title" href="./index.html">Coronel</a>
+          <div class="nav_item ">
+            <a href="./about.html">About</a>
+          </div>
+          <div class="nav_item ">
+            <a href="./index.html">Home</a>
+          </div>
+        </div>
+        <span class="clear"></span>
+      </div>
+    </header>
+    <div class="content">
+      <br />
+      
+      <div class="content-upper">
+        <div class="content-title-n-toc">
+          <p class="content-title">Installing Artix Linux</p>
+          <p class="content-desc">This is a personal guide to install Artix Linux</p>
+        </div>
+      </div>
+      <br />
+       <h2 data-number="1" id="partitioning"><span class="header-section-number">1</span> Partitioning</h2>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># NAME        MAJ:MIN RM   SIZE RO TYPE  MOUNTPOINTS</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># sda           8:0    0 209.0G  0 disk</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># ├─sda1        8:1    0     1G  0 part  /boot</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># ├─sda2        8:2    0     8G  0 part  [SWAP]</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># ├─sda3        8:3    0 100.0G  0 part  /</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># ├─sda4        8:4    0    70G  0 part  /home</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co"># └─sda5        8:9    0    30G  0 part</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co">#   └─secrets 253:0    0    30G  0 crypt /home/aoc/.secrets</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="ex">cfdisk</span> /dev/sda</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Label    -- gpt</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="co"># 1G       -- boot   sda1</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="co"># (RAM/2)G -- swap   sda2</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="co"># 70G      -- home   sda3</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="co"># 100G     -- root   sda4</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="co"># 30G      -- secret sda5</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="ex">mkfs.fat</span> <span class="at">-F</span> 32 /dev/sda1</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="ex">mkswap</span> /dev/sda2</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="ex">swapon</span> /dev/sda2</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="ex">mkfs.xfs</span> /dev/sda3</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="ex">mkfs.xfs</span> /dev/sda4</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="ex">cryptsetup</span> luksFormat /dev/sda5</span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a><span class="ex">cryptsetup</span> luksOpen /dev/sda5 secrets</span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a><span class="ex">mkfs.xfs</span> /dev/mapper/secrets</span></code></pre></div>
+<h2 data-number="2" id="mounting"><span class="header-section-number">2</span> Mounting</h2>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mount</span> /dev/sda4</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mount</span> <span class="at">-p</span> /mnt/boot</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mount</span> /dev/sda1 /mnt/boot</span></code></pre></div>
+<h2 data-number="3" id="bootstrap"><span class="header-section-number">3</span> Bootstrap</h2>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pacstrap</span> /mnt/ <span class="st">&quot;base base-devel linux linux-firmware grub efibootmgr networkmanager lvm2 cryptsetup&quot;</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ex">genfstab</span> <span class="at">-U</span> /mnt/ <span class="op">&gt;&gt;</span> /mnt/etc/fstab</span></code></pre></div>
+<h2 data-number="4" id="chroot"><span class="header-section-number">4</span> Chroot</h2>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">chroot</span> /mnt</span></code></pre></div>
+<h2 data-number="5" id="timezone"><span class="header-section-number">5</span> Timezone</h2>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ln</span> <span class="at">-sf</span> <span class="st">&quot;/usr/share/zoneinfo/America/Sao_Paulo&quot;</span> /etc/localtime</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="ex">hwclock</span> <span class="at">--systohc</span></span></code></pre></div>
+<h2 data-number="6" id="locale"><span class="header-section-number">6</span> Locale</h2>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">&quot;pt_BR.UTF-8 UTF-8&quot;</span> <span class="op">&gt;&gt;</span> /etc/locale.gen</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">&quot;en_US.UTF-8 UTF-8&quot;</span> <span class="op">&gt;&gt;</span> /etc/locale.gen</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="ex">locale-gen</span></span></code></pre></div>
+<h2 data-number="7" id="hostname"><span class="header-section-number">7</span> Hostname</h2>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">&quot;artix&quot;</span> <span class="op">&gt;</span> /etc/hostname</span></code></pre></div>
+<h2 data-number="8" id="user"><span class="header-section-number">8</span> User</h2>
+<div class="sourceCode" id="cb8"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">passwd</span> <span class="co"># root password</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pacman</span> <span class="at">-S</span> zsh</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="ex">useradd</span> <span class="at">-m</span> <span class="at">-G</span> wheel <span class="at">-s</span> <span class="st">&quot;/bin/zsh&quot;</span> <span class="st">&quot;aoc&quot;</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="fu">passwd</span> aoc</span></code></pre></div>
+<h2 data-number="9" id="sudoers"><span class="header-section-number">9</span> Sudoers</h2>
+<div class="sourceCode" id="cb9"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Sudo</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">&quot;%wheel ALL=(ALL:ALL) ALL &gt;&gt; /etc/sudoers</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="st"># Doas</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="st">echo &quot;</span>permit persist :wheel<span class="st">&quot; &gt; /etc/doas.conf</span></span></code></pre></div>
+<h2 data-number="10" id="network-manager"><span class="header-section-number">10</span> Network Manager</h2>
+<div class="sourceCode" id="cb10"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">dinitctl</span> enable NetworkManager</span></code></pre></div>
+<h2 data-number="11" id="grub"><span class="header-section-number">11</span> Grub</h2>
+<div class="sourceCode" id="cb11"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">grub-install</span> <span class="at">--efi-directory</span><span class="op">=</span>/boot <span class="at">--bootloader-id</span><span class="op">=</span>aoc /dev/sda</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="ex">grub-mkconfig</span> <span class="at">-o</span> /boot/grub/grub.cfg</span></code></pre></div>
+<h2 data-number="12" id="pacman-reflector"><span class="header-section-number">12</span> Pacman &amp;&amp; Reflector</h2>
+<div class="sourceCode" id="cb12"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># begin /etc/pacman.d</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="co"># ParallelDownloads = 10</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="co"># ILoveCandy</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="co"># [system]</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Include = /etc/pacman.d/mirrorlist</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="co"># [world]</span></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Include = /etc/pacman.d/mirrorlist</span></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a><span class="co"># [galaxy]</span></span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Include = /etc/pacman.d/mirrorlist</span></span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a><span class="co"># #[lib32]</span></span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a><span class="co"># #Include = /etc/pacman.d/mirrorlist</span></span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a><span class="co"># [extra]</span></span>
+<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Include = /etc/pacman.d/mirrorlist-arch</span></span>
+<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
+<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a><span class="co"># [multilib]</span></span>
+<span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Include = /etc/pacman.d/mirrorlist-arch</span></span>
+<span id="cb12-20"><a href="#cb12-20" aria-hidden="true" tabindex="-1"></a><span class="co"># end /etc/pacman.d</span></span>
+<span id="cb12-21"><a href="#cb12-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-22"><a href="#cb12-22" aria-hidden="true" tabindex="-1"></a><span class="ex">pacman</span> <span class="at">-Syu</span></span>
+<span id="cb12-23"><a href="#cb12-23" aria-hidden="true" tabindex="-1"></a><span class="ex">pacman</span> <span class="at">-S</span> reflector</span>
+<span id="cb12-24"><a href="#cb12-24" aria-hidden="true" tabindex="-1"></a><span class="ex">reflector</span> <span class="at">-c</span> <span class="st">&quot;Brazil&quot;</span> <span class="at">-p</span> https <span class="at">-f</span> 5 <span class="at">-l</span> 5 <span class="at">--ipv4</span> <span class="at">--ipv6</span> <span class="at">-p</span> http <span class="at">-p</span> https <span class="op">&gt;&gt;</span>/etc/pacman.d/mirrorlist</span></code></pre></div>
+<h2 data-number="13" id="packages"><span class="header-section-number">13</span> Packages</h2>
+<div class="sourceCode" id="cb13"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pacman</span> <span class="at">-S</span> git gcc</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/aocoronel/pacmirror-config</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> pacmirror-config</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="fu">cc</span> @build <span class="kw">&amp;&amp;</span> <span class="ex">./make</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="ex">./pacmirror</span></span></code></pre></div>
+<h2 data-number="14" id="reboot"><span class="header-section-number">14</span> Reboot</h2>
+<div class="sourceCode" id="cb14"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="bu">exit</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">umount</span> <span class="at">-a</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="ex">reboot</span></span></code></pre></div>
+    </div>
+    <footer>
+      <div class="footer_content">
+        <a
+          href="https://github.com/aocoronel"
+          class="glass-btn !px-3"
+          target="_blank"
+          ><svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="22"
+            height="22"
+            fill="var(--blue)"
+            viewBox="0 0 256 256"
+          >
+            <title>GitHub</title>
+            <path
+              d="M208,104v8a48,48,0,0,1-48,48H136a32,32,0,0,1,32,32v40H104V192a32,32,0,0,1,32-32H112a48,48,0,0,1-48-48v-8a49.28,49.28,0,0,1,8.51-27.3A51.92,51.92,0,0,1,76,32a52,52,0,0,1,43.83,24h32.34A52,52,0,0,1,196,32a51.92,51.92,0,0,1,3.49,44.7A49.28,49.28,0,0,1,208,104Z"
+              opacity="0.2"
+            ></path>
+            <path
+              d="M208.3,75.68A59.74,59.74,0,0,0,202.93,28,8,8,0,0,0,196,24a59.75,59.75,0,0,0-48,24H124A59.75,59.75,0,0,0,76,24a8,8,0,0,0-6.93,4,59.78,59.78,0,0,0-5.38,47.68A58.14,58.14,0,0,0,56,104v8a56.06,56.06,0,0,0,48.44,55.47A39.8,39.8,0,0,0,96,192v8H72a24,24,0,0,1-24-24A40,40,0,0,0,8,136a8,8,0,0,0,0,16,24,24,0,0,1,24,24,40,40,0,0,0,40,40H96v16a8,8,0,0,0,16,0V192a24,24,0,0,1,48,0v40a8,8,0,0,0,16,0V192a39.8,39.8,0,0,0-8.44-24.53A56.06,56.06,0,0,0,216,112v-8A58,58,0,0,0,208.3,75.68ZM200,112a40,40,0,0,1-40,40H112a40,40,0,0,1-40-40v-8a41.74,41.74,0,0,1,6.9-22.48A8,8,0,0,0,80,73.83a43.81,43.81,0,0,1,.79-33.58,43.88,43.88,0,0,1,32.32,20.06A8,8,0,0,0,119.82,64h32.35a8,8,0,0,0,6.74-3.69,43.87,43.87,0,0,1,32.32-20.06A43.81,43.81,0,0,1,192,73.83a8.09,8.09,0,0,0,1,7.65A41.76,41.76,0,0,1,200,104Z"
+            ></path></svg
+        ></a>
+        <a
+          href="https://codeberg.org/aocoronel"
+          class="glass-btn !px-3"
+          target="_blank"
+        >
+          <svg
+            fill="var(--blue)"
+            height="22"
+            role="img"
+            viewBox="0 0 24 24"
+            width="22"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <title>Codeberg</title>
+            <path
+              d="M11.955.49A12 12 0 0 0 0 12.49a12 12 0 0 0 1.832 6.373L11.838 5.928a.187.14 0 0 1 .324 0l10.006 12.935A12 12 0 0 0 24 12.49a12 12 0 0 0-12-12 12 12 0 0 0-.045 0zm.375 6.467 4.416 16.553a12 12 0 0 0 5.137-4.213z"
+            />
+          </svg>
+        </a>
+        <a href=".//feed.xml" target="_blank">
+          <svg
+            width="22"
+            height="22"
+            viewBox="0 0 24 24"
+            id="Layer_1"
+            data-name="Layer 1"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <title>RSS Feeds</title>
+            <defs>
+              <style>
+                .cls-1 {
+                  fill: none;
+                  stroke: var(--blue);
+                  stroke-miterlimit: 10;
+                  stroke-width: 1.91px;
+                }
+              </style>
+            </defs>
+            <path class="cls-1" d="M6.27,11.05A6.68,6.68,0,0,1,13,17.73" />
+            <path class="cls-1" d="M6.27,6.27A11.46,11.46,0,0,1,17.73,17.73" />
+            <circle class="cls-1" cx="7.23" cy="16.77" r="0.95" />
+            <rect class="cls-1" x="1.5" y="1.5" width="21" height="21" />
+          </svg>
+        </a>
+        <span style="padding-right: 15px; text-wrap: auto">
+          <p>
+            © 2025
+            <a href="https://github.com/aocoronel/">Augusto Coronel.</a>
+            <a href="https://creativecommons.org/licenses/by/4.0/"
+              >All rights reserved.</a
+            >
+          </p>
+        </span>
+      </div>
+    </footer>
+    
+  </body>
+</html>

@@ -1,0 +1,353 @@
+<!doctype html>
+<html
+  xmlns="http://www.w3.org/1999/xhtml"
+  lang=""
+  xml:lang=""
+  >
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=yes"
+    />
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="..//media/favicons/favicon-16x16.png"
+    />
+        <meta name="author" content="Augusto Coronel" />
+         <meta property="og:title" content="c-interfaces" />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:url"
+      content="https://aocoronel.github.io/c-interfaces/index.html"
+    />
+    <meta
+      property="og:image"
+      content="https://raw.githubusercontent.com/aocoronel/aocoronel.github.io/refs/heads/main/media/favicons/banner.png"
+    />
+    <meta property="og:site_name" content="Augusto Coronel" />
+    <meta property="og:description" content="Method syntatic sugar for C functions" />
+    <meta name="twitter:title" content="Augusto Coronel" />
+    <meta name="twitter:description" content="Method syntatic sugar for C functions" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:image"
+      content="https://raw.githubusercontent.com/aocoronel/aocoronel.github.io/refs/heads/main/media/favicons/banner.png"
+    />
+    <title>c-interfaces</title>
+        <link rel="stylesheet" href="../posts.css" />
+      
+  </head>
+  <body>
+    
+    <header>
+      <div class="header_content">
+        <div class="navbar">
+          <a class="title" href="..//index.html">Coronel</a>
+          <div class="nav_item ">
+            <a href="..//about.html">About</a>
+          </div>
+          <div class="nav_item ">
+            <a href="..//index.html">Home</a>
+          </div>
+        </div>
+        <span class="clear"></span>
+      </div>
+    </header>
+    <div class="content">
+      <br />
+      
+      <div class="content-upper">
+        <div class="content-title-n-toc">
+          <p class="content-title">c-interfaces</p>
+          <p class="content-desc">Method syntatic sugar for C functions</p>
+          <p class="content-desc"><a href=".">Source code</a></p>
+          <br />
+                    <div class="table_of_contents">
+            <div class="table_of_contents_header">Contents:</div>
+            <ul>
+            <li><a href="#c-interfaces" id="toc-c-interfaces"><span class="toc-section-number">1</span> C Interfaces</a></li>
+            <li><a href="#license" id="toc-license"><span class="toc-section-number">2</span> License</a></li>
+            </ul>
+          </div>
+                  </div>
+      </div>
+      <br />
+      <div></div>
+       <h1 data-number="1" id="c-interfaces"><span class="header-section-number">1</span> C Interfaces</h1>
+<p>This is a proof-of-concept project that aims to bring the syntatic sugar from mechanisms like interfaces, methods and classes to C.</p>
+<p>Small usage example:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;assert.h&gt;</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;stdio.h&gt;</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;stdlib.h&gt;</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="pp">#define definitions</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;stdbool.h&gt;</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="pp">#define self </span><span class="kw">struct</span><span class="pp"> vector2_vtable</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="kw">struct</span> vector2_vtable <span class="op">{</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    <span class="dt">bool</span> <span class="op">(*</span>error<span class="op">)(</span>self <span class="op">*);</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    self <span class="op">(*</span>orelse<span class="op">)(</span>self <span class="op">*,</span> <span class="dt">const</span> self<span class="op">);</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    self <span class="op">(*</span>add<span class="op">)(</span>self <span class="op">*,</span> <span class="dt">const</span> self<span class="op">);</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>    <span class="dt">float</span> x<span class="op">,</span> y<span class="op">;</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="op">};</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="pp">#define vector2</span><span class="op">(...)</span><span class="pp">                                           </span><span class="op">\</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="pp">    </span><span class="op">(</span><span class="dt">const</span><span class="pp"> </span><span class="kw">struct</span><span class="pp"> vector2_vtable</span><span class="op">)</span><span class="pp"> </span><span class="op">{</span><span class="pp">                            </span><span class="op">\</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="pp">        </span><span class="op">.</span><span class="pp">add </span><span class="op">=</span><span class="pp"> vector2_impl_add</span><span class="op">,</span><span class="pp"> </span><span class="op">.</span><span class="pp">error </span><span class="op">=</span><span class="pp"> vector2_impl_err</span><span class="op">,</span><span class="pp">    </span><span class="op">\</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="pp">        </span><span class="op">.</span><span class="pp">orelse </span><span class="op">=</span><span class="pp"> vector2_impl_add_orelse_abort</span><span class="op">,</span><span class="pp"> </span><span class="op">##</span><span class="pp">__VA_ARGS__ </span><span class="op">\</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="pp">    </span><span class="op">}</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="pp">#define _vector2</span><span class="op">(...)</span><span class="pp">                                                     </span><span class="op">\</span></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="pp">    </span><span class="op">(</span><span class="dt">const</span><span class="pp"> </span><span class="kw">struct</span><span class="pp"> vector2_vtable</span><span class="op">)</span><span class="pp"> </span><span class="op">{</span><span class="pp">                                       </span><span class="op">\</span></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="pp">        </span><span class="op">.</span><span class="pp">add </span><span class="op">=</span><span class="pp"> vector2_impl_add</span><span class="op">,</span><span class="pp"> </span><span class="op">.</span><span class="pp">error </span><span class="op">=</span><span class="pp"> vector2_impl_err</span><span class="op">,</span><span class="pp"> </span><span class="op">##</span><span class="pp">__VA_ARGS__ </span><span class="op">\</span></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="pp">    </span><span class="op">}</span></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a><span class="pp">#define def </span><span class="dt">static</span><span class="pp"> </span><span class="kw">inline</span></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>def self vector2_impl_add<span class="op">(</span>self <span class="op">*</span>s<span class="op">,</span> self x<span class="op">);</span></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>def <span class="dt">bool</span> vector2_impl_err<span class="op">(</span>self <span class="op">*</span>y<span class="op">);</span></span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>def self vector2_impl_add_orelse_ok<span class="op">(</span>self <span class="op">*</span>x<span class="op">,</span> <span class="dt">const</span> self y<span class="op">);</span></span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>def self vector2_impl_add_orelse_err<span class="op">(</span>self <span class="op">*</span>x<span class="op">,</span> <span class="dt">const</span> self y<span class="op">);</span></span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>def self vector2_impl_add_orelse_abort<span class="op">(</span>self <span class="op">*</span>x<span class="op">,</span> <span class="dt">const</span> self y<span class="op">);</span></span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a><span class="pp">#ifdef definitions</span></span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a><span class="dt">const</span> <span class="kw">struct</span> vector2_vtable $vector2 <span class="op">=</span> vector2<span class="op">();</span></span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>def <span class="dt">bool</span> vector2_impl_err<span class="op">(</span>self <span class="op">*</span>y<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> y <span class="op">==</span> NULL<span class="op">;</span></span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a>def self vector2_impl_add<span class="op">(</span>self <span class="op">*</span>s<span class="op">,</span> <span class="dt">const</span> self x<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="op">(!</span>s<span class="op">)</span></span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> _vector2<span class="op">(.</span>orelse <span class="op">=</span> vector2_impl_add_orelse_err<span class="op">);</span></span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span> <span class="op">{</span></span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a>        s<span class="op">-&gt;</span>x <span class="op">+=</span> x<span class="op">.</span>x<span class="op">;</span></span>
+<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a>        s<span class="op">-&gt;</span>y <span class="op">+=</span> x<span class="op">.</span>y<span class="op">;</span></span>
+<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> _vector2<span class="op">(.</span>orelse <span class="op">=</span> vector2_impl_add_orelse_ok<span class="op">);</span></span>
+<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a>def self vector2_impl_add_orelse_ok<span class="op">(</span>self <span class="op">*</span>x<span class="op">,</span> <span class="dt">const</span> self y<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="op">*</span>x<span class="op">;</span></span>
+<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a>def self vector2_impl_add_orelse_err<span class="op">(</span>self <span class="op">*</span>x<span class="op">,</span> <span class="dt">const</span> self y<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> y<span class="op">;</span></span>
+<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;stdlib.h&gt;</span></span>
+<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a>def self vector2_impl_add_orelse_abort<span class="op">(</span>self <span class="op">*</span>x<span class="op">,</span> <span class="dt">const</span> self y<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a>    fprintf<span class="op">(</span>stderr<span class="op">,</span> <span class="st">&quot;invalid orelse call</span><span class="sc">\n</span><span class="st">&quot;</span><span class="op">);</span></span>
+<span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a>    abort<span class="op">();</span></span>
+<span id="cb1-66"><a href="#cb1-66" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb1-67"><a href="#cb1-67" aria-hidden="true" tabindex="-1"></a><span class="pp">#else</span></span>
+<span id="cb1-68"><a href="#cb1-68" aria-hidden="true" tabindex="-1"></a><span class="kw">extern</span> <span class="dt">const</span> <span class="kw">struct</span> vector2_vtable $vector2<span class="op">;</span></span>
+<span id="cb1-69"><a href="#cb1-69" aria-hidden="true" tabindex="-1"></a><span class="pp">#endif</span></span>
+<span id="cb1-70"><a href="#cb1-70" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-71"><a href="#cb1-71" aria-hidden="true" tabindex="-1"></a><span class="pp">#undef self</span></span>
+<span id="cb1-72"><a href="#cb1-72" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-73"><a href="#cb1-73" aria-hidden="true" tabindex="-1"></a><span class="pp">#define add</span><span class="op">(...)</span><span class="pp"> add</span><span class="op">(</span>using<span class="op">,</span><span class="pp"> __VA_ARGS__</span><span class="op">)</span></span>
+<span id="cb1-74"><a href="#cb1-74" aria-hidden="true" tabindex="-1"></a><span class="pp">#define err error</span><span class="op">(</span>using<span class="op">)</span></span>
+<span id="cb1-75"><a href="#cb1-75" aria-hidden="true" tabindex="-1"></a><span class="pp">#define orelse</span><span class="op">(...)</span><span class="pp"> orelse</span><span class="op">(</span>using<span class="op">,</span><span class="pp"> __VA_ARGS__</span><span class="op">)</span></span>
+<span id="cb1-76"><a href="#cb1-76" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-77"><a href="#cb1-77" aria-hidden="true" tabindex="-1"></a><span class="pp">#define use</span><span class="op">(</span><span class="pp">x</span><span class="op">)</span><span class="pp"> </span>using<span class="pp"> </span><span class="op">=</span><span class="pp"> x</span></span>
+<span id="cb1-78"><a href="#cb1-78" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-79"><a href="#cb1-79" aria-hidden="true" tabindex="-1"></a><span class="pp">#define let __auto_type</span></span>
+<span id="cb1-80"><a href="#cb1-80" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-81"><a href="#cb1-81" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> main<span class="op">(</span><span class="dt">int</span> argc<span class="op">,</span> <span class="dt">char</span> <span class="op">*</span>argv<span class="op">[])</span> <span class="op">{</span></span>
+<span id="cb1-82"><a href="#cb1-82" aria-hidden="true" tabindex="-1"></a>    <span class="dt">void</span> <span class="op">*</span>using<span class="op">;</span></span>
+<span id="cb1-83"><a href="#cb1-83" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-84"><a href="#cb1-84" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Warning: __auto_type is a GNU extension. A portable approach would be:</span></span>
+<span id="cb1-85"><a href="#cb1-85" aria-hidden="true" tabindex="-1"></a>    <span class="co">//</span></span>
+<span id="cb1-86"><a href="#cb1-86" aria-hidden="true" tabindex="-1"></a>    <span class="co">// #define interface(name) __typeof__(const struct name##_vtable)</span></span>
+<span id="cb1-87"><a href="#cb1-87" aria-hidden="true" tabindex="-1"></a>    let x <span class="op">=</span> vector2<span class="op">(.</span>x <span class="op">=</span> <span class="fl">190.0</span><span class="op">,</span> <span class="op">.</span>y <span class="op">=</span> <span class="fl">0.0</span> <span class="op">);</span></span>
+<span id="cb1-88"><a href="#cb1-88" aria-hidden="true" tabindex="-1"></a>    let b <span class="op">=</span> vector2<span class="op">(.</span>x <span class="op">=</span> <span class="fl">20.0</span><span class="op">,</span> <span class="op">.</span>y <span class="op">=</span> <span class="fl">0.0</span> <span class="op">);</span></span>
+<span id="cb1-89"><a href="#cb1-89" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-90"><a href="#cb1-90" aria-hidden="true" tabindex="-1"></a>    use<span class="op">(&amp;</span>x<span class="op">);</span> <span class="co">// expands in add()</span></span>
+<span id="cb1-91"><a href="#cb1-91" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-92"><a href="#cb1-92" aria-hidden="true" tabindex="-1"></a>    x<span class="op">.</span>add<span class="op">(</span>b<span class="op">).</span>add<span class="op">(</span>b<span class="op">);</span> <span class="co">// use interface</span></span>
+<span id="cb1-93"><a href="#cb1-93" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-94"><a href="#cb1-94" aria-hidden="true" tabindex="-1"></a>    $vector2<span class="op">.</span>add<span class="op">(</span>b<span class="op">);</span> <span class="co">// global</span></span>
+<span id="cb1-95"><a href="#cb1-95" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-96"><a href="#cb1-96" aria-hidden="true" tabindex="-1"></a><span class="pp">#define str $vector2</span></span>
+<span id="cb1-97"><a href="#cb1-97" aria-hidden="true" tabindex="-1"></a>    str<span class="op">.</span>add<span class="op">(</span>b<span class="op">);</span> <span class="co">// renamed global</span></span>
+<span id="cb1-98"><a href="#cb1-98" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-99"><a href="#cb1-99" aria-hidden="true" tabindex="-1"></a>    vector2<span class="op">().</span>add<span class="op">(</span>b<span class="op">);</span> <span class="co">// init and use</span></span>
+<span id="cb1-100"><a href="#cb1-100" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-101"><a href="#cb1-101" aria-hidden="true" tabindex="-1"></a>    assert<span class="op">(</span>x<span class="op">.</span>x <span class="op">==</span> <span class="fl">190.0</span> <span class="op">+</span> <span class="op">(</span><span class="fl">20.0</span> <span class="op">*</span> <span class="fl">5.0</span><span class="op">));</span></span>
+<span id="cb1-102"><a href="#cb1-102" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-103"><a href="#cb1-103" aria-hidden="true" tabindex="-1"></a>    let z <span class="op">=</span> vector2<span class="op">(</span> <span class="op">.</span>x <span class="op">=</span> <span class="fl">0.0</span><span class="op">,</span> <span class="op">.</span>y <span class="op">=</span> <span class="fl">0.0</span><span class="op">);</span></span>
+<span id="cb1-104"><a href="#cb1-104" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-105"><a href="#cb1-105" aria-hidden="true" tabindex="-1"></a>    <span class="op">{</span></span>
+<span id="cb1-106"><a href="#cb1-106" aria-hidden="true" tabindex="-1"></a>        use<span class="op">(</span>NULL<span class="op">);</span></span>
+<span id="cb1-107"><a href="#cb1-107" aria-hidden="true" tabindex="-1"></a>        z <span class="op">=</span> z<span class="op">.</span>add<span class="op">(</span>b<span class="op">).</span>orelse<span class="op">(</span>b<span class="op">);</span> <span class="co">// add fails, return b</span></span>
+<span id="cb1-108"><a href="#cb1-108" aria-hidden="true" tabindex="-1"></a>        assert<span class="op">(</span>z<span class="op">.</span>x <span class="op">==</span> b<span class="op">.</span>x<span class="op">);</span></span>
+<span id="cb1-109"><a href="#cb1-109" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-110"><a href="#cb1-110" aria-hidden="true" tabindex="-1"></a>        <span class="co">// try</span></span>
+<span id="cb1-111"><a href="#cb1-111" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="op">(</span>z<span class="op">.</span>add<span class="op">(</span>b<span class="op">).</span>err<span class="op">)</span> <span class="cf">return</span> <span class="dv">1</span><span class="op">;</span></span>
+<span id="cb1-112"><a href="#cb1-112" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb1-113"><a href="#cb1-113" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-114"><a href="#cb1-114" aria-hidden="true" tabindex="-1"></a>    abort<span class="op">();</span> <span class="co">// unreachable</span></span>
+<span id="cb1-115"><a href="#cb1-115" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb1-116"><a href="#cb1-116" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-117"><a href="#cb1-117" aria-hidden="true" tabindex="-1"></a><span class="co">// gcc main.c -O3 -flto -S</span></span></code></pre></div>
+<p>For the sane:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">// how to properly use vtables without losing sanity</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;assert.h&gt;</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;stdio.h&gt;</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;stdlib.h&gt;</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="pp">#define definitions</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;stdbool.h&gt;</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="kw">typedef</span> <span class="kw">struct</span> <span class="op">{</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>    <span class="dt">float</span> x<span class="op">,</span> y<span class="op">;</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="op">}</span> Vector2<span class="op">;</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="kw">typedef</span> <span class="kw">struct</span> <span class="op">{</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>    <span class="dt">float</span> x<span class="op">,</span> y<span class="op">,</span> w<span class="op">;</span></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a><span class="op">}</span> Vector3<span class="op">;</span></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a><span class="dt">static</span> <span class="kw">inline</span> Vector2 mylib_vector2_add<span class="op">(</span><span class="dt">const</span> Vector2 lhs<span class="op">,</span> Vector2 rhs<span class="op">);</span></span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a><span class="dt">static</span> <span class="kw">inline</span> Vector3 mylib_vector3_add<span class="op">(</span><span class="dt">const</span> Vector3 lhs<span class="op">,</span> Vector3 rhs<span class="op">);</span></span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a><span class="pp">#define fn</span><span class="op">(</span><span class="pp">x</span><span class="op">)</span><span class="pp"> __typeof__</span><span class="op">(</span><span class="pp">x</span><span class="op">)</span></span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a><span class="kw">struct</span> mylib <span class="op">{</span></span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>    <span class="kw">struct</span> <span class="op">{</span></span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>        fn<span class="op">(</span>mylib_vector2_add<span class="op">)</span> <span class="op">*</span> add<span class="op">;</span></span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span> Vector2<span class="op">;</span></span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>    <span class="kw">struct</span> <span class="op">{</span></span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>        fn<span class="op">(</span>mylib_vector3_add<span class="op">)</span> <span class="op">*</span> add<span class="op">;</span></span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span> Vector3<span class="op">;</span></span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a><span class="op">};</span></span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a><span class="pp">#ifdef definitions</span></span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a><span class="dt">const</span> <span class="kw">struct</span> mylib mylib <span class="op">=</span> <span class="op">(</span><span class="dt">const</span> <span class="kw">struct</span> mylib<span class="op">){</span> <span class="op">.</span>Vector2 <span class="op">=</span> <span class="op">{</span> <span class="op">.</span>add <span class="op">=</span> mylib_vector2_add <span class="op">},</span></span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a>                                                 <span class="op">.</span>Vector3 <span class="op">=</span> <span class="op">{</span> <span class="op">.</span>add <span class="op">=</span> mylib_vector3_add <span class="op">}</span> <span class="op">};</span></span>
+<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a><span class="dt">static</span> <span class="kw">inline</span> Vector2 mylib_vector2_add<span class="op">(</span><span class="dt">const</span> Vector2 lhs<span class="op">,</span> <span class="dt">const</span> Vector2 rhs<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="op">(</span>Vector2<span class="op">){</span></span>
+<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a>        <span class="op">.</span>x <span class="op">=</span> lhs<span class="op">.</span>x <span class="op">+</span> rhs<span class="op">.</span>x<span class="op">,</span></span>
+<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a>        <span class="op">.</span>y <span class="op">=</span> lhs<span class="op">.</span>y <span class="op">+</span> rhs<span class="op">.</span>y<span class="op">,</span></span>
+<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a>    <span class="op">};</span></span>
+<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a><span class="dt">static</span> <span class="kw">inline</span> Vector3 mylib_vector3_add<span class="op">(</span><span class="dt">const</span> Vector3 lhs<span class="op">,</span> <span class="dt">const</span> Vector3 rhs<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="op">(</span>Vector3<span class="op">){</span></span>
+<span id="cb2-44"><a href="#cb2-44" aria-hidden="true" tabindex="-1"></a>        <span class="op">.</span>x <span class="op">=</span> lhs<span class="op">.</span>x <span class="op">+</span> rhs<span class="op">.</span>x<span class="op">,</span></span>
+<span id="cb2-45"><a href="#cb2-45" aria-hidden="true" tabindex="-1"></a>        <span class="op">.</span>y <span class="op">=</span> lhs<span class="op">.</span>y <span class="op">+</span> rhs<span class="op">.</span>y<span class="op">,</span></span>
+<span id="cb2-46"><a href="#cb2-46" aria-hidden="true" tabindex="-1"></a>        <span class="op">.</span>w <span class="op">=</span> lhs<span class="op">.</span>w <span class="op">+</span> rhs<span class="op">.</span>w<span class="op">,</span></span>
+<span id="cb2-47"><a href="#cb2-47" aria-hidden="true" tabindex="-1"></a>    <span class="op">};</span></span>
+<span id="cb2-48"><a href="#cb2-48" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb2-49"><a href="#cb2-49" aria-hidden="true" tabindex="-1"></a><span class="pp">#else</span></span>
+<span id="cb2-50"><a href="#cb2-50" aria-hidden="true" tabindex="-1"></a><span class="kw">extern</span> <span class="dt">const</span> <span class="kw">struct</span> mylib mylib<span class="op">;</span></span>
+<span id="cb2-51"><a href="#cb2-51" aria-hidden="true" tabindex="-1"></a><span class="pp">#endif</span></span>
+<span id="cb2-52"><a href="#cb2-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-53"><a href="#cb2-53" aria-hidden="true" tabindex="-1"></a><span class="pp">#define use</span><span class="op">(</span><span class="pp">name</span><span class="op">,</span><span class="pp"> n</span><span class="op">)</span><span class="pp"> </span><span class="dt">static</span><span class="pp"> __typeof__</span><span class="op">(</span><span class="pp">name</span><span class="op">)</span><span class="pp"> n </span><span class="op">=</span><span class="pp"> name</span></span>
+<span id="cb2-54"><a href="#cb2-54" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-55"><a href="#cb2-55" aria-hidden="true" tabindex="-1"></a>use<span class="op">(</span>mylib<span class="op">.</span>Vector2<span class="op">,</span> vec2<span class="op">);</span></span>
+<span id="cb2-56"><a href="#cb2-56" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-57"><a href="#cb2-57" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> main<span class="op">(</span><span class="dt">int</span> argc<span class="op">,</span> <span class="dt">char</span> <span class="op">*</span>argv<span class="op">[])</span> <span class="op">{</span></span>
+<span id="cb2-58"><a href="#cb2-58" aria-hidden="true" tabindex="-1"></a>    use<span class="op">(</span>mylib<span class="op">.</span>Vector2<span class="op">,</span> v<span class="op">);</span></span>
+<span id="cb2-59"><a href="#cb2-59" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-60"><a href="#cb2-60" aria-hidden="true" tabindex="-1"></a>    Vector2 x <span class="op">=</span> <span class="op">{</span> <span class="op">.</span>x <span class="op">=</span> <span class="fl">190.0</span><span class="op">,</span> <span class="op">.</span>y <span class="op">=</span> <span class="fl">0.0</span> <span class="op">};</span></span>
+<span id="cb2-61"><a href="#cb2-61" aria-hidden="true" tabindex="-1"></a>    Vector2 b <span class="op">=</span> <span class="op">{</span> <span class="op">.</span>x <span class="op">=</span> <span class="fl">20.0</span><span class="op">,</span> <span class="op">.</span>y <span class="op">=</span> <span class="fl">0.0</span> <span class="op">};</span></span>
+<span id="cb2-62"><a href="#cb2-62" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-63"><a href="#cb2-63" aria-hidden="true" tabindex="-1"></a>    Vector2 t <span class="op">=</span> vec2<span class="op">.</span>add<span class="op">(</span>x<span class="op">,</span> b<span class="op">);</span></span>
+<span id="cb2-64"><a href="#cb2-64" aria-hidden="true" tabindex="-1"></a>    Vector2 t2 <span class="op">=</span> mylib<span class="op">.</span>Vector2<span class="op">.</span>add<span class="op">(</span>t<span class="op">,</span> v<span class="op">.</span>add<span class="op">(</span>x<span class="op">,</span> b<span class="op">));</span></span>
+<span id="cb2-65"><a href="#cb2-65" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-66"><a href="#cb2-66" aria-hidden="true" tabindex="-1"></a>    assert<span class="op">(</span>t2<span class="op">.</span>x <span class="op">==</span> <span class="dv">2</span> <span class="op">*</span> <span class="op">(</span><span class="fl">190.0</span> <span class="op">+</span> <span class="fl">20.0</span><span class="op">));</span></span>
+<span id="cb2-67"><a href="#cb2-67" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-68"><a href="#cb2-68" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb2-69"><a href="#cb2-69" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb2-70"><a href="#cb2-70" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-71"><a href="#cb2-71" aria-hidden="true" tabindex="-1"></a><span class="co">// gcc main.c -O3 -flto -S</span></span></code></pre></div>
+<h1 data-number="2" id="license"><span class="header-section-number">2</span> License</h1>
+<p>This project is available as public-domain under the CC0 License.</p>
+    </div>
+    <footer>
+      <div class="footer_content">
+        <a
+          href="https://github.com/aocoronel"
+          class="glass-btn !px-3"
+          target="_blank"
+          ><svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="22"
+            height="22"
+            fill="var(--blue)"
+            viewBox="0 0 256 256"
+          >
+            <title>GitHub</title>
+            <path
+              d="M208,104v8a48,48,0,0,1-48,48H136a32,32,0,0,1,32,32v40H104V192a32,32,0,0,1,32-32H112a48,48,0,0,1-48-48v-8a49.28,49.28,0,0,1,8.51-27.3A51.92,51.92,0,0,1,76,32a52,52,0,0,1,43.83,24h32.34A52,52,0,0,1,196,32a51.92,51.92,0,0,1,3.49,44.7A49.28,49.28,0,0,1,208,104Z"
+              opacity="0.2"
+            ></path>
+            <path
+              d="M208.3,75.68A59.74,59.74,0,0,0,202.93,28,8,8,0,0,0,196,24a59.75,59.75,0,0,0-48,24H124A59.75,59.75,0,0,0,76,24a8,8,0,0,0-6.93,4,59.78,59.78,0,0,0-5.38,47.68A58.14,58.14,0,0,0,56,104v8a56.06,56.06,0,0,0,48.44,55.47A39.8,39.8,0,0,0,96,192v8H72a24,24,0,0,1-24-24A40,40,0,0,0,8,136a8,8,0,0,0,0,16,24,24,0,0,1,24,24,40,40,0,0,0,40,40H96v16a8,8,0,0,0,16,0V192a24,24,0,0,1,48,0v40a8,8,0,0,0,16,0V192a39.8,39.8,0,0,0-8.44-24.53A56.06,56.06,0,0,0,216,112v-8A58,58,0,0,0,208.3,75.68ZM200,112a40,40,0,0,1-40,40H112a40,40,0,0,1-40-40v-8a41.74,41.74,0,0,1,6.9-22.48A8,8,0,0,0,80,73.83a43.81,43.81,0,0,1,.79-33.58,43.88,43.88,0,0,1,32.32,20.06A8,8,0,0,0,119.82,64h32.35a8,8,0,0,0,6.74-3.69,43.87,43.87,0,0,1,32.32-20.06A43.81,43.81,0,0,1,192,73.83a8.09,8.09,0,0,0,1,7.65A41.76,41.76,0,0,1,200,104Z"
+            ></path></svg
+        ></a>
+        <a
+          href="https://codeberg.org/aocoronel"
+          class="glass-btn !px-3"
+          target="_blank"
+        >
+          <svg
+            fill="var(--blue)"
+            height="22"
+            role="img"
+            viewBox="0 0 24 24"
+            width="22"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <title>Codeberg</title>
+            <path
+              d="M11.955.49A12 12 0 0 0 0 12.49a12 12 0 0 0 1.832 6.373L11.838 5.928a.187.14 0 0 1 .324 0l10.006 12.935A12 12 0 0 0 24 12.49a12 12 0 0 0-12-12 12 12 0 0 0-.045 0zm.375 6.467 4.416 16.553a12 12 0 0 0 5.137-4.213z"
+            />
+          </svg>
+        </a>
+        <a href="..///feed.xml" target="_blank">
+          <svg
+            width="22"
+            height="22"
+            viewBox="0 0 24 24"
+            id="Layer_1"
+            data-name="Layer 1"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <title>RSS Feeds</title>
+            <defs>
+              <style>
+                .cls-1 {
+                  fill: none;
+                  stroke: var(--blue);
+                  stroke-miterlimit: 10;
+                  stroke-width: 1.91px;
+                }
+              </style>
+            </defs>
+            <path class="cls-1" d="M6.27,11.05A6.68,6.68,0,0,1,13,17.73" />
+            <path class="cls-1" d="M6.27,6.27A11.46,11.46,0,0,1,17.73,17.73" />
+            <circle class="cls-1" cx="7.23" cy="16.77" r="0.95" />
+            <rect class="cls-1" x="1.5" y="1.5" width="21" height="21" />
+          </svg>
+        </a>
+        <span style="padding-right: 15px; text-wrap: auto">
+          <p>
+            © 2025
+            <a href="https://github.com/aocoronel/">Augusto Coronel.</a>
+            <a href="https://creativecommons.org/licenses/by/4.0/"
+              >All rights reserved.</a
+            >
+          </p>
+        </span>
+      </div>
+    </footer>
+    
+  </body>
+</html>

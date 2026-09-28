@@ -1,0 +1,201 @@
+<!doctype html>
+<html
+  xmlns="http://www.w3.org/1999/xhtml"
+  lang=""
+  xml:lang=""
+  >
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=yes"
+    />
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="..//media/favicons/favicon-16x16.png"
+    />
+        <meta name="author" content="Augusto Coronel" />
+         <meta property="og:title" content="embed-bash" />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:url"
+      content="https://aocoronel.github.io/embed-bash/index.html"
+    />
+    <meta
+      property="og:image"
+      content="https://raw.githubusercontent.com/aocoronel/aocoronel.github.io/refs/heads/main/media/favicons/banner.png"
+    />
+    <meta property="og:site_name" content="Augusto Coronel" />
+    <meta property="og:description" content="tiny example on how to embed executable in bash" />
+    <meta name="twitter:title" content="Augusto Coronel" />
+    <meta name="twitter:description" content="tiny example on how to embed executable in bash" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:image"
+      content="https://raw.githubusercontent.com/aocoronel/aocoronel.github.io/refs/heads/main/media/favicons/banner.png"
+    />
+    <title>embed-bash</title>
+        <link rel="stylesheet" href="../posts.css" />
+      
+  </head>
+  <body>
+    
+    <header>
+      <div class="header_content">
+        <div class="navbar">
+          <a class="title" href="..//index.html">Coronel</a>
+          <div class="nav_item ">
+            <a href="..//about.html">About</a>
+          </div>
+          <div class="nav_item ">
+            <a href="..//index.html">Home</a>
+          </div>
+        </div>
+        <span class="clear"></span>
+      </div>
+    </header>
+    <div class="content">
+      <br />
+      
+      <div class="content-upper">
+        <div class="content-title-n-toc">
+          <p class="content-title">embed-bash</p>
+          <p class="content-desc">tiny example on how to embed executable in bash</p>
+          <p class="content-desc"><a href=".">Source code</a></p>
+          <br />
+                    <div class="table_of_contents">
+            <div class="table_of_contents_header">Contents:</div>
+            <ul>
+            <li><a href="#license" id="toc-license"><span class="toc-section-number">1</span> License</a></li>
+            </ul>
+          </div>
+                  </div>
+      </div>
+      <br />
+      <div></div>
+       <p>This is a proof-of-concept project that aims to give a tiny example ony how to embed executables in bash scripts.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/sh</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># embed-bash.sh</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="va">output</span><span class="op">=</span>hello_output.sh</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">write_to()</span> <span class="kw">{</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  <span class="bu">echo</span> <span class="st">&quot;</span><span class="va">$1</span><span class="st">&quot;</span> <span class="op">&gt;&gt;</span> <span class="st">&quot;</span><span class="va">$output</span><span class="st">&quot;</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="kw">}</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="fu">cc</span> hello.c <span class="at">-o</span> hello</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="ex">write_to</span> <span class="st">&quot;#!/bin/bash&quot;</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="ex">write_to</span> <span class="st">&quot;bin=</span><span class="dt">\$</span><span class="st">(cat &lt;&lt;&#39;EOF&#39;&quot;</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="fu">base64</span> hello <span class="op">&gt;&gt;</span> <span class="st">&quot;</span><span class="va">$output</span><span class="st">&quot;</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="ex">write_to</span> <span class="st">&quot;EOF&quot;</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="ex">write_to</span> <span class="st">&quot;)&quot;</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="ex">write_to</span> <span class="st">&quot;echo </span><span class="dt">\&quot;\$</span><span class="st">bin</span><span class="dt">\&quot;</span><span class="st"> | base64 -d &gt; </span><span class="dt">\&quot;</span><span class="st">myexe</span><span class="dt">\&quot;</span><span class="st">&quot;</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="ex">write_to</span> <span class="st">&quot;chmod +x myexe&quot;</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="ex">write_to</span> <span class="st">&quot;exec ./myexe&quot;</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Output:</span></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="co"># !/bin/bash</span></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="co"># bin=$(cat &lt;&lt;&#39;EOF&#39;</span></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="co"># base64 encoded binary...</span></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="co"># EOF</span></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="co"># )</span></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a><span class="co"># echo &quot;$bin&quot; | base64 -d &gt; &quot;myexe&quot;</span></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a><span class="co"># chmod +x myexe</span></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a><span class="co"># exec ./myexe</span></span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">// hello.c</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;stdio.h&gt;</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> main<span class="op">(</span><span class="dt">void</span><span class="op">)</span> <span class="op">{</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>  printf<span class="op">(</span><span class="st">&quot;Hello, world!</span><span class="sc">\n</span><span class="st">&quot;</span><span class="op">);</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p>Usage:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">./embed-bash.sh</span></span></code></pre></div>
+<h2 data-number="1" id="license"><span class="header-section-number">1</span> License</h2>
+<p>This project is available as public-domain under the CC0 License.</p>
+    </div>
+    <footer>
+      <div class="footer_content">
+        <a
+          href="https://github.com/aocoronel"
+          class="glass-btn !px-3"
+          target="_blank"
+          ><svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="22"
+            height="22"
+            fill="var(--blue)"
+            viewBox="0 0 256 256"
+          >
+            <title>GitHub</title>
+            <path
+              d="M208,104v8a48,48,0,0,1-48,48H136a32,32,0,0,1,32,32v40H104V192a32,32,0,0,1,32-32H112a48,48,0,0,1-48-48v-8a49.28,49.28,0,0,1,8.51-27.3A51.92,51.92,0,0,1,76,32a52,52,0,0,1,43.83,24h32.34A52,52,0,0,1,196,32a51.92,51.92,0,0,1,3.49,44.7A49.28,49.28,0,0,1,208,104Z"
+              opacity="0.2"
+            ></path>
+            <path
+              d="M208.3,75.68A59.74,59.74,0,0,0,202.93,28,8,8,0,0,0,196,24a59.75,59.75,0,0,0-48,24H124A59.75,59.75,0,0,0,76,24a8,8,0,0,0-6.93,4,59.78,59.78,0,0,0-5.38,47.68A58.14,58.14,0,0,0,56,104v8a56.06,56.06,0,0,0,48.44,55.47A39.8,39.8,0,0,0,96,192v8H72a24,24,0,0,1-24-24A40,40,0,0,0,8,136a8,8,0,0,0,0,16,24,24,0,0,1,24,24,40,40,0,0,0,40,40H96v16a8,8,0,0,0,16,0V192a24,24,0,0,1,48,0v40a8,8,0,0,0,16,0V192a39.8,39.8,0,0,0-8.44-24.53A56.06,56.06,0,0,0,216,112v-8A58,58,0,0,0,208.3,75.68ZM200,112a40,40,0,0,1-40,40H112a40,40,0,0,1-40-40v-8a41.74,41.74,0,0,1,6.9-22.48A8,8,0,0,0,80,73.83a43.81,43.81,0,0,1,.79-33.58,43.88,43.88,0,0,1,32.32,20.06A8,8,0,0,0,119.82,64h32.35a8,8,0,0,0,6.74-3.69,43.87,43.87,0,0,1,32.32-20.06A43.81,43.81,0,0,1,192,73.83a8.09,8.09,0,0,0,1,7.65A41.76,41.76,0,0,1,200,104Z"
+            ></path></svg
+        ></a>
+        <a
+          href="https://codeberg.org/aocoronel"
+          class="glass-btn !px-3"
+          target="_blank"
+        >
+          <svg
+            fill="var(--blue)"
+            height="22"
+            role="img"
+            viewBox="0 0 24 24"
+            width="22"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <title>Codeberg</title>
+            <path
+              d="M11.955.49A12 12 0 0 0 0 12.49a12 12 0 0 0 1.832 6.373L11.838 5.928a.187.14 0 0 1 .324 0l10.006 12.935A12 12 0 0 0 24 12.49a12 12 0 0 0-12-12 12 12 0 0 0-.045 0zm.375 6.467 4.416 16.553a12 12 0 0 0 5.137-4.213z"
+            />
+          </svg>
+        </a>
+        <a href="..///feed.xml" target="_blank">
+          <svg
+            width="22"
+            height="22"
+            viewBox="0 0 24 24"
+            id="Layer_1"
+            data-name="Layer 1"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <title>RSS Feeds</title>
+            <defs>
+              <style>
+                .cls-1 {
+                  fill: none;
+                  stroke: var(--blue);
+                  stroke-miterlimit: 10;
+                  stroke-width: 1.91px;
+                }
+              </style>
+            </defs>
+            <path class="cls-1" d="M6.27,11.05A6.68,6.68,0,0,1,13,17.73" />
+            <path class="cls-1" d="M6.27,6.27A11.46,11.46,0,0,1,17.73,17.73" />
+            <circle class="cls-1" cx="7.23" cy="16.77" r="0.95" />
+            <rect class="cls-1" x="1.5" y="1.5" width="21" height="21" />
+          </svg>
+        </a>
+        <span style="padding-right: 15px; text-wrap: auto">
+          <p>
+            © 2025
+            <a href="https://github.com/aocoronel/">Augusto Coronel.</a>
+            <a href="https://creativecommons.org/licenses/by/4.0/"
+              >All rights reserved.</a
+            >
+          </p>
+        </span>
+      </div>
+    </footer>
+    
+  </body>
+</html>

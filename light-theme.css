@@ -1,0 +1,20 @@
+:root {
+  --monospace-font: sans;
+  --blue: #000000;
+  --sidebar-background: #e9e9e9;
+  --background: #e8e8e8;
+  --body_background_color: #f2f2f2;
+  --code-background: #252525;
+  --proj-background: #d5d5d5;
+  --content_background_color: #f2f2f2;
+  --grey: #111111;
+  --grey2: #050505;
+  --header_background_color: #f2f2f2;
+  --link: #101010;
+  --text-color: #121212;
+  --green: #0077bb;
+  --blue: #0077bb;
+  --footer-left-color: #101010;
+  --footer-right-color: #050505;
+  --tag: #707070;
+}

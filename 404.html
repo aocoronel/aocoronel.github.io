@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 – Page Not Found</title>
+    <style>
+        @import url("light-theme.css") screen and (prefers-color-scheme: light);
+        @import url("dark-theme.css") screen and (prefers-color-scheme: dark);
+
+        html, body {
+            background-color: var(--body_background_color);
+            color: var(--text-color);
+            font-family: DejaVu Sans Serif, sans-serif !important;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+        }
+        .container {
+            max-width: 600px;
+            padding: 2rem;
+        }
+        h1 {
+            font-size: 3rem;
+            font-weight: 300;
+            margin: 0 0 1rem;
+            color: var(--text-color);
+        }
+        p {
+            font-size: 1.1rem;
+            margin: 0 0 2rem;
+            color: var(--text-color);
+        }
+        a {
+            color: var(--green);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>404</h1>
+        <p>We can’t seem to find the page you’re looking for.</p>
+        <p><a href="/">Return home</a></p>
+    </div>
+</body>
+</html>

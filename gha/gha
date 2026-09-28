@@ -1,0 +1,159 @@
+#!/usr/bin/bash
+
+# Changelog:
+#
+# All notable changes to this project will be documented in this file.
+#
+# The format is based on Keep a Changelog, some adaptation apply: https://keepachangelog.com/en/1.1.0/
+# This project also adheres to Semantic Versioning: https://semver.org/spec/v2.0.0.html
+#
+# [0.1.0] 2026-08-09
+# 	Initial release
+
+GHA_FILE="$HOME/.cache/gha_db.json"
+GHA_FILE_TMP="$HOME/.cache/gha_db_tmp.json"
+
+mkdir -p ~/.cache
+
+if [[ ! -f "$GHA_FILE" ]]; then
+  echo '{"starred":[],"following":[]}' >"$GHA_FILE"
+fi
+
+sync() {
+  gh api user/starred --jq '.[].full_name' | jq -R . | jq -s . >~/.cache/gha_starred.json
+  gh api user/following --jq '.[].login' | jq -R . | jq -s . >~/.cache/gha_following.json
+  jq --argjson s "$(cat ~/.cache/gha_starred.json)" --argjson f "$(cat ~/.cache/gha_following.json)" \
+    '.starred = $s | .following = $f' "$GHA_FILE" >~/.cache/tmp_gha_db.json
+  mv ~/.cache/tmp_gha_db.json "$GHA_FILE"
+  rm -f ~/.cache/gha_starred.json ~/.cache/gha_following.json
+  echo "Synced starred and following data."
+}
+
+list() {
+  subcommand=$1
+  case "$subcommand" in
+  starred)
+    jq -r '.starred[]' "$GHA_FILE"
+    ;;
+  following)
+    jq -r '.following[]' "$GHA_FILE"
+    ;;
+  *)
+    echo "Usage: gha list [starred|following]"
+    return 1
+    ;;
+  esac
+}
+
+browse() {
+  user_or_repo=$1
+  if [[ -z "$user_or_repo" ]]; then
+    url=$(jq -r '.starred[], .following[]' "$GHA_FILE" | fzf)
+    val=$?
+    [[ "$val" -ne 0 ]] && exit 1
+    xdg-open "https://github.com/$url" 2>/dev/null || open "https://github.com/$url"
+    return 0
+  fi
+  xdg-open "https://github.com/$2" 2>/dev/null || open "https://github.com/$2"
+  return 0
+}
+
+add() {
+  flag=$1
+  user_or_repo=$2
+  case "$flag" in
+  -s)
+    if [[ -z "$user_or_repo" ]]; then
+      echo "Usage: gha add -s user/repo"
+      return 1
+    fi
+    gh api "user/starred/$user_or_repo" --method PUT
+    jq --arg repo "$user_or_repo" '.starred += [$repo]' "$GHA_FILE" > "$GHA_FILE_TMP"
+    mv -f "$GHA_FILE_TMP" "$GHA_FILE"
+    ;;
+  -f)
+    if [[ -z "$user_or_repo" ]]; then
+      echo "Usage: gha add -f user"
+      return 1
+    fi
+    gh api "user/following/$user_or_repo" --method PUT
+    jq --arg user "$user_or_repo" '.following += [$user]' "$GHA_FILE" > "$GHA_FILE_TMP"
+    mv -f "$GHA_FILE_TMP" "$GHA_FILE"
+    ;;
+  *)
+    echo "Usage: gha add [-s user/repo|-f user]"
+    return 1
+    ;;
+  esac
+}
+
+del() {
+  flag=$1
+  user_or_repo=$2
+  case "$flag" in
+  -s)
+    if [[ -z "$user_or_repo" ]]; then
+      echo "Usage: gha del -s user/repo"
+      return 1
+    fi
+    gh api "user/starred/$user_or_repo" --method DELETE
+    jq --arg repo "$user_or_repo" 'del(.starred[] | select(. == $repo))' "$GHA_FILE" > "$GHA_FILE_TMP"
+    mv "$GHA_FILE_TMP" "$GHA_FILE"
+    ;;
+  -f)
+    if [[ -z "$user_or_repo" ]]; then
+      echo "Usage: gha del -f user"
+      return 1
+    fi
+    gh api "user/following/$user_or_repo" --method DELETE
+    jq --arg user "$user_or_repo" 'del(.following[] | select(. == $user))' "$GHA_FILE" > "$GHA_FILE_TMP"
+    mv "$GHA_FILE_TMP" "$GHA_FILE"
+    ;;
+  *)
+    echo "Usage: gha del [-s user/repo|-f user]"
+    return 1
+    ;;
+  esac
+}
+
+function help() {
+  cat <<EOF
+gha | GitHub API
+
+Usage: gha [OPTION] [COMMAND] [INPUT]
+
+Commands:
+  add [-f] [user]         Follow user
+  add [-s] [user/repo]    Star repo
+  browse [user|user/repo] Open user or repo in browser
+  del [-f] [user]         Unfollow user
+  del [-s] [user/repo]    Unstar repo
+  help                    Displays this message and exits
+  sync                    Sync local database
+EOF
+}
+
+main() {
+  case "$1" in
+  sync) sync ;;
+  list)
+    shift
+    list "$1"
+    ;;
+  browse)
+    shift
+    browse "$1"
+    ;;
+  add)
+    shift
+    add "$1" "$2"
+    ;;
+  del)
+    shift
+    del "$1" "$2"
+    ;;
+  help | *) help ;;
+  esac
+}
+
+main "$@"
