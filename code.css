@@ -6,5 +6,10 @@ pre {
 }
 code {
   background-color: #070707;
+  color: #eba0ac;
+}
+
+.org-src-container code {
+  background-color: #070707;
   color: #ffffff;
 }
