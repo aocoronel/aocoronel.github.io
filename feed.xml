@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0"
+	   xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	   xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	   xmlns:dc="http://purl.org/dc/elements/1.1/"
+	   xmlns:atom="http://www.w3.org/2005/Atom"
+	   xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	   xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	   xmlns:georss="http://www.georss.org/georss"
+     xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"
+     xmlns:media="http://search.yahoo.com/mrss/"><channel>
+  <title>Augusto Coronel</title>
+  <atom:link href="./feed.xml" rel="self" type="application/rss+xml" />
+  <link></link>
+  <description><![CDATA[Latest posts from Augusto Coronel]]></description>
+  <language>en</language>
+  <pubDate>Wed, 25 Nov 2026 09:33:31 -0300</pubDate>
+  <lastBuildDate>Wed, 25 Nov 2026 09:33:31 -0300</lastBuildDate>
+  <generator>Emacs 31.1 Org-mode 9.8.7</generator>
+  <webMaster>aocoronelx@gmail.com (Augusto Coronel)</webMaster>
+  <image>
+    <url>https://orgmode.org/img/org-mode-unicorn-logo.png</url>
+    <title>Augusto Coronel</title>
+    <link></link>
+  </image>
+
+  <item>
+    <title>Threadding isn't hard</title>
+    <link>.//posts/2026-11-25-threading-is-hard.html</link>
+    <author>aocoronelx@gmail.com (Augusto Coronel)</author>
+    <guid isPermaLink="false">.//posts/2026-11-25-threading-is-hard.html</guid>
+    <pubDate>Tue, 24 Nov 2026 23:49:00 -0300</pubDate>
+
+    <description><![CDATA[<p>
+Threadding is very hard
+</p>
+]]></description>
+  </item>
+  <item>
+    <title>Fossil SCM</title>
+    <link>.//posts/2026-11-24-fossil.html</link>
+    <author>aocoronelx@gmail.com (Augusto Coronel)</author>
+    <guid isPermaLink="false">.//posts/2026-11-24-fossil.html</guid>
+    <pubDate>Tue, 24 Nov 2026 23:49:00 -0300</pubDate>
+
+    <description><![CDATA[<p>
+An alternative to git
+</p>
+]]></description>
+  </item>
+  <item>
+    <title>My learning theory</title>
+    <link>.//posts/2026-09-20-my-learning-theory.html</link>
+    <author>aocoronelx@gmail.com (Augusto Coronel)</author>
+    <guid isPermaLink="false">.//posts/2026-09-20-my-learning-theory.html</guid>
+    <pubDate>Tue, 24 Nov 2026 23:49:00 -0300</pubDate>
+
+    <description><![CDATA[<p>
+I always wanted to make a tool to aid on learning, but I don't need to do it
+</p>
+]]></description>
+  </item>
+  <item>
+    <title>I like Rust</title>
+    <link>.//posts/2026-09-02-i-like-rust.html</link>
+    <author>aocoronelx@gmail.com (Augusto Coronel)</author>
+    <guid isPermaLink="false">.//posts/2026-09-02-i-like-rust.html</guid>
+    <pubDate>Tue, 24 Nov 2026 23:49:00 -0300</pubDate>
+
+    <description><![CDATA[<p>
+I like Rust so much, I regret not rewritting my Rust projects to another language earlier
+</p>
+]]></description>
+  </item>
+  <item>
+    <title>I'm done with C</title>
+    <link>.//posts/2026-08-05-im-done-with-c.html</link>
+    <author>aocoronelx@gmail.com (Augusto Coronel)</author>
+    <guid isPermaLink="false">.//posts/2026-08-05-im-done-with-c.html</guid>
+    <pubDate>Tue, 24 Nov 2026 23:49:00 -0300</pubDate>
+
+    <description><![CDATA[<p>
+After keep pushing it, I'm done
+</p>
+]]></description>
+  </item>
+  <item>
+    <title>Valid C</title>
+    <link>.//posts/2026-07-11-valid-c.html</link>
+    <author>aocoronelx@gmail.com (Augusto Coronel)</author>
+    <guid isPermaLink="false">.//posts/2026-07-11-valid-c.html</guid>
+    <pubDate>Tue, 24 Nov 2026 23:49:00 -0300</pubDate>
+
+    <description><![CDATA[<p>
+Why I like C so much, and what things don't make me want to stay.
+</p>
+]]></description>
+  </item>
+</channel>
+</rss>
